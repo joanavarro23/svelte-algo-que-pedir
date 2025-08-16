@@ -17,20 +17,26 @@
 
         <!-- Descripción del plato -->
         <section class="detalles-plato">
-            <label for="nombre">Nombre del plato*</label>
-            <input type="text" name="nombreDelPlato" placeholder="Hamburguesa triple completa" max="25" required>
+            <div class="label-input">
+                <label for="nombre">Nombre del plato*</label>
+                <input type="text" name="nombreDelPlato" placeholder="Hamburguesa triple completa" max="25" required>
+            </div>
     
-            <label for="descripcion">Descrpción*</label>
-            <textarea name="descripcion" id="descripcion" placeholder="Hamburguesa triple con una deliciona cebolla morada salteada que junto con el acompañamiento de lechuga, tomate y cheddar generan una sencación única e inigualable. Viene con adherezos."></textarea>
+            <div class="label-input">
+                <label for="descripcion">Descrpción*</label>
+                <textarea name="descripcion" id="descripcion" placeholder="Hamburguesa triple con una deliciona cebolla morada salteada que junto con el acompañamiento de lechuga, tomate y cheddar generan una sencación única e inigualable. Viene con adherezos."></textarea>
+            </div>
     
-            <label for="imagen">URL de la imagen del plato*</label>
-            <!-- <input type="file" name="imagen" accept="image/*" required> -->
-            <input type="url" name="image" placeholder="http://images.google.com/altaburguer.jpg" required>
+            <div class="label-input">
+                <label for="imagen">URL de la imagen del plato*</label>
+                <input type="url" name="image" placeholder="http://images.google.com/altaburguer.jpg" required>
+                <!-- <input type="file" name="imagen" accept="image/*" required> -->
+            </div>
     
                 <!-- Imagen de referencia -->
-             <div class="imagen-referencia">
-                <img src="assets\hamburguesa-preview.jpg" alt="Vista previa del plato">
-             </div>
+            <div class="imagen-referencia">
+                <img class="foto" src="assets\hamburguesa-preview.jpg" alt="Vista previa del plato">
+            </div>
         </section>
 
         <!-- Costos del plato -->
