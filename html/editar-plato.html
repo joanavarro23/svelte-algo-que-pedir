@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Plato</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <main class="editar-plato">
+        <h1>Editar Plato</h1>
+
+        <!-- Descripción del plato -->
+        <label for="nombre">Nombre del plato*</label>
+        <input type="text" name="nombreDelPlato" placeholder="Hamburguesa triple completa" max="25" required>
+
+        <label for="descripcion">Descrpción*</label>
+        <textarea name="descripcion" id="descripcion" placeholder="Hamburguesa triple con una deliciona cebolla morada salteada que junto con el acompañamiento de lechuga, tomate y cheddar generan una sencación única e inigualable. Viene con adherezos."></textarea>
+
+        <label for="imagen">URL de la imagen del plato*</label>
+        <!-- <input type="file" name="imagen" accept="image/*" required> -->
+        <input type="url" name="image" placeholder="http://images.google.com/altaburguer.jpg" required>
+
+            <!-- Imagen de referencia -->
+         <div class="imagen-referencia">
+            <img src="assets\hamburguesa-preview.jpg" alt="Vista previa del plato">
+         </div>
+
+        <!-- Costos del plato -->
+        <h2>Costos</h2>
+        <label for="precio">Precio Base*</label>
+        <input type="number" name="precioBase" required>
+
+            <!-- Booleanos -->
+        <label for="autor">
+            Plato de Autor
+            <input type="checkbox" name="platoDeAutor">
+        </label>
+        <label for="promocion">
+            Plato en Promoción
+            <input type="checkbox" name="platoDePromocion">
+        </label>
+
+        
+    </main>
+</body>
+</html>
