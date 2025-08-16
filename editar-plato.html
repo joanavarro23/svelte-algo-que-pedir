@@ -7,58 +7,63 @@
     
     <!-- Archivos externos -->
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <main class="editar-plato">
         <h1>Editar Plato</h1>
 
         <!-- Descripción del plato -->
-        <label for="nombre">Nombre del plato*</label>
-        <input type="text" name="nombreDelPlato" placeholder="Hamburguesa triple completa" max="25" required>
-
-        <label for="descripcion">Descrpción*</label>
-        <textarea name="descripcion" id="descripcion" placeholder="Hamburguesa triple con una deliciona cebolla morada salteada que junto con el acompañamiento de lechuga, tomate y cheddar generan una sencación única e inigualable. Viene con adherezos."></textarea>
-
-        <label for="imagen">URL de la imagen del plato*</label>
-        <!-- <input type="file" name="imagen" accept="image/*" required> -->
-        <input type="url" name="image" placeholder="http://images.google.com/altaburguer.jpg" required>
-
-            <!-- Imagen de referencia -->
-         <div class="imagen-referencia">
-            <img src="assets\hamburguesa-preview.jpg" alt="Vista previa del plato">
-         </div>
+        <section class="detalles-plato">
+            <label for="nombre">Nombre del plato*</label>
+            <input type="text" name="nombreDelPlato" placeholder="Hamburguesa triple completa" max="25" required>
+    
+            <label for="descripcion">Descrpción*</label>
+            <textarea name="descripcion" id="descripcion" placeholder="Hamburguesa triple con una deliciona cebolla morada salteada que junto con el acompañamiento de lechuga, tomate y cheddar generan una sencación única e inigualable. Viene con adherezos."></textarea>
+    
+            <label for="imagen">URL de la imagen del plato*</label>
+            <!-- <input type="file" name="imagen" accept="image/*" required> -->
+            <input type="url" name="image" placeholder="http://images.google.com/altaburguer.jpg" required>
+    
+                <!-- Imagen de referencia -->
+             <div class="imagen-referencia">
+                <img src="assets\hamburguesa-preview.jpg" alt="Vista previa del plato">
+             </div>
+        </section>
 
         <!-- Costos del plato -->
-        <h2>Costos</h2>
-        <label for="precio">Precio Base*</label>
-        <input type="number" name="precioBase" required>
-
-            <!-- Booleanos -->
-        <label for="autor">
-            Plato de Autor
-            <input type="checkbox" name="platoDeAutor">
-        </label>
-        <label for="promocion">
-            Plato en Promoción
-            <input type="checkbox" name="platoDePromocion">
-        </label>
+        <section class="costos-plato">
+            <h2>Costos</h2>
+            <label for="precio">Precio Base*</label>
+            <input type="number" name="precioBase" required>
+    
+                <!-- Booleanos -->
+            <label for="autor">
+                Plato de Autor
+                <input type="checkbox" name="platoDeAutor">
+            </label>
+            <label for="promocion">
+                Plato en Promoción
+                <input type="checkbox" name="platoDePromocion">
+            </label>
+        </section>
 
         <!-- Detalle de los ingredientes -->
-        <h2>Ingredientes</h2>
-        <div>
-            <h3>Costo de producción</h3> <span>$100</span>
-        </div>
-
-        <table>
-            <thead>
-                <tr>
+        <section>
+            <h2>Ingredientes</h2>
+            <div class="costo-produccion">
+                <h3>Costo de producción</h3> <span>$100</span>
+            </div>
+    
+            <table>
+                <tr class="table-header">
                     <th>Nombre</th>
                     <th>Grupo</th>
                     <th>Origen</th>
                     <th>Acciones</th>
                 </tr>
-            </thead>
-            <tbody>
                 <tr>
                     <td>Carne de Red</td>
                     <td>Proteínas</td>
@@ -83,13 +88,13 @@
                     <td><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M128,112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,112Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,192Zm83-61.34L181.2,46.47a56,56,0,0,0-106-1.14h0l-29.51,83.5A88,88,0,1,0,211,130.66ZM128,232a72.05,72.05,0,0,1-67.33-97.57,1.34,1.34,0,0,1,.07-.18L90.28,50.66h0a40,40,0,0,1,75.74.88l.06.18L195.9,136A72.05,72.05,0,0,1,128,232Z"></path></svg></td>
                     <td><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#f00000" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg></td>
                 </tr>
-            </tbody>
-        </table>
+            </table>
+        </section>
 
         <!-- Botones finales -->
         <div>
-            <button class="boton-primario">Guardar cambios</button>
-            <button class="boton-secundario">Descartar cambios</button>
+            <button class=" button boton-primario">Guardar cambios</button>
+            <button class="button boton-secundario">Descartar cambios</button>
         </div>
     </main>
 </body>

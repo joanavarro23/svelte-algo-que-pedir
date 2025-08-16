@@ -1,0 +1,64 @@
+:root {
+    --color-principal: #FF0000;
+    --color-secundario: #FFFFFF;
+    --color-texto-primario: #000000;
+    --color-texto-secundario: #494848;
+}
+
+/* General */
+body {
+    font-family: "Nata Sans", sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    margin: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+div {
+    margin: 0.5rem 0;
+}
+
+    /* Como esta en cascada, la tipografia del input pisa la que elegimos */
+input, textarea {
+    font-family: "Nata Sans", sans-serif;
+    font-size: 1rem;
+    padding: 0.2rem;
+}
+table {
+    width: 100%;
+    border: var(--color-texto-primario);
+}
+td {
+    border-bottom: 1px solid var(--color-texto-secundario);
+}
+
+/* Color de los titulos, subtitulos y encabezados */
+h1, h2 {
+    color: var(--color-texto-primario);
+}
+h3 {
+  color: var(--color-texto-secundario);
+  margin: 0.5rem 0;
+}
+
+/* Botones */
+.button {
+    border: none;
+    padding: 0.5rem 1rem 0.5rem 1 rem;
+    font-size: 1rem;
+}
+.boton-primario {
+    background-color: var(--color-principal);
+    color: var(--color-secundario);
+}
+.boton-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+    border: #FF0000;
+}
+    /* Sobra cuando se pasa por arriba */
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
+}
