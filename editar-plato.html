@@ -42,22 +42,25 @@
         <!-- Costos del plato -->
         <section class="costos-plato">
             <h2>Costos</h2>
-            <label for="precio">Precio Base*</label>
-            <input type="number" name="precioBase" required>
-    
-                <!-- Booleanos -->
-            <label for="autor">
-                Plato de Autor
-                <input type="checkbox" name="platoDeAutor">
-            </label>
-            <label for="promocion">
-                Plato en Promoción
-                <input type="checkbox" name="platoDePromocion">
-            </label>
+            <div class="label-input">
+                <label for="precio">Precio Base*</label>
+                <input type="number" name="precioBase" placeholder="Escribir" required>
+            </div>
+
+            <div class="label-input">
+                <label for="autor">
+                    Plato de Autor
+                    <input type="checkbox" name="platoDeAutor">
+                </label>
+                <label for="promocion">
+                    Plato en Promoción
+                    <input type="checkbox" name="platoDePromocion">
+                </label>
+            </div>
         </section>
 
         <!-- Detalle de los ingredientes -->
-        <section>
+        <section class="detalle-ingredientes">
             <h2>Ingredientes</h2>
             <div class="costo-produccion">
                 <h3>Costo de producción</h3> <span>$100</span>
@@ -99,8 +102,8 @@
 
         <!-- Botones finales -->
         <div>
-            <button class=" button boton-primario">Guardar cambios</button>
-            <button class="button boton-secundario">Descartar cambios</button>
+            <button class="boton-primario">Guardar cambios</button>
+            <button class="boton-secundario">Descartar cambios</button>
         </div>
     </main>
 </body>
