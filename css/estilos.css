@@ -2,7 +2,8 @@
     --color-principal: #FF0000;
     --color-secundario: #FFFFFF;
     --color-texto-primario: #000000;
-    --color-texto-secundario: #666666;
+    --color-texto-secundario: #3b3b3b;
+    --color-bordes: #838383;
 }
 
 /* General - tipografía y tamaño*/
@@ -12,6 +13,15 @@ body {
     line-height: 1.5;
     margin: 2rem;
 }
+/* Color de los titulos, subtitulos y encabezados */
+h1, h2 {
+    color: var(--color-texto-primario);
+}
+h3 {
+  color: var(--color-texto-secundario);
+  margin: 0.5rem 0;
+}
+
 section {
     margin-bottom: 2rem;
 }
@@ -31,7 +41,7 @@ input, textarea {
     font-size: 1rem;
     padding: 0.2rem;
     border-radius: 0.3rem;
-    border: 1px solid var(--color-texto-secundario);
+    border: 1px solid var(--color-bordes);
 }
 
 /* Estilo de los botones: primerios y secundarios */
@@ -52,6 +62,13 @@ button {
     border: 1px solid var(--color-principal);
 }
     /* Sobra cuando se pasa por arriba */
-.button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
+button:hover {
+  box-shadow: 2px 5px 2px 0 rgba(0,0,0,0.2);
+}
+
+/* Estilo general de la tabla */
+table {
+    width: 100%;
+    border: 1px solid var(--color-bordes);
+    border-radius: 0.8rem;
 }
