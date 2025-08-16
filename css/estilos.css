@@ -12,6 +12,9 @@ body {
     line-height: 1.5;
     margin: 2rem;
 }
+section {
+    margin-bottom: 2rem;
+}
 
 /* Estilos de labels, inputs y textarea */
 .label-input {
@@ -22,11 +25,33 @@ body {
 label {
     margin: 0.5rem 0;
 }
-/* Como esta en cascada, la tipografia del input pisa la que elegimos */
+    /* Como esta en cascada, la tipografia del input pisa la que elegimos */
 input, textarea {
     font-family: "Nata Sans", sans-serif;
     font-size: 1rem;
     padding: 0.2rem;
     border-radius: 0.3rem;
     border: 1px solid var(--color-texto-secundario);
+}
+
+/* Estilo de los botones: primerios y secundarios */
+button {
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 0.3rem;
+    border-radius: 0.4rem;
+}
+.boton-primario {
+    background-color: var(--color-principal);
+    color: var(--color-secundario);
+}
+.boton-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+    border: 1px solid var(--color-principal);
+}
+    /* Sobra cuando se pasa por arriba */
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
 }
