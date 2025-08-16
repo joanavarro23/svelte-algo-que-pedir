@@ -82,3 +82,8 @@ td {
     text-align: center;
     padding: 0.5rem;
 }
+
+/* Para diferencias el costo de producción en negrita de los $100 más claros, pero dudoso */
+h3 > span {
+    font-weight: lighter;
+}
