@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del local</title>
+
+    <!-- Archivos externos -->
+    <link rel="stylesheet" href="css/perfil-del-local.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="contenedor-principal">
+        <div class="titulo-principal">
+            <h3>Información del local</h3>
+        </div>
+        
+
+        <section class="informacion-local">
+            <div class="inputs-local">
+                <label for="nombre-local">Nombre del local*</label>
+                <input type="text" name="nombre-local" placeholder="Escribir" required>
+                <label for="url-imagen-local">URL de la imagen*</label>
+                <input type="text" name="url-imagen-local" placeholder="Escribir" required>
+            </div>
+            <img src="assets/moes-bar.jpg" alt="Imagen del local" class="imagen-local">
+        </section>
+
+
+    <section class="direccion-local">
+        <h3>Dirección</h3>
+        <div class="direccion-grid">
+            <div>
+                <label for="direccion">Dirección*</label>
+                <input type="text" name="direccion" placeholder="Escribir" required>
+            </div>
+            <div>
+                <label for="altura">Altura*</label>
+                <input type="number" name="altura" placeholder="Escribir" required>
+            </div>
+            <div>
+                <label for="latitud">Latitud*</label>
+                <input type="number" name="latitud" placeholder="Escribir" required>
+            </div>
+            <div>
+                <label for="longitud">Longitud*</label>
+                <input type="number" name="longitud" placeholder="Escribir" required>
+            </div>
+        </div>
+    </section>
+
+    <section class="porcentajes">
+        <h3>Porcentajes</h3>
+
+        <div class="porcentajes-input">
+            <div>
+                <label for="porcentaje-comision-app">Porcentaje de comisión con la app*</label>
+                <input type="number" name="porcentaje-comision-app" placeholder="Escribir" required>
+            </div>
+            <div>
+                <label for="porcentaje-comision-plato-autor">Porcentaje de comisión con autores de platos*</label>
+                <input type="number" name="porcentaje-comision-plato-autor" placeholder="Escribir" required>
+            </div>
+        </div>
+
+        <h3>Métodos de pago</h3>
+        <div class="metodos-de-pago">
+            <label for="efectivo">
+                <input type="checkbox" name="efectivo">
+                Efectivo
+            </label>
+            <label for="qr">
+                <input type="checkbox" name="qr">
+                QR
+            </label>
+            <label for="transferencia">
+                <input type="checkbox" name="transferencia">
+                Transferencia
+            </label>
+        </div>
+    </section>
+
+        <div class="botones-juntos">
+            <button class="boton-primario">Guardar cambios</button>
+            <button class="boton-secundario">Descartar cambios</button>
+        </div>
+    
+    </div>
+</body>
+</html>
