@@ -1,3 +1,20 @@
+.main-header{
+    position: fixed;
+    width : 100%;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-secundario);
+}
+
+.navbar{
+
+}
+
 .items-navegacion{
     list-style-type: none;
+}
+
+.links{
+    text-decoration: none;
+    color: var(--color-texto-primario)
 }
