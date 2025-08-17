@@ -16,21 +16,23 @@
         <h1>Editar Plato</h1>
 
         <!-- Descripción del plato -->
-        <section class="detalles-plato">
-            <div class="label-input">
-                <label for="nombre">Nombre del plato*</label>
-                <input type="text" name="nombreDelPlato" placeholder="Hamburguesa triple completa" max="25" required>
-            </div>
-    
-            <div class="label-input">
-                <label for="descripcion">Descrpción*</label>
-                <textarea name="descripcion" id="descripcion" placeholder="Hamburguesa triple con una deliciona cebolla morada salteada que junto con el acompañamiento de lechuga, tomate y cheddar generan una sencación única e inigualable. Viene con adherezos."></textarea>
-            </div>
-    
-            <div class="label-input">
-                <label for="imagen">URL de la imagen del plato*</label>
-                <input type="url" name="image" placeholder="http://images.google.com/altaburguer.jpg" required>
-                <!-- <input type="file" name="imagen" accept="image/*" required> -->
+        <section>
+            <div class="detalles-plato">
+                <div class="label-input">
+                    <label for="nombre">Nombre del plato*</label>
+                    <input type="text" name="nombreDelPlato" placeholder="Hamburguesa triple completa" max="25" required>
+                </div>
+        
+                <div class="label-input">
+                    <label for="descripcion">Descrpción*</label>
+                    <textarea name="descripcion" id="descripcion" placeholder="Hamburguesa triple con una deliciona cebolla morada salteada que junto con el acompañamiento de lechuga, tomate y cheddar generan una sencación única e inigualable. Viene con adherezos."></textarea>
+                </div>
+        
+                <div class="label-input">
+                    <label for="imagen">URL de la imagen del plato*</label>
+                    <input type="url" name="image" placeholder="http://images.google.com/altaburguer.jpg" required>
+                    <!-- <input type="file" name="imagen" accept="image/*" required> -->
+                </div>
             </div>
     
                 <!-- Imagen de referencia -->
@@ -50,7 +52,7 @@
             <div class="label-input">
                 <label class="switch">
                     <span class="text-container">
-                        <span class="title">Plato de Autor</span>
+                        <span class="title"><b>Plato de Autor</b></span>
                         <span class="subtitle">Aplica un porcentaje adicional al precio de venta</span>
                     </span>
                     <input type="checkbox" name="platoDeAutor">
@@ -59,7 +61,7 @@
 
                 <label class="switch">
                     <span class="text-container">
-                        <span class="title">Plato en Promoción</span>
+                        <span class="title"><b>Plato en Promoción</b></span>
                         <span class="subtitle">Aplica un descuento al precio de venta</span>
                     </span>
                     <input type="checkbox" name="platoDePromocion">

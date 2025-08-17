@@ -12,19 +12,25 @@ body {
     font-size: 100%;
     line-height: 1.5;
     margin: 2rem;
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(245, 244, 244);
 }
 /* Color de los titulos, subtitulos y encabezados */
 h1, h2 {
-    color: var(--color-texto-primario);
+    color: var(--color-texto-primario);   
 }
 h3 {
   color: var(--color-texto-secundario);
-  margin: 0.5rem 0;
+  /* margin: 0.5rem 0; */
+}
+h2, h3 {
+    margin: 0.5rem;
 }
 
 section {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    padding: .5rem;
+    background-color: var(--color-secundario);
+    border-radius: 0.8rem;
 }
 
 /* Estilos de labels, inputs y textarea */
@@ -130,6 +136,7 @@ button:hover {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 .conteiner-table {
     border: 1px solid var(--color-bordes);
