@@ -1,11 +1,14 @@
 .editar-plato {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 2rem;
 }
 .detalles-plato{
-    width: 100%;
+    /* width: 100%; */
+    flex: 1 1 200px;
+    min-width: 300px;
 }
 .foto{
   height: auto;
