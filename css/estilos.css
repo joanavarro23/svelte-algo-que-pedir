@@ -12,18 +12,25 @@ body {
     font-size: 100%;
     line-height: 1.5;
     margin: 2rem;
+    background-color: rgb(245, 244, 244);
 }
 /* Color de los titulos, subtitulos y encabezados */
 h1, h2 {
-    color: var(--color-texto-primario);
+    color: var(--color-texto-primario);   
 }
 h3 {
   color: var(--color-texto-secundario);
-  margin: 0.5rem 0;
+  /* margin: 0.5rem 0; */
+}
+h2, h3 {
+    margin: 0.5rem;
 }
 
 section {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    padding: .5rem;
+    background-color: var(--color-secundario);
+    border-radius: 0.8rem;
 }
 
 /* Estilos de labels, inputs y textarea */
@@ -42,6 +49,59 @@ input, textarea {
     padding: 0.2rem;
     border-radius: 0.3rem;
     border: 1px solid var(--color-bordes);
+}
+
+/* Estilo para boton deslizante */
+    /* Contenedor del toggle */
+.switch {
+    display: flex;
+    justify-content: space-between; /* Texto a la izquierda, slider a la derecha */
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+    /* Estilo del texto */
+.switch span.text-container {
+    display: flex;
+    flex-direction: column;
+}
+.switch span.text-container .subtitle {
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario);
+}
+    /* Ocultar el checkbox real */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+    /* Slider personalizado */
+.slider {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+    /* Circulo dentro del slider */
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    top: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+    /* Efecto cuando el checkbox está activo */
+.switch input:checked + .slider {
+    background-color: var(--color-principal);
+}
+.switch input:checked + .slider::before {
+    transform: translateX(20px);
 }
 
 /* Estilo de los botones: primerios y secundarios */
@@ -66,17 +126,27 @@ button {
     justify-content: flex-end;
     gap: 0.7rem;
 }
-    /* Sobra cuando se pasa por arriba */
+    /* Sombra cuando se pasa por arriba */
 button:hover {
   box-shadow: 2px 5px 2px 0 rgba(0,0,0,0.2);
 }
 
-/* Estilo general de la tabla */
-table {
-    width: 100%;
-    border: none;
+
+/* Estilo general de la tabla + costo produccion */
+.costo-produccion {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.conteiner-table {
+    border: 1px solid var(--color-bordes);
     border-radius: 0.8rem;
 }
+table {
+    width: 100%;
+    border-collapse: collapse;
+
 
 /* Estilo para título de gestión del menú y botón de agregar plato */
  .gestion-menu {
@@ -113,12 +183,17 @@ table {
     margin: 0 auto; 
 }
 
-td {
-    text-align: center;
-    padding: 0.5rem;
-}
 
-/* Para diferencias el costo de producción en negrita de los $100 más claros, pero dudoso */
-h3 > span {
-    font-weight: lighter;
+}
+td, th {
+    text-align: start;
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--color-bordes);
+}
+    /* Sin borde inferior en última fila */
+tr:last-child td { 
+    border-bottom: none;
+}
+.icono {
+    text-align: center;
 }
