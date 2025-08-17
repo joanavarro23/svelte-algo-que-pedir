@@ -71,19 +71,29 @@ button:hover {
   box-shadow: 2px 5px 2px 0 rgba(0,0,0,0.2);
 }
 
-/* Estilo general de la tabla */
-table {
-    width: 100%;
+/* Estilo general de la tabla + costo produccion */
+.costo-produccion {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.conteiner-table {
     border: 1px solid var(--color-bordes);
     border-radius: 0.8rem;
 }
-
-td {
-    text-align: center;
-    padding: 0.5rem;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
-
-/* Para diferencias el costo de producción en negrita de los $100 más claros, pero dudoso */
-h3 > span {
-    font-weight: lighter;
+td, th {
+    text-align: start;
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--color-texto-secundario);
+}
+    /* Sin borde inferior en última fila */
+tr:last-child td { 
+    border-bottom: none;
+}
+.icono {
+    text-align: center;
 }
