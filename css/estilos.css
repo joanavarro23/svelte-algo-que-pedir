@@ -78,6 +78,13 @@ table {
     border-radius: 0.8rem;
 }
 
+/* Estilo para título de gestión del menú y botón de agregar plato */
+.gestion-menu {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 /* Estilo de las filas de la tabla en el menú, space-between para separar platos+imagen de precios */
 .lista-menu tr {
     display: flex;
