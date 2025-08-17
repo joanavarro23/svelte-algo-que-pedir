@@ -11,3 +11,9 @@
   height: auto;
   border-radius: 1rem;
 }
+
+.textarea-descripcion {
+  width: 100%;   /* o el tamaño en px que quieras */
+  height: 120px; /* ajustá la altura inicial */
+  resize: vertical; /* opcional: solo permite agrandar verticalmente */
+}
