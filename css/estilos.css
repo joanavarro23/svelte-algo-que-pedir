@@ -1,1 +1,110 @@
-:root{}
+:root {
+    --color-principal: #FF0000;
+    --color-secundario: #FFFFFF;
+    --color-texto-primario: #000000;
+    --color-texto-secundario: #3b3b3b;
+    --color-bordes: #838383;
+}
+
+/* General - tipografía y tamaño*/
+body {
+    font-family: "Nata Sans", sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    margin: 2rem;
+}
+/* Color de los titulos, subtitulos y encabezados */
+h1, h2 {
+    color: var(--color-texto-primario);
+}
+h3 {
+  color: var(--color-texto-secundario);
+  margin: 0.5rem 0;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+/* Estilos de labels, inputs y textarea */
+.label-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+label {
+    margin: 0.5rem 0;
+}
+    /* Como esta en cascada, la tipografia del input pisa la que elegimos */
+input, textarea {
+    font-family: "Nata Sans", sans-serif;
+    font-size: 1rem;
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+    border: 1px solid var(--color-bordes);
+}
+
+/* Estilo de los botones: primerios y secundarios */
+button {
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+}
+.boton-primario {
+    background-color: var(--color-principal);
+    color: var(--color-secundario);
+}
+.boton-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+    border: 1px solid var(--color-principal);
+}
+    /* Si los botones estan juntos tienen otra ubicación */
+.botones-juntos {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.7rem;
+}
+    /* Sobra cuando se pasa por arriba */
+button:hover {
+  box-shadow: 2px 5px 2px 0 rgba(0,0,0,0.2);
+}
+
+/* Estilo general de la tabla */
+table {
+    width: 100%;
+    border: none;
+    border-radius: 0.8rem;
+}
+
+/* Estilo de las filas de la tabla en el menú, space-between para separar platos+imagen de precios */
+.lista-menu tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo de imágen y detalle del plato, gap para separar un poquito imagen de texto */
+.detalles-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Formato de las imágenes en el menú */
+.imagen-menu {
+    height: 3rem;
+    width: auto;
+    border-radius: 8px;
+}
+
+td {
+    text-align: center;
+    padding: 0.5rem;
+}
+
+/* Para diferencias el costo de producción en negrita de los $100 más claros, pero dudoso */
+h3 > span {
+    font-weight: lighter;
+}
