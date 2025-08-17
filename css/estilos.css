@@ -74,8 +74,29 @@ button:hover {
 /* Estilo general de la tabla */
 table {
     width: 100%;
-    border: 1px solid var(--color-bordes);
+    border: none;
     border-radius: 0.8rem;
+}
+
+/* Estilo de las filas de la tabla en el menú, space-between para separar platos+imagen de precios */
+.lista-menu tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo de imágen y detalle del plato, gap para separar un poquito imagen de texto */
+.detalles-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Formato de las imágenes en el menú */
+.imagen-menu {
+    height: 3rem;
+    width: auto;
+    border-radius: 8px;
 }
 
 td {
