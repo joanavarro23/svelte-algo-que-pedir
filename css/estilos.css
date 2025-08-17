@@ -131,6 +131,7 @@ button:hover {
   box-shadow: 2px 5px 2px 0 rgba(0,0,0,0.2);
 }
 
+
 /* Estilo general de la tabla + costo produccion */
 .costo-produccion {
     display: flex;
@@ -145,6 +146,37 @@ button:hover {
 table {
     width: 100%;
     border-collapse: collapse;
+
+
+/* Estilo para título de gestión del menú y botón de agregar plato */
+.gestion-menu {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Estilo de las filas de la tabla en el menú, space-between para separar platos+imagen de precios */
+.lista-menu tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo de imágen y detalle del plato, gap para separar un poquito imagen de texto */
+.detalles-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Formato de las imágenes en el menú */
+.imagen-menu {
+    height: 3rem;
+    width: auto;
+    border-radius: 8px;
+}
+
+
 }
 td, th {
     text-align: start;
