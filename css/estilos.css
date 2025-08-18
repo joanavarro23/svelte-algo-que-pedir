@@ -147,45 +147,9 @@ button:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-
-
-/* Estilo para título de gestión del menú y botón de agregar plato */
- .gestion-menu {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-} 
-
-/* Estilo de las filas de la tabla en el menú, space-between para separar platos+imagen de precios */
- .lista-menu tr {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-} 
-
-/* Estilo de imágen y detalle del plato, gap para separar un poquito imagen de texto */
- .detalles-menu {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-} 
-
-/* Formato de las imágenes en el menú */
- .imagen-menu {
-    height: 3rem;
-    width: auto;
-    border-radius: 8px;
-} 
-
-/* Container del menú */
-.menu-container {
-    max-width: 100%;
-    box-sizing: border-box;
-    margin: 0 auto; 
 }
 
 
-}
 td, th {
     text-align: start;
     padding: 0.8rem;
