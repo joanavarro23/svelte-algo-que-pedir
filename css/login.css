@@ -79,15 +79,19 @@ a {
 }
 
 .logo-section{
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 } 
 .logo-image {
-    position: absolute;
-    top: 20%;
-    left: 15%;
-    border: solid 2px var(--color-principal);
+    width: 35px;
+    height: 35px;
+    border: solid 5px var(--color-principal);
     border-radius: 50%;
     background-color: var(--color-principal);
+    object-fit: contain;
 }
 
 .icono {
