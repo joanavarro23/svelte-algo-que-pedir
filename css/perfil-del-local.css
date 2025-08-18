@@ -24,7 +24,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 180px;
   grid-template-rows: auto auto;
-  gap: 16px 24px;
+  gap: 16px;
   align-items: start;
   padding: 16px;
   border: 1px solid var(--color-bordes);
@@ -37,7 +37,6 @@ body {
 .inputs-local {
   display: grid;
   grid-auto-rows: min-content;
-  row-gap: 12px;
 }
 
 .imagen-local {
@@ -52,7 +51,7 @@ body {
 
 .direccion-local {
   width: 60vw;
-  margin: 26px auto;
+  margin: 16px auto;
   padding: 16px;
   border: 1px solid var(--color-bordes);
   border-radius: 8px;
@@ -74,7 +73,7 @@ body {
 
 .porcentajes {
   width: 60vw;
-  margin: 16px auto;
+  margin: 0px auto;
   padding: 16px;
   border: 1px solid var(--color-bordes);
   border-radius: 8px;
@@ -118,10 +117,8 @@ body {
 }
 
 .botones-juntos {
-  display: flex;
-  justify-content: flex-end;
+  margin: 16px auto;
   width: 100%;
-  gap: 16px;
 }
 
 
