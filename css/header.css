@@ -54,7 +54,15 @@
 }
 
 
-/* @media (min-width: 401px) an (max-width: 768px) --> Vista Tablet*/
+@media (min-width: 401px) and (max-width: 768px) {  /*--> Vista Tablet*/
+    .ul-links {
+        display: none;
+    }
+
+    .hamburguesa {
+        display: flex;
+    }
+}
 
 @media (max-width: 400px) {     /* --> Vista Mobile*/
     .main-header{
