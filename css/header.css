@@ -5,43 +5,54 @@
     width: 100vw; 
 }
 
-.navbar {                    /* Alineado general del navbar*/
+.navbar {                     /* Alineado general del navbar */
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.ul-links {                 /* Alineado de los links del navbar */
+.ul-links {                  /* Alineado de los links del navbar */
     list-style-type: none;
     display: flex;
+    justify-content: flex-end;
+    gap: 3rem;
+    flex: 1;           /* le permito crecer para ocupar todo el espacio disponible  */
+    margin: 1rem;
 }
 
-.nav-links{
+.nav-links{                  /* Formato links dentro de ul-links */
     text-decoration: none;
     color: var(--color-texto-primario)
 }
 
-.nav-links > img {
+.nav-icons {
     display: none;
 }
 
-.container-usuario > img {
-    width: 3rem;
-}
-
-.container-logo {
+.container-logo {           /* Formato icono+titulo (izq) */
     display: flex;
-    justify-content: flex-start;
     align-items: center;
+    margin: 0 1rem;
+    gap: 1rem;             /* separacion entre elementos */
 }
 
-.container-logo > img {
-    width: 2.5rem;
-    height: 2.5rem;
-    border: solid 0px var(--color-principal);
+.logo-app {
+    border: solid 2px var(--color-principal);
     border-radius: 50%;
     background-color: var(--color-principal);
 }
+
+.container-usuario {         /* Formato icono usuario (der) */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.user-logo {
+    width: 2.5rem;
+}
+
 
 /* @media (min-width: 401px) an (max-width: 768px) --> Vista Tablet*/
 

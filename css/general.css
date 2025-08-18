@@ -16,7 +16,7 @@ body {
 }
 
 /* Color de los titulos, subtitulos y encabezados */
-h1, h2 {
+h1, h2, h4 {
     color: var(--color-texto-primario);
 }
 
