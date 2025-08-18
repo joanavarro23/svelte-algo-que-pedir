@@ -5,11 +5,15 @@
     width: 100vw; 
 }
 
-.container-usuario > img {
-    width: 3rem;
+.navbar {                    /* Alineado general del navbar*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.navbar > ul {
+
+.ul-links {                 /* Alineado de los links del navbar */
     list-style-type: none;
+    display: flex;
 }
 
 .nav-links{
@@ -19,6 +23,10 @@
 
 .nav-links > img {
     display: none;
+}
+
+.container-usuario > img {
+    width: 3rem;
 }
 
 .container-logo {
