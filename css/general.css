@@ -12,10 +12,11 @@ body {
     font-family: "Nata Sans", sans-serif;
     font-size: 100%;
     background-color: var(--color-fondo);
+    margin: 0;
 }
 
 /* Color de los titulos, subtitulos y encabezados */
-h1, h2 {
+h1, h2, h4 {
     color: var(--color-texto-primario);
 }
 
