@@ -132,6 +132,7 @@ button:hover {
   box-shadow: 2px 5px 2px 0 rgba(0,0,0,0.2);
 }
 
+
 /* Estilo general de la tabla + costo produccion */
 .costo-produccion {
     display: flex;
@@ -147,6 +148,7 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
+
 
 td, th {
     text-align: start;
