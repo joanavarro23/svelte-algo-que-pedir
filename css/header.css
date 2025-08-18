@@ -64,7 +64,7 @@
     }
 }
 
-@media (max-width: 400px) {     /* --> Vista Mobile*/
+@media (max-width: 400px) {                         /* --> Vista Mobile*/
     .main-header{
         position: fixed;
         width : 100%;
@@ -72,11 +72,15 @@
         left: 0;
     }
 
-    .container-logo > h1 {   
+    .container-logo > h4 {   
         display: none;
     }
 
     .nav-links > span {
+        display: none;
+    }
+
+    .hamburguesa {
         display: none;
     }
     
