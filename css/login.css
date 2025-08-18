@@ -1,0 +1,97 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Nata Sans", sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    margin: 0;
+    background-color: var(--color-fondo);
+}
+
+.login-button{
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-top: 2rem;
+    border-radius: 25px;
+}
+
+.login-container {
+    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+    color: var(--color-texto-primario);
+    margin-left: 5%;
+    font-family: "Nata Sans", sans-serif;
+}
+
+.form-group input {
+    display:block;
+    font-family: "Nata Sans", sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.3rem;
+    border: 1px solid var(--color-bordes);
+    width: 90%;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.password-container {
+    position: relative;
+    margin: auto;
+}
+.password-toggle {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.27rem;
+    font-size: 1.2rem;
+}
+
+.registrar-link {
+    text-align: center;
+    font-size: 0.75rem;
+    padding-top: 1rem;
+    color: var(--color-texto-secundario);
+}
+
+a {
+    color: var(--color-texto-secundario);
+}
+
+.logo-section{
+    position: relative;
+} 
+.logo-image {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    border: solid 2px var(--color-principal);
+    border-radius: 50%;
+    background-color: var(--color-principal);
+}
+
+.icono {
+    width: 30px;
+    height: 30px;
+    padding-top: 0.3rem;
+}
