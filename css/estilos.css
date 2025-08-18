@@ -4,6 +4,7 @@
     --color-texto-primario: #000000;
     --color-texto-secundario: #3b3b3b;
     --color-bordes: #838383;
+    --color-fondo: whitesmoke;
 }
 
 /* General - tipografía y tamaño*/
@@ -12,7 +13,7 @@ body {
     font-size: 100%;
     line-height: 1.5;
     margin: 2rem;
-    background-color: rgb(245, 244, 244);
+    background-color: var(--color-fondo);
 }
 /* Color de los titulos, subtitulos y encabezados */
 h1, h2 {

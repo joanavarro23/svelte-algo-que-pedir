@@ -1,0 +1,71 @@
+/*  Vista Desktop */
+.main-header{
+    background-color: var(--color-secundario);
+    height: 4rem;
+}
+
+.container-usuario > img {
+    width: 3rem;
+}
+
+.items-navegacion{
+    list-style-type: none;
+}
+
+.links{
+    text-decoration: none;
+    color: var(--color-texto-primario)
+}
+
+/* @media (min-width: 401px) an (max-width: 768px) --> Vista Tablet*/
+
+@media (max-width: 400px) {     /* --> Vista Mobile*/
+    .main-header{
+        position: fixed;
+        width : 100%;
+        bottom: 0;
+        left: 0;
+    }
+
+    .container-logo > h1 {   
+        display: none;
+    }
+
+    .links > span {
+        display: none;
+    }
+
+    .container-usuario {
+        display: none;
+    } 
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1em;
+        padding: 0 1rem;
+    }
+
+    .container-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border: solid 0px red;
+        border-radius: 50%;
+        background-color: red;
+    }
+
+    .ul-links {
+        display: flex;
+        justify-content: space-evenly;
+        flex: 1;
+        padding: 0;
+    }
+
+}
+
+
+
