@@ -1,0 +1,43 @@
+:root {
+    --color-principal: #FF0000;
+    --color-secundario: #FFFFFF;
+    --color-texto-primario: #000000;
+    --color-texto-secundario: #3b3b3b;
+    --color-bordes: #838383;
+    --color-fondo: whitesmoke;
+}
+
+/* General - tipografía y tamaño*/
+body {
+    font-family: "Nata Sans", sans-serif;
+    font-size: 100%;
+    background-color: var(--color-fondo);
+}
+
+/* Color de los titulos, subtitulos y encabezados */
+h1, h2 {
+    color: var(--color-texto-primario);
+}
+
+h3 {
+  color: var(--color-texto-secundario);
+}
+
+/* Estilo de los botones: primerios y secundarios */
+button {
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+}
+
+.boton-primario {
+    background-color: var(--color-principal);
+    color: var(--color-secundario);
+}
+
+.boton-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+    border: 1px solid var(--color-principal);
+}
