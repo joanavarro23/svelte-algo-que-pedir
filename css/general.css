@@ -41,3 +41,11 @@ button {
     color: var(--color-principal);
     border: 1px solid var(--color-principal);
 }
+
+/* Combinación de título h1 y botón, se usa en gestión del menú e ingredientes */
+.titulo-boton {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,49 @@
+/* Container general ingredientes */
+.ingrediente-container {
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 1rem 2rem; 
+}
+
+/* Fijo tamaño de h1 para el wrap */
+.titulo-boton h1{
+    flex-basis: 270px;
+}
+
+/* Fijo tamaño que ocupan nombres para alineamiento de ingredientes */
+ .item-nombre {
+    flex-basis: 7.9rem;
+}
+
+/* .item-costo {
+    flex-basis: 2rem;
+}  */
+
+/* Alineamiento  cabecera de acciones con iconos*/
+.cabecera-acciones {
+    flex-basis: 104px;
+    text-align: center;
+}
+
+/* Estilos de cabecera de ingredientes */
+.cabecera-ingredientes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+/* Estilos de filas de ingredientes */
+.fila-ingredientes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0; 
+}
+
+/* Alineamiento de separadores e iconos de ingredientes */
+.acciones-ingredientes {
+    display: flex;
+    align-items: center;
+}
