@@ -2,19 +2,37 @@
 .main-header{
     background-color: var(--color-secundario);
     height: 4rem;
+    width: 100vw; 
 }
 
 .container-usuario > img {
     width: 3rem;
 }
-
-.items-navegacion{
+.navbar > ul {
     list-style-type: none;
 }
 
-.links{
+.nav-links{
     text-decoration: none;
     color: var(--color-texto-primario)
+}
+
+.nav-links > img {
+    display: none;
+}
+
+.container-logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.container-logo > img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: solid 0px var(--color-principal);
+    border-radius: 50%;
+    background-color: var(--color-principal);
 }
 
 /* @media (min-width: 401px) an (max-width: 768px) --> Vista Tablet*/
@@ -31,8 +49,12 @@
         display: none;
     }
 
-    .links > span {
+    .nav-links > span {
         display: none;
+    }
+    
+    .nav-links > img {
+        display: flex;
     }
 
     .container-usuario {
@@ -51,11 +73,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        border: solid 0px red;
-        border-radius: 50%;
-        background-color: red;
     }
 
     .ul-links {
