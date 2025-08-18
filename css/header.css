@@ -53,6 +53,10 @@
     width: 2.5rem;
 }
 
+.hamburguesa {
+    display: none;
+}
+
 
 @media (min-width: 401px) and (max-width: 768px) {  /*--> Vista Tablet*/
     .ul-links {
