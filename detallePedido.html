@@ -3,7 +3,7 @@
 <head>
     <title>Detalle del Pedido</title>
     <link rel="stylesheet" href="../css/estilos.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/detallePedido.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&display=swap" rel="stylesheet">
 </head>
@@ -13,106 +13,115 @@
         <iframe style="width:100%; height:64px;" src="header.html" frameborder="0"></iframe>
     </header>
     <main>
-        <div>
+        <section class="estado-container">
             <h1>Pedido #12345</h1>
             <div>
-                <span>Estado del Pedido</span>
-                <div>
-                    <div style="width: 60%; background-color: orange; height: 8px;"></div>  
-                </div>
+                <h2>Estado del Pedido</h2>
+                <span class="estado-icono">Pendiente</span>
             </div>
-        </div>
-        <div>
-            <div>
+        </section>
+        <section class="seccion-detalle-pedido">
+            <div class="cliente-info">
                 <h2>Cliente</h2>
-                <div>
-                    <img src="#" alt="Sofia Miller" width="40" height="40">
-                    <div>
-                        <strong>Sofia Miller</strong><br>
-                        <small>sofiamiEller@hotmail.com</small>
-                    </div>
+                <div class="cliente-content">
+                    <img src="assets/usuario.svg" class="icono" alt="Sofia Miller" width="40" height="40">
+                    <p class="cliente-text">
+                        <strong>Sofia Miller</strong>
+                        <small><b>usuario</b> smiller2005</small>
+                    </p>
+                </div>
+                
+            </div>
+            <div class="cliente-info">
+                <h2>Dirección de entrega</h2>
+                <div class="cliente-content">
+                    <img src="assets/usuario.svg" class="icono" alt="Sofia Miller" width="40" height="40">
+                    <p class="cliente-text">
+                        Av siempre viva 555<br>
+                        Lp 05, 1798 Tay - 19-09047
+                    </p>
                 </div>
             </div>
-            <div>
-                <h2>Direccion de entrega</h2>
-                <p>Av siempre viva 555<br>
-                Lp 05, 1798 Tay - 19-09047</p>
-            </div>
-        </div>
-        <div>
+        </section>
+        <section class ="seccion-detalle-pedido">
             <h2>Resumen del Pedido</h2>
-            <table>
-                <thead>
+            <div class="conteiner-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Plato</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="assets/hamburguesa-con-queso.png" class="icono" alt="Hamburguesa" width="50" height="50">
+                                <div>
+                                    <strong>Hamburguesa con Queso</strong><br>
+                                    <small>Hamburguesa tradicional queso y papas fritas</small>
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>$15.00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="assets/alitas-picantes.png" class="icono" alt="Papas Fritas" width="50" height="50">
+                                <div>
+                                    <strong>Papas Fritas</strong><br>
+                                    <small>Papas naturales fritas crocantes</small>
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>$6.00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="assets/pescado-papas-fritas.png" class="icono" alt="Refresco" width="50" height="50">
+                                <div>
+                                    <strong>Refresco</strong><br>
+                                    <small>Vaso natural refresca</small>
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>$3.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class ="seccion-detalle-pedido">
+            <div>
+                <h3>Pago</h3>
+                <table class="tabla-pago">
                     <tr>
-                        <th>Plato</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="#" alt="Hamburguesa" width="50" height="50">
-                            <div>
-                                <strong>Hamburguesa con Queso</strong><br>
-                                <small>Hamburguesa tradicional queso y papas fritas</small>
-                            </div>
-                        </td>
-                        <td>1</td>
-                        <td>$15.00</td>
+                        <td>Subtotal</td>
+                        <td>$20.00</td>
                     </tr>
                     <tr>
-                        <td>
-                            <img src="#" alt="Papas Fritas" width="50" height="50">
-                            <div>
-                                <strong>Papas Fritas</strong><br>
-                                <small>Papas naturales fritas crocantes</small>
-                            </div>
-                        </td>
-                        <td>1</td>
-                        <td>$6.00</td>
+                        <td>Comisión del delivery</td>
+                        <td>$2.00</td>
                     </tr>
                     <tr>
-                        <td>
-                            <img src="#" alt="Refresco" width="50" height="50">
-                            <div>
-                                <strong>Refresco</strong><br>
-                                <small>Vaso natural refresca</small>
-                            </div>
-                        </td>
-                        <td>1</td>
-                        <td>$3.00</td>
+                        <td>Incremento por tipo de pago</td>
+                        <td>$1.10</td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-        <div>
-            <h2>Pago</h2>
-            <table>
-                <tr>
-                    <td>Subtotal</td>
-                    <td>$20.00</td>
-                </tr>
-                <tr>
-                    <td>Comisión del delivery</td>
-                    <td>$2.00</td>
-                </tr>
-                <tr>
-                    <td>Incremento por tipo de pago</td>
-                    <td>$1.10</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>$23.10</strong></td>
-                </tr>
-            </table>
-
+                    <tr>
+                        <td>Total</td>
+                        <td>$23.10</td>
+                    </tr>
+                </table>
+            </div>
             <h3>Método de Pago</h3>
-            <p>Pago con tarjeta de crédito</p>
+            <div class="metodo-pago">
+                <img src="assets/pescado-papas-fritas.png" class="icono" alt="Refresco" width="50" height="50">
+                <p>Pago con tarjeta de crédito</p>
+            </div> 
+        </section>
+        <div class="boton-volver">
+            <button type="submit" class="boton-volver boton-primario">Volver</button>
         </div>
-        <div>
-            <button type="button">Volver</button>
-        </div>
-
     </main>
 </body>
