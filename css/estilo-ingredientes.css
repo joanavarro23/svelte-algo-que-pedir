@@ -1,9 +1,10 @@
 /* Container general ingredientes */
+
 .ingrediente-container {
     max-width: 100%;
     box-sizing: border-box;
     margin: 0 auto;
-    padding: 1rem 2rem; 
+    padding: 1rem 2rem;
 }
 
 /* Fijo tamaño de h1 para el wrap */
