@@ -1,8 +1,28 @@
 /* Vista Desktop */
+.container-principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.container-estados {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin: 1rem;
+}
 
 .container-tarjetas {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.pedido-tarjeta {                   /* Cada tarjeta de pedido */
+    padding: 1rem;
+    border: 1px solid var(--color-bordes);
+    border-radius: 0.4rem;
+    background-color: lightblue;
 }
 
 .link-estados {
@@ -10,19 +30,22 @@
 }
 
 
-/* @media (min-width: 401px) and (max-width: 768px) {} Vista Tablet */
-/* .container-tarjetas {
+@media (min-width: 401px) and (max-width: 768px) { /*Vista Tablet */
+    .container-tarjetas {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-} */
+} 
+} 
+
 
 
 @media (max-width: 400px) {         /* --> Vista Mobile*/
     .container-principal {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         margin: 2rem;
+        gap: 1rem;
     }
 
     .container-estados {
@@ -37,14 +60,6 @@
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-
-    .pedido-tarjeta {                   /* Cada tarjeta de pedido */
-        padding: 1rem;
-        border: 1px solid var(--color-bordes);
-        border-radius: 0.4rem;
-        background-color: lightblue;
-    }
-
 
     .link-estados {
 
