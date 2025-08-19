@@ -1,0 +1,109 @@
+/* Vista Desktop */
+.container-principal {     /* Container flex de toda la vista */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 1rem 4rem;
+}
+
+.container-estados {            
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin: 1rem;
+}
+
+.link-estados {
+    color: var(--color-texto-secundario);
+}
+
+.container-tarjetas {           /* Container grid de todas las tarjetas */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.pedido-tarjeta {                   /* Cada tarjeta de pedido */
+    background-color: var(--color-secundario);
+    padding: 1rem;
+    border: 1px solid var(--color-bordes);
+    border-radius: 1rem;
+}
+
+.pedido-header{
+    color: var(--color-texto-secundario);
+}
+
+.info-usuario{             /*Icono user de la tarjeta pedido*/
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 0 1rem;
+}
+
+.info-usuario > p > span {          /*- PENDIENTE - Extraño, debe haber una mejor manera de hacer esto*/
+    color:blueviolet;
+    display: block;
+}
+
+.icono-usuario-pedido{
+    width: 4rem;
+}
+
+.info-direccion {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.pin-ubicacion {
+    padding: 0.5rem;
+    margin-right: 1rem;
+    background-color: rgb(230, 224, 236);     /* Fondo del pin gris-violaceo*/
+    border-radius: 20%;
+}
+
+.modo-pago {            /* Alineacion footer */
+    display: flex;
+    justify-content: flex-start;
+}
+
+.modo-pago > img {
+    margin: 0 1rem;
+}
+
+.modo-pago > button {
+    
+}
+
+@media (min-width: 401px) and (max-width: 768px) { /*Vista Tablet */
+    .container-tarjetas {
+        grid-template-columns: repeat(2, 1fr);
+    } 
+} 
+
+
+@media (max-width: 400px) {         /* --> Vista Mobile*/
+    .container-principal {
+        justify-content: center;
+        align-items: center;
+        margin: 2rem;
+        gap: 1rem;
+    }
+
+    .container-estados {
+        justify-content: center;
+        align-items: center;
+        margin: 0 2rem;
+        gap: 1rem;
+    }
+
+    .container-tarjetas {               /* Contenedor de todas las tarjetas de pedidos */
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .pedido-tarjeta {
+        
+    }
+}
