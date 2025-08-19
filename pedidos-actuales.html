@@ -55,15 +55,15 @@
 
         <main class="container-principal">      <!-- Contenedor de toda la vista -->
             <h1>Pedidos actuales</h1>
-
+            
             <div class="container-estados">     <!-- Contenedor de los estados de los pedidos -->
-                <a href="#" class="link-estados">Pendientes</a>
-                <a href="#" class="link-estados">Preparados</a>
-                <a href="#" class="link-estados">Entregados</a>
-                <a href="#" class="link-estados">Cancelados</a>
+                <a href="#" class="link-estados"><b>Pendientes</b></a>
+                <a href="#" class="link-estados"><b>Preparados</b></a>
+                <a href="#" class="link-estados"><b>Entregados</b></a>
+                <a href="#" class="link-estados"><b>Cancelados</b></a>
             </div>
 
-            <section class="container-tarjetas">    <!-- Contenedor de las tarjetas de pedidos -->
+            <section class="container-tarjetas">    <!-- Contenedor de las tarjetas de pedidos -->     
                 
                 <article class="pedido-tarjeta">    <!-- Tarjeta de pedido -->
                     <header class="pedido-header">
@@ -84,12 +84,68 @@
                     </div>
 
                     <footer class="pedido-footer">
-                        <img src="/assets/tarjeta-credito.svg" alt="" class="icono-tarjeta">
-                        <p>Pago con tarjeta de credito</p>
-                        <button class="boton-primario">Cancelar Pedido</button>
+                        <div class="modo-pago">
+                            <img src="/assets/tarjeta-credito.svg" alt="" class="icono-tarjeta">
+                            <p>Pago con tarjeta de credito</p>
+                        </div>
+                        <button class="boton-primario">Preparar</button>
                     </footer>
                 </article>
 
+
+                <article class="pedido-tarjeta">    <!-- Tarjeta de pedido -->
+                    <header class="pedido-header">
+                        <p>Pedido #2342</p>
+
+                        <div class="info-usuario">
+                            <img src="/assets/pedido-user-icon.png" alt="usuario" class="icono-usuario-pedido">
+                            <p>Micaela Moreno usuario: mMoreno05</p>
+                        </div>
+
+                        <p>Hora: 13:30 PM | Articulos: 3 | Total: $35</p>
+                    </header>
+
+                    <div class="info-direccion">
+                        <img src="/assets/pin-ubicacion.svg" alt="" class="pin-ubicacion">
+                        <p>Calle Falsa 123</p>
+                        <p>Lat: 407128, Long: -740060</p>
+                    </div>
+
+                    <footer class="pedido-footer">
+                        <div class="modo-pago">
+                            <img src="/assets/tarjeta-credito.svg" alt="" class="icono-tarjeta">
+                            <p>Pago en efectivo</p>
+                        </div>
+                        <button class="boton-primario">Preparar</button>
+                    </footer>
+                </article>
+
+                <article class="pedido-tarjeta">    <!-- Tarjeta de pedido -->
+                    <header class="pedido-header">
+                        <p>Pedido #13456</p>
+
+                        <div class="info-usuario">
+                            <img src="/assets/pedido-user-icon.png" alt="usuario" class="icono-usuario-pedido">
+                            <p>Jose Gomez usuario: becco22</p>
+                        </div>
+
+                        <p>Hora: 12:00 PM | Articulos: 1 | Total: $15</p>
+                    </header>
+
+                    <div class="info-direccion">
+                        <img src="/assets/pin-ubicacion.svg" alt="" class="pin-ubicacion">
+                        <p>Cucha Cucha 45</p>
+                        <p>Lat: 407128, Long: -740060</p>
+                    </div>
+
+                    <footer class="pedido-footer">
+                        <div class="modo-pago">
+                            <img src="/assets/tarjeta-credito.svg" alt="" class="icono-tarjeta">
+                            <p>Pago con QR</p>
+                        </div>
+                        <button class="boton-primario">Preparar</button>
+                    </footer>
+                </article>
 
             </section>
         </main>

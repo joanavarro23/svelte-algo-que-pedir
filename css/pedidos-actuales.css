@@ -1,0 +1,52 @@
+/* Vista Desktop */
+
+.container-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.link-estados {
+    color: var(--color-texto-secundario);
+}
+
+
+/* @media (min-width: 401px) and (max-width: 768px) {} Vista Tablet */
+/* .container-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+} */
+
+
+@media (max-width: 400px) {         /* --> Vista Mobile*/
+    .container-principal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 2rem;
+    }
+
+    .container-estados {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .container-tarjetas {               /* Contenedor de todas las tarjetas de pedidos */
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .pedido-tarjeta {                   /* Cada tarjeta de pedido */
+        padding: 1rem;
+        border: 1px solid var(--color-bordes);
+        border-radius: 0.4rem;
+        background-color: lightblue;
+    }
+
+
+    .link-estados {
+
+    }
+}
