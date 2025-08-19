@@ -2,24 +2,73 @@
 .main-header{
     background-color: var(--color-secundario);
     height: 4rem;
+    width: 100vw;
 }
 
-.container-usuario > img {
-    width: 3rem;
+.navbar {                     /* Alineado general del navbar */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.items-navegacion{
+.ul-links {                  /* Alineado de los links del navbar */
     list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 3rem;
+    flex: 1;           /* le permito crecer para ocupar todo el espacio disponible  */
+    margin: 1rem;
 }
 
-.links{
+.nav-links{                  /* Formato links dentro de ul-links */
     text-decoration: none;
     color: var(--color-texto-primario)
 }
 
-/* @media (min-width: 401px) an (max-width: 768px) --> Vista Tablet*/
+.nav-icons {
+    display: none;
+}
 
-@media (max-width: 400px) {     /* --> Vista Mobile*/
+.container-logo {           /* Formato icono+titulo (izq) */
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+    gap: 1rem;             /* separacion entre elementos */
+}
+
+.logo-app {
+    border: solid 2px var(--color-principal);
+    border-radius: 50%;
+    background-color: var(--color-principal);
+}
+
+.container-usuario {         /* Formato icono usuario (der) */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.user-logo {
+    width: 2.5rem;
+}
+
+.hamburguesa {
+    display: none;
+}
+
+
+@media (min-width: 401px) and (max-width: 768px) {  /*--> Vista Tablet*/
+    .ul-links {
+        display: none;
+    }
+
+    .hamburguesa {
+        display: flex;
+    }
+}
+
+@media (max-width: 400px) {                         /* --> Vista Mobile*/
     .main-header{
         position: fixed;
         width : 100%;
@@ -27,12 +76,20 @@
         left: 0;
     }
 
-    .container-logo > h1 {   
+    .container-logo > h4 {   
         display: none;
     }
 
-    .links > span {
+    .nav-links > span {
         display: none;
+    }
+
+    .hamburguesa {
+        display: none;
+    }
+    
+    .nav-links > img {
+        display: flex;
     }
 
     .container-usuario {
@@ -51,11 +108,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        border: solid 0px red;
-        border-radius: 50%;
-        background-color: red;
     }
 
     .ul-links {
