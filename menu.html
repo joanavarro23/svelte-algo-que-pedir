@@ -4,72 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú</title>
-
-    <!-- Archivos externos -->
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/estilo-menu.css">
+    <link rel="stylesheet" href="/css/header.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- <header></header> -->
-    <div class="gestion-menu">
-        <h1>Gestión del Menú</h1>
-        <button>Agregar nuevo plato</button>
-    </div>
-    <section>
-        <h2>Platos Disponibles</h2>
-        <table class="lista-menu">
-            <tr>
-                <td class="detalles-menu">
+    <header class="main-header">
+        <nav class="navbar"> <!-- Toda la barra de navegacion del header -->
+            <div class="container-logo">
+                <img class="logo-app" src="../assets/logo.svg"/>
+                <h4>Algo que Pedir</h4>  
+            </div>
+
+            <ul class="ul-links"> <!-- Lista de enlaces de navegacion -->
+                <li class="items-navegacion">
+                    <a class="nav-links" href="#">
+                        <img class="nav-icons" src="../assets/carrito.svg"/>
+                        <span>Pedidos</span>
+                    </a>
+                </li>
+                <li class="items-navegacion">
+                    <a class="nav-links" href="#">
+                        <img class="nav-icons" src="../assets/menu.svg"/>
+                        <span>Menu</span>
+                    </a>
+                </li>
+                <li class="items-navegacion">
+                    <a class="nav-links" href="#">
+                        <img class="nav-icons" src="../assets/ingredientes.svg"/>
+                        <span>Ingredientes</span>
+                    </a>
+                </li>
+                <li class="items-navegacion">
+                    <a class="nav-links" href="#">
+                        <img class="nav-icons" src="../assets/usuario.svg"/>
+                        <span>Cuenta</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="hamburguesa">
+                <img class="hamburguesa-icon" src="../assets/hamburguer-icon.svg"/>
+            </div>
+
+            <div class="container-usuario">
+                <img class="user-logo" src="../assets/girl-user.png"/>
+            </div>
+        </nav>
+    </header>    
+    <div class="menu-container">
+        <div class="titulo-boton">
+            <h1>Gestión del Menú</h1>
+            <button>Agregar nuevo plato</button>
+        </div>
+        <section class="lista-menu">
+            <h2>Platos Disponibles</h2>
+            <div class="item-menu">
+                <div class="detalles-menu">
                     <img src="assets/pasta-cremosa.png" class="imagen-menu">
                     <span>Pasta Cremosa</span>
-                </td>
-                <td>$12.99</td>
-            </tr>
-            <tr>
-                <td class="detalles-menu">
+                </div>
+                <div class="precio-menu">
+                    <span>$12.99</span>
+                </div>
+            </div>
+            <div class="item-menu">
+                <div class="detalles-menu">
                     <img src="assets/alitas-picantes.png" class="imagen-menu">
                     <span>Alitas Picantes</span>
-                </td>
-                <td>$9.99</td>
-            </tr>
-            <tr>
-                <td class="detalles-menu">
+                </div>
+                <div class="precio-menu">
+                    <span>$9.99</span>
+                </div>
+            </div>
+            <div class="item-menu">
+                <div class="detalles-menu">
                     <img src="assets/ensalada-huerta.png" class="imagen-menu">
                     <span>Ensalada de la Huerta</span>
-                </td>
-                <td>$7.50</td>
-            </tr>
-            <tr>
-                <td class="detalles-menu">
+                </div>
+                <div class="precio-menu">
+                    <span>$7.50</span>
+                </div>
+            </div>
+            <div class="item-menu">
+                <div class="detalles-menu">
                     <img src="assets/hamburguesa-con-queso.png" class="imagen-menu">
                     <span>Hamburguesa con Queso</span>
-                </td>
-                <td>$10.50</td>
-            </tr>
-            <tr>
-                <td class="detalles-menu">
+                </div>
+                <div class="precio-menu">
+                    <span>$10.50</span>
+                </div>
+            </div>
+            <div class="item-menu">
+                <div class="detalles-menu">
                     <img src="assets/pescado-papas-fritas.png" class="imagen-menu">
                     <span>Pescado y Papas Fritas</span>
-                </td>
-                <td>$11.75</td>
-            </tr>
-            <tr>
-                <td class="detalles-menu">
+                </div>
+                <div class="precio-menu">
+                    <span>$11.75</span>
+                </div>
+            </div>
+            <div class="item-menu">
+                <div class="detalles-menu">
                     <img src="assets/pizza-vegetariana.png" class="imagen-menu">
                     <span>Pizza Vegetariana</span>
-                </td>
-                <td>$14.25</td>
-            </tr>
-            <tr>
-                <td class="detalles-menu">
+                </div>
+                <div class="precio-menu">
+                    <span>$14.25</span>
+                </div>
+            </div>
+            <div class="item-menu">
+                <div class="detalles-menu">
                     <img src="assets/pastel-chocolate.png" class="imagen-menu">
                     <span>Pastel de Chocolate</span>
-                </td>
-                <td>$6.50</td>
-            </tr>
-        </table>
-        <!-- <footer>iconos footer</footer> -->
-    </section>
+                </div>
+                <div class="precio-menu">
+                    <span>$6.50</span>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
