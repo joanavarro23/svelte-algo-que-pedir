@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Algo que pedir</title>
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/header.css">
+        <link rel="stylesheet" href="../css/pedidos-actuales.css">
+    </head>
+    <body>
+        <header class="main-header">
+            <nav class="navbar"> <!-- Toda la barra de navegacion del header -->
+                <div class="container-logo">
+                    <img class="logo-app" src="../assets/logo.svg"/>
+                    <h4>Algo que Pedir</h4>  
+                </div>
+
+                <ul class="ul-links"> <!-- Lista de enlaces de navegacion -->
+                    <li class="items-navegacion">
+                        <a class="nav-links" href="#">
+                            <img class="nav-icons" src="../assets/carrito.svg"/>
+                            <span>Pedidos</span>
+                        </a>
+                    </li>
+                    <li class="items-navegacion">
+                        <a class="nav-links" href="#">
+                            <img class="nav-icons" src="../assets/menu.svg"/>
+                            <span>Menu</span>
+                        </a>
+                    </li>
+                    <li class="items-navegacion">
+                        <a class="nav-links" href="#">
+                            <img class="nav-icons" src="../assets/ingredientes.svg"/>
+                            <span>Ingredientes</span>
+                        </a>
+                    </li>
+                    <li class="items-navegacion">
+                        <a class="nav-links" href="#">
+                            <img class="nav-icons" src="../assets/usuario.svg"/>
+                            <span>Cuenta</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="hamburguesa">
+                    <img class="hamburguesa-icon" src="../assets/hamburguer-icon.svg"/>
+                </div>
+
+                <div class="container-usuario">
+                    <img class="user-logo" src="../assets/girl-user.png"/>
+                </div>
+            </nav>
+        </header>
+
+        <main class="container-principal">      <!-- Contenedor de toda la vista -->
+            <h1>Pedidos actuales</h1>
+            
+            <div class="container-estados">     <!-- Contenedor de los estados de los pedidos -->
+                <a href="#" class="link-estados"><b>Pendientes</b></a>
+                <a href="#" class="link-estados"><b>Preparados</b></a>
+                <a href="#" class="link-estados"><b>Entregados</b></a>
+                <a href="#" class="link-estados"><b>Cancelados</b></a>
+            </div>
+
+            <section class="container-tarjetas">    <!-- Contenedor de las tarjetas de pedidos -->     
+                
+                <article class="pedido-tarjeta">    <!-- Tarjeta de pedido -->
+                    <header class="pedido-header">
+                        <p>Pedido #1234</p>
+
+                        <div class="info-usuario">
+                            <img src="/assets/pedido-user-icon.png" alt="usuario" class="icono-usuario-pedido">
+                            <p> <b>Sofia Miller</b> <span>usuario: smiller2005</span></p>
+                        </div>
+
+                        <p>Hora: 12:30 PM | Articulos: 2 | Total: $25</p>
+                    </header>
+
+                    <div class="info-direccion">
+                        <img src="/assets/pin-ubicacion.svg" alt="" class="pin-ubicacion">
+                        <p>Av. Siempre Viva 555</p>
+                        <p>Lat: 407128, Long: -740060</p>
+                    </div>
+
+                    <footer class="pedido-footer">
+                        <div class="modo-pago">
+                            <img src="/assets/tarjeta-credito.svg" alt="" class="icono-tarjeta">
+                            <p>Pago con tarjeta de credito</p>
+                        </div>
+                        <button class="boton-primario">Preparar</button>
+                    </footer>
+                </article>
+
+
+                <article class="pedido-tarjeta">    <!-- Tarjeta de pedido -->
+                    <header class="pedido-header">
+                        <p>Pedido #2342</p>
+
+                        <div class="info-usuario">
+                            <img src="/assets/pedido-user-icon.png" alt="usuario" class="icono-usuario-pedido">
+                            <p> <b>Micaela Moreno</b> usuario: mMoreno05</p>
+                        </div>
+
+                        <p>Hora: 13:30 PM | Articulos: 3 | Total: $35</p>
+                    </header>
+
+                    <div class="info-direccion">
+                        <img src="/assets/pin-ubicacion.svg" alt="" class="pin-ubicacion">
+                        <p>Calle Falsa 123</p>
+                        <p>Lat: 407128, Long: -740060</p>
+                    </div>
+
+                    <footer class="pedido-footer">
+                        <div class="modo-pago">
+                            <img src="/assets/tarjeta-credito.svg" alt="" class="icono-tarjeta">
+                            <p>Pago en efectivo</p>
+                        </div>
+                        <button class="boton-primario">Preparar</button>
+                    </footer>
+                </article>
+
+                <article class="pedido-tarjeta">    <!-- Tarjeta de pedido -->
+                    <header class="pedido-header">
+                        <p>Pedido #13456</p>
+
+                        <div class="info-usuario">
+                            <img src="/assets/pedido-user-icon.png" alt="usuario" class="icono-usuario-pedido">
+                            <p> <b>Jose Gomez</b> usuario: becco22</p>
+                        </div>
+
+                        <p>Hora: 12:00 PM | Articulos: 1 | Total: $15</p>
+                    </header>
+
+                    <div class="info-direccion">
+                        <img src="/assets/pin-ubicacion.svg" alt="" class="pin-ubicacion">
+                        <p>Cucha Cucha 45</p>
+                        <p>Lat: 407128, Long: -740060</p>
+                    </div>
+
+                    <footer class="pedido-footer">
+                        <div class="modo-pago">
+                            <img src="/assets/tarjeta-credito.svg" alt="" class="icono-tarjeta">
+                            <p>Pago con QR</p>
+                        </div>
+                        <button class="boton-primario">Preparar</button>
+                    </footer>
+                </article>
+
+                <article class="pedido-tarjeta">    <!-- Tarjeta de pedido -->
+                    <header class="pedido-header">
+                        <p>Pedido #13456</p>
+
+                        <div class="info-usuario">
+                            <img src="/assets/pedido-user-icon.png" alt="usuario" class="icono-usuario-pedido">
+                            <p><b>Jose Gomez</b> usuario: becco22</p>
+                        </div>
+
+                        <p>Hora: 12:00 PM | Articulos: 1 | Total: $15</p>
+                    </header>
+
+                    <div class="info-direccion">
+                        <img src="/assets/pin-ubicacion.svg" alt="" class="pin-ubicacion">
+                        <p>Cucha Cucha 45</p>
+                        <p>Lat: 407128, Long: -740060</p>
+                    </div>
+
+                    <footer class="pedido-footer">
+                        <div class="modo-pago">
+                            <img src="/assets/tarjeta-credito.svg" alt="" class="icono-tarjeta">
+                            <p>Pago con QR</p>
+                        </div>
+                        <button class="boton-primario">Preparar</button>
+                    </footer>
+                </article>
+
+                <article class="pedido-tarjeta">    <!-- Tarjeta de pedido -->
+                    <header class="pedido-header">
+                        <p>Pedido #13456</p>
+
+                        <div class="info-usuario">
+                            <img src="/assets/pedido-user-icon.png" alt="usuario" class="icono-usuario-pedido">
+                            <p> <b>Jose Gomez</b> usuario: becco22</p>
+                        </div>
+
+                        <p>Hora: 12:00 PM | Articulos: 1 | Total: $15</p>
+                    </header>
+
+                    <div class="info-direccion">
+                        <img src="/assets/pin-ubicacion.svg" alt="" class="pin-ubicacion">
+                        <p>Cucha Cucha 45</p>
+                        <p>Lat: 407128, Long: -740060</p>
+                    </div>
+
+                    <footer class="pedido-footer">
+                        <div class="modo-pago">
+                            <img src="/assets/tarjeta-credito.svg" alt="" class="icono-tarjeta">
+                            <p>Pago con QR</p>
+                        </div>
+                        <button class="boton-primario">Preparar</button>
+                    </footer>
+                </article>
+
+            </section>
+        </main>
+
+    </body>
+</html>
