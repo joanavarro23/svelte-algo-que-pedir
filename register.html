@@ -2,33 +2,44 @@
 <html>
     <head>
         <title>Crear tu cuenta</title>
+        <link rel="stylesheet" href="css/estilos.css">
+        <link rel="stylesheet" href="css/login.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div>
-            <h1>Crea tu cuenta</h1>
+        <div class="login-container">
+            <div class="logo-section">
+                <img class="logo-image" src="assets/logo.svg" alt="Logo Algo que Pedir">
+                <h1 class="app-name">Crea tu cuenta</h1>
+            </div>
             <form>
-                <div>
-                    <label for="usuario">Usuario</label><br>
+                <div class="form-group">
+                    <label for="usuario">Usuario</label>
                     <input type="text" id="usuario" name="usuario" placeholder="Escribir" required>
                 </div>
-                <div>
-                    <label for="password">Password</label><br>
-                    <input type="password" id="password" name="password" placeholder="Escribir" required>
-                    <button type="button" onclick="mostrarPassword()">👁</button>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" placeholder="Escribir" required>
+                        <button type="button" class="password-toggle" onclick="mostrarPassword()"><img class="icono" src="assets/password-icon.svg"></button>
+                    </div>
                 </div>
-                <div>
-                    <label for="confirm-password">Re-ingrese el Password</label><br>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
-                    <button type="button" onclick="mostrarPassword()">👁</button>
+                <div class="form-group">
+                    <label for="confirm-password">Re-ingrese el Password</label>
+                    <div class="password-container">
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                        <button type="button" class="password-toggle" onclick="mostrarPassword()"><img class="icono" src="assets/password-icon.svg"></button>
+                    </div>
                 </div>
                 <div id="error-message" style="display: none;">
                     Las contraseñas no coinciden
                 </div>
                 <div>
-                    <button type="submit">Registrarse</button>
+                    <button class="login-button boton-primario" type="submit">Registrarse</button>
                 </div>
             </form>
-            <p>¿Ya tienes una cuenta? <a href="#">Inicia sesión</a></p>
+            <p class="registrar-link">¿Ya tienes una cuenta? <a href="#">Inicia sesión</a></p>
         </div>
     </body>
 </html>
