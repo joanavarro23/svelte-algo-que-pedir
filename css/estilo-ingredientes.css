@@ -1,5 +1,8 @@
-/* Container general ingredientes */
+.container-tabla-ingredientes {
+    background-color: var(--color-secundario)
+}
 
+/* Container general ingredientes */
 .ingrediente-container {
     max-width: 100%;
     box-sizing: border-box;
