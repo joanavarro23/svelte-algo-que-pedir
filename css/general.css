@@ -15,6 +15,11 @@ body {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+    color: var(--color-texto-primario)
+}
+
 /* Color de los titulos, subtitulos y encabezados */
 h1, h2, h4 {
     color: var(--color-texto-primario);
@@ -41,4 +46,13 @@ button {
     background-color: var(--color-secundario);
     color: var(--color-principal);
     border: 1px solid var(--color-principal);
+}
+
+/* Combinación de título h1 y botón, se usa en gestión del menú e ingredientes */
+.titulo-boton {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    background-color: var(--color-secundario)
 }

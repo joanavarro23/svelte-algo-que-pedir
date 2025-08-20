@@ -20,10 +20,11 @@
     margin: 1rem;
 }
 
-.nav-links{                  /* Formato links dentro de ul-links */
+/* .nav-links{                  Formato links dentro de ul-links - Borrable si lo hacemos gral
     text-decoration: none;
     color: var(--color-texto-primario)
-}
+} 
+*/
 
 .nav-icons {
     display: none;
@@ -64,7 +65,9 @@
     }
 
     .hamburguesa {
+        
         display: flex;
+        margin: 0 1rem;
     }
 }
 

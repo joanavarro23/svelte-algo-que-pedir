@@ -2,25 +2,30 @@
 <html>
 <head>
     <title>Algo que pedir - Login</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="login-container">
         <div class="logo-section">
-            <div class="logo"></div>
+            <img class="logo-image" src="assets/logo.svg" alt="Logo Algo que Pedir">
             <h1 class="app-name">Algo que pedir</h1>
         </div>
         <form>
             <div class="form-group">
-                <label for="usuario" class="form-label">Usuario</label><br>
+                <label for="usuario">Usuario</label>
                 <input type="text" id="usuario" name="usuario" class="form-input" placeholder="Escribir" required>
             </div>
             <div class="form-group">
-                <label for="password" class="form-label">Password</label>
+                <label for="password">Password</label>
                 <div class="password-container">
                     <input type="password" id="password" name="password" class="form-input" placeholder="Escribir" required>
-                    <button type="button" class="password-toggle" onclick="mostrarPassword()">👁</button>
+                    <button type="button" class="password-toggle" onclick="mostrarPassword()"><img class="icono" src="assets/password-icon.svg"></button>
                 </div>
-                <button type="submit" class="login-button">Iniciar Sesion</button>
+                <button type="submit" class="login-button boton-primario">Iniciar Sesion</button>
                 <div class="registrar-link">
                     ¿No tienes una cuenta? <a href="#">Regístrate</a>
                 </div>
