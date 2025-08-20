@@ -115,3 +115,43 @@ body {
   margin: 16px auto;
   width: 100%;
 }
+
+/* Vista mobile */
+@media (width <= 400px) {
+
+.informacion-local {
+  display: flex;
+  flex-direction: column;
+}
+
+.direccion-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.porcentajes-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.metodos-de-pago {
+  display: flex;
+  flex-direction: column;
+}
+}
+
+/* Vista tablet */
+@media (401px <= width <= 768px){ 
+
+.contenedor-principal {
+  background-color: blue;
+}
+
+
+}
+
+/* @media (400px <= width <= 500) {
+body {
+  background-color: blue;
+}
+} */
