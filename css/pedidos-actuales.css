@@ -62,9 +62,16 @@
 
 .info-direccion {           /* Alineacion info direccion pedido */
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    /* align-items: center;
+    justify-content: flex-start; */
     margin: 1rem 0;
+}
+
+.info-direccion > p {           /* ENDIENTE PARRAFOS DIRECCION */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .pin-ubicacion {
@@ -108,9 +115,5 @@
     .container-tarjetas {               /* Contenedor de todas las tarjetas de pedidos */
         grid-template-columns: 1fr;
         gap: 1.5rem;
-    }
-
-    .pedido-tarjeta {
-        
     }
 }
