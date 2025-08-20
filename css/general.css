@@ -1,3 +1,5 @@
+/* HOJA DE ESTILOS GENERALES A COMPLETAR */
+
 :root {
     --color-principal: #FF0000;
     --color-secundario: #FFFFFF;
@@ -15,9 +17,15 @@ body {
     margin: 0;
 }
 
+/* Estilo para los links */
 a {
     text-decoration: none;
     color: var(--color-texto-primario)
+}
+
+/* Estilo para los p */
+p {
+    margin: 0;
 }
 
 /* Color de los titulos, subtitulos y encabezados */
