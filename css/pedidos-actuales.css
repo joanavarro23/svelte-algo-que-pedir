@@ -1,5 +1,5 @@
 /* Vista Desktop */
-.container-principal {     /* Container flex de toda la vista */
+.container-principal {                      /* Container flex de toda la vista */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -17,7 +17,7 @@
     color: var(--color-texto-secundario);
 }
 
-.container-tarjetas {           /* Container grid de todas las tarjetas */
+.container-tarjetas {                              /* Container grid de todas las tarjetas */
     display: grid;
     grid-template-columns: repeat(3, 1fr);        /*3 columnas que toman 1/3 del espacio c/u*/
     gap: 1rem;
@@ -41,7 +41,7 @@
     color: var(--color-texto-secundario);
 } 
 
-.info-usuario{                  /*Icono/info usuario de la tarjeta pedido*/
+.info-usuario{                      /*Icono/info usuario de la tarjeta pedido*/
     display: flex;
     gap: 1rem;
     margin: 0.5rem 1rem;
@@ -51,18 +51,22 @@
     width: 4rem;
 }
 
-.nombre-usuario {             /*Alineacion nombre-user del header tarjeta pedido*/
+.nombre-usuario {                       /*Alineacion nombre-user del header tarjeta pedido*/
     display: flex;
     flex-direction: column; 
     justify-content: center;
 }
 
-.info-pedido {              /*Alineacion parrafo hora/articulos/total del header tarjeta pedido*/
+.nombre-usuario > p {
+    color: var(--color-parrafos); 
+}
+
+.info-pedido {                          /*Alineacion parrafo hora/articulos/total del header tarjeta pedido*/
     font-size: 15px;
     color: var(--color-texto-secundario)
 }
 
-.info-direccion {           /* Alineacion info direccion pedido */
+.info-direccion {                       /* Alineacion info direccion pedido */
     display: flex;
     /* align-items: center;
     justify-content: flex-start; */
