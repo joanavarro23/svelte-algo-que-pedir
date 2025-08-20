@@ -28,22 +28,20 @@
     padding: 1rem;
     border: 1px solid var(--color-bordes);
     border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .pedido-header{
     color: var(--color-texto-secundario);
+    display: flex;
+    flex-direction: column;
 }
 
-.info-usuario{             /*Icono user de la tarjeta pedido*/
+.info-usuario{             /*Icono/info usuario de la tarjeta pedido*/
     display: flex;
-    align-items: flex-start;
     gap: 1rem;
     margin: 0 1rem;
-}
-
-.info-usuario > p > span {          /*- PENDIENTE - Extraño, debe haber una mejor manera de hacer esto*/
-    color:blueviolet;
-    display: block;
 }
 
 .icono-usuario-pedido{
@@ -70,10 +68,6 @@
 
 .modo-pago > img {
     margin: 0 1rem;
-}
-
-.modo-pago > button {
-    
 }
 
 @media (min-width: 401px) and (max-width: 768px) { /*Vista Tablet */

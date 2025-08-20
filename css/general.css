@@ -6,10 +6,10 @@ margin y padding 0 para TODA LA PAGINA asi lo definimos nosotros en c/u de nuest
 margins o paddings que no contemplamos nos podria romper las vistas.
 */
 
-/* * {
+ * {
     margin: 0;
     padding: 0;
-} */
+} 
 
 :root {
     --color-principal: #FF0000;
