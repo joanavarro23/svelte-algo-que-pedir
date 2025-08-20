@@ -1,4 +1,15 @@
-/* HOJA DE ESTILOS GENERALES A COMPLETAR */
+/* HOJA DE ESTILOS GENERALES */
+
+/* Ideas: 
+- Un estilo general podria ser agregarle al * (con ese selector agarra todos los elementos) que haya 
+margin y padding 0 para TODA LA PAGINA asi lo definimos nosotros en c/u de nuestras clases? Si el navegador agrega
+margins o paddings que no contemplamos nos podria romper las vistas.
+*/
+
+/* * {
+    margin: 0;
+    padding: 0;
+} */
 
 :root {
     --color-principal: #FF0000;
@@ -23,7 +34,7 @@ a {
     color: var(--color-texto-primario)
 }
 
-/* Estilo para los p */
+/* Estilo -momentaneo- para los p */
 p {
     margin: 0;
 }
