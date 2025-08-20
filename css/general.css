@@ -34,11 +34,6 @@ a {
     color: var(--color-texto-primario)
 }
 
-/* Estilo -momentaneo- para los p */
-p {
-    margin: 0;
-}
-
 /* Color de los titulos, subtitulos y encabezados */
 h1, h2, h4 {
     color: var(--color-texto-primario);

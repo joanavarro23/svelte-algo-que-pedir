@@ -38,20 +38,32 @@
     flex-direction: column;
 }
 
-.info-usuario{             /*Icono/info usuario de la tarjeta pedido*/
+.info-usuario{                  /*Icono/info usuario de la tarjeta pedido*/
     display: flex;
     gap: 1rem;
-    margin: 0 1rem;
+    margin: 0.5rem 1rem;
 }
 
 .icono-usuario-pedido{
     width: 4rem;
 }
 
-.info-direccion {
+.info-usuario > p {             /*Alineacion parrafos del header tarjeta pedido*/
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+}
+
+.info-pedido {          /*Alineacion parrafo hora/articulos/total del header tarjeta pedido*/
+    font-size: 15px;
+}
+
+
+.info-direccion {           /* Alineacion info direccion pedido */
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin: 0.5rem 1rem;
 }
 
 .pin-ubicacion {
