@@ -54,6 +54,8 @@ body {
     position: relative;
     margin: auto;
 }
+
+
 .password-toggle {
     position: absolute;
     right: 6%;
@@ -64,6 +66,9 @@ body {
     cursor: pointer;
     padding: 0.27rem;
     font-size: 1.2rem;
+}
+.password-toggle:hover{
+    box-shadow: none;
 }
 
 .registrar-link {

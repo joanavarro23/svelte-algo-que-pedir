@@ -76,8 +76,22 @@ h3{
     font-weight: 500;
 }
 
-.tabla-pago tbody td {
-    border: none;
+.tabla-pago-container {
+    width: 100%;
+}
+
+.tabla-pago {
+    margin-left: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.fila-pago {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .metodo-pago {
