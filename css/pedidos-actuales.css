@@ -51,7 +51,7 @@
     width: 4rem;
 }
 
-.info-usuario > p {             /*Alineacion parrafos del header tarjeta pedido*/
+.nombre-usuario {             /*Alineacion nombre-user del header tarjeta pedido*/
     display: flex;
     flex-direction: column; 
     justify-content: center;
