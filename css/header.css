@@ -1,17 +1,17 @@
 /*  Vista Desktop */
-.main-header{
+.header-pagina{
     background-color: var(--color-secundario);
     height: 3.5rem;
     width: 100%;
 }
 
-.navbar {                     /* Alineado general del navbar */
+.barra-navegacion {                     /* Alineado general de barra-navegacion */
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.ul-links {                  /* Alineado de los links del navbar */
+.ul-links {                  /* Alineado de los links de barra-navegacion */
     list-style-type: none;
     display: flex;
     justify-content: flex-end;
@@ -20,7 +20,7 @@
     margin: 1rem;
 }
 
-.nav-icons {
+.iconos-navegacion {
     display: none;
 }
 
@@ -44,7 +44,7 @@
     margin: 0 1rem;
 }
 
-.user-logo {
+.usuario-logo {
     width: 2.5rem;
 }
 
@@ -63,13 +63,13 @@
         margin: 0 1rem;
     }
 
-    .user-logo {            /*momentaneo*/
+    .usuario-logo {            /*momentaneo*/
         margin: 0.5rem;
     }
 }
 
 @media (max-width: 400px) {                         /* --> Vista Mobile*/
-    .main-header{
+    .header-pagina{
         position: fixed;
         width : 100%;
         bottom: 0;
@@ -80,7 +80,7 @@
         display: none;
     }
 
-    .nav-links > span {
+    .links-navegacion > span {
         display: none;
     }
 
@@ -88,7 +88,7 @@
         display: none;
     }
     
-    .nav-links > img {
+    .links-navegacion > img {
         display: flex;
     }
 
@@ -96,7 +96,7 @@
         display: none;
     } 
 
-    .navbar {
+    .barra-navegacion {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -116,7 +116,6 @@
         flex: 1;
         padding: 0;
     }
-
 }
 
 
