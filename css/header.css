@@ -2,7 +2,7 @@
 .main-header{
     background-color: var(--color-secundario);
     height: 3.5rem;
-    width: 100vw;
+    width: 100%;
 }
 
 .navbar {                     /* Alineado general del navbar */
