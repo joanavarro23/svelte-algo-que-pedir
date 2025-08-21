@@ -23,13 +23,13 @@
     gap: 1rem;
 }
 
-.pedido-tarjeta {                   /* Cada tarjeta de pedido */
+.pedido-tarjeta {                               /* Cada tarjeta de pedido */
     padding: 1rem;
     border: 1px solid var(--color-bordes);
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    /* max-width: 350px; */
+    background-color: var(--color-secundario);
 }
 
 .pedido-header{
@@ -37,11 +37,12 @@
     flex-direction: column;
 }
 
-.pedido-header > p {
+.pedido-header > p,
+.modo-pago {                        /* Color gris para parrafos de la tarjeta */
     color: var(--color-texto-secundario);
 } 
 
-.info-usuario{                      /*Icono/info usuario de la tarjeta pedido*/
+.info-usuario{                      /* Icono/info usuario de la tarjeta */
     display: flex;
     gap: 1rem;
     margin: 0.5rem 1rem;
@@ -51,50 +52,52 @@
     width: 4rem;
 }
 
-.nombre-usuario {                       /*Alineacion nombre-user del header tarjeta pedido*/
+.nombre-usuario,                  /* Alineacion nombre-user del header tarjeta */ 
+.direccion-coordenadas {          /* Alineacion direccion/coordenadas de tarjeta */             
     display: flex;
     flex-direction: column; 
     justify-content: center;
 }
 
-.nombre-usuario > p {
+.nombre-usuario > p,                /* Color violeta para parrafos de la tarjeta */
+.direccion-coordenadas > p {               
     color: var(--color-parrafos); 
 }
 
-.info-pedido {                          /*Alineacion parrafo hora/articulos/total del header tarjeta pedido*/
+.info-pedido {                          /*Alineacion parrafo hora/articulos/total del header tarjeta */
     font-size: 15px;
-    color: var(--color-texto-secundario)
+    color: var(--color-texto-secundario);
 }
 
 .info-direccion {                       /* Alineacion info direccion pedido */
     display: flex;
-    /* align-items: center;
-    justify-content: flex-start; */
     margin: 1rem 0;
-}
-
-.info-direccion > p {           /* ENDIENTE PARRAFOS DIRECCION */
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    flex-wrap: wrap;
 }
 
 .pin-ubicacion {
     padding: 0.5rem;
     margin-right: 1rem;
-    background-color: rgb(230, 224, 236);     /* Fondo del pin gris-violaceo*/
+    background-color: rgb(230, 224, 236);     /* Fondo del pin gris-violaceo */
     border-radius: 20%;
 }
 
-.modo-pago {            /* Alineacion footer */
+.pedido-footer {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
-.modo-pago > img {
-    margin: 0 1rem;
+.modo-pago {                               /* Alineacion footer */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
 }
+
+.boton-preparar {               /* Boton preparar pedido */ 
+    height: max-content;
+    align-self: flex-end;
+} 
 
 @media (min-width: 401px) and (max-width: 768px) { /*Vista Tablet */
     .container-tarjetas {
