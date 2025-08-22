@@ -121,7 +121,21 @@ h3 {
 @media (401px <= width <= 768px){ 
 
 .contenedor-principal {
-  background-color: blue;
+  width: 95%;
+  margin-top: 20%;
+}
+
+.titulo-principal {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  width: 95%;
+}
+
+.card-inputs {
+  font-size: 0.8rem;
 }
 }
 
