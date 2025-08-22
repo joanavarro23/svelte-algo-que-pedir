@@ -2,10 +2,6 @@ body {
   background-color: #f0f0f0;
 }
 
-h3 {
-  margin: 0px !important;
-} /* YA SÉ QUE ESTÁ MAL*/
-
 .contenedor-principal {
   display: flex;
   flex-direction: column;
