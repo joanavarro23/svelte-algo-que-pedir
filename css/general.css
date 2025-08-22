@@ -39,10 +39,12 @@ a {
 /* Color de los titulos, subtitulos y encabezados */
 h1, h2, h4 {
     color: var(--color-texto-primario);
+    margin: 0px;
 }
 
 h3 {
   color: var(--color-texto-secundario);
+  margin: 0px;
 }
 
 /* Estilo de los botones: primerios y secundarios */
