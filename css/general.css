@@ -1,3 +1,16 @@
+/* HOJA DE ESTILOS GENERALES */
+
+/* Ideas: 
+- Un estilo general podria ser agregarle al * (con ese selector agarra todos los elementos) que haya 
+margin y padding 0 para TODA LA PAGINA asi lo definimos nosotros en c/u de nuestras clases? Si el navegador agrega
+margins o paddings que no contemplamos nos podria romper las vistas.
+*/
+
+ * {
+    margin: 0;
+    padding: 0;
+} 
+
 :root {
     --color-principal: #FF0000;
     --color-secundario: #FFFFFF;
@@ -5,6 +18,7 @@
     --color-texto-secundario: #3b3b3b;
     --color-bordes: #838383;
     --color-fondo: whitesmoke;
+    --color-parrafos: #97749d;
 }
 
 /* General - tipografía y tamaño*/
@@ -12,9 +26,9 @@ body {
     font-family: "Nata Sans", sans-serif;
     font-size: 100%;
     background-color: var(--color-fondo);
-    margin: 0;
 }
 
+/* Estilo para los links */
 a {
     text-decoration: none;
     color: var(--color-texto-primario)
@@ -56,3 +70,9 @@ button {
     margin-bottom: 1rem;
     background-color: var(--color-secundario)
 }
+
+@media (max-width: 400px) {             /*Solucion a overlapping de footer con la vista*/
+    body {
+        padding-bottom: 2rem;
+    }
+} 
