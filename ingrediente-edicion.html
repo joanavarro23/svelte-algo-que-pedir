@@ -54,7 +54,40 @@
     </header> 
     
     <main>
-        
+        <h1>Editar ingrediente</h1>
+        <div class="container-edicion">
+            <label for="nombre-ingrediente">Nombre del ingrediente*</label>
+            <input type="text" id="nombre-ingrediente" name="nombre-ingrediente" placeholder="Escribir">
+
+            <label for="costo-ingrediente">Costo*</label>
+            <input type="number" id="costo-ingrediente" name="costo-ingrediente" placeholder="Escribir">
+
+            <label for="grupo-alimenticio">Grupo Alimenticio</label>
+            <select name="grupo-alimenticio" id="grupo-alimenticio">
+                <option value="" disabled selected>Seleccione un grupo</option>
+                <option value="1">Cereales y tuberculos</option>
+                <option value="2">Azucares y dulces</option>
+                <option value="3">Lacteos</option>
+                <option value="4">Frutas y verduras</option>
+                <option value="5">Grasas y aceites</option>
+                <option value="6">Proteinas</option>
+            </select>
+
+            <div class="origen-toggle">         <!-- Implementacion del toggle adaptado -->
+                <label class="switch">
+                    <span class="text-container">
+                        <span class="origen-animal">Origen animal</span>
+                    </span>
+                    <input type="checkbox" name="origen-animal">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="container-botones-edicion">
+            <button class="boton-primario boton-guardar">Guardar cambios</button>
+            <button class="boton-secundario boton-descartar">Descartar cambios</button>
+        </div>
     </main>
 </body>
 </html>

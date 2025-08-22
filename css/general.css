@@ -43,6 +43,60 @@ h3 {
   color: var(--color-texto-secundario);
 }
 
+/* Estilo para boton deslizante */
+/* Contenedor del toggle */
+.switch {
+    display: flex;
+    justify-content: space-between; /* Texto a la izquierda, slider a la derecha */
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+    /* Estilo del texto */
+.switch span.text-container {
+    display: flex;
+    flex-direction: column;
+}
+.switch span.text-container .subtitle {
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario);
+}
+    /* Ocultar el checkbox real */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+    /* Slider personalizado */
+.slider {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+    /* Circulo dentro del slider */
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    top: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+    /* Efecto cuando el checkbox está activo */
+.switch input:checked + .slider {
+    background-color: var(--color-principal);
+}
+.switch input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+
 /* Estilo de los botones: primerios y secundarios */
 button {
     border: none;
