@@ -2,6 +2,10 @@ body {
   background-color: #f0f0f0;
 }
 
+h3 {
+  margin: 0px !important;
+} /* YA SÉ QUE ESTÁ MAL*/
+
 .contenedor-principal {
   display: flex;
   flex-direction: column;
@@ -15,23 +19,27 @@ body {
   width: 100%;
 }
 
-.perfil-del-local {
+.card {
   width: 60vw;
-  justify-content: center;
+  background-color: #fff;
+  padding: 16px;
+  border: 1px solid var(--color-bordes);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
 }
 
 .informacion-local {
   display: grid;
   grid-template-columns: 1fr 180px;
   grid-template-rows: auto auto;
-  gap: 16px;
   align-items: start;
-  padding: 16px;
+}
+
+.card input {
+  padding: 8px;
   border: 1px solid var(--color-bordes);
-  border-radius: 8px;
-  width: 60vw;
-  margin: 0 auto;
-  background-color: #fff;
+  border-radius: 4px;
+  width: 90%;
 }
 
 .inputs-local {
@@ -42,33 +50,18 @@ body {
 .imagen-local {
   grid-column: 2;
   grid-row: 1 / span 2;
-  width: 99%;
-  height: 99%;
+  width: 90%;
+  height: 90%;
   border-radius: 8px;
   border: 1px solid var(--color-bordes);
-
+  margin-top: 16px;
 }
 
-.direccion-local {
-  width: 60vw;
-  margin: 16px auto;
-  padding: 16px;
-  border: 1px solid var(--color-bordes);
-  border-radius: 8px;
-  background-color: #fff;
-}
-
-.direccion-grid {
+.card-inputs {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-}
-
-.direccion-grid input {
-  padding: 8px;
-  border: 1px solid var(--color-bordes);
-  border-radius: 4px;
-  width: 90%;
+  margin-bottom: 12px;
 }
 
 .porcentajes {
@@ -78,26 +71,6 @@ body {
   border: 1px solid var(--color-bordes);
   border-radius: 8px;
   background-color: #fff;
-}
-
-.porcentajes-input {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 12px;
-}
-
-.porcentajes-input div {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.porcentajes-input input {
-  padding: 8px;
-  border: 1px solid var(--color-bordes);
-  border-radius: 4px;
-  width: 90%;
 }
 
 .metodos-de-pago {
@@ -119,24 +92,28 @@ body {
 /* Vista mobile */
 @media (width <= 400px) {
 
-.informacion-local {
-  display: flex;
-  flex-direction: column;
+.contenedor-principal {
+  justify-content: center;
+  align-items: center;
 }
 
-.direccion-grid {
-  display: flex;
-  flex-direction: column;
+.titulo-principal {
+  font-size: 1.3em;
+  width: 130%;
+  text-align: center;
 }
 
-.porcentajes-input {
+.card, .card-inputs {
   display: flex;
   flex-direction: column;
+  font-size: 0.8rem;
 }
 
 .metodos-de-pago {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
 }
 }
 
@@ -144,10 +121,22 @@ body {
 @media (401px <= width <= 768px){ 
 
 .contenedor-principal {
-  background-color: blue;
+  width: 95%;
+  margin-top: 20%;
 }
 
+.titulo-principal {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
 
+.card {
+  width: 95%;
+}
+
+.card-inputs {
+  font-size: 0.8rem;
+}
 }
 
 /* @media (400px <= width <= 500) {
