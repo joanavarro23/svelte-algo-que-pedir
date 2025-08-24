@@ -1,53 +1,50 @@
-.container-tabla-ingredientes {
-    background-color: var(--color-secundario)
-}
-
 /* Container general ingredientes */
 .ingrediente-container {
     max-width: 100%;
-    box-sizing: border-box;
-    margin: 0 auto;
     padding: 1rem 2rem;
 }
 
-/* Fijo tamaño de h1 para el wrap */
-.titulo-boton h1{
+.titulo-boton h1 {
     flex-basis: 270px;
 }
 
-/* Fijo tamaño que ocupan nombres para alineamiento de ingredientes */
- .item-nombre {
-    flex-basis: 7.9rem;
+.container-tabla-ingredientes {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(6, auto);
+    gap: 2rem 0.3rem;
+    padding: 0.7rem;
+    background-color: var(--color-secundario);
+    border: 0.2px solid var(--color-bordes);
 }
 
-/* .item-costo {
-    flex-basis: 2rem;
-}  */
 
-/* Alineamiento  cabecera de acciones con iconos*/
+.cabecera-tabla {
+    justify-self: start;
+    align-self: center;
+    padding-bottom: 0.5rem;
+}
+
 .cabecera-acciones {
-    flex-basis: 104px;
-    text-align: center;
+    justify-self: center;
+    align-self: center;
+    padding-bottom: 0.5rem;
+    font-weight: lighter;
 }
 
-/* Estilos de cabecera de ingredientes */
-.cabecera-ingredientes {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
+.celda-tabla {
+    justify-self: start;
+    align-self: center;
 }
 
-/* Estilos de filas de ingredientes */
-.fila-ingredientes {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 0; 
+.celda-precios {
+    justify-self: start;
+    align-self: center;
+    font-weight: lighter;
 }
 
-/* Alineamiento de separadores e iconos de ingredientes */
-.acciones-ingredientes {
+.iconos-acciones {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
