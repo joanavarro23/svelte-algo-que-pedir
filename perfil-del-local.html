@@ -14,8 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="main-header">
-            <nav class="navbar"> <!-- Toda la barra de navegacion del header -->
+    <header class="header-pagina">
+            <nav class="barra-navegacion"> <!-- Toda la barra de navegacion del header -->
                 <div class="container-logo">
                     <img class="logo-app" src="assets/logo.svg"/>
                     <h4>Algo que Pedir</h4>  
@@ -23,26 +23,26 @@
 
                 <ul class="ul-links"> <!-- Lista de enlaces de navegacion -->
                     <li class="items-navegacion">
-                        <a class="nav-links" href="#">
-                            <img class="nav-icons" src="assets/carrito.svg"/>
+                        <a class="links-navegacion" href="#">
+                            <img class="iconos-navegacion" src="../assets/carrito.svg"/>
                             <span>Pedidos</span>
                         </a>
                     </li>
                     <li class="items-navegacion">
-                        <a class="nav-links" href="#">
-                            <img class="nav-icons" src="assets/menu.svg"/>
+                        <a class="links-navegacion" href="#">
+                            <img class="iconos-navegacion" src="../assets/menu.svg"/>
                             <span>Menu</span>
                         </a>
                     </li>
                     <li class="items-navegacion">
-                        <a class="nav-links" href="#">
-                            <img class="nav-icons" src="assets/ingredientes.svg"/>
+                        <a class="links-navegacion" href="#">
+                            <img class="iconos-navegacion" src="../assets/ingredientes.svg"/>
                             <span>Ingredientes</span>
                         </a>
                     </li>
                     <li class="items-navegacion">
-                        <a class="nav-links" href="#">
-                            <img class="nav-icons" src="assets/usuario.svg"/>
+                        <a class="links-navegacion" href="#">
+                            <img class="iconos-navegacion" src="../assets/usuario.svg"/>
                             <span>Cuenta</span>
                         </a>
                     </li>
@@ -51,20 +51,18 @@
                 
                 <div class="container-usuario">
                     <div class="hamburguesa">
-                        <img class="hamburguesa-icon" src="assets/hamburguer-icon.svg"/>
+                        <img class="hamburguesa-icono" src="../assets/hamburguesa-menu.svg"/>
                     </div>
-                    <img class="user-logo" src="assets/girl-user.png"/>
+                    <img class="usuario-logo" src="../assets/usuario-chica.png"/>
                 </div>
             </nav>
-        </header>
-
     </header>    
     <div class="contenedor-principal">
         <div class="titulo-principal">
             <h3>Información del local</h3>
         </div>
         
-        <section class="informacion-local">
+        <section class="informacion-local card">
             <div class="inputs-local">
                 <label for="nombre-local">Nombre del local*</label>
                 <input type="text" name="nombre-local" placeholder="Escribir" required>
@@ -75,9 +73,9 @@
         </section>
 
 
-    <section class="direccion-local">
+    <section class="card">
         <h3>Dirección</h3>
-        <div class="direccion-grid">
+        <div class="card-inputs">
             <div>
                 <label for="direccion">Dirección*</label>
                 <input type="text" name="direccion" placeholder="Escribir" required>
@@ -97,10 +95,10 @@
         </div>
     </section>
 
-    <section class="porcentajes">
+    <section class="card">
         <h3>Porcentajes</h3>
 
-        <div class="porcentajes-input">
+        <div class="card-inputs">
             <div>
                 <label for="porcentaje-comision-app">Porcentaje de comisión con la app*</label>
                 <input type="number" name="porcentaje-comision-app" placeholder="Escribir" required>
