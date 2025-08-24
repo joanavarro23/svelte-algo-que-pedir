@@ -27,27 +27,27 @@ h2, h3 {
     margin: 0.5rem;
 }
 
-section {
+section {       /*--- C/u lo tiene que definir en su vista*/
     margin-bottom: 1.5rem;
     padding: .5rem;
-    background-color: var(--color-secundario);
-    border-radius: 0.8rem;
+    background-color: var(--color-secundario); /*---- Depende como hayamos hecho el html c/u pero no deberia ser fijo*/
+    border-radius: 0.8rem; 
 }
 
 /* Estilos de labels, inputs y textarea */
-.label-input {
+.label-input {          /* ----- No sabemos dónde está pero es una clase asi que todo bien*/
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
 }
 label {
-    margin: 0.5rem 0;
+    margin: 0.5rem 0;   /*  ---- Deberia ser definido c/u en su vista*/
 }
     /* Como esta en cascada, la tipografia del input pisa la que elegimos */
 input, textarea {
     font-family: "Nata Sans", sans-serif;
     font-size: 1rem;
-    padding: 0.2rem;
+    padding: 0.2rem;            /* ---- En otras vistas se redefinieron estos valores asi que no sé si queden como generales*/
     border-radius: 0.3rem;
     border: 1px solid var(--color-bordes);
 }
@@ -109,8 +109,8 @@ input, textarea {
 button {
     border: none;
     font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.4rem;
+    padding: 0.5rem 1rem;  /*---- c/u lo definira en su vista*/
+    border-radius: 0.4rem; /* ---- Hay botones mas redondeados o cuadrados asi que el border radius gral no estaria bueno*/
 }
 .boton-primario {
     background-color: var(--color-principal);
@@ -122,10 +122,10 @@ button {
     border: 1px solid var(--color-principal);
 }
     /* Si los botones estan juntos tienen otra ubicación */
-.botones-juntos {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.7rem;
+.botones-juntos {           
+    display: flex;              /*--- Es buena idea pero si el contenedor ppal de la vista tiene algun estilo particular, rompe*/
+    justify-content: flex-end;  /*--- En perfil-local el contenedor ppal es flex+column y esto por si solo no le funciona xq no ocupa el 100% de width c/elemento, le tuvo que agregar otra configuracion mas*/        
+    gap: 0.7rem;                /*--- Basicamente esta muy atado a como se implemento el html y capaz puede o no servir*/        
 }
     /* Sombra cuando se pasa por arriba */
 button:hover {
@@ -137,18 +137,17 @@ button:hover {
 .costo-produccion {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.5rem;                        /*--- Esto es de una vista propia asi que deberia estar en un archivo separado*/
     margin-bottom: 0.5rem;
 }
 .conteiner-table {
     border: 1px solid var(--color-bordes);
     border-radius: 0.8rem;
 }
-table {
+table {                 /*---- Si alguien quisiera usar tablas capaz le romperia/deberia pisar estos estilos por tag */
     width: 100%;
     border-collapse: collapse;
 }
-
 
 td, th {
     text-align: start;
@@ -160,5 +159,5 @@ tr:last-child td {
     border-bottom: none;
 }
 .icono {
-    text-align: center;
+    text-align: center;             /*--- Creemos que es de una vista particular asi que tampoco deberia estar aca*/
 }
