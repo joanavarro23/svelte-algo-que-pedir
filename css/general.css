@@ -1,11 +1,5 @@
 /* HOJA DE ESTILOS GENERALES */
 
-/* Ideas: 
-- Un estilo general podria ser agregarle al * (con ese selector agarra todos los elementos) que haya 
-margin y padding 0 para TODA LA PAGINA asi lo definimos nosotros en c/u de nuestras clases? Si el navegador agrega
-margins o paddings que no contemplamos nos podria romper las vistas.
-*/
-
  * {                /*Diferencia entre * y agregar margin/padding al body*/
     margin: 0;
     padding: 0;
@@ -32,17 +26,6 @@ body {
 a {
     text-decoration: none;
     color: var(--color-texto-primario)
-}
-
-/* Color de los titulos, subtitulos y encabezados */
-h1, h2, h4 {
-    color: var(--color-texto-primario);
-    margin: 0px;
-}
-
-h3 {
-  color: var(--color-texto-secundario);
-  margin: 0px;
 }
 
 /* Estilo de los botones: primerios y secundarios */
