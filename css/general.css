@@ -6,7 +6,7 @@ margin y padding 0 para TODA LA PAGINA asi lo definimos nosotros en c/u de nuest
 margins o paddings que no contemplamos nos podria romper las vistas.
 */
 
- * {
+ * {                /*Diferencia entre * y agregar margin/padding al body*/
     margin: 0;
     padding: 0;
 }
@@ -26,8 +26,6 @@ body {
     font-family: "Nata Sans", sans-serif;
     font-size: 100%;
     background-color: var(--color-fondo);
-    margin: 0;
-    padding: 0;
 }
 
 /* Estilo para los links */
