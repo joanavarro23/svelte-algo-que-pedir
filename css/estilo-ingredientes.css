@@ -4,10 +4,12 @@
     padding: 1rem 2rem;
 }
 
+/* Estilo del título y botón de agregar ingrediente */
 .titulo-boton h1 {
     flex-basis: 270px;
 }
 
+/* Container de la tabla de ingredientes */
 .container-tabla-ingredientes {
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -18,13 +20,14 @@
     border: 0.2px solid var(--color-bordes);
 }
 
-
+/* Estilo de cabeceras titulo y precios */
 .cabecera-tabla {
     justify-self: start;
     align-self: center;
     padding-bottom: 0.5rem;
 }
 
+/* Estilo de cabecera acciones */
 .cabecera-acciones {
     justify-self: center;
     align-self: center;
@@ -32,17 +35,20 @@
     font-weight: lighter;
 }
 
+/* Estilo de celdas de la tabla */
 .celda-tabla {
     justify-self: start;
     align-self: center;
 }
 
+/* Estilo de celdas precios */
 .celda-precios {
     justify-self: start;
     align-self: center;
     font-weight: lighter;
 }
 
+/* Estilo de iconos acciones */
 .iconos-acciones {
     display: flex;
     align-items: center;
