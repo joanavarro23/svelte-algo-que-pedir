@@ -43,3 +43,15 @@
     align-items: center;
     flex-basis: 3rem;
 }
+
+/* Descripción del plato del menú */
+.descripcion-plato {
+    font-weight: 130;
+}
+
+/* Media Query mobile */
+@media (max-width: 400px) {
+    .descripcion-plato {
+        display: none;
+    }
+}
