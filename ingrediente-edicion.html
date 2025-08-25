@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/ingrediente-edicion.css">
     <link rel="stylesheet" href="/css/botones.css">
+    <link rel="stylesheet" href="/css/input.css">
 </head>
 <body>
     <header class="header-pagina">
@@ -54,9 +55,9 @@
             </nav>
     </header> 
     
-    <main>
-        <h1>Editar ingrediente</h1>
-        <div class="container-edicion">
+    <main class="vista-edicion-ingrediente">                        <!-- Contenedor de toda la vista -->
+        <h1 class="titulo-edicion">Editar ingrediente</h1>
+        <div class="container-edicion">                             <!-- Contenedor de los campos de edicion ingrediente -->    
             <label for="nombre-ingrediente">Nombre del ingrediente*</label>
             <input type="text" id="nombre-ingrediente" name="nombre-ingrediente" placeholder="Escribir">
 
@@ -85,7 +86,7 @@
             </div>
         </div>
 
-        <div class="container-botones-edicion">
+        <div class="container-botones-edicion">             <!-- Contenedor de los botones de guardar y descartar cambios -->
             <button class="boton-primario boton-guardar">Guardar cambios</button>
             <button class="boton-secundario boton-descartar">Descartar cambios</button>
         </div>
