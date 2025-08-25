@@ -28,6 +28,12 @@ a {
     color: var(--color-texto-primario)
 }
 
+/* Estilo para el contenedor general de todos los contenidos
+    redefinir en cada archivo propio las dimensiones */
+.contenedor-general{
+
+}
+
 @media (max-width: 400px) {             /*Solucion a overlapping de footer con la vista*/
     body {
         padding-bottom: 2rem;
