@@ -1,6 +1,6 @@
 /* Estilos de la vista en general */
 main {
-  margin: 2rem;
+  margin: 2rem 5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -14,12 +14,22 @@ h1 {
   color: var(--color-texto-secundario);
 }
 
+.contenedor-general_especifico {
+  padding: 1rem;
+}
+
 /* Seccion: Descripción del plato */
 .editar-plato {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 3rem;
   padding: 1rem;
+}
+
+.textarea-descripcion {
+  width: 100%;
+  height: 8rem; /* ajustá la altura inicial */
+  resize: vertical; /* solo permite agrandar verticalmente */
 }
 
 .editar-plato__imagen {
@@ -35,8 +45,4 @@ h1 {
   object-fit: cover; /* Ocupa todo sin deformarse */
 }
 
-.textarea-descripcion {
-  width: 100%;   /* o el tamaño en px que quieras */
-  height: 120px; /* ajustá la altura inicial */
-  resize: vertical; /* opcional: solo permite agrandar verticalmente */
-}
+/* Seccion: Costos del plato */

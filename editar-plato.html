@@ -89,36 +89,36 @@
         </section>
 
         <!-- Costos del plato -->
-        <section class="contenedor-general costos-plato">
+        <section class="contenedor-general contenedor-general_especifico">
             <h2>Costos</h2>
             <div class="label-input">
                 <label for="precio">Precio Base*</label>
-                <input type="number" name="precioBase" placeholder="Escribir" required>
+                <input type="number" id="precio" placeholder="Escribir" required>
             </div>
 
             <div class="label-input">
-                <label class="switch">
-                    <span class="text-container">
-                        <span class="title"><b>Plato de Autor</b></span>
-                        <span class="subtitle">Aplica un porcentaje adicional al precio de venta</span>
+                <label class="switch" for="platoDeAutor">
+                    <span class="contenedor-texto">
+                        <span class="titulo-label"><b>Plato de Autor</b></span>
+                        <span class="subtitulo-label">Aplica un porcentaje adicional al precio de venta</span>
                     </span>
-                    <input type="checkbox" name="platoDeAutor">
+                    <input type="checkbox" id="platoDeAutor">
                     <span class="slider"></span>
                 </label>
 
-                <label class="switch">
-                    <span class="text-container">
-                        <span class="title"><b>Plato en Promoción</b></span>
-                        <span class="subtitle">Aplica un descuento al precio de venta</span>
+                <label class="switch" for="platoDePromocion">
+                    <span class="contenedor-texto">
+                        <span class="titulo-label"><b>Plato en Promoción</b></span>
+                        <span class="subtitulo-label">Aplica un descuento al precio de venta</span>
                     </span>
-                    <input type="checkbox" name="platoDePromocion">
+                    <input type="checkbox" id="platoDePromocion">
                     <span class="slider"></span>
                 </label>
             </div>
         </section>
 
         <!-- Detalle de los ingredientes -->
-        <section class="contenedor-general detalle-ingredientes">
+        <section class="contenedor-general contenedor-general_especifico">
             <h2>Ingredientes</h2>
             <div class="costo-produccion">
                 <h3 class="subtitulo">Costo de producción</h3><span>$ 100</span>
