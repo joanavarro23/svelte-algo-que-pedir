@@ -100,3 +100,12 @@ tr:last-child td {
 /* FALTA MEDIA QUERIES */
 /* se va la descripcion de los checkbox
 los botones se centran en el medio y un space between */
+@media (max-width: 400px) {  
+  .botones-juntos {
+    justify-content: space-between;
+  }
+
+  .subtitulo-label {
+    display: none;
+  }
+}
