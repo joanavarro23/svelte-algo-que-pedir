@@ -18,17 +18,18 @@ body {
     border-radius: 25px;
 }
 
-.login-container {
-    padding: 3rem 2.5rem;
-    border-radius: 1rem;
-    width: 100%;
-    max-width: 500px;
-    text-align: center;
-}
 
 .form-group {
     text-align: left;
     margin-bottom: 0;
+}
+
+.login-container {
+    padding: 3rem 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: none;
 }
 
 .form-group label {
@@ -103,3 +104,21 @@ a {
     height: 30px;
     padding-top: 0.3rem;
 }
+
+@media (max-width: 768px) {
+    .login-container {
+        box-shadow: none;
+    }
+    .logo-section{
+        gap: 1rem;
+    }
+}
+
+
+@media (min-width: 769px) {
+    .login-container {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    }
+}
+
+
