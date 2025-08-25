@@ -44,11 +44,11 @@ button:hover {
     cursor: pointer;
 }
     /* Estilo del texto */
-.switch span.text-container {
+.switch span.contenedor-texto {
     display: flex;
     flex-direction: column;
 }
-.switch span.text-container .subtitle {
+.switch span.contenedor-texto .subtitulo-label {
     font-size: 0.8rem;
     color: var(--color-texto-secundario);
 }
