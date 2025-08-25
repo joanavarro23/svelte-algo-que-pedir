@@ -82,3 +82,21 @@ tr:last-child td {
 .icono {
     text-align: center;
 }
+
+/* Botones - cuestiones especificas */
+/* Estilo de los botones: primerios y secundarios */
+.boton {
+    padding: 0.5rem 1rem;  /*---- c/u lo definira en su vista*/
+    border-radius: 0.4rem; /* ---- Hay botones mas redondeados o cuadrados asi que el border radius gral no estaria bueno*/
+}
+    /* Si los botones estan juntos tienen otra ubicación */
+.botones-juntos {           
+    display: flex;              /*--- Es buena idea pero si el contenedor ppal de la vista tiene algun estilo particular, rompe*/
+    justify-content: flex-end;  /*--- En perfil-local el contenedor ppal es flex+column y esto por si solo no le funciona xq no ocupa el 100% de width c/elemento, le tuvo que agregar otra configuracion mas*/        
+    gap: 0.7rem;                /*--- Basicamente esta muy atado a como se implemento el html y capaz puede o no servir*/        
+}
+
+
+/* FALTA MEDIA QUERIES */
+/* se va la descripcion de los checkbox
+los botones se centran en el medio y un space between */
