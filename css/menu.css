@@ -55,3 +55,19 @@
         display: none;
     }
 }
+
+/* Media Query tablet */
+@media (401px <= width <= 768px) {
+    .menu-container {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+/* Media Query desktop */
+@media (min-width: 769px) {
+    .menu-container {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}
