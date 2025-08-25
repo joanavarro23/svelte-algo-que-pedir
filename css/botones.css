@@ -1,0 +1,86 @@
+/* Estilo de los botones: primerios y secundarios */
+button {                        
+    border: none;
+    font-size: 1rem;
+}
+
+.boton-primario {
+    background-color: var(--color-principal);
+    color: var(--color-secundario);
+}
+
+.boton-secundario {
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+    border: 1px solid var(--color-principal);
+}
+
+/* Combinación de título h1 y botón, se usa en gestión del MENU e INGREDIENTES */
+.titulo-boton {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    background-color: var(--color-secundario)
+}
+
+    /* Sombra cuando se pasa por arriba */
+button:hover {
+  box-shadow: 2px 5px 2px 0 rgba(0,0,0,0.2);
+}
+
+/* ################################################## */
+
+/* Estilo para boton deslizante */
+    /* Contenedor del toggle */
+.switch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+    /* Estilo del texto */
+.switch span.text-container {
+    display: flex;
+    flex-direction: column;
+}
+.switch span.text-container .subtitle {
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario);
+}
+    /* Ocultar el checkbox real */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+    /* Slider personalizado */
+.slider {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+    /* Circulo dentro del slider */
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    top: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+    /* Efecto cuando el checkbox está activo */
+.switch input:checked + .slider {
+    background-color: var(--color-principal);
+}
+.switch input:checked + .slider::before {
+    transform: translateX(20px);
+}
