@@ -3,7 +3,6 @@
 .label-input {          /* ----- No sabemos dónde está pero es una clase asi que todo bien*/
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
 }
 label {
     margin: 0.5rem 0;   /*  ---- Deberia ser definido c/u en su vista*/
