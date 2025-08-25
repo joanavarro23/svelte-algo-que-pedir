@@ -118,6 +118,7 @@ h3{
     align-items: center;
     margin-bottom: 1rem;
     background-color: var(--color-fondo-secundario);
+    font-size: 95%;
 }
 
 .estado-container h2 {
@@ -131,4 +132,72 @@ h3{
     width: 10rem;
     border-radius: 1rem;
     padding: 0 5rem;
+}
+
+@media (max-width: 768px) {
+
+    .cliente-info {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .tabla-pago {
+        grid-template-columns: 1fr;
+    }
+
+    header iframe {
+        position:fixed;
+        bottom:0;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 400px) {
+    td img{
+        display:none;
+    }
+    td small{
+        display:none;
+    }
+
+    section{
+        width: 95%; 
+        margin: inherit auto;
+    }
+
+    body{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .cliente-info {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    main {
+        max-width: 90%;
+        padding: 10px;
+        margin: inherit auto;
+    }
+
+    .estado-container {
+        font-size: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .estado-container div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .estado-icono {
+        width: auto;
+        padding: 0 2rem;
+    }
 }
