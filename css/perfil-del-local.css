@@ -1,7 +1,3 @@
-body {
-  background-color: #f0f0f0;
-}
-
 .contenedor-principal {
   display: flex;
   flex-direction: column;
@@ -13,6 +9,11 @@ body {
 
 .titulo-principal {
   width: 100%;
+  margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4 {
+  margin-bottom: 8px;
 }
 
 .card {
@@ -32,10 +33,11 @@ body {
 }
 
 .card input {
-  padding: 8px;
+  padding: 12px;
   border: 1px solid var(--color-bordes);
   border-radius: 4px;
   width: 90%;
+  margin: 6px 0px;
 }
 
 .inputs-local {
@@ -60,15 +62,6 @@ body {
   margin-bottom: 12px;
 }
 
-.porcentajes {
-  width: 60vw;
-  margin: 0px auto;
-  padding: 16px;
-  border: 1px solid var(--color-bordes);
-  border-radius: 8px;
-  background-color: #fff;
-}
-
 .metodos-de-pago {
   display: flex;
   gap: 16px;
@@ -80,7 +73,7 @@ body {
   gap: 4px;
 }
 
-.botones-juntos {
+.button {
   display: flex;
   justify-content: flex-end;
   gap: 0.6rem;
@@ -93,6 +86,7 @@ body {
 .contenedor-principal {
   justify-content: center;
   align-items: center;
+  width: 75%;
 }
 
 .titulo-principal {
@@ -102,6 +96,7 @@ body {
 }
 
 .card, .card-inputs {
+  width: 95%;
   display: flex;
   flex-direction: column;
   font-size: 0.8rem;
@@ -112,6 +107,16 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.2rem;
+}
+
+.button {
+  margin-bottom: 2rem;
+  margin-top: -0.5rem;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 1.1em;
 }
 }
 
@@ -128,17 +133,8 @@ body {
   margin-bottom: 1rem;
 }
 
-.card {
-  width: 95%;
-}
 
 .card-inputs {
   font-size: 0.8rem;
 }
 }
-
-/* @media (400px <= width <= 500) {
-body {
-  background-color: blue;
-}
-} */
