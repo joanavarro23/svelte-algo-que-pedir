@@ -2,7 +2,7 @@
 
 <head>
     <title>Detalle del Pedido</title>
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="css/botones.css">
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/detallePedido.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
             <div class="cliente-info">
                 <h2>Cliente</h2>
                 <div class="cliente-content">
-                    <img src="assets/usuario.svg" class="icono" alt="Sofia Miller" width="40" height="40">
+                    <img src="assets/usuario.svg" class="icono" alt="Cliente" width="40" height="40">
                     <p class="cliente-text">
                         <strong>Sofia Miller</strong>
                         <small><b>usuario</b> smiller2005</small>
@@ -36,7 +36,7 @@
             <div class="cliente-info">
                 <h2>Dirección de entrega</h2>
                 <div class="cliente-content">
-                    <img src="assets/usuario.svg" class="icono" alt="Sofia Miller" width="40" height="40">
+                    <img src="assets/pin-ubicacion.svg" class="icono" alt="Ubicacion" width="40" height="40">
                     <p class="cliente-text">
                         Av siempre viva 555<br>
                         Lp 05, 1798 Tay - 19-09047
@@ -94,30 +94,30 @@
             </div>
         </section>
         <section class ="seccion-detalle-pedido">
-            <div>
+            <div class="tabla-pago-container">
                 <h3>Pago</h3>
-                <table class="tabla-pago">
-                    <tr>
-                        <td>Subtotal</td>
-                        <td>$20.00</td>
-                    </tr>
-                    <tr>
-                        <td>Comisión del delivery</td>
-                        <td>$2.00</td>
-                    </tr>
-                    <tr>
-                        <td>Incremento por tipo de pago</td>
-                        <td>$1.10</td>
-                    </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td>$23.10</td>
-                    </tr>
-                </table>
+                <div class="tabla-pago">
+                    <div class="fila-pago">
+                        <p>Subtotal</p>
+                        <p>$20.00</p>
+                    </div>
+                    <div class="fila-pago">
+                        <p>Comisión del delivery</p>
+                        <p>$2.00</p>
+                    </div>
+                    <div class="fila-pago">
+                        <p>Incremento por tipo de pago</p>
+                        <p>$1.10</p>
+                    </div>
+                    <div class="fila-pago">
+                        <p>Total</p>
+                        <p>$23.10</p>
+                    </div>
+                </div>
             </div>
             <h3>Método de Pago</h3>
             <div class="metodo-pago">
-                <img src="assets/pescado-papas-fritas.png" class="icono" alt="Refresco" width="50" height="50">
+                <img src="assets/tarjeta-credito.svg" class="icono" alt="Metodo de pago" width="40" height="40">
                 <p>Pago con tarjeta de crédito</p>
             </div> 
         </section>

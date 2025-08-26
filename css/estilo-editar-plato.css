@@ -1,22 +1,111 @@
+/* Estilos de la vista en general */
+main {
+  margin: 2rem;
+  /* margin: 2rem 5rem; */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+h1 {
+  margin-left: 1rem;
+}
+
+.subtitulo {
+  color: var(--color-texto-secundario);
+}
+
+.contenedor-general_especifico {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: .8rem;
+}
+
+/* Seccion: Descripción del plato */
 .editar-plato {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 2rem;
-}
-.detalles-plato{
-    /* width: 100%; */
-    flex: 1 1 200px;
-    min-width: 300px;
-}
-.foto{
-  height: auto;
-  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  padding: 1rem;
 }
 
 .textarea-descripcion {
-  width: 100%;   /* o el tamaño en px que quieras */
-  height: 120px; /* ajustá la altura inicial */
-  resize: vertical; /* opcional: solo permite agrandar verticalmente */
+  width: 100%;
+  height: 8rem; /* ajustá la altura inicial */
+  resize: vertical; /* solo permite agrandar verticalmente */
+}
+
+.editar-plato__imagen {
+  width: 100%;
+  height: auto;
+  border-radius: 2rem;
+  overflow: hidden; /* Se recorta lo que "sobra" */
+}
+
+.foto{
+  height: 100%;
+  border-radius: 2rem;
+  object-fit: cover; /* Ocupa todo sin deformarse */
+}
+
+/* Seccion: Detalle de los ingredientes - TABLA */
+.contenedor_titulo-span{
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+  margin-bottom: 1rem;
+}
+
+.contenedor-tabla {
+    border: 1px solid var(--color-bordes);
+    border-radius: 0.8rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+td, th {
+  text-align: start;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--color-bordes);
+}
+
+  /* Sin borde inferior en última fila */
+tr:last-child td { 
+  border-bottom: none;
+}
+
+.icono {
+    text-align: center;
+}
+
+/* Botones - cuestiones especificas */
+/* Estilo de los botones: primerios y secundarios */
+.boton {
+    padding: 0.5rem 1rem;  /*---- c/u lo definira en su vista*/
+    border-radius: 0.4rem; /* ---- Hay botones mas redondeados o cuadrados asi que el border radius gral no estaria bueno*/
+}
+    /* Si los botones estan juntos tienen otra ubicación */
+.botones-juntos {           
+    display: flex;              /*--- Es buena idea pero si el contenedor ppal de la vista tiene algun estilo particular, rompe*/
+    justify-content: flex-end;  /*--- En perfil-local el contenedor ppal es flex+column y esto por si solo no le funciona xq no ocupa el 100% de width c/elemento, le tuvo que agregar otra configuracion mas*/        
+    gap: 0.7rem;                /*--- Basicamente esta muy atado a como se implemento el html y capaz puede o no servir*/        
+}
+
+
+/* FALTA MEDIA QUERIES */
+/* se va la descripcion de los checkbox
+los botones se centran en el medio y un space between */
+@media (max-width: 400px) {  
+  .botones-juntos {
+    justify-content: space-between;
+  }
+
+  .subtitulo-label {
+    display: none;
+  }
 }

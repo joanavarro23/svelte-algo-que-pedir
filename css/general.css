@@ -1,12 +1,6 @@
 /* HOJA DE ESTILOS GENERALES */
 
-/* Ideas: 
-- Un estilo general podria ser agregarle al * (con ese selector agarra todos los elementos) que haya 
-margin y padding 0 para TODA LA PAGINA asi lo definimos nosotros en c/u de nuestras clases? Si el navegador agrega
-margins o paddings que no contemplamos nos podria romper las vistas.
-*/
-
- * {
+ * {                /*Diferencia entre * y agregar margin/padding al body*/
     margin: 0;
     padding: 0;
 }
@@ -26,8 +20,6 @@ body {
     font-family: "Nata Sans", sans-serif;
     font-size: 100%;
     background-color: var(--color-fondo);
-    margin: 0;
-    padding: 0;
 }
 
 /* Estilo para los links */
@@ -36,43 +28,11 @@ a {
     color: var(--color-texto-primario)
 }
 
-/* Color de los titulos, subtitulos y encabezados */
-h1, h2, h4 {
-    color: var(--color-texto-primario);
-    margin: 0px;
-}
-
-h3 {
-  color: var(--color-texto-secundario);
-  margin: 0px;
-}
-
-/* Estilo de los botones: primerios y secundarios */
-button {
-    border: none;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.4rem;
-}
-
-.boton-primario {
-    background-color: var(--color-principal);
-    color: var(--color-secundario);
-}
-
-.boton-secundario {
-    background-color: var(--color-secundario);
-    color: var(--color-principal);
-    border: 1px solid var(--color-principal);
-}
-
-/* Combinación de título h1 y botón, se usa en gestión del menú e ingredientes */
-.titulo-boton {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
-    background-color: var(--color-secundario)
+/* Estilo para el contenedor general de todos los contenidos
+    redefinir en cada archivo propio las dimensiones */
+.contenedor-general{
+    background-color: var(--color-secundario); /*---- Depende como hayamos hecho el html c/u pero no deberia ser fijo*/
+    border-radius: 0.5rem; 
 }
 
 @media (max-width: 400px) {             /*Solucion a overlapping de footer con la vista*/

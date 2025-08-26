@@ -69,7 +69,9 @@
 }
 
 .botones-juntos {
-  margin: 16px auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
   width: 100%;
 }
 
