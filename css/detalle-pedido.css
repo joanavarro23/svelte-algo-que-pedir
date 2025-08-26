@@ -25,7 +25,6 @@ h3{
 
 table {
     width: 100%;
-    border-collapse: collapse;
 }
 
 td, th {
@@ -36,6 +35,10 @@ td, th {
 
 tr:last-child td {
     border-bottom: none;
+}
+
+table{
+    border-collapse: collapse;
 }
 
 section {
@@ -178,6 +181,10 @@ section {
         position:fixed;
         bottom:0;
     }
+
+    body{
+        padding-bottom: 64px;
+    }
 }
 
 @media (min-width: 0px) and (max-width: 400px) {
@@ -194,9 +201,9 @@ section {
     }
 
     body{
-        padding: 0;
         margin: 0;
         width: 100%;
+
     }
 
     .cliente-info {
