@@ -38,7 +38,7 @@ button:hover {
     /* Contenedor del toggle */
 .switch {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;     /*--- Esta propiedad CHOCA con vista ingredientes-edicion*/
     align-items: center;
     width: 100%;
     cursor: pointer;
