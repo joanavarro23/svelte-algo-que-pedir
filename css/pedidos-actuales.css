@@ -109,7 +109,6 @@
     .container-principal {
         gap: 1rem;
         margin: 2rem 1rem;
-        padding-bottom: 2rem;           /*Padding-bottom para evitar el choque con footer*/
     }
     
     .container-estados {
@@ -122,4 +121,5 @@
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+
 }

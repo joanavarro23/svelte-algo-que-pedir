@@ -1,0 +1,72 @@
+/* Vista Mobile */
+.vista-edicion-ingrediente {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5rem 2rem;
+}
+
+.titulo-edicion {
+    align-self: flex-start;
+    color: var(--color-texto-primario);
+}
+
+.container-edicion {
+    margin: 2rem 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-secundario);
+    border-radius: 0.8rem;
+}
+
+.container-edicion input,
+.container-edicion select {
+    height: 2.5rem;
+    padding: 0.1rem 0.5rem;
+}
+
+.origen-toggle {                /* Espaciado entre contenedor toggle e inputs de arriba */
+    margin: 1rem 0;           
+}
+
+.origen-toggle .slider {        /* Espaciado entre laberl Origen animal y toggle */
+    margin-left: 1rem;
+}
+
+.container-botones-edicion {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Vista Tablet */
+@media (min-width: 401px) and (max-width: 769px) {
+    .vista-edicion-ingrediente{
+        margin: 5rem 4rem;
+    }
+    .container-edicion {
+        padding: 1rem 7rem;
+    }
+    
+    .container-botones-edicion {
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+}
+
+
+/* Vista Desktop */
+@media (min-width: 770px) {
+    .vista-edicion-ingrediente{
+        margin: 5rem 5rem;
+    }
+
+    .container-edicion {
+        padding: 1rem 9rem;
+    }
+    
+    .container-botones-edicion {
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+} 
