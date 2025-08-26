@@ -43,3 +43,31 @@
     align-items: center;
     flex-basis: 3rem;
 }
+
+/* Descripción del plato del menú */
+.descripcion-plato {
+    font-weight: 130;
+}
+
+/* Media Query mobile */
+@media (max-width: 400px) {    
+    .descripcion-plato {
+        display: none;
+    }
+}
+
+/* Media Query tablet */
+@media (401px <= width <= 768px) {
+    .menu-container {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+/* Media Query desktop */
+@media (min-width: 769px) {
+    .menu-container {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}
