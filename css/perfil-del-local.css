@@ -133,8 +133,8 @@ h1 {
   margin-bottom: 1rem;
 }
 
-
-.card-inputs {
+.card, .card-inputs {
+  width: 95%;
   font-size: 0.8rem;
 }
 }
