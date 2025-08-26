@@ -49,6 +49,10 @@ h1 {
   object-fit: cover; /* Ocupa todo sin deformarse */
 }
 
+/* Seccion: Costos del plato */
+.switch-separacion {
+  justify-content: space-between;
+}
 /* Seccion: Detalle de los ingredientes - TABLA */
 .contenedor_titulo-span{
   display: flex;
@@ -84,22 +88,18 @@ tr:last-child td {
 }
 
 /* Botones - cuestiones especificas */
-/* Estilo de los botones: primerios y secundarios */
+/* Estilo de los botones: primarios y secundarios */
 .boton {
-    padding: 0.5rem 1rem;  /*---- c/u lo definira en su vista*/
-    border-radius: 0.4rem; /* ---- Hay botones mas redondeados o cuadrados asi que el border radius gral no estaria bueno*/
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
 }
     /* Si los botones estan juntos tienen otra ubicación */
 .botones-juntos {           
-    display: flex;              /*--- Es buena idea pero si el contenedor ppal de la vista tiene algun estilo particular, rompe*/
-    justify-content: flex-end;  /*--- En perfil-local el contenedor ppal es flex+column y esto por si solo no le funciona xq no ocupa el 100% de width c/elemento, le tuvo que agregar otra configuracion mas*/        
-    gap: 0.7rem;                /*--- Basicamente esta muy atado a como se implemento el html y capaz puede o no servir*/        
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.7rem;
 }
 
-
-/* FALTA MEDIA QUERIES */
-/* se va la descripcion de los checkbox
-los botones se centran en el medio y un space between */
 @media (max-width: 400px) {  
   .botones-juntos {
     justify-content: space-between;
