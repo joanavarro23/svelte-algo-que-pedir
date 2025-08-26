@@ -13,6 +13,25 @@
 
 .container-edicion {
     margin: 2rem 0;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
+    background-color: var(--color-secundario);
+}
+
+.container-edicion  input {
+    height: 1.5rem;
+}
+
+.origen-toggle {                /* Espaciado entre contenedor toggle e inputs de arriba */
+    margin: 1rem 0;           
+}
+
+.origen-toggle .slider {        /* Espaciado entre laberl Origen animal y toggle */
+    margin-left: 1rem;
+}
+
+.container-botones-edicion {
+    display: flex;
+    justify-content: space-between;
 }

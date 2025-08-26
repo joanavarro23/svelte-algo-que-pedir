@@ -59,10 +59,10 @@
         <h1 class="titulo-edicion">Editar ingrediente</h1>
         <div class="container-edicion">                             <!-- Contenedor de los campos de edicion ingrediente -->    
             <label for="nombre-ingrediente">Nombre del ingrediente*</label>
-            <input type="text" id="nombre-ingrediente" name="nombre-ingrediente" placeholder="Escribir">
+            <input type="text" id="nombre-ingrediente" name="nombre-ingrediente" placeholder="Escribir" required>
 
             <label for="costo-ingrediente">Costo*</label>
-            <input type="number" id="costo-ingrediente" name="costo-ingrediente" placeholder="Escribir">
+            <input type="number" id="costo-ingrediente" name="costo-ingrediente" placeholder="Escribir" required>
 
             <label for="grupo-alimenticio">Grupo Alimenticio</label>
             <select name="grupo-alimenticio" id="grupo-alimenticio">
@@ -77,9 +77,7 @@
 
             <div class="origen-toggle">         <!-- Implementacion del toggle adaptado -->
                 <label class="switch">
-                    <span class="text-container">
-                        <span class="origen-animal">Origen animal</span>
-                    </span>
+                    <span class="origen-animal">Origen animal</span>
                     <input type="checkbox" name="origen-animal">
                     <span class="slider"></span>
                 </label>
@@ -87,8 +85,8 @@
         </div>
 
         <div class="container-botones-edicion">             <!-- Contenedor de los botones de guardar y descartar cambios -->
-            <button class="boton-primario boton-guardar">Guardar cambios</button>
-            <button class="boton-secundario boton-descartar">Descartar cambios</button>
+            <button class="boton-primario boton-guardar">Guardar</button>
+            <button class="boton-secundario boton-descartar">Descartar</button>
         </div>
     </main>
 </body>
