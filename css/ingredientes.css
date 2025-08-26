@@ -1,0 +1,121 @@
+/* Container general ingredientes */
+.ingrediente-container {
+    max-width: 100%;
+    padding: 1rem 2rem;
+}
+
+/* Estilo del título y botón de agregar ingrediente */
+.titulo-boton h1 {
+    flex-basis: 270px;
+}
+
+/* Container de la tabla de ingredientes */
+.container-tabla-ingredientes {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(6, auto);
+    gap: 2rem 0.3rem;
+    padding: 0.7rem;
+    background-color: var(--color-secundario);
+    border: 0.2px solid var(--color-bordes);
+}
+
+/* Estilo de cabeceras titulo y precios */
+.cabecera-tabla {
+    justify-self: start;
+    align-self: center;
+    padding-bottom: 0.5rem;
+}
+
+/* Estilo de cabecera acciones */
+.cabecera-acciones {
+    justify-self: center;
+    align-self: center;
+    padding-bottom: 0.5rem;
+    font-weight: 150;
+}
+
+/* Estilo de celdas de la tabla */
+.celda-tabla {
+    justify-self: start;
+    align-self: center;
+}
+
+/* Estilo de celdas precios */
+.celda-precios {
+    justify-self: start;
+    align-self: center;
+    font-weight: 150;
+}
+
+/* Estilo de iconos acciones */
+.iconos-acciones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container de icono ojo y separador para sacar en media querys */
+.icono-ojo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.celda-alimenticio {
+    justify-self: start;
+    align-self: center;
+    font-weight: 150;
+}
+
+.cabecera-origen {
+    justify-self: center;
+    align-self: center;
+}
+
+.icono-origen {
+    justify-self: center;
+    align-self: center;
+    filter: invert(50%); /* Convierte los iconos al mismo color gris de pencil */
+}
+
+/* Media query mobile */
+@media (max-width: 400px) {
+    .cabecera-origen,
+    .cabecera-alimenticio,
+    .celda-alimenticio,
+    .icono-origen {
+        display: none;
+    }
+}
+
+/* Media query tablet */
+@media (401px <= width <= 768px) {
+    .ingrediente-container {
+        margin-left: 5%;
+        margin-right: 5%
+    }
+
+    .container-tabla-ingredientes {
+        grid-template-columns: repeat(5, auto);
+    }
+}
+
+/* Media query desktop */
+@media (min-width: 769px) {
+    .ingrediente-container {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .container-tabla-ingredientes {
+        grid-template-columns: repeat(5, auto);
+    }
+}
+
+/* Ocultar icono de ojo en tablet y desktop */
+@media (min-width: 401px) {
+    .icono-ojo {
+        display: none;
+    }
+}
