@@ -1,5 +1,5 @@
 /* Vista Mobile */
-.vista-edicion-ingrediente {
+.vista-edicion-ingrediente {    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,8 +19,10 @@
     background-color: var(--color-secundario);
 }
 
-.container-edicion  input {
-    height: 1.5rem;
+.container-edicion input,
+.container-edicion select {
+    height: 2.5rem;
+    padding: 0.1rem 0.5rem;
 }
 
 .origen-toggle {                /* Espaciado entre contenedor toggle e inputs de arriba */
@@ -35,3 +37,14 @@
     display: flex;
     justify-content: space-between;
 }
+
+/* Vista Tablet */
+@media (min-width: 401px) and (max-width: 769px) {
+
+}
+
+
+/* Vista Desktop */
+@media (max-width: 769px) {
+
+} 
