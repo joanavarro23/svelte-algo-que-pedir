@@ -106,16 +106,13 @@ a {
 }
 
 @media (max-width: 768px) {
-    .login-container {
-        box-shadow: none;
-    }
     .logo-section{
         gap: 1rem;
     }
 }
 
 
-@media (min-width: 769px) {
+@media (min-width: 401px) {
     .login-container {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     }

@@ -207,10 +207,6 @@ section {
         margin: inherit auto;
     }
     
-    header iframe {
-        position:fixed;
-        bottom:0;
-    }
     .estado-container {
         font-size: 100%;
         flex-direction: column;
