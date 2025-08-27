@@ -87,11 +87,6 @@ tr:last-child td {
 }
 
 /* Botones - cuestiones especificas */
-/* Estilo de los botones: primarios y secundarios */
-.boton {
-    padding: 0.5rem 1rem;
-    border-radius: 0.4rem;
-}
     /* Si los botones estan juntos tienen otra ubicación */
 .botones-juntos {           
     display: flex;

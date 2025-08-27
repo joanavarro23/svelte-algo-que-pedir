@@ -3,7 +3,7 @@ button {
     border: none;
     font-size: 1rem;
     padding: 0.5rem 1rem;
-    border-radius: 0.4rem;
+    border-radius: 10px;
 }
 
 .boton-primario {
@@ -38,7 +38,6 @@ button:hover {
     /* Contenedor del toggle */
 .switch {
     display: flex;
-    /* justify-content: space-between;     --- Esta propiedad CHOCA con vista ingredientes-edicion */
     align-items: center;
     width: 100%;
     cursor: pointer;
