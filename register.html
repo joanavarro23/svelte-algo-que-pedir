@@ -12,35 +12,37 @@
         <link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="login-container">
-            <div class="logo-section">
-                <img class="logo-image" src="assets/logo.svg" alt="Logo Algo que Pedir">
-                <h1 class="app-name">Crea tu cuenta</h1>
-            </div>
-            <form>
-                <div class="form-group">
-                    <label for="usuario">Usuario</label>
-                    <input type="text" id="usuario" name="usuario" placeholder="Escribir" required>
+        <main>
+            <section class="login-container">
+                <div class="logo-section">
+                    <img class="logo-image" src="assets/logo.svg" alt="Logo Algo que Pedir">
+                    <h1 class="app-name">Crea tu cuenta</h1>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="password-container">
-                        <input type="password" id="password" name="password" placeholder="Escribir" required>
-                        <button type="button" class="password-toggle"><img class="icono" src="assets/eye.svg"></button>
+                <form class="form-container">
+                    <div class="form-group">
+                        <label for="usuario">Usuario</label>
+                        <input type="text" id="usuario" class="form-input" name="usuario" placeholder="Escribir" required>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="confirm-password">Re-ingrese el Password</label>
-                    <div class="password-container">
-                        <input type="password" id="confirm-password" name="confirm-password" required>
-                        <button type="button" class="password-toggle"><img class="icono" src="assets/eye.svg"></button>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-container">
+                            <input type="password" id="password" class="form-input" name="password" placeholder="Escribir" required>
+                            <button type="button" class="password-toggle"><img class="icono" src="assets/eye.svg"></button>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <button class="login-button boton-primario" type="submit">Registrarse</button>
-                </div>
-            </form>
-            <p class="registrar-link">¿Ya tienes una cuenta? <a href="#">Inicia sesión</a></p>
-        </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Re-ingrese el Password</label>
+                        <div class="password-container">
+                            <input type="password" id="confirm-password" class="form-input" name="confirm-password" placeholder="Escribir" required>
+                            <button type="button" class="password-toggle"><img class="icono" src="assets/eye.svg"></button>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="login-button boton-primario" >Registrarse</button>
+                    </div>
+                </form>
+                <p class="registrar-link">¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+            </section>
+        </main>
     </body>
 </html>
