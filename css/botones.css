@@ -29,7 +29,7 @@ button {
 
     /* Sombra cuando se pasa por arriba */
 button:hover {
-  box-shadow: 2px 5px 2px 0 rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.2);
 }
 
 /* ################################################## */
