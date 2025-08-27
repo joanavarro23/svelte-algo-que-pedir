@@ -30,8 +30,9 @@ a {
 /* Estilo para el contenedor general de todos los contenidos
     redefinir en cada archivo propio las dimensiones */
 .contenedor-general{
-    background-color: var(--color-secundario); /*---- Depende como hayamos hecho el html c/u pero no deberia ser fijo*/
-    border-radius: 50px; 
+    background-color: var(--color-secundario);
+    border-radius: 20px; 
+    padding: 1rem;
 }
 
 @media (max-width: 400px) {             /*Solucion a overlapping de footer con la vista*/

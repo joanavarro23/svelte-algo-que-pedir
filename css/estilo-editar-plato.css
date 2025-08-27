@@ -18,7 +18,6 @@ h1 {
 .contenedor-general_especifico {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   gap: .8rem;
 }
 
