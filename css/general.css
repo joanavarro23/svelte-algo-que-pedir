@@ -36,7 +36,7 @@ a {
 }
 
 @media (max-width: 400px) {             /*Solucion a overlapping de footer con la vista*/
-    /* main-vista {                      ---- TODOS deberiamos tener un main con clase main-vista en el html
-        padding-bottom: 2rem;
-    } */
+    .main-vista {                        /*TODOS deberiamos tener un main con clase main-vista en el html */
+        margin-bottom: 4rem;
+    }
 } 
