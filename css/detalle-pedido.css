@@ -1,59 +1,67 @@
 main{
-    max-width: 80%;
+    max-width: 95%;
     display: block;
     margin: auto;
-    flex-direction: column;
     align-items: center;
     padding: 20px;
-}
-
-body {
     line-height: 1.5rem;
 }
 
-h2{
-    font-family: "Nata Sans", sans-serif;
+h2 {
     font-size: 1.2rem;
-    color: var(--color-texto-primario);
-    margin: 0.75rem 0;
 }
 
-h3{
-    margin: 0 0 0 0.75rem;
-    padding-top: 0.5rem;
+
+.contenedor-general {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1rem;
 }
 
-table {
-    width: 100%;
+.contenedor-info {
+    flex-direction: row;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.conteiner-table {
+    border: 1px solid var(--color-bordes);
+    border-radius: 0.8rem;
     border-spacing: 0;
+}
+
+table, td, th {
+    border-bottom: 1px solid var(--color-bordes);
 }
 
 td, th {
     text-align: start;
     padding: 0.8rem;
-    border-bottom: 1px solid var(--color-bordes);
 }
 
 tr:last-child td {
     border-bottom: none;
 }
 
+.plato-detalle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 section {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     padding: 0.5rem;
     background-color: var(--color-secundario);
     border-radius: 0.8rem;
 }
 
-.conteiner-table h2{
-    margin-left: 0.75rem;
-}
-
 .cliente-info {
-    display: inline-block;
-    vertical-align: top;
-    margin-left: 1rem;
-    width: 45%;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 0.5rem;
 }
 
 .cliente-content {
@@ -74,13 +82,6 @@ section {
     flex-direction: column;
     gap: 0.25rem;
     margin-top:0;
-}
-
-.conteiner-table {
-    margin-top: 0rem;
-    padding: 0rem;
-    border: 1px solid var(--color-bordes);
-    border-radius: 0.8rem;
 }
 
 .seccion-detalle-pedido{
@@ -106,26 +107,19 @@ section {
 }
 
 .tabla-pago-container {
+    box-sizing: border-box;
+    padding: 0.5rem 0.75rem;
     width: 100%;
+    line-height: 2rem;
 }
 
 .tabla-pago {
-    margin-left: 0.75rem;
     display: grid;
-    grid-template-columns: 1fr;
-}
-
-.fila-pago {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    box-sizing: border-box;
+    grid-template-columns: 1fr auto;
 }
 
 .metodo-pago {
     display: inline-flex;
-    padding-left: 0.75rem;
     gap:0.5rem;
 }
 
@@ -146,7 +140,6 @@ section {
     align-items: center;
     margin-bottom: 1rem;
     background-color: var(--color-fondo-secundario);
-    font-size: 95%;
 }
 
 .estado-container h2 {
@@ -162,31 +155,19 @@ section {
     padding: 0 5rem;
 }
 
+.icono {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 10px;
+}
+
 @media (max-width: 768px) {
-
-    .cliente-info {
-        width: 100%;
-        margin-left: 0;
-        margin-top: 1rem;
-    }
-
-    .tabla-pago {
-        grid-template-columns: 1fr;
-    }
 
 }
 
 @media (min-width: 0px) and (max-width: 400px) {
-    td img{
+    td img, td .desc-plato{
         display:none;
-    }
-    td small{
-        display:none;
-    }
-    
-    section{
-        width: 95%; 
-        margin: inherit auto;
     }
     
     body{
@@ -198,13 +179,16 @@ section {
     .cliente-info {
         width: 100%;
         margin-left: 0;
-        margin-top: 1rem;
+    }
+
+    .contenedor-info {
+        flex-direction: column;
+        gap: 0.5rem;
     }
     
     main {
         max-width: 90%;
         padding: 10px;
-        margin: inherit auto;
     }
     
     .estado-container {
