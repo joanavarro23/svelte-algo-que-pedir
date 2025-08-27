@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,7 +57,7 @@
                 </div>
             </nav>
     </header>   
-    <main>
+    <main class="main-vista">
         <section class="estado-container">
             <h1>Pedido #12345</h1>
             <div>
@@ -65,14 +65,14 @@
                 <span class="estado-icono">Pendiente</span>
             </div>
         </section>
-        <section class="seccion-detalle-pedido">
+        <section class="contenedor-general contenedor-info">
             <div class="cliente-info">
                 <h2>Cliente</h2>
                 <div class="cliente-content">
                     <img src="assets/usuario.svg" class="icono" alt="Cliente" width="40" height="40">
                     <p class="cliente-text">
-                        <strong>Sofia Miller</strong>
-                        <small><b>usuario</b> smiller2005</small>
+                        <span class="texto-principal">Sofia Miller</span>
+                        <span class="texto-secundario"><b>usuario</b> smiller2005</span>
                     </p>
                 </div>
                 
@@ -88,10 +88,9 @@
                 </div>
             </div>
         </section>
-        <section class ="seccion-detalle-pedido">
+        <section class ="contenedor-general">
             <h2>Resumen del Pedido</h2>
-            <div class="conteiner-table">
-                <table>
+            <table class="conteiner-table">
                     <thead>
                         <tr>
                             <th>Plato</th>
@@ -101,69 +100,56 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
+                            <td class="plato-detalle">
                                 <img src="assets/hamburguesa-con-queso.png" class="icono" alt="Hamburguesa" width="50" height="50">
                                 <div>
-                                    <strong>Hamburguesa con Queso</strong><br>
-                                    <small>Hamburguesa tradicional queso y papas fritas</small>
+                                    <span class="texto-principal">Hamburguesa con Queso</span><br>
+                                    <span class="texto-secundario">Hamburguesa clásica con queso y papas fritas</span>
                                 </div>
                             </td>
                             <td>1</td>
                             <td>$15.00</td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="plato-detalle">
                                 <img src="assets/alitas-picantes.png" class="icono" alt="Papas Fritas" width="50" height="50">
                                 <div>
-                                    <strong>Papas Fritas</strong><br>
-                                    <small>Papas naturales fritas crocantes</small>
+                                    <span class="texto-principal">Papas Fritas</span><br>
+                                    <span class="texto-secundario">Papas caseras fritas y crocantes</span>
                                 </div>
                             </td>
                             <td>1</td>
                             <td>$6.00</td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="plato-detalle">
                                 <img src="assets/pescado-papas-fritas.png" class="icono" alt="Refresco" width="50" height="50">
                                 <div>
-                                    <strong>Refresco</strong><br>
-                                    <small>Vaso natural refresca</small>
+                                    <span class="texto-principal">Refresco</span><br>
+                                    <span class="texto-secundario">Vaso natural refrescante</span>
                                 </div>
                             </td>
                             <td>1</td>
                             <td>$3.00</td>
                         </tr>
                     </tbody>
-                </table>
-            </div>
+            </table>
         </section>
-        <section class ="seccion-detalle-pedido">
+        <section class ="contenedor-general">
             <div class="tabla-pago-container">
                 <h3>Pago</h3>
-                <div class="tabla-pago">
-                    <div class="fila-pago">
-                        <p>Subtotal</p>
-                        <p>$20.00</p>
-                    </div>
-                    <div class="fila-pago">
-                        <p>Comisión del delivery</p>
-                        <p>$2.00</p>
-                    </div>
-                    <div class="fila-pago">
-                        <p>Incremento por tipo de pago</p>
-                        <p>$1.10</p>
-                    </div>
-                    <div class="fila-pago">
-                        <p>Total</p>
-                        <p>$23.10</p>
-                    </div>
-                </div>
-            </div>
+                <dl class="tabla-pago">
+                    <dt>Subtotal</dt> <dd>$20.00</dd>
+                    <dt>Comisión del delivery</dt> <dd>$2.00</dd>
+                    <dt>Incremento por tipo de pago</dt> <dd>$1.10</dd>
+                    <dt>Total</dt> <dd>$23.10</dd>
+                </dl>
             <h3>Método de Pago</h3>
             <div class="metodo-pago">
                 <img src="assets/tarjeta-credito.svg" class="icono" alt="Metodo de pago" width="40" height="40">
                 <p>Pago con tarjeta de crédito</p>
             </div> 
+            </div>
         </section>
         <div class="boton-volver">
             <button type="submit" class="boton-volver boton-primario">Volver</button>
