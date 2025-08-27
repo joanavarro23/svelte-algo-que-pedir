@@ -1,14 +1,15 @@
 main{
-    max-width: 95%;
+    max-width: 90%;
     display: block;
     margin: auto;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     line-height: 1.5rem;
 }
 
 h2 {
     font-size: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 
 
@@ -50,6 +51,16 @@ tr:last-child td {
     gap: 1rem;
 }
 
+.texto-principal {
+    color: var(--color-texto-primario);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.texto-secundario {
+    color: var(--color-texto-secundario);
+}
+
 section {
     margin-bottom: 1rem;
     padding: 0.5rem;
@@ -60,7 +71,7 @@ section {
 .cliente-info {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     gap: 0.5rem;
 }
 
@@ -138,7 +149,6 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
     background-color: var(--color-fondo-secundario);
 }
 
@@ -156,29 +166,14 @@ section {
 }
 
 .icono {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 10px;
 }
 
-@media (max-width: 768px) {
-
-}
-
 @media (min-width: 0px) and (max-width: 400px) {
-    td img, td .desc-plato{
+    td img, td .texto-secundario{
         display:none;
-    }
-    
-    body{
-        margin: 0;
-        width: 100%;
-        
-    }
-    
-    .cliente-info {
-        width: 100%;
-        margin-left: 0;
     }
 
     .contenedor-info {
@@ -186,13 +181,7 @@ section {
         gap: 0.5rem;
     }
     
-    main {
-        max-width: 90%;
-        padding: 10px;
-    }
-    
     .estado-container {
-        font-size: 100%;
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
