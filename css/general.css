@@ -10,7 +10,7 @@
     --color-secundario: #FFFFFF;
     --color-texto-primario: #000000;
     --color-texto-secundario: #3b3b3b;
-    --color-bordes: #838383;
+    --color-bordes: #dddddd;
     --color-fondo: whitesmoke;
     --color-parrafos: #97749d;
 }
@@ -36,7 +36,7 @@ a {
 }
 
 @media (max-width: 400px) {             /*Solucion a overlapping de footer con la vista*/
-    /* main-vista {                      ---- TODOS deberiamos tener un main con clase main-vista en el html
-        padding-bottom: 2rem;
-    } */
+    .main-vista {                        /*TODOS deberiamos tener un main con clase main-vista en el html */
+        margin-bottom: 4rem;
+    }
 } 
