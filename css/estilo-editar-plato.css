@@ -18,7 +18,6 @@ h1 {
 .contenedor-general_especifico {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   gap: .8rem;
 }
 
@@ -33,7 +32,7 @@ h1 {
 .textarea-descripcion {
   width: 100%;
   height: 8rem; /* ajustá la altura inicial */
-  resize: vertical; /* solo permite agrandar verticalmente */
+  resize: none; /* solo permite agrandar verticalmente */
 }
 
 .editar-plato__imagen {
@@ -88,11 +87,6 @@ tr:last-child td {
 }
 
 /* Botones - cuestiones especificas */
-/* Estilo de los botones: primarios y secundarios */
-.boton {
-    padding: 0.5rem 1rem;
-    border-radius: 0.4rem;
-}
     /* Si los botones estan juntos tienen otra ubicación */
 .botones-juntos {           
     display: flex;

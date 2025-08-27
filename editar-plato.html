@@ -14,7 +14,8 @@
     <!-- Archivo para fuente -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&display=swap" rel="stylesheet">
-
+    <!-- Script para los iconos -->
+    <!-- <script src="https://unpkg.com/@phosphor-icons/web"></script> -->
 </head>
 <body>
     <header class="header-pagina">
@@ -68,12 +69,12 @@
             <div>
                 <div class="label-input">
                     <label for="nombre">Nombre del plato*</label>
-                    <input type="text" id="nombre" placeholder="Hamburguesa triple completa" max="25" required>
+                    <input type="text" id="nombre" value="Hamburguesa con cheddar y cebolla" maxlength="30" required>
                 </div>
         
                 <div class="label-input">
                     <label for="descripcion">Descrpción*</label>
-                    <textarea class="textarea-descripcion" id="descripcion" placeholder="Hamburguesa triple con una deliciona cebolla morada salteada que junto con el acompañamiento de lechuga, tomate y cheddar generan una sencación única e inigualable. Viene con adherezos."></textarea>
+                    <textarea class="textarea-descripcion" id="descripcion">Breve descripción de los ingredientes o preparación del plato</textarea>
                 </div>
         
                 <div class="label-input">
@@ -93,7 +94,7 @@
             <h2>Costos</h2>
             <div class="label-input">
                 <label for="precio">Precio Base*</label>
-                <input type="number" id="precio" placeholder="Escribir" required>
+                <input type="number" id="precio" placeholder="Ej: 500" min="0" required>
             </div>
 
             <div>
@@ -139,25 +140,41 @@
                             <td>Carne de Red</td>
                             <td>Proteínas</td>
                             <td class="icono"><img src="assets/cow.svg"></td>
-                            <td class="icono"><img src="assets/trash.svg"></td>
+                            <td class="icono">
+                                <button class="boton-icono" type="button" aria-label="Eliminar">
+                                    <img src="assets/trash.svg" alt="">
+                                </button>
+                            </td>
                         </tr>
                         <tr>
                             <td>Queso Cheddar</td>
                             <td>Lácteos</td>
                             <td class="icono"><img src="assets/cow.svg"></td>
-                            <td class="icono"><img src="assets/trash.svg"></td>
+                            <td class="icono">
+                                <button class="boton-icono" type="button" aria-label="Eliminar">
+                                    <img src="assets/trash.svg" alt="">
+                                </button>
+                            </td>
                         </tr>
                         <tr>
                             <td>Lechuga</td>
                             <td>Frutas y verduras</td>
                             <td class="icono"><img src="assets/palta.svg"></td>
-                            <td class="icono"><img src="assets/trash.svg"></td>
+                            <td class="icono">
+                                <button class="boton-icono" type="button" aria-label="Eliminar">
+                                    <img src="assets/trash.svg" alt="">
+                                </button>
+                            </td>
                         </tr>
                         <tr>
                             <td>Tomate</td>
                             <td>Frutas y verduras</td>
                             <td class="icono"><img src="assets/palta.svg"></td>
-                            <td class="icono"><img src="assets/trash.svg"></td>
+                            <td class="icono">
+                                <button class="boton-icono" type="button" aria-label="Eliminar">
+                                    <img src="assets/trash.svg" alt="">
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
