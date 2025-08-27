@@ -32,6 +32,13 @@ button:hover {
   box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.2);
 }
 
+    /* Iconos que son botones de accion */
+.boton-icono {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 /* ################################################## */
 
 /* Estilo para boton deslizante */
