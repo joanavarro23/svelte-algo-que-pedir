@@ -8,26 +8,25 @@ main {
     margin: 0;
 }
 
-.login-button{
+.boton-login {
     width: 100%;
     padding: 1rem;
     font-size: 1rem;
     border-radius: 25px;
 }
 
-
-.form-group {
+.grupo-formulario {
     text-align: left;
     margin-bottom: 0;
 }
 
-.form-container {
+.contenedor-formulario {
     display: flex;
     flex-direction: column;
     gap: 1.1rem;
 }
 
-.login-container {
+.contenedor-login {
     padding: 3rem 2.5rem;
     width: 100%;
     max-width: 500px;
@@ -35,14 +34,14 @@ main {
     box-shadow: none;
 }
 
-.form-group label {
+.grupo-formulario label {
     display: block;
     color: var(--color-texto-primario);
     margin-left: 5%;
 }
 
-.form-input {
-    display:block;
+.input-formulario {
+    display: block;
     padding: 0.75rem;
     padding-right: 3rem;
     width: 90%;
@@ -50,12 +49,12 @@ main {
     box-sizing: border-box;
 }
 
-.password-container {
+.contenedor-password {
     position: relative;
     margin: auto;
 }
 
-.password-toggle-base {
+.base-toggle-password {
     position: absolute;
     right: 6%;
     top: 50%;
@@ -65,24 +64,24 @@ main {
     margin: 0;
 }
 
-.password-toggle-checkbox {
+.checkbox-toggle-password {
     opacity: 0;
     cursor: pointer;
 }
 
-.password-toggle-label {
+.etiqueta-toggle-password {
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none; /* Evita que el label interfiera con el input */
+    pointer-events: none;
 }
 
-.password-toggle-label:hover{
+.etiqueta-toggle-password:hover {
     box-shadow: none;
 }
 
-.eye-icon {
+.icono-ojo {
     width: 30px;
     height: 30px;
     background-image: url('../assets/eye.svg');
@@ -92,11 +91,11 @@ main {
     transition: background-image 0.3s ease;
 }
 
-.password-toggle-checkbox:checked ~ .password-toggle-label .eye-icon {
+.checkbox-toggle-password:checked ~ .etiqueta-toggle-password .icono-ojo {
     background-image: url('../assets/eye-slash.svg');
 }
 
-.registrar-link {
+.enlace-registro {
     text-align: center;
     font-size: 0.75rem;
     padding-top: 1rem;
@@ -107,7 +106,7 @@ a {
     color: var(--color-texto-secundario);
 }
 
-.logo-section{
+.seccion-logo {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -115,7 +114,8 @@ a {
     gap: 2rem;
     margin-bottom: 1rem;
 } 
-.logo-image {
+
+.imagen-logo {
     width: 35px;
     height: 35px;
     border: solid 5px var(--color-principal);
@@ -131,16 +131,13 @@ a {
 }
 
 @media (max-width: 768px) {
-    .logo-section{
+    .seccion-logo {
         gap: 1rem;
     }
 }
 
-
 @media (min-width: 401px) {
-    .login-container {
+    .contenedor-login {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     }
 }
-
-
