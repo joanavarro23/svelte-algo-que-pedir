@@ -55,21 +55,45 @@ main {
     margin: auto;
 }
 
-
-.password-toggle {
+.password-toggle-base {
     position: absolute;
     right: 6%;
     top: 50%;
     transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.27rem;
-    font-size: 1.2rem;
+    width: 30px;
+    height: 30px;
+    margin: 0;
 }
 
-.password-toggle:hover{
+.password-toggle-checkbox {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.password-toggle-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Evita que el label interfiera con el input */
+}
+
+.password-toggle-label:hover{
     box-shadow: none;
+}
+
+.eye-icon {
+    width: 30px;
+    height: 30px;
+    background-image: url('../assets/eye.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: background-image 0.3s ease;
+}
+
+.password-toggle-checkbox:checked ~ .password-toggle-label .eye-icon {
+    background-image: url('../assets/eye-slash.svg');
 }
 
 .registrar-link {
