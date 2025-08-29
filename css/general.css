@@ -10,7 +10,7 @@
     --color-secundario: #FFFFFF;
     --color-texto-primario: #000000;
     --color-texto-secundario: #3b3b3b;
-    --color-bordes: #838383;
+    --color-bordes: #dddddd;
     --color-fondo: whitesmoke;
     --color-parrafos: #97749d;
 }
@@ -18,7 +18,6 @@
 /* General - tipografía y tamaño*/
 body {
     font-family: "Nata Sans", sans-serif;
-    font-size: 100%;
     background-color: var(--color-fondo);
 }
 
@@ -31,12 +30,13 @@ a {
 /* Estilo para el contenedor general de todos los contenidos
     redefinir en cada archivo propio las dimensiones */
 .contenedor-general{
-    background-color: var(--color-secundario); /*---- Depende como hayamos hecho el html c/u pero no deberia ser fijo*/
-    border-radius: 0.5rem; 
+    background-color: var(--color-secundario);
+    border-radius: 20px; 
+    padding: 1rem;
 }
 
 @media (max-width: 400px) {             /*Solucion a overlapping de footer con la vista*/
-    body {
-        padding-bottom: 2rem;
+    .main-vista {                        /*TODOS deberiamos tener un main con clase main-vista en el html */
+        margin-bottom: 4rem;
     }
 } 

@@ -20,7 +20,8 @@
     margin: 1rem;
 }
 
-.iconos-navegacion {
+.iconos-navegacion,
+.hamburguesa {
     display: none;
 }
 
@@ -48,10 +49,6 @@
     width: 2.5rem;
 }
 
-.hamburguesa {
-    display: none;
-}
-
 
 @media (min-width: 401px) and (max-width: 768px) {  /*--> Vista Tablet*/
     .ul-links {
@@ -76,25 +73,16 @@
         left: 0;
     }
 
-    .container-logo > h4 {   
-        display: none;
-    }
-
-    .links-navegacion > span {
-        display: none;
-    }
-
-    .hamburguesa {
+    .hamburguesa,
+    .container-usuario,
+    .links-navegacion > span,
+    .container-logo > h4 {
         display: none;
     }
     
     .links-navegacion > img {
         display: flex;
     }
-
-    .container-usuario {
-        display: none;
-    } 
 
     .barra-navegacion {
         display: flex;

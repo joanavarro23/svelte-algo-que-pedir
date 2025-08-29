@@ -3,7 +3,7 @@ button {
     border: none;
     font-size: 1rem;
     padding: 0.5rem 1rem;
-    border-radius: 0.4rem;
+    border-radius: 10px;
 }
 
 .boton-primario {
@@ -29,7 +29,14 @@ button {
 
     /* Sombra cuando se pasa por arriba */
 button:hover {
-  box-shadow: 2px 5px 2px 0 rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.2);
+}
+
+    /* Iconos que son botones de accion */
+.boton-icono {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 /* ################################################## */
@@ -38,7 +45,6 @@ button:hover {
     /* Contenedor del toggle */
 .switch {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
     cursor: pointer;

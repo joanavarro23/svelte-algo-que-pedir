@@ -1,20 +1,17 @@
-body {
+main {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: "Nata Sans", sans-serif;
     font-size: 100%;
     line-height: 1.5;
     margin: 0;
-    background-color: var(--color-fondo);
 }
 
 .login-button{
     width: 100%;
     padding: 1rem;
     font-size: 1rem;
-    margin-top: 2rem;
     border-radius: 25px;
 }
 
@@ -22,6 +19,12 @@ body {
 .form-group {
     text-align: left;
     margin-bottom: 0;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
 }
 
 .login-container {
@@ -36,14 +39,13 @@ body {
     display: block;
     color: var(--color-texto-primario);
     margin-left: 5%;
-    font-family: "Nata Sans", sans-serif;
 }
 
-.form-group input {
+.form-input {
     display:block;
-    font-family: "Nata Sans", sans-serif;
     font-size: 1rem;
     padding: 0.75rem;
+    padding-right: 3rem;
     border-radius: 0.3rem;
     border: 1px solid var(--color-bordes);
     width: 90%;
@@ -68,6 +70,7 @@ body {
     padding: 0.27rem;
     font-size: 1.2rem;
 }
+
 .password-toggle:hover{
     box-shadow: none;
 }
@@ -89,6 +92,7 @@ a {
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    margin-bottom: 1rem;
 } 
 .logo-image {
     width: 35px;
@@ -106,16 +110,13 @@ a {
 }
 
 @media (max-width: 768px) {
-    .login-container {
-        box-shadow: none;
-    }
     .logo-section{
         gap: 1rem;
     }
 }
 
 
-@media (min-width: 769px) {
+@media (min-width: 401px) {
     .login-container {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     }
