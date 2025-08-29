@@ -19,7 +19,7 @@
 th, td {
     text-align: start;
     padding: 1rem;
-    border: 1px solid var(--color-bordes);
+    border-bottom: 1px solid var(--color-bordes);
 }
 
 /* Bordes para la tabla, solución rara que encontre en stackoverflow para aplicar el border radius */
