@@ -57,15 +57,15 @@
     <main class="ingrediente-container">
         <header class="titulo-boton">
             <h1>Ingredientes</h1>
-            <button>Nuevo Ingrediente</button>
+            <button class="boton-primario">Nuevo Ingrediente</button> <!-- ¿Lo dejo como botón primario? --> 
         </header>
         <table class="tabla-ingredientes">
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Costo</th>
-                    <th>Grupo alimenticio</th>
-                    <th class="cabecera-acciones">Origen</th>
+                    <th class="cabecera-alimenticio">Grupo alimenticio</th>
+                    <th class="cabecera-origen">Origen</th>
                     <th class="cabecera-acciones">Acciones</th>
                 </tr>
             </thead>
@@ -73,51 +73,66 @@
                 <tr>
                     <td>Tomate</td>
                     <td>$0.50</td>
-                    <td>Frutas y verduras</td>
-                    <td><img src="assets/palta.svg" alt="palta"></td>
+                    <td class="celda-alimenticio">Frutas y verduras</td>
+                    <td class="icono-origen"><img src="assets/palta.svg" alt="palta"></td>
                     <td>
-                        <img src="assets/pencil-simple.svg" alt="lapiz">
-                        <img src="assets/trash.svg" alt="tacho">
+                        <div class="iconos-acciones">
+                            <img src="assets/eye.svg" alt="ojo" class="icono-ojo">
+                            <img src="assets/pencil-simple.svg" alt="lapiz">
+                            <img src="assets/trash.svg" alt="tacho">
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td>Pechuga de pollo</td>
                     <td>$3.00</td>
-                    <td>Proteinas</td>
-                    <td><img src="assets/cow.svg" alt="vaca"></td>
+                    <td class="celda-alimenticio">Proteinas</td>
+                    <td class="icono-origen"><img src="assets/cow.svg" alt="vaca"></td>
                     <td>
-                        <img src="assets/pencil-simple.svg" alt="lapiz">
-                        <img src="assets/trash.svg" alt="tacho">
+                        <div class="iconos-acciones">
+                            <img src="assets/eye.svg" alt="ojo" class="icono-ojo">
+                            <img src="assets/pencil-simple.svg" alt="lapiz">
+                            <img src="assets/trash.svg" alt="tacho">
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td>Arroz</td>
                     <td>$1.00</td>
-                    <td>Cereales y tuberculos</td>
-                    <td><img src="assets/palta.svg" alt="palta"></td>
+                    <td class="celda-alimenticio">Cereales y tuberculos</td>
+                    <td class="icono-origen"><img src="assets/palta.svg" alt="palta"></td>
                     <td>
-                        <img src="assets/pencil-simple.svg" alt="lapiz">
-                        <img src="assets/trash.svg" alt="tacho">
+                        <div class="iconos-acciones">
+                            <img src="assets/eye.svg" alt="ojo" class="icono-ojo">
+                            <img src="assets/pencil-simple.svg" alt="lapiz">
+                            <img src="assets/trash.svg" alt="tacho">
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td>Leche</td>
                     <td>$2.00</td>
-                    <td>Lacteos</td>
-                    <td><img src="assets/cow.svg" alt="vaca"></td>
+                    <td class="celda-alimenticio">Lacteos</td>
+                    <td class="icono-origen"><img src="assets/cow.svg" alt="vaca"></td>
                     <td>
-                        <img src="assets/pencil-simple.svg" alt="lapiz">
-                        <img src="assets/trash.svg" alt="tacho">
+                        <div class="iconos-acciones">
+                            <img src="assets/eye.svg" alt="ojo" class="icono-ojo">
+                            <img src="assets/pencil-simple.svg" alt="lapiz">
+                            <img src="assets/trash.svg" alt="tacho">
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td>Palta</td>
                     <td>$1.50</td>
-                    <td>Frutas y verduras</td>
-                    <td><img src="assets/palta.svg" alt="palta"></td>
+                    <td class="celda-alimenticio">Frutas y verduras</td>
+                    <td class="icono-origen"><img src="assets/palta.svg" alt="palta"></td>
                     <td>
-                        <img src="assets/pencil-simple.svg" alt="lapiz">
-                        <img src="assets/trash.svg" alt="tacho">
+                        <div class="iconos-acciones">
+                            <img src="assets/eye.svg" alt="ojo" class="icono-ojo">
+                            <img src="assets/pencil-simple.svg" alt="lapiz">
+                            <img src="assets/trash.svg" alt="tacho">
+                        </div>
                     </td>
                 </tr>
             </tbody>
