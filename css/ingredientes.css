@@ -42,13 +42,6 @@ table {
     gap: 0.3rem;
 }
 
-/* Container de icono ojo y separador para sacar en media querys */
-.icono-ojo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .cabecera-origen {
     text-align: center;
 }
