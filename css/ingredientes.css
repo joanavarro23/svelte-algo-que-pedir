@@ -66,10 +66,6 @@ table {
         margin-left: 5%;
         margin-right: 5%
     }
-
-    .container-tabla-ingredientes {
-        grid-template-columns: repeat(5, auto);
-    }
 }
 
 /* Media query desktop */
@@ -77,10 +73,6 @@ table {
     .ingrediente-container {
         margin-left: 15%;
         margin-right: 15%;
-    }
-
-    .container-tabla-ingredientes {
-        grid-template-columns: repeat(5, auto);
     }
 }
 
