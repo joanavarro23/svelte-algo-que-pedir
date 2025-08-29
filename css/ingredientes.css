@@ -9,6 +9,16 @@
     flex-basis: 270px;
 }
 
+.tabla-ingredientes {
+    width: 100%
+}
+
+th, td {
+    text-align: start;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+
 /* Container de la tabla de ingredientes */
 .container-tabla-ingredientes {
     display: grid;
@@ -24,15 +34,11 @@
 .cabecera-tabla {
     justify-self: start;
     align-self: center;
-    padding-bottom: 0.5rem;
 }
 
 /* Estilo de cabecera acciones */
 .cabecera-acciones {
-    justify-self: center;
-    align-self: center;
-    padding-bottom: 0.5rem;
-    font-weight: 150;
+    text-align: start;
 }
 
 /* Estilo de celdas de la tabla */
