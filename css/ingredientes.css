@@ -6,78 +6,48 @@
 
 /* Estilo del título y botón de agregar ingrediente */
 .titulo-boton h1 {
-    flex-basis: 270px;
+    flex-basis: 277px;
 }
 
-/* Container de la tabla de ingredientes */
-.container-tabla-ingredientes {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: repeat(6, auto);
-    gap: 2rem 0.3rem;
-    padding: 0.7rem;
+/* Container principal de la tabla */
+.tabla-ingredientes {
+    width: 100%;
     background-color: var(--color-secundario);
-    border: 1px solid rgb(206, 206, 206);
-    border-radius: 0.8rem;
 }
 
-/* Estilo de cabeceras titulo y precios */
-.cabecera-tabla {
-    justify-self: start;
-    align-self: center;
-    padding-bottom: 0.5rem;
+/* Text-align, padding y border*/
+th, td {
+    text-align: start;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-bordes);
+}
+
+/* Bordes para la tabla, solución rara que encontre en stackoverflow para aplicar el border radius */
+table {
+    border-collapse: collapse;
+    border-radius: 6px;
+    border-style: hidden;
+    box-shadow: 0 0 0 1px var(--color-bordes);
 }
 
 /* Estilo de cabecera acciones */
 .cabecera-acciones {
-    justify-self: center;
-    align-self: center;
-    padding-bottom: 0.5rem;
-    font-weight: 150;
-}
-
-/* Estilo de celdas de la tabla */
-.celda-tabla {
-    justify-self: start;
-    align-self: center;
-}
-
-/* Estilo de celdas precios */
-.celda-precios {
-    justify-self: start;
-    align-self: center;
-    font-weight: 150;
+    text-align: center;
 }
 
 /* Estilo de iconos acciones */
 .iconos-acciones {
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-/* Container de icono ojo y separador para sacar en media querys */
-.icono-ojo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.celda-alimenticio {
-    justify-self: start;
-    align-self: center;
-    font-weight: 150;
+    gap: 0.3rem;
 }
 
 .cabecera-origen {
-    justify-self: center;
-    align-self: center;
+    text-align: center;
 }
 
 .icono-origen {
-    justify-self: center;
-    align-self: center;
-    filter: invert(50%); /* Convierte los iconos al mismo color gris de pencil */
+    text-align: center;
 }
 
 /* Media query mobile */
@@ -96,10 +66,6 @@
         margin-left: 5%;
         margin-right: 5%
     }
-
-    .container-tabla-ingredientes {
-        grid-template-columns: repeat(5, auto);
-    }
 }
 
 /* Media query desktop */
@@ -107,10 +73,6 @@
     .ingrediente-container {
         margin-left: 15%;
         margin-right: 15%;
-    }
-
-    .container-tabla-ingredientes {
-        grid-template-columns: repeat(5, auto);
     }
 }
 
