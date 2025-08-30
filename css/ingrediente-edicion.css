@@ -13,11 +13,9 @@
 
 .container-edicion {
     margin: 2rem 0;
-    padding: 1rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    background-color: var(--color-secundario);
-    border-radius: 0.8rem;
 }
 
 .container-edicion input,
@@ -44,6 +42,7 @@
     .vista-edicion-ingrediente{
         margin: 5rem 4rem;
     }
+    
     .container-edicion {
         padding: 1rem 7rem;
     }
