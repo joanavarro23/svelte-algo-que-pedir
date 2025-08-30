@@ -9,11 +9,13 @@
     display: flex;
     justify-content: flex-start;
     gap: 1.5rem;
-    margin: 1rem;
+    margin: 1rem 1rem 0 1rem;           /* Margin top/right/bottom/left para posicionamiento y acomodar la linea de c/estado */       
 }
 
 .link-estados {
     color: var(--color-texto-secundario);
+    border-bottom: 3px solid var(--color-bordes);       /* Linea de c/estado */
+    padding-bottom: 0.7rem;                               
 }
 
 .container-tarjetas {                              /* Container grid de todas las tarjetas */
@@ -46,7 +48,7 @@
 .info-usuario{                      /* Icono/info usuario de la tarjeta */
     display: flex;
     gap: 1rem;
-    margin: 0.5rem 1rem;
+    margin: 0.7rem 1rem;
 }
 
 .icono-usuario-pedido{
@@ -72,7 +74,7 @@
 
 .info-direccion {                       /* Alineacion info direccion pedido */
     display: flex;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 }
 
 .pin-ubicacion {
@@ -109,14 +111,13 @@
 
 @media (max-width: 400px) {         /* --> Vista Mobile*/
     .container-principal {
-        gap: 1rem;
-        margin: 2rem 1rem;
+        margin: 3rem 2rem;
     }
     
     .container-estados {
-        margin: 0;
+        margin: 1rem 0 0 0;
         gap: 1rem;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .container-tarjetas {               /* Contenedor de todas las tarjetas de pedidos */
