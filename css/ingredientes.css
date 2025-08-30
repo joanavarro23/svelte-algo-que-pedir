@@ -9,34 +9,10 @@
     flex-basis: 277px;
 }
 
-/* Contenedor de la tabla que aplica borde exterior */
-/* .container-tabla {
-    border: 1px solid var(--color-bordes);
-    border-radius: 8px;
-    background-color: var(--color-secundario);
-} */
-
-/* Formato de la tabla */
-table {
-  width: 100%;
-  border: 1px solid var(--color-bordes);
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 8px;
-  background-color: var(--color-secundario)
+/* Padding extra para esta tabla */
+th, td {
+    padding: 1rem;
 }
-
-/* Formato de las celdas */
-td, th {
-  text-align: start;
-  padding: 1rem;
-  border-bottom: 1px solid var(--color-bordes); 
-}
-
-/* Sin borde inferior en última fila */
- tr:last-child td { 
-  border-bottom: none;
-} 
 
 /* Estilo de cabecera acciones */
 .cabecera-acciones {
