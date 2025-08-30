@@ -14,11 +14,6 @@ th, td {
     padding: 1rem;
 }
 
-/* Bordes para la tabla, solución rara que encontre en stackoverflow para aplicar el border radius */
-table {
-    box-shadow: 0 0 0 1px var(--color-bordes);
-}
-
 /* Estilo de cabecera acciones */
 .cabecera-acciones {
     text-align: center;
