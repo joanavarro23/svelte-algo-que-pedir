@@ -1,33 +1,35 @@
-/* Container general del menú */
+/* Container main del menú */
 .menu-container {
     max-width: 100%;
     padding: 1rem 2rem;  
 }
 
-/* Remuevo el margen inferior del h2 para que vaya unido al menú */
-.lista-menu h2 {
-    margin-block-end: 0rem;
+/* Margen entre título h2 del menú e items del menú */
+h2 {
+    margin-block-end: 0.5rem;
 }
 
-/* Configuración para sección de lista de menú */
+/* Formato del contenedor de la lista del menú */
 .lista-menu {
     display: flex;
     flex-direction: column;
+    list-style-type: none;
     gap: 1rem;
-    background-color: var(--color-secundario)
 }
 
 /* Configuración para cada item (plato+precio) del menú*/
 .item-menu {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
 }
 
-/* Configuración para imágen y nombre de plato */
+/* Configuración para imágen y nombre+descripción del plato */
 .detalles-menu {
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex-grow: 1;
 }
 
 /* Formato de las imágenes en el menú */
@@ -41,12 +43,11 @@
 .precio-menu {
     display: flex;
     align-items: center;
-    flex-basis: 3rem;
 }
 
 /* Descripción del plato del menú */
 .descripcion-plato {
-    font-weight: 130;
+    font-weight: 140;
 }
 
 /* Media Query mobile */
