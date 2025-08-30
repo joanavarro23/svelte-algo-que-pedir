@@ -20,6 +20,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);        /*3 columnas que toman 1/3 del espacio c/u*/
     gap: 1rem;
+    border-top: 1px solid var(--color-bordes);
+    padding-top: 1rem;
 }
 
 .pedido-tarjeta {                               /* Cada tarjeta de pedido */
@@ -48,7 +50,7 @@
 }
 
 .icono-usuario-pedido{
-    width: 4rem;
+    width: 3.5rem;
 }
 
 .nombre-usuario,                  /* Alineacion nombre-user del header tarjeta */ 
