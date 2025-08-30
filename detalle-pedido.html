@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle del Pedido</title>
     <link rel="stylesheet" href="css/header.css">
-
+    <link rel="stylesheet" href="css/tabla.css">
     <link rel="stylesheet" href="css/botones.css">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/detalle-pedido.css">
@@ -58,7 +58,7 @@
             </nav>
     </header>   
     <main class="main-vista">
-        <section class="estado-container">
+        <section class="contenedor-estado">
             <h1>Pedido #12345</h1>
             <div>
                 <h2>Estado del Pedido</h2>
@@ -69,28 +69,28 @@
             <div class="cliente-info">
                 <h2>Cliente</h2>
                 <div class="cliente-content">
-                    <img src="assets/usuario.svg" class="icono" alt="Cliente" width="40" height="40">
-                    <p class="cliente-text">
+                    <img src="assets/usuario.svg" class="icono" alt="Cliente">
+                    <div class="cliente-texto">
                         <span class="texto-principal">Sofia Miller</span>
-                        <span class="texto-secundario"><b>usuario</b> smiller2005</span>
-                    </p>
+                        <span class="texto-secundario"><b>Usuario:</b> smiller2005</span>
+                    </div>
                 </div>
                 
             </div>
             <div class="cliente-info">
                 <h2>Dirección de entrega</h2>
                 <div class="cliente-content">
-                    <img src="assets/pin-ubicacion.svg" class="icono" alt="Ubicacion" width="40" height="40">
-                    <p class="cliente-text">
-                        Av siempre viva 555<br>
-                        Lp 05, 1798 Tay - 19-09047
-                    </p>
+                    <img src="assets/pin-ubicacion.svg" class="icono" alt="Ubicacion">
+                    <div class="cliente-texto">
+                        <span class="texto-principal">Av. Siempre Viva 555</span>
+                        <span class="texto-secundario">Lp 05, 1798 Tay - 19-09047</span>
+                    </div>
                 </div>
             </div>
         </section>
         <section class ="contenedor-general">
             <h2>Resumen del Pedido</h2>
-            <table class="conteiner-table">
+            <table class="contenedor-tabla">
                     <thead>
                         <tr>
                             <th>Plato</th>
@@ -101,7 +101,7 @@
                     <tbody>
                         <tr>
                             <td class="plato-detalle">
-                                <img src="assets/hamburguesa-con-queso.png" class="icono" alt="Hamburguesa" width="50" height="50">
+                                <img src="assets/hamburguesa-con-queso.png" class="icono" alt="Hamburguesa">
                                 <div>
                                     <span class="texto-principal">Hamburguesa con Queso</span><br>
                                     <span class="texto-secundario">Hamburguesa clásica con queso y papas fritas</span>
@@ -112,7 +112,7 @@
                         </tr>
                         <tr>
                             <td class="plato-detalle">
-                                <img src="assets/alitas-picantes.png" class="icono" alt="Papas Fritas" width="50" height="50">
+                                <img src="assets/alitas-picantes.png" class="icono" alt="Papas Fritas">
                                 <div>
                                     <span class="texto-principal">Papas Fritas</span><br>
                                     <span class="texto-secundario">Papas caseras fritas y crocantes</span>
@@ -123,7 +123,7 @@
                         </tr>
                         <tr>
                             <td class="plato-detalle">
-                                <img src="assets/pescado-papas-fritas.png" class="icono" alt="Refresco" width="50" height="50">
+                                <img src="assets/pescado-papas-fritas.png" class="icono" alt="Refresco">
                                 <div>
                                     <span class="texto-principal">Refresco</span><br>
                                     <span class="texto-secundario">Vaso natural refrescante</span>
@@ -136,19 +136,22 @@
             </table>
         </section>
         <section class ="contenedor-general">
-            <div class="tabla-pago-container">
+            <div class="contenedor-tabla-pago">
                 <h3>Pago</h3>
                 <dl class="tabla-pago">
-                    <dt>Subtotal</dt> <dd>$20.00</dd>
-                    <dt>Comisión del delivery</dt> <dd>$2.00</dd>
-                    <dt>Incremento por tipo de pago</dt> <dd>$1.10</dd>
+                    <dt>Subtotal</dt>
+                    <dd>$20.00</dd>
+                    <dt>Comisión del delivery</dt>
+                    <dd>$2.00</dd>
+                    <dt>Incremento por tipo de pago</dt>
+                    <dd>$1.10</dd>
                     <dt>Total</dt> <dd>$23.10</dd>
                 </dl>
-            <h3>Método de Pago</h3>
-            <div class="metodo-pago">
-                <img src="assets/tarjeta-credito.svg" class="icono" alt="Metodo de pago" width="40" height="40">
-                <p>Pago con tarjeta de crédito</p>
-            </div> 
+                <h3>Método de Pago</h3>
+                <div class="metodo-pago">
+                    <img src="assets/tarjeta-credito.svg" class="icono" alt="Metodo de pago">
+                    <p>Pago con tarjeta de crédito</p>
+                </div> 
             </div>
         </section>
         <div class="boton-volver">
