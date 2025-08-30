@@ -60,28 +60,6 @@ h1 {
   margin-bottom: 1rem;
 }
 
-.contenedor-tabla {
-    border: 1px solid var(--color-bordes);
-    border-radius: 0.8rem;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-
-td, th {
-  text-align: start;
-  padding: 0.5rem;
-  border-bottom: 1px solid var(--color-bordes);
-}
-
-  /* Sin borde inferior en última fila */
-tr:last-child td { 
-  border-bottom: none;
-}
-
 .icono {
     text-align: center;
 }
