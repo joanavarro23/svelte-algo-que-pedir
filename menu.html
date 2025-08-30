@@ -55,91 +55,100 @@
                 </div>
             </nav>
     </header>    
-    <div class="menu-container">
-        <div class="titulo-boton">
+    <main class="menu-container">
+        <header class="titulo-boton">
             <h1>Gestión del Menú</h1>
-            <button>Agregar nuevo plato</button>
-        </div>
-        <section class="lista-menu">
+            <button class="boton-primario">Agregar nuevo plato</button>
+        </header>
+        <section class="contenedor-general">
             <h2>Platos Disponibles</h2>
-            <div class="item-menu">
-                <div class="detalles-menu">
-                    <img src="assets/pasta-cremosa.png" class="imagen-menu">
-                    <span>Pasta Cremosa 
-                        <p class="descripcion-plato">Deliciosa pasta con salsa cremosa</p>
-                    </span>
-                </div>
-                <div class="precio-menu">
-                    <span>$12.99</span>
-                </div>
-            </div>
-            <div class="item-menu">
-                <div class="detalles-menu">
-                    <img src="assets/alitas-picantes.png" class="imagen-menu">
-                    <span>Alitas Picantes 
-                        <p class="descripcion-plato">Alitas de pollo con salsa para mojar</p>
-                    </span>
-                </div>
-                <div class="precio-menu">
-                    <span>$9.99</span>
-                </div>
-            </div>
-            <div class="item-menu">
-                <div class="detalles-menu">
-                    <img src="assets/ensalada-huerta.png" class="imagen-menu">
-                    <span>Ensalada de la Huerta 
-                        <p class="descripcion-plato">Ensalada fresca con hijas mixtas y vinagreta</p>
-                    </span>
-                </div>
-                <div class="precio-menu">
-                    <span>$7.50</span>
-                </div>
-            </div>
-            <div class="item-menu">
-                <div class="detalles-menu">
-                    <img src="assets/hamburguesa-con-queso.png" class="imagen-menu">
-                    <span>Hamburguesa con Queso 
-                        <p class="descripcion-plato">Hamburguesa clásica con queso y papas fritas</p>
-                    </span>
-                </div>
-                <div class="precio-menu">
-                    <span>$10.50</span>
-                </div>
-            </div>
-            <div class="item-menu">
-                <div class="detalles-menu">
-                    <img src="assets/pescado-papas-fritas.png" class="imagen-menu">
-                    <span>Pescado y Papas Fritas 
-                        <p class="descripcion-plato">Pescado crujiente y papas fritas con salsa tártara</p>
-                    </span>
-                </div>
-                <div class="precio-menu">
-                    <span>$11.75</span>
-                </div>
-            </div>
-            <div class="item-menu">
-                <div class="detalles-menu">
-                    <img src="assets/pizza-vegetariana.png" class="imagen-menu">
-                    <span>Pizza Vegetariana
-                        <p class="descripcion-plato">Pizza vegetariana con ingredientes variados</p>
-                    </span>
-                </div>
-                <div class="precio-menu">
-                    <span>$14.25</span>
-                </div>
-            </div>
-            <div class="item-menu">
-                <div class="detalles-menu">
-                    <img src="assets/pastel-chocolate.png" class="imagen-menu">
-                    <span>Pastel de Chocolate
-                        <p class="descripcion-plato">Pastel de chocolate con glaseado</p>
-                    </span>
-                </div>
-                <div class="precio-menu">
-                    <span>$6.50</span>
-                </div>
-            </div>
+            <ul class="lista-menu">
+                <li class="item-menu">
+                    <figure class="detalles-menu">
+                        <img src="assets/pasta-cremosa.png" class="imagen-menu">
+                        <figcaption>
+                            <p>Pasta Cremosa</p>
+                            <p class="descripcion-plato">Deliciosa pasta con salsa cremosa</p>
+                        </figcaption>
+                    </figure>
+                    <div class="precio-menu">
+                        <span>$12.99</span>
+                    </div>
+                </li>
+                <li class="item-menu">
+                    <figure class="detalles-menu">
+                        <img src="assets/alitas-picantes.png" class="imagen-menu">
+                        <figcaption>
+                            <p>Alitas Picantes</p>
+                            <p class="descripcion-plato">Alitas de pollo picantes con salsa para mojar</p>
+                        </figcaption>
+                    </figure>
+                    <div class="precio-menu">
+                        <span>$9.99</span>
+                    </div>
+                </li>
+                <li class="item-menu">
+                    <figure class="detalles-menu">
+                        <img src="assets/ensalada-huerta.png" class="imagen-menu">
+                        <figcaption>
+                            <p>Ensalada de la Huerta</p>
+                            <p class="descripcion-plato">Ensalada fresca con hojas mixtas y vinagreta</p>
+                        </figcaption>
+                    </figure>
+                    <div class="precio-menu">
+                        <span>$7.50</span>
+                    </div>
+                </li>
+                <li class="item-menu">
+                    <figure class="detalles-menu">
+                        <img src="assets/hamburguesa-con-queso.png" class="imagen-menu">
+                        <figcaption>
+                            <p>Hamburguesa con Queso</p>
+                            <p class="descripcion-plato">Hamburguesa clásica con queso y papas fritas</p>
+                        </figcaption>
+                    </figure>
+                    <div class="precio-menu">
+                        <span>$10.50</span>
+                    </div>
+                </li>
+                <li class="item-menu">
+                    <figure class="detalles-menu">
+                        <img src="assets/pescado-papas-fritas.png" class="imagen-menu">
+                        <figcaption>
+                            <p>Pescado y Papas Fritas</p>
+                            <p class="descripcion-plato">Pescado crujiente y papas fritas con salsa tártara</p>
+                        </figcaption>
+                    </figure>
+                    <div class="precio-menu">
+                        <span>$11.75</span>
+                    </div>
+                </li>
+                <li class="item-menu">
+                    <figure class="detalles-menu">
+                        <img src="assets/pizza-vegetariana.png" class="imagen-menu">
+                        <figcaption>
+                            <p>Pizza Vegetariana</p>
+                            <p class="descripcion-plato">Pizza vegetariana con ingredientes variados</p>
+                        </figcaption>
+                    </figure>
+                    <div class="precio-menu">
+                        <span>$14.25</span>
+                    </div>
+                </li>
+                <li class="item-menu">
+                    <figure class="detalles-menu">
+                        <img src="assets/pastel-chocolate.png" class="imagen-menu">
+                        <figcaption>
+                            <p>Pastel de Chocolate</p>
+                            <p class="descripcion-plato">Pastel de chocolate rico con glaseado</p>
+                        </figcaption>
+                    </figure>
+                    <div class="precio-menu">
+                        <span>$6.50</span>
+                    </div>
+                </li>
+            </ul>
         </section>
-    </div>
+    </main>
 </body>
 </html>
