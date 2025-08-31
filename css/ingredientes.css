@@ -9,25 +9,9 @@
     flex-basis: 277px;
 }
 
-/* Container principal de la tabla */
-.tabla-ingredientes {
-    width: 100%;
-    background-color: var(--color-secundario);
-}
-
-/* Text-align, padding y border*/
+/* Padding extra para esta tabla */
 th, td {
-    text-align: start;
     padding: 1rem;
-    border-bottom: 1px solid var(--color-bordes);
-}
-
-/* Bordes para la tabla, solución rara que encontre en stackoverflow para aplicar el border radius */
-table {
-    border-collapse: collapse;
-    border-radius: 6px;
-    border-style: hidden;
-    box-shadow: 0 0 0 1px var(--color-bordes);
 }
 
 /* Estilo de cabecera acciones */
@@ -63,16 +47,14 @@ table {
 /* Media query tablet */
 @media (401px <= width <= 768px) {
     .ingrediente-container {
-        margin-left: 5%;
-        margin-right: 5%
+        margin: 0 2.5rem 0 2.5rem;
     }
 }
 
 /* Media query desktop */
 @media (min-width: 769px) {
     .ingrediente-container {
-        margin-left: 15%;
-        margin-right: 15%;
+        margin: 0 7rem 0 7rem;
     }
 }
 

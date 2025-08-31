@@ -1,6 +1,7 @@
 .contenedor-tabla {
     border: 1px solid var(--color-bordes);
     border-radius: 20px;
+    background-color: var(--color-secundario);
 }
 
 table {
