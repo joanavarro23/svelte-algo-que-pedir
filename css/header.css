@@ -19,6 +19,16 @@
     margin: 1rem;
 }
 
+/* Agrego una indicacion con sombra para los links de navegacion del header */
+.links-navegacion {
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    transition: box-shadow 0.3s; /* Para que no aparezca de golpe el sombreado*/
+}
+.links-navegacion:hover {
+    box-shadow: 0 0 10px rgb(214, 214, 214);
+}
+
 .iconos-navegacion,
 .hamburguesa {
     display: none;
