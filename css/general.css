@@ -27,6 +27,11 @@ a {
     color: var(--color-texto-primario)
 }
 
+/* Estilo para las listas sin puntitos */
+ul {        
+    list-style-type: none;
+}
+
 /* Estilo para el contenedor general de todos los contenidos
     redefinir en cada archivo propio las dimensiones */
 .contenedor-general{
