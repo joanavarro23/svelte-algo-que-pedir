@@ -47,16 +47,14 @@ th, td {
 /* Media query tablet */
 @media (401px <= width <= 768px) {
     .ingrediente-container {
-        margin-left: 5%;
-        margin-right: 5%
+        margin: 0 2.5rem 0 2.5rem;
     }
 }
 
 /* Media query desktop */
 @media (min-width: 769px) {
     .ingrediente-container {
-        margin-left: 15%;
-        margin-right: 15%;
+        margin: 0 7rem 0 7rem;
     }
 }
 

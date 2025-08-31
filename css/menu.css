@@ -60,15 +60,13 @@ h2 {
 /* Media Query tablet */
 @media (401px <= width <= 768px) {
     .menu-container {
-        margin-left: 10%;
-        margin-right: 10%;
+        margin: 0 4.5rem 0 4.5rem
     }
 }
 
 /* Media Query desktop */
 @media (min-width: 769px) {
     .menu-container {
-        margin-left: 15%;
-        margin-right: 15%;
+        margin: 0 7rem 0 7rem;
     }
 }
