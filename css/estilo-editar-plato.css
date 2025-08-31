@@ -1,13 +1,12 @@
 /* Estilos de la vista en general */
 main {
   margin: 2rem;
-  /* margin: 2rem 5rem; */
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-h1 {
+.titulo {
   margin-left: 1rem;
 }
 
@@ -31,8 +30,8 @@ h1 {
 
 .textarea-descripcion {
   width: 100%;
-  height: 8rem; /* ajustá la altura inicial */
-  resize: none; /* solo permite agrandar verticalmente */
+  height: 8rem; 
+  resize: none; 
 }
 
 .editar-plato__imagen {
@@ -48,10 +47,15 @@ h1 {
   object-fit: cover; /* Ocupa todo sin deformarse */
 }
 
+/* ############################## */
+
 /* Seccion: Costos del plato */
 .switch-separacion {
   justify-content: space-between;
 }
+
+/* ############################## */
+
 /* Seccion: Detalle de los ingredientes - TABLA */
 .contenedor_titulo-span{
   display: flex;
@@ -64,6 +68,8 @@ h1 {
     text-align: center;
 }
 
+/* ############################## */
+
 /* Botones - cuestiones especificas */
     /* Si los botones estan juntos tienen otra ubicación */
 .botones-juntos {           
@@ -71,6 +77,8 @@ h1 {
     justify-content: flex-end;
     gap: 0.7rem;
 }
+
+/* ############################## */
 
 @media (max-width: 400px) {  
   .botones-juntos {
