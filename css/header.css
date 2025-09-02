@@ -56,7 +56,7 @@
 }
 
 
-@media (min-width: 401px) and (max-width: 768px) {  /*--> Vista Tablet*/
+@media (min-width: 401px) and (max-width: 769px) {  /*--> Vista Tablet*/
     .ul-links {
         display: none;
     }
@@ -91,9 +91,6 @@
     }
 
     .barra-navegacion {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         font-size: 1em;
         padding: 0 1rem;
     }
