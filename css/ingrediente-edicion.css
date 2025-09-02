@@ -11,9 +11,15 @@
     color: var(--color-texto-primario);
 }
 
-.container-edicion {
+/* Container de todos los inputs de edicion ingrediente */
+.container-edicion {    
     margin: 2rem 0;
-    padding: 2rem;
+    padding: 1.5rem;
+}
+
+/* Espaciado y alineamiento de c/input dentro del container */
+.item-input-edicion {
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
 }
@@ -21,14 +27,16 @@
 .container-edicion input,
 .container-edicion select {
     height: 2.5rem;
-    padding: 0.1rem 0.5rem;
+    padding: 0.1rem 0.4rem;
 }
 
-.origen-toggle {                /* Espaciado entre contenedor toggle e inputs de arriba */
-    margin: 1rem 0;           
+/* Espaciado entre contenedor toggle e inputs de arriba */
+.origen-toggle {               
+    margin-top: 2rem;           
 }
 
-.origen-toggle .slider {        /* Espaciado entre laberl Origen animal y toggle */
+/* Espaciado entre laberl Origen animal y toggle */
+.origen-toggle .slider {        
     margin-left: 1rem;
 }
 
@@ -42,6 +50,7 @@
     padding: 0.3rem 0.3rem;
 }
 
+
 /* Vista Tablet */
 @media (min-width: 401px) and (max-width: 769px) {
     .vista-edicion-ingrediente{
@@ -49,11 +58,15 @@
     }
     
     .container-edicion {
-        padding: 1rem 7rem;
+        padding: 1rem 3rem;
     }
     
     .container-botones-edicion {
         justify-content: flex-end;
+    }
+
+    .container-botones-edicion > button {
+        padding: 0.5rem 1rem;
     }
 }
 
@@ -65,10 +78,14 @@
     }
 
     .container-edicion {
-        padding: 1rem 9rem;
+        padding: 1rem 5rem;
     }
     
     .container-botones-edicion {
         justify-content: flex-end;
+    }
+
+    .container-botones-edicion > button {
+        padding: 0.5rem 1rem;
     }
 } 
