@@ -60,12 +60,12 @@
                 </div>
             </nav>
     </header>
-    <main>
-        <h1>Editar Plato</h1>
+    <main class="main-vista">
+        <h1 class="titulo">Editar Plato</h1>
 
         <!-- Descripción del plato -->
         <section class="contenedor-general editar-plato">
-            <div>
+            <form>
                 <div class="label-input">
                     <label for="nombre">Nombre del plato*</label>
                     <input type="text" id="nombre" value="Hamburguesa con cheddar y cebolla" maxlength="30" required>
@@ -80,7 +80,7 @@
                     <label for="imagen">URL de la imagen del plato*</label>
                     <input type="url" id="imagen" placeholder="http://images.google.com/altaburguer.jpg" required>
                 </div>
-            </div>
+            </form>
     
                 <!-- Imagen de referencia -->
             <div class="editar-plato__imagen">
@@ -91,31 +91,33 @@
         <!-- Costos del plato -->
         <section class="contenedor-general contenedor-general_especifico">
             <h2>Costos</h2>
-            <div class="label-input">
-                <label for="precio">Precio Base*</label>
-                <input type="number" id="precio" placeholder="Ej: 500" min="0" required>
-            </div>
-
-            <div>
-                <label class="switch switch-separacion" for="platoDeAutor">
-                    <span class="contenedor-texto">
-                        <span class="titulo-label"><b>Plato de Autor</b></span>
-                        <span class="subtitulo-label">Aplica un porcentaje adicional al precio de venta</span>
-                    </span>
-                    <input type="checkbox" id="platoDeAutor">
-                    <span class="slider"></span>
-                </label>
-            </div>
-            <div>
-                <label class="switch switch-separacion" for="platoDePromocion">
-                    <span class="contenedor-texto">
-                        <span class="titulo-label"><b>Plato en Promoción</b></span>
-                        <span class="subtitulo-label">Aplica un descuento al precio de venta</span>
-                    </span>
-                    <input type="checkbox" id="platoDePromocion">
-                    <span class="slider"></span>
-                </label>
-            </div>
+            <form action="#">
+                <div class="label-input">
+                    <label for="precio">Precio Base*</label>
+                    <input type="number" id="precio" placeholder="Ej: 500" min="0" required>
+                </div>
+    
+                <div>
+                    <label class="switch switch-separacion" for="platoDeAutor">
+                        <span class="contenedor-texto">
+                            <span class="titulo-label"><b>Plato de Autor</b></span>
+                            <span class="subtitulo-label">Aplica un porcentaje adicional al precio de venta</span>
+                        </span>
+                        <input type="checkbox" id="platoDeAutor">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div>
+                    <label class="switch switch-separacion" for="platoDePromocion">
+                        <span class="contenedor-texto">
+                            <span class="titulo-label"><b>Plato en Promoción</b></span>
+                            <span class="subtitulo-label">Aplica un descuento al precio de venta</span>
+                        </span>
+                        <input type="checkbox" id="platoDePromocion">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </form>
         </section>
 
         <!-- Detalle de los ingredientes -->
@@ -124,7 +126,7 @@
             <div class="contenedor_titulo-span">
                 <h3 class="subtitulo">Costo de producción</h3><span>$ 100</span>
             </div>
-            <div class="contenedor-tabla">
+            <article class="contenedor-tabla">
                 <table>
                     <thead>
                         <tr>
@@ -177,7 +179,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </article>
         </section>
 
         <!-- Botones finales -->
