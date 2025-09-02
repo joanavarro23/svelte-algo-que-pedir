@@ -57,7 +57,7 @@
     
     <main class="vista-edicion-ingrediente main-vista">                        <!-- Contenedor de toda la vista -->
         <h1 class="titulo-edicion">Editar ingrediente</h1>
-        <div class="container-edicion contenedor-general">                             <!-- Contenedor de los campos de edicion ingrediente -->    
+        <section class="container-edicion contenedor-general">                             <!-- Contenedor de los campos de edicion ingrediente -->    
             <label for="nombre-ingrediente">Nombre del ingrediente*</label>
             <input type="text" id="nombre-ingrediente" name="nombre-ingrediente" placeholder="Ingresa el nombre del ingrediente..." required>
 
@@ -82,11 +82,15 @@
                     <span class="slider"></span>
                 </label>
             </div>
-        </div>
+        </section>
 
         <div class="container-botones-edicion">             <!-- Contenedor de los botones de guardar y descartar cambios -->
-            <button class="boton-primario boton-guardar">Guardar cambios</button>
-            <button class="boton-secundario boton-descartar">Descartar cambios</button>
+            <button class="boton-primario boton-guardar">
+                <span class="texto-boton-edicion">Guardar cambios</span>
+            </button>
+            <button class="boton-secundario boton-descartar">
+                <span class="texto-boton-edicion">Descartar cambios</span>
+            </button>
         </div>
     </main>
 </body>
