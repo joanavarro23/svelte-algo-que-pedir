@@ -38,12 +38,13 @@
 .container-logo {           
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: 0 1rem;
     gap: 1rem;             
 }
 
 .logo-app {
-    border: solid 2px var(--color-principal);
+    border: solid 3px var(--color-principal);
     border-radius: 50%;
     background-color: var(--color-principal);
 }
@@ -57,7 +58,7 @@
 }
 
 .usuario-logo {
-    width: 2.5rem;
+    width: 2.4rem;
 }
 
 /* -------> Vista Tablet*/
@@ -96,7 +97,8 @@
         display: none;
     }
     
-    .links-navegacion{          /* Saco padding de hover para la vista mobile */
+    .links-navegacion,
+    .barra-navegacion{          /* Saco padding de hover para la vista mobile */
         padding: 0;
     }
 
@@ -105,23 +107,8 @@
     }
 
     .barra-navegacion {
-        font-size: 1em;
-        padding: 0 1rem;
-        height: 3rem;
-    }
-
-    .container-logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .ul-links {
-        display: flex;
-        justify-content: space-evenly;
-        flex: 1;
-        padding: 0;
-    }
+        height: 3.5rem;
+    }    
 }
 
 
