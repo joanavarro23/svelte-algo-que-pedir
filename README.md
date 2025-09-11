@@ -1,3 +1,5 @@
+[![Build](https://github.com/algo3-unsam/algo-que-pedir-2025-grupo2/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/algo3-unsam/algo-que-pedir-2025-grupo2/actions/workflows/build.yml)
+
 # sv
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
