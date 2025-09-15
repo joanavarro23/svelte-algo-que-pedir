@@ -9,6 +9,5 @@
       <Boton 
       nombre= "Agregar nuevo plato"
       />
-      <a href="/editar-plato">editar-plato</a>
   </header>
 </main>
