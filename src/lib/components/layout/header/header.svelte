@@ -12,7 +12,7 @@
 
         <ul class="ul-links"> <!-- Lista de enlaces de navegacion -->
             <li class="items-navegacion">
-                <a class="links-navegacion" href="/">
+                <a class="links-navegacion" href="/pedidos-actuales">
                     <!-- <img class="iconos-navegacion" src="../assets/carrito.svg"/> -->
                     <span>Pedidos</span>
                 </a>
@@ -24,13 +24,13 @@
                 </a>
             </li>
             <li class="items-navegacion">
-                <a class="links-navegacion" href="/">
+                <a class="links-navegacion" href="/ingrediente">
                     <!-- <img class="iconos-navegacion" src="../assets/ingredientes.svg"/> -->
                     <span>Ingredientes</span>
                 </a>
             </li>
             <li class="items-navegacion">
-                <a class="links-navegacion" href="/">
+                <a class="links-navegacion" href="/perfil-local">
                     <!-- <img class="iconos-navegacion" src="../assets/usuario.svg"/> -->
                     <span>Cuenta</span>
                 </a>
