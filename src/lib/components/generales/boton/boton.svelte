@@ -1,5 +1,5 @@
 <script>
-  import "$lib/components/generales/boton/boton.css"
+  import "./boton.css"
   
   let { tipo = 'primario', nombre} = $props()
 </script>
