@@ -1,7 +1,7 @@
 <script>
-  import "./editar-plato.css"
+  import './editar-plato.css'
   // import Boton from "$lib/components/generales/boton/boton.svelte"
-  import Input from "$lib/components/generales/input/input.svelte"
+  import Input from '$lib/components/generales/input/input.svelte'
 </script>
 
 <main class="main-vista">

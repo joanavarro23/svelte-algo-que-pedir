@@ -1,5 +1,5 @@
 <script>
-  import "./input.css"
+  import './input.css'
 
   let { for_label, descripcion, type, id, value, cantMax} = $props()
 </script>
