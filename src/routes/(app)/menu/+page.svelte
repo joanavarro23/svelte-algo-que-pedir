@@ -1,14 +1,14 @@
 <script>
   import './menu.css'
-  import '$lib/components/generales/boton/boton.css'
+  import Boton from '$lib/components/generales/boton/boton.svelte'
 </script>
 
 <main class="menu-container main-vista">
-  <header class="titulo-boton">
+  <header class="boton-titulo">
       <h1>Gestión del Menú</h1>
-      <button class="boton-primario">
-        Agregar nuevo plato
-        <a href="/editar-plato">editar-plato</a>
-      </button>
+      <Boton 
+      nombre= "Agregar nuevo plato"
+      />
+      <a href="/editar-plato">editar-plato</a>
   </header>
 </main>
