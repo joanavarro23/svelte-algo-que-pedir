@@ -1,5 +1,5 @@
 <script>
-  import "./input.css"
+  import './input.css'
 
   let { 
     nombre = '',
