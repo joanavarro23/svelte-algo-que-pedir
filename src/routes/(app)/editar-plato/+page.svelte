@@ -1,7 +1,12 @@
 <script>
   import "./editar-plato.css"
-  // import Boton from "$lib/components/generales/boton/boton.svelte"
+  import Boton from "$lib/components/generales/boton/boton.svelte"
   import Input from "$lib/components/generales/input/input.svelte"
+  import hamburguesa from "$lib/assets/hamburguesa-preview.jpg"
+
+  let nombre = $state('Hamburguesa completa con cheddar')
+  let descripcion = $state('Breve descripción de los ingredientes o preparación del plato')
+  let imagen = ('')
 </script>
 
 <main class="main-vista">
@@ -11,72 +16,82 @@
   <section class="contenedor-general editar-plato">
     <form>
       <Input 
-      for_label="nombre"
-      descripcion="Nombre del plato"
+      nombre="Nombre del plato*"
       type="text"
       id="nombre"
-      value="Hambuerguesa, pero tiene que sacar la info del back"
-      cantMax=30
+      value={nombre}
+      maxlength={30}
+      required={true}
       />
+
+      <Input
+      textarea={true}
+      nombre="Descripcion*"
+      id="descripcion"
+      value={descripcion}
+      required={true}
+      />
+
+      <Input
+      nombre="URL de la imagen del plato*"
+      type="url"
+      id="imagen"
+      value={imagen}
+      placeholder="http://images.google.com/altaburguer.jpg"
+      required={true}
+      />
+
+      <!-- Imagen de referencia -->
+      <div class="editar-plato__imagen">
+          <img class="foto" src={hamburguesa} alt="Vista previa del plato">
+      </div>
     </form>
   </section> 
-<!-- 
-            
-  
-  <div class="label-input">
-      <label for="descripcion">Descrpción*</label>
-      <textarea class="textarea-descripcion" id="descripcion">Breve descripción de los ingredientes o preparación del plato</textarea>
-  </div>
-  
-          <div class="label-input">
-              <label for="imagen">URL de la imagen del plato*</label>
-              <input type="url" id="imagen" placeholder="http://images.google.com/altaburguer.jpg" required>
-          </div>
-
-          Imagen de referencia
-      <div class="editar-plato__imagen">
-          <img class="foto" src="assets\hamburguesa-preview.jpg" alt="Vista previa del plato">
-      </div>
--->
 
   <!-- Costos del plato -->
-  <!-- <section class="contenedor-general contenedor-general_especifico">
-      <h2>Costos</h2>
-      <form action="#">
-          <div class="label-input">
-              <label for="precio">Precio Base*</label>
-              <input type="number" id="precio" placeholder="Ej: 500" min="0" required>
-          </div>
+  <section class="contenedor-general contenedor-general_especifico">
+    <h2>Costos</h2>
+    <form>
+        <Input
+        nombre="Precio Base*"
+        type="number"
+        id="precio"
+        placeholder="Ej: 500"
+        required={true}
+        />
+        <!-- BOTON SWITCH CONFIGURAR
+        <div>
+            <label class="switch switch-separacion" for="platoDeAutor">
+                <span class="contenedor-texto">
+                    <span class="titulo-label"><b>Plato de Autor</b></span>
+                    <span class="subtitulo-label">Aplica un porcentaje adicional al precio de venta</span>
+                </span>
+                <input type="checkbox" id="platoDeAutor">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div>
+            <label class="switch switch-separacion" for="platoDePromocion">
+                <span class="contenedor-texto">
+                    <span class="titulo-label"><b>Plato en Promoción</b></span>
+                    <span class="subtitulo-label">Aplica un descuento al precio de venta</span>
+                </span>
+                <input type="checkbox" id="platoDePromocion">
+                <span class="slider"></span>
+            </label>
+        </div>
+        -->
+    </form>
+</section> 
 
-          <div>
-              <label class="switch switch-separacion" for="platoDeAutor">
-                  <span class="contenedor-texto">
-                      <span class="titulo-label"><b>Plato de Autor</b></span>
-                      <span class="subtitulo-label">Aplica un porcentaje adicional al precio de venta</span>
-                  </span>
-                  <input type="checkbox" id="platoDeAutor">
-                  <span class="slider"></span>
-              </label>
-          </div>
-          <div>
-              <label class="switch switch-separacion" for="platoDePromocion">
-                  <span class="contenedor-texto">
-                      <span class="titulo-label"><b>Plato en Promoción</b></span>
-                      <span class="subtitulo-label">Aplica un descuento al precio de venta</span>
-                  </span>
-                  <input type="checkbox" id="platoDePromocion">
-                  <span class="slider"></span>
-              </label>
-          </div>
-      </form>
-  </section> -->
-
-  <!-- Detalle de los ingredientes -->
-  <!-- <section class="contenedor-general contenedor-general_especifico">
-      <h2>Ingredientes</h2>
-      <div class="contenedor_titulo-span">
-          <h3 class="subtitulo">Costo de producción</h3><span>$ 100</span>
-      </div>
+<!-- Detalle de los ingredientes -->
+<section class="contenedor-general contenedor-general_especifico">
+    <h2>Ingredientes</h2>
+    <div class="contenedor_titulo-span">
+        <h3 class="subtitulo">Costo de producción</h3><span>$ 100</span>
+    </div>
+</section>
+  <!-- TABLA CONFIGURAR COMO COMPONENTE
       <article class="contenedor-tabla">
           <table>
               <thead>
@@ -131,11 +146,11 @@
               </tbody>
           </table>
       </article>
-  </section> -->
+ -->
 
   <!-- Botones finales -->
-  <!-- <div class="botones-juntos">
-      <button class="boton boton-primario">Guardar cambios</button>
-      <button class="boton boton-secundario">Descartar cambios</button>
-  </div> -->
+  <div class="botones-juntos">
+    <Boton nombre="Guardar cambios"/>
+    <Boton tipo='secundario' nombre="Descartar cambios"/>
+  </div>
 </main>
