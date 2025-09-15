@@ -11,7 +11,7 @@
     min=0,
     required = false, 
     textarea = false
-    } = $props()
+  } = $props()
 </script>
 
 <div class="label-input">
