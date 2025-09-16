@@ -1,12 +1,13 @@
 <script>
-  import "./editar-plato.css"
-  import Boton from "$lib/components/generales/boton/boton.svelte"
-  import Input from "$lib/components/generales/input/input.svelte"
-  import hamburguesa from "$lib/assets/hamburguesa-preview.jpg"
+  import './editar-plato.css'
+  import Boton from '$lib/components/generales/boton/boton.svelte'
+  import Input from '$lib/components/generales/input/input.svelte'
+  import Switch from '$lib/components/generales/switch/switch.svelte'
+  import hamburguesa from '$lib/assets/hamburguesa-preview.jpg'
 
   let nombre = $state('Hamburguesa completa con cheddar')
   let descripcion = $state('Breve descripción de los ingredientes o preparación del plato')
-  let imagen = ('')
+  let imagen = ''
 </script>
 
 <main class="main-vista">
@@ -15,7 +16,7 @@
   <!-- Descripción del plato -->
   <section class="contenedor-general editar-plato">
     <form>
-      <Input 
+        <Input 
       nombre="Nombre del plato*"
       type="text"
       id="nombre"
@@ -40,47 +41,41 @@
       placeholder="http://images.google.com/altaburguer.jpg"
       required={true}
       />
-
-      <!-- Imagen de referencia -->
-      <div class="editar-plato__imagen">
-          <img class="foto" src={hamburguesa} alt="Vista previa del plato">
-      </div>
     </form>
+    
+    <!-- Imagen de referencia -->
+    <div class="editar-plato__imagen">
+        <img class="foto" src={hamburguesa} alt="Vista previa del plato">
+    </div>
   </section> 
 
   <!-- Costos del plato -->
   <section class="contenedor-general contenedor-general_especifico">
     <h2>Costos</h2>
     <form>
-        <Input
-        nombre="Precio Base*"
-        type="number"
-        id="precio"
-        placeholder="Ej: 500"
-        required={true}
-        />
-        <!-- BOTON SWITCH CONFIGURAR
         <div>
-            <label class="switch switch-separacion" for="platoDeAutor">
-                <span class="contenedor-texto">
-                    <span class="titulo-label"><b>Plato de Autor</b></span>
-                    <span class="subtitulo-label">Aplica un porcentaje adicional al precio de venta</span>
-                </span>
-                <input type="checkbox" id="platoDeAutor">
-                <span class="slider"></span>
-            </label>
+            <Input
+            nombre="Precio Base*"
+            type="number"
+            id="precio"
+            placeholder="Ej: 500"
+            required={true}
+            />
         </div>
         <div>
-            <label class="switch switch-separacion" for="platoDePromocion">
-                <span class="contenedor-texto">
-                    <span class="titulo-label"><b>Plato en Promoción</b></span>
-                    <span class="subtitulo-label">Aplica un descuento al precio de venta</span>
-                </span>
-                <input type="checkbox" id="platoDePromocion">
-                <span class="slider"></span>
-            </label>
+            <Switch
+            id="platoDeAutor"
+            titulo="Plato de Autor"
+            subtitulo="Aplica un porcentaje adicional al precio de venta"
+            />
         </div>
-        -->
+        <div>
+            <Switch
+            id="platoDePromocion"
+            titulo="Plato en Promoción"
+            subtitulo="Aplica un descuento al precio de venta"
+            />
+        </div> 
     </form>
 </section> 
 

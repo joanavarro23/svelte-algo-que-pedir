@@ -26,3 +26,10 @@ button {
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
+
+    /* Iconos que son botones de accion */
+.boton-icono {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
