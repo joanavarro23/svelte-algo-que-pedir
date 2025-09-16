@@ -1,13 +1,24 @@
 <script>
-  import './menu.css'
   import Boton from '$lib/components/generales/boton/boton.svelte'
+  import ItemMenu from '$lib/components/menu/ItemMenu.svelte'
+  import { platos } from '$lib/components/menu/platos'
 </script>
 
 <main class="menu-container main-vista">
   <header class="boton-titulo">
       <h1>Gestión del Menú</h1>
-      <Boton 
-      nombre= "Agregar nuevo plato"
-      />
+      <a href="./editar-plato">
+        <Boton nombre= "Agregar nuevo plato"/>
+      </a>
   </header>
+  <section class="contenedor-general">
+      <h2>Platos Disponibles</h2>
+      <ul class="lista-menu">
+        {#each platos as plato, i (i)}
+          <a href="./editar-plato">
+            <ItemMenu {plato} key={i+1}/>
+          </a>
+        {/each}
+      </ul>
+  </section>
 </main>
