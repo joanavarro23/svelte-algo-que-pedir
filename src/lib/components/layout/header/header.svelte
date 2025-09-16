@@ -21,7 +21,7 @@
 
     <ul class="ul-links">
       <!-- Lista de enlaces de navegacion -->
-      {#each urls as { href, icono, label }}
+      {#each urls as { href, icono, label } (href)}
         <li class="items-navegacion">
           <a class="links-navegacion" {href} aria-label={label}>
             <img class="iconos-navegacion" src={icono} alt="" aria-hidden="true" />
