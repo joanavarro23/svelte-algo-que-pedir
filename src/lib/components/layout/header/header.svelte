@@ -37,9 +37,9 @@
       </button>
 
       <a class="vista-activa" href=""></a>
-      <!-- falta function para obtener la vista activa -->>
+      <!-- falta function para obtener la vista activa -->
 
-      <img class="usuario-logo" src="/usuario-chica.svg" alt="Cuenta" />
+      <!--<img class="usuario-logo" src="/usuario-chica.svg" alt="Cuenta" /> -->
     </div>
   </nav>
 </header>
