@@ -8,7 +8,9 @@
   <header class="boton-titulo">
       <h1>Gestión del Menú</h1>
       <a href="./editar-plato">
-        <Boton nombre= "Agregar nuevo plato"/>
+        <Boton onclick={()=>{
+          
+        }} nombre= "Agregar nuevo plato"/>
       </a>
   </header>
   <section class="contenedor-general">
