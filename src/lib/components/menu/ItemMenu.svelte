@@ -4,14 +4,13 @@
 
   type ItemMenuProps = { 
     plato: Plato,
-    key: number 
   }
 
-  let { plato, key }: ItemMenuProps = $props()
+  let { plato }: ItemMenuProps = $props()
 </script>
 
 <li class="item-menu">
-  <figure class="detalles-menu" data-testid={"item-" + key}>
+  <figure class="detalles-menu" data-testid={`plato-${plato.id}`}>
       <img src={plato.imagen} class="imagen-menu">
       <figcaption>
           <p>{plato.titulo}</p>

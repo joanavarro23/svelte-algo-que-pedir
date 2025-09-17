@@ -14,9 +14,9 @@
   <section class="contenedor-general">
       <h2>Platos Disponibles</h2>
       <ul class="lista-menu">
-        {#each platos as plato, i (i)}
-          <a href="./editar-plato">
-            <ItemMenu {plato} key={i+1}/>
+        {#each platos as plato (plato.id)}
+          <a href="./editar-plato/{plato.id}">
+            <ItemMenu {plato} />
           </a>
         {/each}
       </ul>

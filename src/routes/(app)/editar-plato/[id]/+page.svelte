@@ -4,6 +4,8 @@
   import Input from '$lib/components/generales/input/input.svelte'
   import Switch from '$lib/components/generales/switch/switch.svelte'
   import hamburguesa from '$lib/assets/hamburguesa-preview.jpg'
+  import { page } from '$app/state'
+ 
 
   let nombre = $state('Hamburguesa completa con cheddar')
   let descripcion = $state('Breve descripción de los ingredientes o preparación del plato')
@@ -11,7 +13,7 @@
 </script>
 
 <main class="main-vista">
-  <h1 class="titulo">Editar Plato</h1>
+  <h1 class="titulo">Editar Plato {page.params.id}</h1>
 
   <!-- Descripción del plato -->
   <section class="contenedor-general editar-plato">
