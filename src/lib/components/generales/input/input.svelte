@@ -9,13 +9,3 @@
   <label for={id}>{nombre_label}</label>
   <input {type} {id} bind:value={value} {...rest} {required}>
 </div>
-
-
-  <!-- {#if textarea}
-    <textarea class="textarea-descripcion"
-    id={id} 
-    {required}
-    {...rest}
-    > bind:value={value} <-- con esto se actualiza automaticamente con la variable padre (la info del back o de la vista menu)
-    </textarea>
-  {:else} -->
