@@ -19,35 +19,30 @@
     <section class="contenedor-general editar-plato">
         <form>
             <Input nombre_label="Nombre del plato*" type="text" id="nombre"
-            bind:value={nombre} maxlength={30} />
+            bind:value={nombre} maxlength={30} placeholder="Ej: Hamburguesa completa con cheddar"/>
 
             <Input id="descripcion" nombre_label="Descripcion*" textarea={true}
-            bind:value={descripcion} type="" />
+            bind:value={descripcion} type=""/>
 
             <Input nombre_label="URL de la imagen del plato*" type="file" id="imagen"
-            bind:value={imagen} placeholder="Seleccione una imagen del archivo" />
+            accept="image/jpeg,image/jpg,image/png" bind:value={imagen} />
         </form>
         
-        <!-- COMO CONECTO LA IMAGEN !!! ??? -->
         <!-- Imagen de referencia -->
-        <!-- <div class="editar-plato__imagen">
+        <div class="editar-plato__imagen">
             <img class="foto" src={hamburguesa} alt="Vista previa del plato">
-        </div> -->
+        </div>
     </section> 
 
     <!-- Costos del plato -->
     <section class="contenedor-general contenedor-general_especifico">
         <h2>Costos</h2>
-        <form>
+        <form class="costos-plato">
             <Input nombre_label="Precio Base*" type="number" id="precio" placeholder="Ej: 500" />
-            <div>
-                <Switch id="platoDeAutor" titulo="Plato de Autor" 
-                subtitulo="Aplica un porcentaje adicional al precio de venta" />
-            </div>
-            <div>
-                <Switch id="platoDePromocion" titulo="Plato en Promoción"
-                subtitulo="Aplica un descuento al precio de venta" />
-            </div> 
+            <Switch id="platoDeAutor" titulo="Plato de Autor" 
+            subtitulo="Aplica un porcentaje adicional al precio de venta" />
+            <Switch id="platoDePromocion" titulo="Plato en Promoción"
+            subtitulo="Aplica un descuento al precio de venta" />
         </form>
     </section>
 
