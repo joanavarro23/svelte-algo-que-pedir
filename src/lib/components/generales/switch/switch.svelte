@@ -1,13 +1,13 @@
-<script>
+<script lang="ts">
   import './switch.css'
 
-  let {
-    id='',
-    titulo='',
-    subtitulo=''
-  } = $props()
+  interface PropsSwitch {
+    id: string,
+    titulo?: string,
+    subtitulo?: string
+  }
+  let { id, titulo='', subtitulo='' }: PropsSwitch = $props()
 </script>
-
 
 <label class="switch switch-separacion" for="{id}">
     <span class="contenedor-texto">
