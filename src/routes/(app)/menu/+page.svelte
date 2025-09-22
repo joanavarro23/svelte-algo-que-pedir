@@ -4,13 +4,15 @@
   import { platos } from '$lib/components/menu/platos'
 </script>
 
+{#snippet nombre()} Agregar nuevo plato {/snippet}
+
 <main class="menu-container main-vista">
   <header class="boton-titulo">
       <h1>Gestión del Menú</h1>
       <a href="./editar-plato">
         <Boton onclick={()=>{
           
-        }} nombre= "Agregar nuevo plato"/>
+        }} {nombre} />
       </a>
   </header>
   <section class="contenedor-general">

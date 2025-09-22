@@ -4,7 +4,7 @@
   import type { Snippet } from 'svelte'
   
   interface PropsButton extends HTMLButtonAttributes {
-    tipo: 'icono' | 'primario' | 'secundario'
+    tipo?: 'icono' | 'primario' | 'secundario'
     nombre: Snippet
   }
   const { tipo = 'primario', nombre, ...rest }: PropsButton = $props()
