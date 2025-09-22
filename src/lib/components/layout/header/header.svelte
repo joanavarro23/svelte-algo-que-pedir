@@ -1,13 +1,19 @@
 <script lang="ts">
   import '$lib/components/layout/header/header.css'
-  import logoUrl from '$lib/assets/logo.svg' //esa alternativa o mover todos los svg a static para citar la ruta absoluta como antes
+
+  import logoUrl from '$lib/assets/logo.svg'
+  import carrito from '$lib/assets/carrito.svg'
+  import menu from '$lib/assets/menu.svg'
+  import ingredientes from '$lib/assets/ingredientes.svg'
+  import usuario from '$lib/assets/usuario.svg'
+  import hamburguesa from '$lib/assets/hamburguesa-menu.svg'
 
   //Array de todas las urls (c/u un objeto)
   const urls = [
-    { href: '/pedidos-actuales', icono: '/carrito.svg', label: 'Pedidos' },
-    { href: '/menu', icono: '/menu.svg', label: 'Menu' },
-    { href: '/ingrediente', icono: '/ingredientes.svg', label: 'Ingredientes' },
-    { href: '/perfil-local', icono: '/usuario.svg', label: 'Cuenta' }
+    { href: '/pedidos-actuales', icono: carrito, label: 'Pedidos' },
+    { href: '/menu', icono: menu, label: 'Menu' },
+    { href: '/ingrediente', icono: ingredientes, label: 'Ingredientes' },
+    { href: '/perfil-local', icono: usuario, label: 'Cuenta' }
   ]
 </script>
 
@@ -33,7 +39,7 @@
 
     <div class="container-usuario">
       <button class="hamburguesa">
-        <img class="hamburguesa-icono" src="/hamburguesa-menu.svg" alt="" />
+        <img class="hamburguesa-icono" src={hamburguesa} alt="" />
       </button>
 
       <a class="vista-activa" href=""></a>
