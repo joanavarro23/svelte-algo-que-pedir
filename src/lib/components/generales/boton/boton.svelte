@@ -1,11 +1,15 @@
 <script lang="ts">
-  import type { HTMLButtonAttributes } from 'svelte/elements'
   import './boton.css'
-  interface Props extends HTMLButtonAttributes {
-    tipo?: 'primario' | 'secundario'
-    nombre: string
+  import type { HTMLButtonAttributes } from 'svelte/elements'
+  import type { Snippet } from 'svelte'
+  
+  interface PropsButton extends HTMLButtonAttributes {
+    tipo?: 'icono' | 'primario' | 'secundario'
+    nombre: Snippet
   }
-  let { tipo = 'primario', nombre, ...rest }: Props = $props()
+  const { tipo = 'primario', nombre, ...rest }: PropsButton = $props()
 </script>
 
-<button class="boton-{tipo}" {...rest}>{nombre}</button>
+<button class={`boton-${tipo}`} {...rest}>
+  {@render nombre()}
+</button>

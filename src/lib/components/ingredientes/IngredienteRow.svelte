@@ -8,25 +8,37 @@ import trash from '$lib/assets/trash.svg'
 
 type IngredienteRowProps = {
   ingrediente: Ingrediente,
+  editarPlato?: boolean
 }
 
-let { ingrediente }: IngredienteRowProps = $props()
+let { ingrediente, editarPlato = false }: IngredienteRowProps = $props()
 const iconoOrigen = ingrediente.origen === 'vegetal' ? palta : cow
 
 </script>
 
 <tr>
   <td>{ingrediente.nombre}</td>
-  <td>{ingrediente.costo}</td>
-  <td class="celda-alimenticio">{ingrediente.grupo}</td>
-  <td class="icono-origen">
-    <img src={iconoOrigen} alt="palta" />
-  </td>
-  <td>
-    <div class="iconos-acciones">
-      <img src={eye} alt="ojo" class="icono-ojo">
-      <img src={pencil} alt="lapiz">
-      <img src={trash} alt="tacho">
-    </div>
-  </td>
+  {#if editarPlato}
+    <td>{ingrediente.grupo}</td>
+    <td class="icono"><img src={iconoOrigen} alt="palta"></td>
+    <td class="icono">
+      <img src={trash} alt="eliminar">
+        <!-- <button class="boton-icono" type="button" aria-label="Eliminar">
+            <img src="assets/trash.svg" alt="">
+        </button> -->
+    </td>
+  {:else}
+    <td>{ingrediente.costo}</td>
+    <td class="celda-alimenticio">{ingrediente.grupo}</td>
+    <td class="icono-origen">
+      <img src={iconoOrigen} alt="palta" />
+    </td>
+    <td>
+      <div class="iconos-acciones">
+        <img src={eye} alt="ojo" class="icono-ojo">
+        <img src={pencil} alt="lapiz">
+        <img src={trash} alt="tacho">
+      </div>
+    </td>
+  {/if}
 </tr>

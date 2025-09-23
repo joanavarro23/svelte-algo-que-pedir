@@ -23,13 +23,14 @@ import { ingredientes } from '$lib/components/ingredientes/ingredientes'
   {/each}
 {/snippet}
 
+{#snippet nombre()} Nuevo Ingrediente {/snippet}
 
 <main class="ingrediente-container main-vista">
     <header class="boton-titulo">
         <h1>Ingredientes</h1>
         <Boton onclick={()=>{
         
-        }} nombre= "Nuevo Ingrediente"/>
+        }} {nombre} />
     </header>
     <Tabla {nombreColumnas} {datosFilas}/>
 </main> 

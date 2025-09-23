@@ -12,7 +12,7 @@
     <article class="item-input-edicion">
       <form>
         <Input
-          nombre="Nombre del ingrediente*"
+          nombre_label="Nombre del ingrediente*"
           type="text"
           id="nombre-ingrediente"
           placeholder="Ingresa el nombre del ingrediente..."
@@ -20,7 +20,7 @@
         />
 
         <Input
-          nombre="Costo*"
+          nombre_label="Costo*"
           type="number"
           id="costo-ingrediente"
           placeholder="Ingresa su costo..."
@@ -28,7 +28,7 @@
         />
 
         <Input
-          nombre="Grupo Alimenticio"
+          nombre_label="Grupo Alimenticio"
           id="grupo-alimenticio"
           select={true}
           options={[
@@ -40,6 +40,7 @@
             { value: '5', label: 'Grasas y aceites' },
             { value: '6', label: 'Proteínas' }
           ]}
+          type=''
         />
 
         <Switch id="origen-toggle" titulo="Origen animal" />
