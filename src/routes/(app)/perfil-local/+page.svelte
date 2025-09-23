@@ -25,7 +25,7 @@
     <h1>Información del local</h1>
   </header>
 
-  <ProfileCard title="">
+  <ProfileCard>
     {#snippet children()}
       <div class="informacion-local">
         <form class="inputs-local" on:submit>
@@ -41,8 +41,9 @@
     {/snippet}
     </ProfileCard>
 
-  <ProfileCard title="Dirección">
+  <ProfileCard>
     {#snippet children()}
+      <h3>Dirección</h3>
       <div class="card-inputs">
         <div>
           <label for="direccion">Dirección*</label>
@@ -64,9 +65,10 @@
     {/snippet}
   </ProfileCard>
 
-<ProfileCard title="Porcentajes">
+<ProfileCard>
   {#snippet children()}
-    <div>
+  <h3>Porcentajes</h3>  
+  <div>
       <div class="card-inputs">
         <div>
           <label for="porcentaje-comision-app">Porcentaje de comisión con la app*</label>
@@ -90,6 +92,7 @@
         </div>
       </div>
 
+      <h3>Métodos de pago</h3>
       <div class="metodos-de-pago">
         <label for="efectivo">
           <input id="efectivo" type="checkbox" bind:checked={metodos.efectivo} />
