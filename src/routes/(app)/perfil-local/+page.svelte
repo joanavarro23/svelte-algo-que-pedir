@@ -108,7 +108,7 @@
   {/snippet}
 </ProfileCard>
 
-  <div>
+  <div class="button">
     <Boton nombre="Guardar cambios" tipo="primario"/>
     <Boton nombre="Descartar cambios" tipo="secundario"/>
   </div>
