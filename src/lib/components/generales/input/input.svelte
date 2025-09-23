@@ -31,3 +31,4 @@
     <input {type} {id} bind:value {placeholder} {min} {maxlength} {required} />
   {/if}
 </div>
+
