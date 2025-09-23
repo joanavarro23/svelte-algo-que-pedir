@@ -2,15 +2,33 @@
   import './editar-plato.css'
   import hamburguesa from '$lib/assets/hamburguesa-preview.jpg'
   import { page } from '$app/state'
+
+  // Componentes
   import Input from '$lib/components/generales/input/input.svelte'
   import Switch from '$lib/components/generales/switch/switch.svelte'
-//   import Boton from '$lib/components/generales/boton/boton.svelte'
- 
+  //   import Boton from '$lib/components/generales/boton/boton.svelte'
+  
+  // Lista de ingredientes
+  import { ingredientes } from '$lib/components/ingredientes/ingredientes'
+  import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
+  import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
 
   let nombre = $state('Hamburguesa completa con cheddar')
   let descripcion = $state('Breve descripción de los ingredientes o preparación del plato')
   let imagen = $state(hamburguesa)
 </script>
+
+{#snippet nombreColumnas()}
+    <th>Nombre</th>
+    <th>Grupo</th>
+    <th class="icono">Origen</th>
+    <th class="icono">Acciones</th>
+{/snippet}
+{#snippet datosFilas()}
+    {#each ingredientes as ingrediente (ingrediente.id)}
+        <IngredienteRow {ingrediente} editarPlato={true} />
+    {/each}
+{/snippet}
 
 <main class="main-vista vista-editar-plato">
     <h1 class="titulo">Editar Plato {page.params.id}</h1>
@@ -52,68 +70,7 @@
         <div class="contenedor_titulo-span">
             <h3 class="subtitulo">Costo de producción</h3><span>$ 100</span>
         </div>
+
+        <Tabla {nombreColumnas} {datosFilas} />
     </section>
-
-  <!-- TABLA CONFIGURAR COMO COMPONENTE
-      <article class="contenedor-tabla">
-          <table>
-              <thead>
-                  <tr>
-                      <th>Nombre</th>
-                      <th>Grupo</th>
-                      <th class="icono">Origen</th>
-                      <th class="icono">Acciones</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>Carne de Red</td>
-                      <td>Proteínas</td>
-                      <td class="icono"><img src="assets/cow.svg"></td>
-                      <td class="icono">
-                          <button class="boton-icono" type="button" aria-label="Eliminar">
-                              <img src="assets/trash.svg" alt="">
-                          </button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Queso Cheddar</td>
-                      <td>Lácteos</td>
-                      <td class="icono"><img src="assets/cow.svg"></td>
-                      <td class="icono">
-                          <button class="boton-icono" type="button" aria-label="Eliminar">
-                              <img src="assets/trash.svg" alt="">
-                          </button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Lechuga</td>
-                      <td>Frutas y verduras</td>
-                      <td class="icono"><img src="assets/palta.svg"></td>
-                      <td class="icono">
-                          <button class="boton-icono" type="button" aria-label="Eliminar">
-                              <img src="assets/trash.svg" alt="">
-                          </button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Tomate</td>
-                      <td>Frutas y verduras</td>
-                      <td class="icono"><img src="assets/palta.svg"></td>
-                      <td class="icono">
-                          <button class="boton-icono" type="button" aria-label="Eliminar">
-                              <img src="assets/trash.svg" alt="">
-                          </button>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </article>
- -->
-
-  <!-- Botones finales -->
-  <!-- <div class="botones-juntos">
-    <Boton nombre="Guardar cambios"/>
-    <Boton tipo='secundario' nombre="Descartar cambios"/>
-  </div> -->
 </main>
