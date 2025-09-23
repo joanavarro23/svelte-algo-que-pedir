@@ -16,7 +16,7 @@
     options: {value: string, label: string}[] //array de opciones para el dropdown
   }
   
-  let { nombre_label, type, id, value=$bindable(''), required=true, textarea=false, select=false, ...rest }: PropsInput = $props()
+  let { nombre_label, type, id, value=$bindable(''), required=true, textarea=false, select=false, options=[], ...rest }: PropsInput = $props()
 </script>
 
 <div class="label-input">
