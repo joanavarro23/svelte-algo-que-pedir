@@ -5,19 +5,23 @@ import palta from '$lib/assets/palta.svg'
 import eye from '$lib/assets/eye.svg'
 import pencil from '$lib/assets/pencil-simple.svg'
 import trash from '$lib/assets/trash.svg'
+  // import type { Snippet } from 'svelte'
 
 type IngredienteRowProps = {
   ingrediente: Ingrediente,
-  editarPlato?: boolean
+  editarPlato: boolean
+  // contenidoTabla: Snippet
 }
 
-let { ingrediente, editarPlato = false }: IngredienteRowProps = $props()
-const iconoOrigen = ingrediente.origen === 'vegetal' ? palta : cow
+let { ingrediente, editarPlato=false }: IngredienteRowProps = $props()
+const mapaIconos = {vegetal: palta, animal: cow }
+const iconoOrigen = mapaIconos[ingrediente.origen]
 
 </script>
 
 <tr>
   <td>{ingrediente.nombre}</td>
+  <!-- {@render contenidoTabla()} -->
   {#if editarPlato}
     <td>{ingrediente.grupo}</td>
     <td class="icono"><img src={iconoOrigen} alt="palta"></td>
