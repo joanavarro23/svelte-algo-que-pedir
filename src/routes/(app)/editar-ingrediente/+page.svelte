@@ -1,6 +1,7 @@
 <script>
   import './editar-ingrediente.css'
   import Input from '$lib/components/generales/input/input.svelte'
+  import Switch from '$lib/components/generales/switch/switch.svelte'
 </script>
 
 <main class="vista-edicion-ingrediente main-vista">
@@ -24,7 +25,24 @@
           id="costo-ingrediente"
           placeholder="Ingresa su costo..."
           required={true}
-        /> 
+        />
+
+        <Input
+          nombre="Grupo Alimenticio"
+          id="grupo-alimenticio"
+          select={true}
+          options={[
+            { value: '', label: 'Selecciona una opción' },
+            { value: '1', label: 'Cereales y tubérculos' },
+            { value: '2', label: 'Azúcares y dulces' },
+            { value: '3', label: 'Lácteos' },
+            { value: '4', label: 'Frutas y verduras' },
+            { value: '5', label: 'Grasas y aceites' },
+            { value: '6', label: 'Proteínas' }
+          ]}
+        />
+
+        <Switch id="origen-toggle" titulo="Origen animal" />
       </form>
     </article>
   </section>
