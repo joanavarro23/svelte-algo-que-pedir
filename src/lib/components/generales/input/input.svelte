@@ -13,7 +13,7 @@
     value?: string,
     textarea?: boolean
     select?: boolean,
-    options: {value: string, label: string}[] //array de opciones para el dropdown
+    options?: {value: string, label: string}[] //array de opciones para el dropdown
   }
   
   let { nombre_label, type, id, value=$bindable(''), required=true, textarea=false, select=false, options=[], ...rest }: PropsInput = $props()
