@@ -22,7 +22,7 @@
 
 <main class="contenedor-principal main-vista">
   <header class="titulo-principal">
-    <h1>Información del local</h1>
+    <h1>Información del local (edit)</h1>
   </header>
 
   <ProfileCard>
