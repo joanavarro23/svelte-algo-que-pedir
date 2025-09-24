@@ -1,6 +1,7 @@
 <script lang="ts">
   import './boton.css'
   import type { HTMLButtonAttributes } from 'svelte/elements'
+  import type { Snippet } from 'svelte'
   
   interface PropsButton extends HTMLButtonAttributes {
     tipo?: 'primario' | 'secundario'
