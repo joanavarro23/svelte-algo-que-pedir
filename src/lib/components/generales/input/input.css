@@ -8,7 +8,7 @@
         margin: 0.5rem 0;
     }
     /* Como esta en cascada, la tipografia del input pisa la que elegimos */
-    input, textarea {
+    input, textarea, select {
         font-family: "Nata Sans", sans-serif;
         font-size: 1rem;
         padding: 0.2rem;

@@ -10,26 +10,13 @@
     nombre_label: string,
     type: InputType,
     id: string,
-    value?: string,
-    textarea?: boolean
-    select?: boolean,
-    options?: {value: string, label: string}[] //array de opciones para el dropdown
+    value?: string
   }
   
-  let { nombre_label, type, id, value=$bindable(''), required=true, textarea=false, select=false, options=[], ...rest }: PropsInput = $props()
+  let { nombre_label, type, id, value=$bindable(''), required=true, ...rest }: PropsInput = $props()
 </script>
 
 <div class="label-input">
   <label for={id}>{nombre_label}</label>
-  {#if textarea}
-    <textarea class="textarea-descripcion" id={id} bind:value={value} {required}></textarea>
-  {:else if select}
-    <select {id} bind:value {required}>
-      {#each options as option (option.value)}
-        <option value={option.value}>{option.label}</option>
-      {/each}
-    </select>
-  {:else}
-    <input {type} {id} bind:value={value} {...rest} {required}>
-  {/if}
+  <input {type} {id} bind:value={value} {...rest} {required}>
 </div>
