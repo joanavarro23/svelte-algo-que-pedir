@@ -1,10 +1,11 @@
+export type Origen = 'animal' | 'vegetal'
 export class Ingrediente {
   constructor(
     public id: number,
     public nombre: string,
     public costo: string,
     public grupo: string,
-    public origen: string,
+    public origen: Origen
   ) {}
 }
 

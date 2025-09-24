@@ -1,34 +1,34 @@
 <script>
   import './editar-plato.css'
-  import hamburguesa from '$lib/assets/hamburguesa-preview.jpg'
   import { page } from '$app/state'
-
+  
   // Componentes
   import Input from '$lib/components/generales/input/input.svelte'
   import Switch from '$lib/components/generales/switch/switch.svelte'
-  //   import Boton from '$lib/components/generales/boton/boton.svelte'
+  import Boton from '$lib/components/generales/boton/boton.svelte'
+  import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   
   // Lista de ingredientes
   import { ingredientes } from '$lib/components/ingredientes/ingredientes'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
-  import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
-
-  let nombre = $state('Hamburguesa completa con cheddar')
-  let descripcion = $state('Breve descripción de los ingredientes o preparación del plato')
-  let imagen = $state(hamburguesa)
+  
+  import hamburguesa from '$lib/assets/hamburguesa-preview.jpg'
+  let nombre = 'Hamburguesa completa con cheddar'
+  let descripcion = 'Breve descripción de los ingredientes o preparación del plato'
 </script>
 
 {#snippet nombreColumnas()}
-    <th>Nombre</th>
-    <th>Grupo</th>
-    <th class="icono">Origen</th>
-    <th class="icono">Acciones</th>
+<th>Nombre</th>
+<th>Grupo</th>
+<th class="icono">Origen</th>
+<th class="icono">Acciones</th>
 {/snippet}
 {#snippet datosFilas()}
-    {#each ingredientes as ingrediente (ingrediente.id)}
-        <IngredienteRow {ingrediente} editarPlato={true} />
-    {/each}
+{#each ingredientes as ingrediente (ingrediente.id)}
+<IngredienteRow {ingrediente} editarPlato={true} />
+{/each}
 {/snippet}
+
 
 <main class="main-vista vista-editar-plato">
     <h1 class="titulo">Editar Plato {page.params.id}</h1>
@@ -42,8 +42,9 @@
             <Input id="descripcion" nombre_label="Descripcion*" textarea={true}
             bind:value={descripcion} type=""/>
 
+            <!-- AGREGAR VALUE=PLATO.IMAGEN -->
             <Input nombre_label="URL de la imagen del plato*" type="file" id="imagen"
-            accept="image/jpeg,image/jpg,image/png" bind:value={imagen} />
+            accept="image/jpeg,image/jpg,image/png" />
         </form>
         
         <!-- Imagen de referencia -->
@@ -56,7 +57,7 @@
     <section class="contenedor-general contenedor-general_especifico">
         <h2>Costos</h2>
         <form class="costos-plato">
-            <Input nombre_label="Precio Base*" type="number" id="precio" placeholder="Ej: 500" />
+            <Input nombre_label="Precio Base*" type="number" id="precio" placeholder="Ej: 500" min=0 />
             <Switch id="platoDeAutor" titulo="Plato de Autor" 
             subtitulo="Aplica un porcentaje adicional al precio de venta" />
             <Switch id="platoDePromocion" titulo="Plato en Promoción"
@@ -64,7 +65,7 @@
         </form>
     </section>
 
-    <!-- Detalle de los ingredientes --> 
+    <!-- Detalle de los ingredientes  -->
     <section class="contenedor-general contenedor-general_especifico">
         <h2>Ingredientes</h2>
         <div class="contenedor_titulo-span">
@@ -73,4 +74,9 @@
 
         <Tabla {nombreColumnas} {datosFilas} />
     </section>
+
+    <div class="botones-juntos">
+        <Boton nombre="Guardar cambios"/>
+        <Boton tipo='secundario' nombre="Descartar cambios"/>
+    </div>
 </main>

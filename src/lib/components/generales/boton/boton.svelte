@@ -4,11 +4,11 @@
   
   interface PropsButton extends HTMLButtonAttributes {
     tipo?: 'primario' | 'secundario'
-    nombre: string
+    children: Snippet
   }
-  const { tipo = 'primario', nombre, ...rest }: PropsButton = $props()
+  const { tipo = 'primario', children, ...rest }: PropsButton = $props()
 </script>
 
 <button class={`boton-${tipo}`} {...rest}>
-  {nombre}
+  {@render children()}
 </button>

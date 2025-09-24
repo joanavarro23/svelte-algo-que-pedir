@@ -1,4 +1,5 @@
 <script lang="ts">
+  import './tablas.css'
   import type { Snippet } from 'svelte'
   import type { HTMLTableAttributes } from 'svelte/elements'
 
