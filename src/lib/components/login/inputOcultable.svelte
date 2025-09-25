@@ -1,13 +1,23 @@
 <script lang="ts">
+  import './inputOcultable.css'
+  import Input from '$lib/components/generales/input/input.svelte'
   interface Props {
     id: string
-    name: string
+    nombre_label: string
+    nombre: string
     placeholder?: string
     required?: boolean
     value: string
   }
 
-  let { id, name, placeholder = 'Escribir', required = true, value = $bindable() }: Props = $props()
+  let {
+    id,
+    nombre_label = '',
+    nombre: name,
+    placeholder = 'Escribir',
+    required = true,
+    value = $bindable()
+  }: Props = $props()
 
   let passOculta = $state(false)
 
@@ -17,11 +27,11 @@
 </script>
 
 <div class="contenedor-password">
-  <input
+  <Input
+    {nombre_label}
     type={passOculta ? 'text' : 'password'}
     {id}
     {name}
-    class="input-formulario"
     {placeholder}
     {required}
     bind:value
@@ -37,46 +47,4 @@
 </div>
 
 <style>
-  .contenedor-password {
-    position: relative;
-    margin: auto;
-  }
-
-  .base-toggle-password {
-    position: absolute;
-    right: 6%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    margin: 0;
-  }
-
-  .icono-ojo {
-    width: 30px;
-    height: 30px;
-    background-image: url('$lib/assets/eye.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    transition: background-image 0.3s ease;
-  }
-
-  .icono-ojo.mostrar {
-    background-image: url('$lib/assets/eye-slash.svg');
-  }
-
-  .toggle-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-  }
-
-  .toggle-button:hover {
-    box-shadow: none;
-  }
 </style>
