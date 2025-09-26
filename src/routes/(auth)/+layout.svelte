@@ -1,5 +1,6 @@
-<!-- No importar header, hacer componete aparte si se cree necesario -->
- <script>
+<!-- No importar header, hacer componente aparte si se cree necesario -->
+<script>
+  import './login.css'
   let { children } = $props()
 </script>
 

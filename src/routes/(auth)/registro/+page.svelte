@@ -1,8 +1,8 @@
 <script>
-  import './login.css'
   import logo from '$lib/assets/logo.svg'
-  import Boton from '$lib/components/generales/boton/boton.svelte'
   import InputOcultable from '$lib/components/login/inputOcultable.svelte'
+  import Input from '$lib/components/generales/input/input.svelte'
+  import Boton from '$lib/components/generales/boton/boton.svelte'
 
   let usuario = $state('')
   let password = $state('')
@@ -21,11 +21,10 @@
     </div>
     <form class="contenedor-formulario">
       <div class="grupo-formulario">
-        <label for="usuario">Usuario</label>
-        <input
+        <Input
+          nombre_label="Usuario"
           type="text"
           id="usuario"
-          class="input-formulario"
           name="usuario"
           placeholder="Escribir"
           required
@@ -33,20 +32,27 @@
         />
       </div>
       <div class="grupo-formulario">
-        <label for="password">Password</label>
-        <InputOcultable id="password" name="password" required bind:value={password} />
+        <InputOcultable
+          nombre_label="Password"
+          id="password"
+          nombre="password"
+          required
+          bind:value={password}
+        />
       </div>
       <div class="grupo-formulario">
-        <label for="confirmar">Re-ingrese el Password</label>
-        <InputOcultable id="confirmar" name="confirm" required bind:value={confirmarPassword} />
+        <InputOcultable
+          nombre_label="Re-ingrese el Password"
+          id="confirmar"
+          nombre="confirmar"
+          required
+          bind:value={confirmarPassword}
+        />
       </div>
       <div>
-        <Boton
-          nombre="Registrarse"
-          class="boton-primario boton-login"
-          type="submit"
-          onclick={enviarFormulario}
-        />
+        <Boton class="boton-primario boton-login" type="submit" onclick={enviarFormulario}
+          >Crear Cuenta</Boton
+        >
       </div>
     </form>
     <p class="enlace-registro">¿Ya tienes una cuenta? <a href="login">Inicia sesión</a></p>
