@@ -10,7 +10,7 @@
       <a href="./editar-plato">
         <Boton onclick={()=>{
           
-        }} nombre="Agregar nuevo plato" />
+        }}>Agregar nuevo plato</Boton>
       </a>
   </header>
   <section class="contenedor-general">
@@ -24,3 +24,7 @@
       </ul>
   </section>
 </main>
+
+<style>
+  @import './menu.css';
+</style>
