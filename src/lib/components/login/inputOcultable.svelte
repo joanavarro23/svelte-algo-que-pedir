@@ -1,6 +1,7 @@
 <script lang="ts">
   import './inputOcultable.css'
   import Input from '$lib/components/generales/input/input.svelte'
+  import IconoBoton from '../generales/icono boton/iconoBoton.svelte'
   interface Props {
     id: string
     nombre_label: string
@@ -36,14 +37,12 @@
     {required}
     bind:value
   />
-  <button
-    type="button"
-    class="base-toggle-password toggle-button"
+  <IconoBoton
     onclick={togglePassword}
-    aria-label={passOculta ? 'Ocultar contraseña' : 'Mostrar contraseña'}
-  >
-    <div class="icono-ojo {passOculta ? 'mostrar' : ''}"></div>
-  </button>
+    claseIcono="icono-ojo {passOculta ? 'mostrar' : ''}"
+    claseBoton="base-toggle-password toggle-button"
+    ariaLabel={passOculta ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+  />
 </div>
 
 <style>
