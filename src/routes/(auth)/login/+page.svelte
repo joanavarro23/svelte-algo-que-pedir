@@ -8,7 +8,7 @@
   let password = $state('')
 
   function enviarFormulario() {
-    // Aquí puedes agregar la lógica para manejar el envío del formulario
+    // lógica de login
   }
 </script>
 
