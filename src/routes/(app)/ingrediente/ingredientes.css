@@ -5,13 +5,8 @@
 }
 
 /* Estilo del título y botón de agregar ingrediente */
-.titulo-boton h1 {
+.boton-titulo h1 {
     flex-basis: 277px;
-}
-
-/* Padding extra para esta tabla */
-th, td {
-    padding: 1rem;
 }
 
 /* Estilo de cabecera acciones */
@@ -19,27 +14,14 @@ th, td {
     text-align: center;
 }
 
-/* Estilo de iconos acciones */
-.iconos-acciones {
-    display: flex;
-    justify-content: center;
-    gap: 0.3rem;
-}
-
 .cabecera-origen {
-    text-align: center;
-}
-
-.icono-origen {
     text-align: center;
 }
 
 /* Media query mobile */
 @media (max-width: 400px) {
     .cabecera-origen,
-    .cabecera-alimenticio,
-    .celda-alimenticio,
-    .icono-origen {
+    .cabecera-alimenticio {
         display: none;
     }
 }
@@ -55,12 +37,5 @@ th, td {
 @media (min-width: 769px) {
     .ingrediente-container {
         margin: 0 7rem 0 7rem;
-    }
-}
-
-/* Ocultar icono de ojo en tablet y desktop */
-@media (min-width: 401px) {
-    .icono-ojo {
-        display: none;
     }
 }

@@ -1,5 +1,4 @@
 <script lang='ts'>
-import '$lib/components/ingredientes/ingredientes.css'
 import Boton from '$lib/components/generales/boton/boton.svelte'
 import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
 import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
@@ -27,7 +26,11 @@ import { ingredientes } from '$lib/components/ingredientes/ingredientes'
         <h1>Ingredientes</h1>
         <Boton onclick={()=>{
         
-        }} nombre="Nuevo Ingrediente" />
+        }} >Nuevo ingrediente</Boton>
     </header>
     <Tabla {nombreColumnas} {datosFilas}/>
 </main> 
+
+<style>
+  @import './ingredientes.css';
+</style>

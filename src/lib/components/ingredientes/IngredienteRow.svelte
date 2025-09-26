@@ -46,3 +46,7 @@ const iconoOrigen = mapaIconos[ingrediente.origen]
     </td>
   {/if}
 </tr>
+
+<style>
+  @import './ingrediente-row.css';
+</style>
