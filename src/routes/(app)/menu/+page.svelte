@@ -26,4 +26,8 @@
 
 <style>
   @import './menu.css';
+
+  h2 {
+    padding-bottom: 1rem;
+  }
 </style>

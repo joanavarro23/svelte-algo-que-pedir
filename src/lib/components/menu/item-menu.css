@@ -3,6 +3,26 @@
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+    position: relative; 
+}
+
+/* Pseudoclase para mostrar linea en hover del item del menú */
+.item-menu::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;                     
+  height: 1px;                      
+  background: darkgray;                 
+  opacity: 0;                       
+  transition: opacity .15s ease;
+}
+
+/* Muestra la línea al hoverear sobre el item */
+.item-menu:hover::after {
+  opacity: 1;                       
+  cursor: pointer;
 }
 
 /* Configuración para imágen y nombre+descripción del plato */
