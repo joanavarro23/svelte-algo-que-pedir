@@ -3,6 +3,7 @@ import Boton from '$lib/components/generales/boton/boton.svelte'
 import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
 import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
 import { ingredientes } from '$lib/components/ingredientes/ingredientes'
+  import { goto } from '$app/navigation'
 
 </script>
 
@@ -25,7 +26,7 @@ import { ingredientes } from '$lib/components/ingredientes/ingredientes'
     <header class="boton-titulo">
         <h1>Ingredientes</h1>
         <Boton onclick={()=>{
-        
+          goto('./editar-ingrediente/nuevo')
         }} >Nuevo ingrediente</Boton>
     </header>
     <Tabla {nombreColumnas} {datosFilas}/>
