@@ -1,4 +1,4 @@
-<script>
+<script lang='ts'>
   import './editar-plato.css'
   import { page } from '$app/state'
   

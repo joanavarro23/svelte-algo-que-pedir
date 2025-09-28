@@ -16,7 +16,7 @@ import { ingredientes } from '$lib/components/ingredientes/ingredientes'
 
 {#snippet datosFilas()}
   {#each ingredientes as ingrediente (ingrediente.id)}
-    <IngredienteRow {ingrediente} />
+    <IngredienteRow {ingrediente} editarPlato={false}/>
   {/each}
 {/snippet}
 
@@ -33,4 +33,8 @@ import { ingredientes } from '$lib/components/ingredientes/ingredientes'
 
 <style>
   @import './ingredientes.css';
+
+  th {
+    padding: 1rem;
+  }
 </style>
