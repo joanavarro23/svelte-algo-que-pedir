@@ -1,6 +1,8 @@
 <script lang="ts">
   import type { Pedido } from '$lib/types'
   import { MedioDePago } from '$lib/types'
+  import iconoUsuario from '$lib/assets/pedido-user-icon.png'
+  import Boton from '$lib/components/generales/boton/boton.svelte'
 
   interface Props {
     pedido: Pedido
@@ -14,11 +16,11 @@
 
   const iconoMedioDePago = (medio: MedioDePago): string => {
     if (medio === MedioDePago.Efectivo) {
-      return '/assets/efectivo-icon.svg'
+      return '$lib/assets/efectivo.svg'
     } else if (medio === MedioDePago.QR) {
-      return '/assets/codigo-qr.svg'
+      return '$lib/assets/codigo-qr.svg'
     } else {
-      return '/assets/tarjeta-credito.svg'
+      return '$lib/assets/tarjeta-credito.svg'
     }
   }
 </script>
@@ -29,7 +31,7 @@
     <p>Pedido #{pedido.id}</p>
 
     <section class="info-usuario">
-      <img src="/assets/pedido-user-icon.png" alt="usuario" class="icono-usuario-pedido" />
+      <img src={iconoUsuario} alt="usuario" class="icono-usuario-pedido" />
       <div class="nombre-usuario">
         <h4>{pedido.cliente}</h4>
         <p><b>usuario: </b>smiller2005</p>
@@ -43,7 +45,7 @@
   </header>
 
   <section class="info-direccion">
-    <img src="/assets/pin-ubicacion.svg" alt="" class="pin-ubicacion" />
+    <img src="$lib/assets/pin-ubicacion.svg" alt="" class="pin-ubicacion" />
     <div class="direccion-coordenadas">
       <h4>{pedido.direccion}</h4>
       <p>Lat: 407128, Long: -740060</p>
