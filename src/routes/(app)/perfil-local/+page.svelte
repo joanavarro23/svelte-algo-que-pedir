@@ -5,7 +5,38 @@
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
   
   function guardarCambios() {
-    alert('Cambios guardados :D')
+    /* Muesta los datos ingresados; después es la acción que va a enviar los datos del form al back*/
+    const datosLocal = {
+      nombreLocal,
+      urlImagen,
+      direccion,
+      altura,
+      latitud,
+      longitud,
+      porcentajeApp,
+      porcentajeAutor,
+      metodosDePago: {
+        QR: metodos.qr,
+        Efectivo: metodos.efectivo,
+        Transferencia: metodos.transferencia
+      }
+    }
+
+    alert(
+      `Datos ingresados:\n` +
+      `Nombre: ${datosLocal.nombreLocal}\n` +
+      `URL Imagen: ${datosLocal.urlImagen}\n` +
+      `Dirección: ${datosLocal.direccion}\n` +
+      `Altura: ${datosLocal.altura}\n` +
+      `Latitud: ${datosLocal.latitud}\n` +
+      `Longitud: ${datosLocal.longitud}\n` +
+      `Porc. App: ${datosLocal.porcentajeApp}\n` +
+      `Porc. Autor: ${datosLocal.porcentajeAutor}\n` +
+      `Métodos de pago:\n` +
+      `  QR: ${datosLocal.metodosDePago.QR ? '✅' : '❌'}\n` +
+      `  Efectivo: ${datosLocal.metodosDePago.Efectivo ? '✅' : '❌'}\n` +
+      `  Transferencia: ${datosLocal.metodosDePago.Transferencia ? '✅' : '❌'}`
+    )
   }
 
   function descartarCambios() {
@@ -103,8 +134,6 @@
       </div>
     </div>
 </ProfileCard>
-
-
 
   <div class="button">
     <PropsButton tipo="primario" onclick={guardarCambios}>
