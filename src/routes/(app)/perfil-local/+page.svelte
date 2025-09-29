@@ -1,10 +1,17 @@
 <script>
-  import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import moesBar from '$lib/assets/moes-bar.jpg'
-  import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
+  import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
+  import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'  
 
-  // estado reactivo local (ejemplo)
+  function guardarCambios() {
+    alert('Cambios guardados :D')
+  }
+
+  function descartarCambios() {
+    alert('Cambios descartados :(')
+  }
+  
   let nombreLocal = "";
   let urlImagen = "";
   let direccion = "";
@@ -17,7 +24,7 @@
     efectivo: false,
     qr: false,
     transferencia: false
-  };
+  }
 
 </script>
 
@@ -100,11 +107,11 @@
 
 
   <div class="button">
-    <PropsButton tipo="primario">
+    <PropsButton tipo="primario" onclick={guardarCambios}>
         Guardar Cambios
     </PropsButton>
 
-    <PropsButton tipo="secundario">
+    <PropsButton tipo="secundario" onclick={descartarCambios}>
         Descartar Cambios
     </PropsButton>
   </div>
