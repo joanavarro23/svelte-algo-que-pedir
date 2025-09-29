@@ -8,7 +8,7 @@
   }
 
   const {
-    nombre = 'Sofia Miller',
+    nombre,
     username = 'smiller2005',
     avatar = iconoUsuario
   }: Props = $props()

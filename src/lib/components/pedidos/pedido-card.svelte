@@ -37,7 +37,7 @@
     <p>Pedido #{pedido.id}</p>
 
     <!--Componente info de usuario-->
-    <UsuarioSection />
+    <UsuarioSection nombre={pedido.cliente} />
 
     <p class="info-pedido">
       Hora: {pedidoHora(pedido.fecha)} | Articulos: {pedido.items} | Total: ${pedido.precio}
