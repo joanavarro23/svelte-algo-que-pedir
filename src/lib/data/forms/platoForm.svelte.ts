@@ -1,5 +1,4 @@
-/* eslint_env es2020*/
-import { Plato } from "../models/plato"
+import { Plato } from '../models/plato'
 
 export class ValidarMensaje {  
   constructor(
@@ -46,7 +45,7 @@ export class PlatoForm {
     if (!this.imagen) {
       this.agregarError('imagen', 'Debe seleccionar una imagen')
     }
-    if (this.imagen && !this.imagen.type.startsWith("image/")) {
+    if (this.imagen && !this.imagen.type.startsWith('image/')) {
       this.agregarError('imagen', 'El archivo debe ser una imagen válida')
     }
 
