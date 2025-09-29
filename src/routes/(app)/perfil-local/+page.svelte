@@ -2,8 +2,8 @@
   import moesBar from '$lib/assets/moes-bar.jpg'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
-  import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'  
-
+  import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
+  
   function guardarCambios() {
     alert('Cambios guardados :D')
   }
