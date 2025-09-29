@@ -24,7 +24,7 @@
 
     alert(
       `Datos ingresados:\n` +
-      `Nombre: ${datosLocal.nombreLocal}\n` +
+      `Nombre Local: ${datosLocal.nombreLocal}\n` +
       `URL Imagen: ${datosLocal.urlImagen}\n` +
       `Dirección: ${datosLocal.direccion}\n` +
       `Altura: ${datosLocal.altura}\n` +
