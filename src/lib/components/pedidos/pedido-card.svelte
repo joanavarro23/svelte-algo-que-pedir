@@ -2,9 +2,8 @@
   import type { Pedido } from '$lib/types'
   import { MedioDePago } from '$lib/types'
   import UsuarioSection from '$lib/components/pedidos/usuario-section.svelte'
+  import DireccionSection from './direccion-section.svelte'
 
-
-  import pinUbicacion from '$lib/assets/pin-ubicacion.svg'
   import tarjetaIcono from '$lib/assets/tarjeta-credito.svg'
   import efectivoIcono from '$lib/assets/efectivo.svg'
   import QRIcono from '$lib/assets/codigo-qr.svg'
@@ -37,22 +36,16 @@
   <header class="pedido-header">
     <p>Pedido #{pedido.id}</p>
 
-  <!--Componente info de usuario-->
-  <UsuarioSection/>
+    <!--Componente info de usuario-->
+    <UsuarioSection />
 
     <p class="info-pedido">
       Hora: {pedidoHora(pedido.fecha)} | Articulos: {pedido.items} | Total: ${pedido.precio}
     </p>
   </header>
 
-  <section class="info-direccion">
-    <img src={pinUbicacion} alt="" class="pin-ubicacion" />
-    <div class="direccion-coordenadas">
-      <h4>{pedido.direccion}</h4>
-      <p>Lat: 407128, Long: -740060</p>
-      <!-- FALTA PENSAR LAT/LONG DE DIRECCION -->
-    </div>
-  </section>
+  <!--Componente info de direccion-->
+  <DireccionSection direccion={pedido.direccion} />
 
   <footer class="pedido-footer">
     <div class="modo-pago">
