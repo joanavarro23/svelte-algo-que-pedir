@@ -1,7 +1,7 @@
 export type Pedido = {
   id: number,
   cliente: string,
-  hora: Date,
+  fecha: Date,
   items: number,
   precio: number,
   estado: EstadoDelPedido,
@@ -13,7 +13,7 @@ export type Pedido = {
 export enum MedioDePago {
   Efectivo = 'Efectivo',
   QR = 'QR',
-  Transferencia = 'Transferencia bancaria'
+  Tarjeta = 'Tarjeta de credito'
 }
 
 export enum EstadoDelPedido {
