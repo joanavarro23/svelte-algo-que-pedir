@@ -1,7 +1,8 @@
 <script>
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
-  import moesBar from '$lib/assets/moes-bar.jpg';
-  import ProfileCard from '$lib/components/perfil-local/profile-card.svelte';
+  import moesBar from '$lib/assets/moes-bar.jpg'
+  import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
+  import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
 
   // estado reactivo local (ejemplo)
   let nombreLocal = "";
@@ -89,21 +90,14 @@
 
       <h3>Métodos de pago</h3>
       <div class="metodos-de-pago">
-        <label for="efectivo">
-          <input id="efectivo" type="checkbox" bind:checked={metodos.efectivo} />
-          Efectivo
-        </label>
-        <label for="qr">
-          <input id="qr" type="checkbox" bind:checked={metodos.qr} />
-          QR
-        </label>
-        <label for="transferencia">
-          <input id="transferencia" type="checkbox" bind:checked={metodos.transferencia} />
-          Transferencia
-        </label>
+        <Checkbox label="QR" bind:checked={metodos.qr} />
+        <Checkbox label="Efectivo" bind:checked={metodos.efectivo} />
+        <Checkbox label="Transferencia" bind:checked={metodos.transferencia} />
       </div>
     </div>
 </ProfileCard>
+
+
 
   <div class="button">
     <PropsButton tipo="primario">
