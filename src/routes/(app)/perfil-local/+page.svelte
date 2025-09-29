@@ -23,7 +23,7 @@
     }
 
     alert(
-      `Datos ingresados:\n` +
+      'Datos ingresados:\n' +
       `Nombre Local: ${datosLocal.nombreLocal}\n` +
       `URL Imagen: ${datosLocal.urlImagen}\n` +
       `Dirección: ${datosLocal.direccion}\n` +
@@ -32,7 +32,7 @@
       `Longitud: ${datosLocal.longitud}\n` +
       `Porc. App: ${datosLocal.porcentajeApp}\n` +
       `Porc. Autor: ${datosLocal.porcentajeAutor}\n` +
-      `Métodos de pago:\n` +
+      'Métodos de pago:\n' +
       `  QR: ${datosLocal.metodosDePago.QR ? '✅' : '❌'}\n` +
       `  Efectivo: ${datosLocal.metodosDePago.Efectivo ? '✅' : '❌'}\n` +
       `  Transferencia: ${datosLocal.metodosDePago.Transferencia ? '✅' : '❌'}`
@@ -43,14 +43,14 @@
     alert('Cambios descartados :(')
   }
   
-  let nombreLocal = "";
-  let urlImagen = "";
-  let direccion = "";
-  let altura = "";
-  let latitud = "";
-  let longitud = "";
-  let porcentajeApp = "";
-  let porcentajeAutor = "";
+  let nombreLocal = ''
+  let urlImagen = ''
+  let direccion = ''
+  let altura = ''
+  let latitud = ''
+  let longitud = ''
+  let porcentajeApp = ''
+  let porcentajeAutor = ''
   let metodos = {
     efectivo: false,
     qr: false,
