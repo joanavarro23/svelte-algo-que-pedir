@@ -1,8 +1,9 @@
 <script lang="ts">
   import type { Pedido } from '$lib/types'
   import { MedioDePago } from '$lib/types'
+  import UsuarioSection from '$lib/components/pedidos/usuario-section.svelte'
 
-  import iconoUsuario from '$lib/assets/pedido-user-icon.png'
+
   import pinUbicacion from '$lib/assets/pin-ubicacion.svg'
   import tarjetaIcono from '$lib/assets/tarjeta-credito.svg'
   import efectivoIcono from '$lib/assets/efectivo.svg'
@@ -36,14 +37,8 @@
   <header class="pedido-header">
     <p>Pedido #{pedido.id}</p>
 
-    <section class="info-usuario">
-      <img src={iconoUsuario} alt="usuario" class="icono-usuario-pedido" />
-      <div class="nombre-usuario">
-        <h4>{pedido.cliente}</h4>
-        <p><b>usuario: </b>smiller2005</p>
-        <!-- FALTA PENSAR USUARIO -->
-      </div>
-    </section>
+  <!--Componente info de usuario-->
+  <UsuarioSection/>
 
     <p class="info-pedido">
       Hora: {pedidoHora(pedido.fecha)} | Articulos: {pedido.items} | Total: ${pedido.precio}
