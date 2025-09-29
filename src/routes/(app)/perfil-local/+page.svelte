@@ -1,5 +1,5 @@
 <script>
-  import Boton from '$lib/components/generales/boton/boton.svelte'
+  import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import moesBar from '$lib/assets/moes-bar.jpg';
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte';
 
@@ -26,7 +26,6 @@
   </header>
 
   <ProfileCard>
-    {#snippet children()}
       <div class="informacion-local">
         <form class="inputs-local" on:submit>
           <label for="nombre-local">Nombre del local*</label>
@@ -38,11 +37,9 @@
 
         <img src={moesBar} alt="Imagen del local" class="imagen-local" />
       </div>
-    {/snippet}
     </ProfileCard>
 
   <ProfileCard>
-    {#snippet children()}
       <h3>Dirección</h3>
       <div class="card-inputs">
         <div>
@@ -62,11 +59,9 @@
           <input id="longitud" type="number" bind:value={longitud} placeholder="Escribir" required />
         </div>
       </div>
-    {/snippet}
   </ProfileCard>
 
 <ProfileCard>
-  {#snippet children()}
   <h3>Porcentajes</h3>  
   <div>
       <div class="card-inputs">
@@ -108,12 +103,16 @@
         </label>
       </div>
     </div>
-  {/snippet}
 </ProfileCard>
 
   <div class="button">
-    <Boton nombre="Guardar cambios" tipo="primario"/>
-    <Boton nombre="Descartar cambios" tipo="secundario"/>
+    <PropsButton tipo="primario">
+        Guardar Cambios
+    </PropsButton>
+
+    <PropsButton tipo="secundario">
+        Descartar Cambios
+    </PropsButton>
   </div>
   
 </main>
