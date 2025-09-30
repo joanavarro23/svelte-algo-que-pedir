@@ -1,4 +1,4 @@
-<script>
+<script lang='ts'>
   import './editar-plato.css'
   import { page } from '$app/state'
   
@@ -76,7 +76,7 @@
     </section>
 
     <div class="botones-juntos">
-        <Boton nombre="Guardar cambios"/>
-        <Boton tipo='secundario' nombre="Descartar cambios"/>
+        <Boton>Guardar cambios</Boton>
+        <Boton tipo='secundario'>Descartar cambios</Boton>
     </div>
 </main>

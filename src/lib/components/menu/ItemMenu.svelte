@@ -1,5 +1,4 @@
 <script lang='ts'>
-  import './menu.css'
   import type { Plato } from './platos'
 
   type ItemMenuProps = { 
@@ -11,7 +10,7 @@
 
 <li class="item-menu">
   <figure class="detalles-menu" data-testid={`plato-${plato.id}`}>
-      <img src={plato.imagen} class="imagen-menu">
+      <img src={plato.imagen} class="imagen-menu" alt="Imagen del plato {plato.titulo}">
       <figcaption>
           <p>{plato.titulo}</p>
           <p class="descripcion-plato">{plato.descripcion}</p>
@@ -21,3 +20,7 @@
       <span>${plato.precio}</span>
   </div>
 </li>
+
+<style>
+  @import './item-menu.css';
+</style>

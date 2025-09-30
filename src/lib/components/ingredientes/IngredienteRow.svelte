@@ -40,9 +40,15 @@ const iconoOrigen = mapaIconos[ingrediente.origen]
     <td>
       <div class="iconos-acciones">
         <img src={eye} alt="ojo" class="icono-ojo">
-        <img src={pencil} alt="lapiz">
+        <a href={`./editar-ingrediente/${ingrediente.id}`}>
+          <img src={pencil} alt="lapiz">
+        </a>
         <img src={trash} alt="tacho">
       </div>
     </td>
   {/if}
 </tr>
+
+<style>
+  @import './ingrediente-row.css';
+</style>

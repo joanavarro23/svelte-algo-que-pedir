@@ -1,4 +1,5 @@
-<script>
+<script lang='ts'>
+  import { goto } from '$app/navigation'
   import Boton from '$lib/components/generales/boton/boton.svelte'
   import ItemMenu from '$lib/components/menu/ItemMenu.svelte'
   import { platos } from '$lib/components/menu/platos'
@@ -7,11 +8,9 @@
 <main class="menu-container main-vista">
   <header class="boton-titulo">
       <h1>Gestión del Menú</h1>
-      <a href="./editar-plato">
         <Boton onclick={()=>{
-          
-        }} nombre="Agregar nuevo plato" />
-      </a>
+          goto('./editar-plato/nuevo')
+        }}>Agregar nuevo plato</Boton>
   </header>
   <section class="contenedor-general">
       <h2>Platos Disponibles</h2>
@@ -24,3 +23,11 @@
       </ul>
   </section>
 </main>
+
+<style>
+  @import './menu.css';
+
+  h2 {
+    padding-bottom: 1rem;
+  }
+</style>

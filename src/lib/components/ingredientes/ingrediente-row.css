@@ -1,0 +1,25 @@
+/* Estilo de iconos acciones */
+.iconos-acciones {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+.icono-origen {
+    text-align: center;
+}
+
+/* Media query mobile */
+@media (max-width: 400px) {
+    .icono-origen,
+    .celda-alimenticio {
+        display: none;
+    }
+}
+
+/* Ocultar icono de ojo en tablet y desktop */
+@media (min-width: 401px) {
+    .icono-ojo {
+        display: none;
+    }
+}
