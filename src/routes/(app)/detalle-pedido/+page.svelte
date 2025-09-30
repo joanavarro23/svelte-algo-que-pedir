@@ -1,22 +1,24 @@
 <script lang="ts">
   import './detalle-pedido.css'
-  import usuarioIcono from '$lib/assets/usuario.svg'
-  import pinUbicacionIcono from '$lib/assets/pin-ubicacion.svg'
+  /* import usuarioIcono from '$lib/assets/usuario.svg'
+  import pinUbicacionIcono from '$lib/assets/pin-ubicacion.svg' */
   import tarjetaCreditoIcono from '$lib/assets/tarjeta-credito.svg'
 
   //import { pedidos } from '$lib/types/pedido'
-  import { platos } from '$lib/components/menu/platos'
+  import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
   import type { EstadoDelPedido } from '$lib/types/pedido'
 
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
   import PedidoRow from '$lib/components/detalle-pedido/pedidoRow.svelte'
   import EstadoBadge from '$lib/components/detalle-pedido/estadoBadge.svelte'
+  import UsuarioSection from '$lib/components/pedidos/usuario-section.svelte'
+  import DireccionSection from '$lib/components/pedidos/direccion-section.svelte'
 
   const itemsPedido = [
-    { ...platos[0], cantidad: 1 }, // Hamburguesa con Queso
-    { ...platos[1], cantidad: 1 }, // Papas Fritas
-    { ...platos[2], cantidad: 1 } // Refresco
+    { ...PLATOS_MOCK[0], cantidad: 1 }, // Hamburguesa con Queso
+    { ...PLATOS_MOCK[1], cantidad: 1 }, // Papas Fritas
+    { ...PLATOS_MOCK[2], cantidad: 1 } // Refresco
   ]
 
   const subtotal = itemsPedido.reduce(
@@ -36,8 +38,7 @@
       usuario: 'smiller2005'
     },
     direccion: {
-      calle: 'Av. Siempre Viva 555',
-      detalles: 'Lp 05, 1798 Tay - 19-09047'
+      calle: 'Av. Siempre Viva 555'
     },
     items: itemsPedido,
     pago: {
@@ -65,23 +66,14 @@
   <section class="contenedor-general contenedor-info">
     <div class="cliente-info">
       <h2>Cliente</h2>
-      <div class="cliente-content">
-        <img src={usuarioIcono} class="icono" alt="Cliente" />
-        <div class="cliente-texto">
-          <span class="texto-principal">{pedidoDetalle.cliente.nombre}</span>
-          <span class="texto-secundario"><b>Usuario:</b> {pedidoDetalle.cliente.usuario}</span>
-        </div>
-      </div>
+      <UsuarioSection
+        nombre={pedidoDetalle.cliente.nombre}
+        username={pedidoDetalle.cliente.usuario}
+      />
     </div>
     <div class="cliente-info">
       <h2>Dirección de entrega</h2>
-      <div class="cliente-content">
-        <img src={pinUbicacionIcono} class="icono" alt="Ubicacion" />
-        <div class="cliente-texto">
-          <span class="texto-principal">{pedidoDetalle.direccion.calle}</span>
-          <span class="texto-secundario">{pedidoDetalle.direccion.detalles}</span>
-        </div>
-      </div>
+      <DireccionSection direccion={pedidoDetalle.direccion.calle} />
     </div>
   </section>
 

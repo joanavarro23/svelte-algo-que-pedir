@@ -29,6 +29,30 @@ h2 {
     gap: 1rem;
 }
 
+section.info-direccion {
+    flex-direction: row;
+    display: flex;
+    gap: 1rem;
+}
+
+section.info-usuario {
+    flex-direction: row;
+    display: flex;
+    gap: 1rem;
+}
+
+img.icono-usuario-pedido{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+img.pin-ubicacion {
+    width: 50px;
+    height: 50px;
+}
+
 /* ELEMENTOS COMUNES */
 .cliente-content,
 .metodo-pago {
