@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang='ts'>
   import './editar-plato.css'
   
   // Componentes
@@ -10,7 +10,7 @@
   import Validador from '$lib/utils/validador.svelte'
   
   // Lista de ingredientes
-  import { ingredientes } from '$lib/components/ingredientes/ingredientes'
+  import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
   // Platos
   import { PlatoForm } from '$lib/data/forms/platoForm.svelte'
@@ -70,7 +70,7 @@
                 <th class="icono">Acciones</th>
             {/snippet}
             {#snippet datosFilas()}
-                {#each ingredientes as ingrediente (ingrediente.id)}
+                {#each INGREDIENTES_MOCK as ingrediente (ingrediente.id)}
                     <IngredienteRow {ingrediente} editarPlato={true} />
                 {/each}
             {/snippet}

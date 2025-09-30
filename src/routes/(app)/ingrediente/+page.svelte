@@ -1,9 +1,9 @@
 <script lang='ts'>
-import '$lib/components/ingredientes/ingredientes.css'
 import Boton from '$lib/components/generales/boton/boton.svelte'
 import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
 import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
-import { ingredientes } from '$lib/components/ingredientes/ingredientes'
+import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
+  import { goto } from '$app/navigation'
 
 </script>
 
@@ -16,8 +16,8 @@ import { ingredientes } from '$lib/components/ingredientes/ingredientes'
 {/snippet}
 
 {#snippet datosFilas()}
-  {#each ingredientes as ingrediente (ingrediente.id)}
-    <IngredienteRow {ingrediente} />
+  {#each INGREDIENTES_MOCK as ingrediente (ingrediente.id)}
+    <IngredienteRow {ingrediente} editarPlato={false}/>
   {/each}
 {/snippet}
 
@@ -26,8 +26,16 @@ import { ingredientes } from '$lib/components/ingredientes/ingredientes'
     <header class="boton-titulo">
         <h1>Ingredientes</h1>
         <Boton onclick={()=>{
-        
-        }} nombre="Nuevo Ingrediente" />
+          goto('./editar-ingrediente/nuevo')
+        }} >Nuevo ingrediente</Boton>
     </header>
     <Tabla {nombreColumnas} {datosFilas}/>
 </main> 
+
+<style>
+  @import './ingredientes.css';
+
+  th {
+    padding: 1rem;
+  }
+</style>

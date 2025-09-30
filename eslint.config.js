@@ -35,27 +35,7 @@ export default [
     },
   },
   {
-    files: ['**/*.svelte, **/*.svelte.ts'],
-    languageOptions: {
-      parser: svelteParser,
-      parserOptions: {
-        parser: tsParser,
-      },
-    },
-    rules: {
-      'svelte/no-target-blank': 'error',
-      'svelte/no-at-debug-tags': 'error',
-      'svelte/no-reactive-functions': 'error',
-      'svelte/no-reactive-literals': 'error',
-      'svelte/no-navigation-without-resolve': 'off',
-      '@/semi': ['error', 'never'],
-      '@/quotes': ['warn', 'single'],
-      '@/indent': ['warn', 2],
-      '@typescript-eslint/no-non-null-assertion': 'off',
-    }
-  },
-  {
-    files: ['**/*.svelte.ts'],
+    files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
     languageOptions: {
       parser: svelteParser,
       parserOptions: {

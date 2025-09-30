@@ -1,14 +1,14 @@
 <script>
-  import './login.css'
   import logo from '$lib/assets/logo.svg'
   import InputOcultable from '$lib/components/login/inputOcultable.svelte'
+  import Input from '$lib/components/generales/input/input.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
 
   let usuario = $state('')
   let password = $state('')
 
   function enviarFormulario() {
-    // Aquí puedes agregar la lógica para manejar el envío del formulario
+    // lógica de login
   }
 </script>
 
@@ -20,28 +20,29 @@
     </div>
     <form class="contenedor-formulario" onsubmit={enviarFormulario}>
       <div class="grupo-formulario">
-        <label for="usuario">Usuario</label>
-        <input
+        <Input
+          nombre_label="Usuario"
           type="text"
           id="usuario"
           name="usuario"
-          class="input-formulario"
           placeholder="Escribir"
           required
           bind:value={usuario}
         />
       </div>
       <div class="grupo-formulario">
-        <label for="password">Password</label>
-        <InputOcultable id="password" name="password" required bind:value={password} />
+        <InputOcultable
+          nombre_label="Password"
+          id="password"
+          nombre="password"
+          required
+          bind:value={password}
+        />
       </div>
       <div>
-        <Boton
-          nombre="Iniciar Sesión"
-          class="boton-primario boton-login"
-          type="submit"
-          onclick={enviarFormulario}
-        />
+        <Boton class="boton-primario boton-login" type="submit" onclick={enviarFormulario}
+          >Iniciar Sesión</Boton
+        >
       </div>
     </form>
     <p class="enlace-registro">¿No tienes una cuenta? <a href="registro">Regístrate</a></p>

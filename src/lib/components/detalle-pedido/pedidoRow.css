@@ -1,0 +1,30 @@
+.plato-detalle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .icono {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .texto-principal {
+    color: var(--color-texto-primario);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .texto-secundario {
+    color: var(--color-texto-secundario);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 400px) {
+    td img,
+    .texto-secundario {
+      display: none;
+    }
+  }
