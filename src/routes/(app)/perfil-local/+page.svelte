@@ -20,7 +20,7 @@
       }
     }
   function guardarCambios() {
-    /* Muesta los datos ingresados; después es la acción que va a enviar los datos del form al back*/
+    /* Muesta los datos ingresados; después será la acción que va a enviar los datos del form al back*/
     const datosLocal = {
       nombreLocal,
       urlImagen,
