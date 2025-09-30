@@ -1,4 +1,5 @@
 <script>
+  import { page } from '$app/state'
   import './editar-ingrediente.css'
   import Input from '$lib/components/generales/input/input.svelte'
   import Switch from '$lib/components/generales/switch/switch.svelte'
@@ -6,7 +7,7 @@
 
 <main class="vista-edicion-ingrediente main-vista">
   <!-- Contenedor de toda la vista -->
-  <h1 class="titulo-edicion">Editar ingrediente</h1>
+  <h1 class="titulo-edicion">Editar ingrediente {page.params.id}</h1>
   <section class="container-edicion contenedor-general">
     <!-- Contenedor de los campos de edicion ingrediente -->
     <article class="item-input-edicion">

@@ -1,5 +1,5 @@
 <script lang="ts">
-  const { title = "", children } = $props();
+  const { title = '', children } = $props()
   import './profile-card.css'
 </script>
 

@@ -1,5 +1,5 @@
 <script lang='ts'>
-import type { Ingrediente } from './ingredientes'
+import type { Ingrediente } from '$lib/types'
 import cow from '$lib/assets/cow.svg'
 import palta from '$lib/assets/palta.svg'
 import eye from '$lib/assets/eye.svg'
@@ -40,9 +40,15 @@ const iconoOrigen = mapaIconos[ingrediente.origen]
     <td>
       <div class="iconos-acciones">
         <img src={eye} alt="ojo" class="icono-ojo">
-        <img src={pencil} alt="lapiz">
+        <a href={`./editar-ingrediente/${ingrediente.id}`}>
+          <img src={pencil} alt="lapiz">
+        </a>
         <img src={trash} alt="tacho">
       </div>
     </td>
   {/if}
 </tr>
+
+<style>
+  @import './ingrediente-row.css';
+</style>

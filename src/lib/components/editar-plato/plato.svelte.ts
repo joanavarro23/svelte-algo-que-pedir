@@ -1,4 +1,4 @@
-import { Plato, platos } from "../menu/platos"
+import { Plato, platos } from '../menu/platos'
 
 export class Platos { 
   id: number = 0
@@ -39,7 +39,7 @@ export class Platos {
     if (!this.imagen) {
       this.agregarError('imagen', 'Debe seleccionar una imagen')
     }
-    if (this.imagen && !this.imagen.type.startsWith("image/")) {
+    if (this.imagen && !this.imagen.type.startsWith('image/')) {
       this.agregarError('imagen', 'El archivo debe ser una imagen válida')
     }
 
@@ -49,7 +49,7 @@ export class Platos {
   }
 
   buscarPlato(id: number): Plato | undefined {
-  return platos.find(plato => plato.id === id)
+    return platos.find(plato => plato.id === id)
   }
 }
 
