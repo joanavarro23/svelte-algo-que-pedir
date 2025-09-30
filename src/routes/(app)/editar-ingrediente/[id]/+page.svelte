@@ -3,6 +3,7 @@
   import './editar-ingrediente.css'
   import Input from '$lib/components/generales/input/input.svelte'
   import Switch from '$lib/components/generales/switch/switch.svelte'
+  import Textarea from '$lib/components/generales/input/textarea.svelte'
 </script>
 
 <main class="vista-edicion-ingrediente main-vista">
@@ -28,7 +29,7 @@
           required={true}
         />
 
-        <Input
+        <Textarea
           nombre_label="Grupo Alimenticio"
           id="grupo-alimenticio"
           select={true}
@@ -41,7 +42,6 @@
             { value: '5', label: 'Grasas y aceites' },
             { value: '6', label: 'Proteínas' }
           ]}
-          type=''
         />
 
         <Switch id="origen-toggle" titulo="Origen animal" />
