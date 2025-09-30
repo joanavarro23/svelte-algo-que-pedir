@@ -39,37 +39,36 @@
 
     alert(
       'Datos ingresados:\n' +
-      `Nombre Local: ${datosLocal.nombreLocal}\n` +
-      `URL Imagen: ${datosLocal.urlImagen}\n` +
-      `Dirección: ${datosLocal.direccion}\n` +
-      `Altura: ${datosLocal.altura}\n` +
-      `Latitud: ${datosLocal.latitud}\n` +
-      `Longitud: ${datosLocal.longitud}\n` +
-      `Porc. App: ${datosLocal.porcentajeApp}\n` +
-      `Porc. Autor: ${datosLocal.porcentajeAutor}\n` +
-      'Métodos de pago:\n' +
-      `  QR: ${datosLocal.metodosDePago.QR ? '✅' : '❌'}\n` +
-      `  Efectivo: ${datosLocal.metodosDePago.Efectivo ? '✅' : '❌'}\n` +
-      `  Transferencia: ${datosLocal.metodosDePago.Transferencia ? '✅' : '❌'}`
+        `Nombre Local: ${datosLocal.nombreLocal}\n` +
+        `URL Imagen: ${datosLocal.urlImagen}\n` +
+        `Dirección: ${datosLocal.direccion}\n` +
+        `Altura: ${datosLocal.altura}\n` +
+        `Latitud: ${datosLocal.latitud}\n` +
+        `Longitud: ${datosLocal.longitud}\n` +
+        `Porc. App: ${datosLocal.porcentajeApp}\n` +
+        `Porc. Autor: ${datosLocal.porcentajeAutor}\n` +
+        'Métodos de pago:\n' +
+        `  QR: ${datosLocal.metodosDePago.QR ? '✅' : '❌'}\n` +
+        `  Efectivo: ${datosLocal.metodosDePago.Efectivo ? '✅' : '❌'}\n` +
+        `  Transferencia: ${datosLocal.metodosDePago.Transferencia ? '✅' : '❌'}`
     )
   }
 
   function descartarCambios() {
     alert('Cambios descartados :(')
   }
-  
-  let { 
-    nombreLocal, 
-    urlImagen, 
-    direccion, 
-    altura, 
-    latitud, 
-    longitud, 
-    porcentajeApp, 
-    porcentajeAutor, 
+
+  let {
+    nombreLocal,
+    urlImagen,
+    direccion,
+    altura,
+    latitud,
+    longitud,
+    porcentajeApp,
+    porcentajeAutor,
     metodosDePago
   } = mockInfoLocal
-
 </script>
 
 <main class="contenedor-principal main-vista">
@@ -78,44 +77,56 @@
   </header>
 
   <ProfileCard>
-      <div class="informacion-local">
-        <form class="inputs-local" on:submit>
-          <label for="nombre-local">Nombre del local*</label>
-          <input id="nombre-local" type="text" bind:value={nombreLocal} placeholder="Escribir" required />
+    <div class="informacion-local">
+      <form class="inputs-local" on:submit>
+        <label for="nombre-local">Nombre del local*</label>
+        <input
+          id="nombre-local"
+          type="text"
+          bind:value={nombreLocal}
+          placeholder="Escribir"
+          required
+        />
 
-          <label for="url-imagen-local">URL de la imagen*</label>
-          <input id="url-imagen-local" type="text" bind:value={urlImagen} placeholder="Escribir" required />
-        </form>
+        <label for="url-imagen-local">URL de la imagen*</label>
+        <input
+          id="url-imagen-local"
+          type="text"
+          bind:value={urlImagen}
+          placeholder="Escribir"
+          required
+        />
+      </form>
 
-        <img src={moesBar} alt="Imagen del local" class="imagen-local" />
-      </div>
-    </ProfileCard>
-
-  <ProfileCard>
-      <h3>Dirección</h3>
-      <div class="card-inputs">
-        <div>
-          <label for="direccion">Dirección*</label>
-          <input id="direccion" type="text" bind:value={direccion} placeholder="Escribir" required />
-        </div>
-        <div>
-          <label for="altura">Altura*</label>
-          <input id="altura" type="number" bind:value={altura} placeholder="Escribir" required />
-        </div>
-        <div>
-          <label for="latitud">Latitud*</label>
-          <input id="latitud" type="number" bind:value={latitud} placeholder="Escribir" required />
-        </div>
-        <div>
-          <label for="longitud">Longitud*</label>
-          <input id="longitud" type="number" bind:value={longitud} placeholder="Escribir" required />
-        </div>
-      </div>
+      <img src={moesBar} alt="Imagen del local" class="imagen-local" />
+    </div>
   </ProfileCard>
 
-<ProfileCard>
-  <h3>Porcentajes</h3>  
-  <div>
+  <ProfileCard>
+    <h3>Dirección</h3>
+    <div class="card-inputs">
+      <div>
+        <label for="direccion">Dirección*</label>
+        <input id="direccion" type="text" bind:value={direccion} placeholder="Escribir" required />
+      </div>
+      <div>
+        <label for="altura">Altura*</label>
+        <input id="altura" type="number" bind:value={altura} placeholder="Escribir" required />
+      </div>
+      <div>
+        <label for="latitud">Latitud*</label>
+        <input id="latitud" type="number" bind:value={latitud} placeholder="Escribir" required />
+      </div>
+      <div>
+        <label for="longitud">Longitud*</label>
+        <input id="longitud" type="number" bind:value={longitud} placeholder="Escribir" required />
+      </div>
+    </div>
+  </ProfileCard>
+
+  <ProfileCard>
+    <h3>Porcentajes</h3>
+    <div>
       <div class="card-inputs">
         <div>
           <label for="porcentaje-comision-app">Porcentaje de comisión con la app*</label>
@@ -128,7 +139,9 @@
           />
         </div>
         <div>
-          <label for="porcentaje-comision-plato-autor">Porcentaje de comisión con autores de platos*</label>
+          <label for="porcentaje-comision-plato-autor"
+            >Porcentaje de comisión con autores de platos*</label
+          >
           <input
             id="porcentaje-comision-plato-autor"
             type="number"
@@ -146,16 +159,11 @@
         <Checkbox label="Transferencia" bind:checked={metodosDePago.Transferencia} />
       </div>
     </div>
-</ProfileCard>
+  </ProfileCard>
 
   <div class="button">
-    <PropsButton tipo="primario" onclick={guardarCambios}>
-        Guardar Cambios
-    </PropsButton>
+    <PropsButton tipo="primario" onclick={guardarCambios}>Guardar Cambios</PropsButton>
 
-    <PropsButton tipo="secundario" onclick={descartarCambios}>
-        Descartar Cambios
-    </PropsButton>
+    <PropsButton tipo="secundario" onclick={descartarCambios}>Descartar Cambios</PropsButton>
   </div>
-  
 </main>
