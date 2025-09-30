@@ -1,10 +1,4 @@
 /* -----> Vista Desktop */
-.contenedor-general{
-    background-color: var(--color-secundario);
-    border-radius: 20px; 
-    padding: 1rem;
-}
-
 .container-principal {                      /* Container flex de toda la vista */
     display: flex;
     flex-direction: column;
