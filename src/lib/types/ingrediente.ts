@@ -1,4 +1,5 @@
 export type Ingrediente = {
+  id: number,
   nombre: string,
   costo: string,
   grupo: GrupoAlimenticio,
