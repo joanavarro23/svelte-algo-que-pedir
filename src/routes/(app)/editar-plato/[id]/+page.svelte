@@ -9,7 +9,7 @@
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   
   // Lista de ingredientes
-  import { ingredientes } from '$lib/components/ingredientes/ingredientes'
+  import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
   
   import hamburguesa from '$lib/assets/hamburguesa-preview.jpg'
@@ -24,7 +24,7 @@
 <th class="icono">Acciones</th>
 {/snippet}
 {#snippet datosFilas()}
-{#each ingredientes as ingrediente (ingrediente.id)}
+{#each INGREDIENTES_MOCK as ingrediente (ingrediente.id)}
 <IngredienteRow {ingrediente} editarPlato={true} />
 {/each}
 {/snippet}
