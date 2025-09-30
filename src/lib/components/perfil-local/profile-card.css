@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60vw;
+    width: 60%;
     margin: 0px auto;
     box-sizing: border-box;
 }
@@ -78,7 +78,6 @@ h1,h2,h3,h4 {
     justify-content: flex-end;
     gap: 0.6rem;
     width: 100%;
-    margin-bottom: 0.5rem;
 }
 
 /* Vista mobile */
@@ -94,6 +93,11 @@ h1,h2,h3,h4 {
         font-size: 1.3em;
         width: 130%;
         text-align: center;
+    }
+
+    .informacion-local {
+        display: flex;
+        flex-direction: column;
     }
 
     .card,
@@ -135,14 +139,8 @@ h1,h2,h3,h4 {
         margin-bottom: 1rem;
     }
 
-    .card,
-    .card-inputs {
-        width: 95%;
-        font-size: 0.8rem;
-    }
 
-    button {
-        display: flex;
-        justify-content: space-between;
+    .card-inputs {
+        font-size: 0.8rem;
     }
 }
