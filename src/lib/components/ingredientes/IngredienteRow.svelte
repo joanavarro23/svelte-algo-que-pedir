@@ -1,5 +1,5 @@
 <script lang='ts'>
-import type { Ingrediente } from './ingredientes'
+import type { Ingrediente } from '$lib/types'
 import cow from '$lib/assets/cow.svg'
 import palta from '$lib/assets/palta.svg'
 import eye from '$lib/assets/eye.svg'
