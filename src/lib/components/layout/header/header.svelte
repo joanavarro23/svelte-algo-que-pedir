@@ -13,7 +13,7 @@
 
   //Array de todas las urls (c/u un objeto)
   const urls = [
-    { href: '/pedidos-actuales', icono: carrito, label: 'Pedidos' },
+    { href: '/', icono: carrito, label: 'Pedidos' },
     { href: '/menu', icono: menu, label: 'Menu' },
     { href: '/ingrediente', icono: ingredientes, label: 'Ingredientes' },
     { href: '/perfil-local', icono: usuarioIcono, label: 'Cuenta' }

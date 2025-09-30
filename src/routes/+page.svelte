@@ -1,19 +1,27 @@
-<script>
-  import Header from '$lib/components/layout/header/header.svelte'
-</script>
+<script lang="ts">
+  import './pedidos-actuales.css'
+  import Header from '$lib/components/layout/header/Header.svelte'
+  import PedidoCard from '$lib/components/pedidos/pedido-card.svelte'
+  import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
 
-<!-- PARA PROBAR, DESPUES SE OCULTA 
-      Y SE CARGA LA PAGINA DE LOGIN -->
+</script>
 <Header />
-<h1>hola probando vista</h1>
-<ul>
-  <li><a href="/login">Login</a></li>
-  <li><a href="/registro">Registro</a></li>
-  <li><a href="/pedidos-actuales">Pedidos actuales</a></li>
-  <li><a href="/detalle-pedido">Detalle pedido</a></li>
-  <li><a href="/menu">Menu</a></li>
-  <li><a href="/editar-plato">Editar plato</a></li>
-  <li><a href="/ingrediente">Ingredientes</a></li>
-  <li><a href="/editar-ingrediente">Editar ingredientes</a></li>
-  <li><a href="/perfil-local">Perfil del local</a></li>
-</ul>
+<main class="container-principal main-vista">
+  <!-- Contenedor de toda la vista -->
+  <h1>Pedidos actuales</h1>
+
+  <nav class="container-estados">
+    <!-- Contenedor de los estados de los pedidos -->
+    <a href="#" class="link-estados">Pendientes</a>
+    <a href="#" class="link-estados">Preparados</a>
+    <a href="#" class="link-estados">Entregados</a>
+    <a href="#" class="link-estados">Cancelados</a>
+  </nav>
+
+  <section class="container-tarjetas">
+    <!-- Contenedor de las tarjetas de pedidos -->
+    {#each PEDIDOS_MOCK as pedido (pedido.id)}
+      <PedidoCard {pedido} />
+    {/each}
+  </section>
+</main>
