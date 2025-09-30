@@ -1,22 +1,22 @@
 <script>
   import Boton from '$lib/components/generales/boton/boton.svelte'
-  import moesBar from '$lib/assets/moes-bar.jpg';
-  import ProfileCard from '$lib/components/perfil-local/profile-card.svelte';
+  import moesBar from '$lib/assets/moes-bar.jpg'
+  import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
 
   // estado reactivo local (ejemplo)
-  let nombreLocal = "";
-  let urlImagen = "";
-  let direccion = "";
-  let altura = "";
-  let latitud = "";
-  let longitud = "";
-  let porcentajeApp = "";
-  let porcentajeAutor = "";
+  let nombreLocal = ''
+  let urlImagen = ''
+  let direccion = ''
+  let altura = ''
+  let latitud = ''
+  let longitud = ''
+  let porcentajeApp = ''
+  let porcentajeAutor = ''
   let metodos = {
     efectivo: false,
     qr: false,
     transferencia: false
-  };
+  }
 
 </script>
 
