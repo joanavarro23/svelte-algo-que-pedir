@@ -3,22 +3,8 @@
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
+  import { PERFIL_LOCAL_MOCK } from '$lib/data/mocks/perfilLocalMock';
 
-  const mockInfoLocal = {
-    nombreLocal: 'Taberna de Moe',
-    urlImagen: 'https://www.clarin.com/img/2017/10/05/SkWTevV3-_1200x0.jpg',
-    direccion: 'Walnut Street',
-    altura: '123',
-    latitud: '39.808327',
-    longitud: '-89.643204',
-    porcentajeApp: '3',
-    porcentajeAutor: '3',
-    metodosDePago: {
-      QR: true,
-      Efectivo: true,
-      Transferencia: false
-    }
-  }
   function guardarCambios() {
     /* Muesta los datos ingresados; después será la acción que va a enviar los datos del form al back*/
     const datosLocal = {
@@ -68,7 +54,7 @@
     porcentajeApp,
     porcentajeAutor,
     metodosDePago
-  } = mockInfoLocal
+  } = PERFIL_LOCAL_MOCK
 </script>
 
 <main class="contenedor-principal main-vista">
