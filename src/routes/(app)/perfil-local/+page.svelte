@@ -1,5 +1,5 @@
 <script>
-  import moesBar from '$lib/assets/moes-bar.jpg'
+  /* import moesBar from '$lib/assets/moes-bar.jpg' */
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
@@ -84,7 +84,8 @@
         />
       </form>
 
-      <img src={moesBar} alt="Imagen del local" class="imagen-local" />
+      <img src={urlImagen} alt="Imagen del local" class="imagen-local" />
+      <!-- La imagen está siendo cargada directamente desde la URL declarada -->
     </div>
   </ProfileCard>
 
