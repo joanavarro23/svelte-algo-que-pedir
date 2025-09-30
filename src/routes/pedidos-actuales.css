@@ -19,7 +19,7 @@
 
 .link-estados {
     color: var(--color-texto-secundario);
-    border-bottom: 3px solid var(--color-bordes);       /* Linea de c/estado */
+    border-bottom: 2px solid var(--color-bordes);       /* Linea de c/estado */
     padding-bottom: 0.7rem;   
     transition: border-bottom 0.3s;                    
 }
