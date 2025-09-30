@@ -1,6 +1,6 @@
 import { Plato } from '$lib/data/models/plato'
 
-export const platosMock: Plato[] = [
+export const PLATOS_MOCK: Plato[] = [
   { id: 1, 
     titulo:'Pasta cremosa', 
     descripcion:'Deliciosa pasta con salsa cremosa', 
