@@ -3,7 +3,22 @@
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
-  
+
+  const mockInfoLocal = {
+      nombreLocal: "Taberna de Moe",
+      urlImagen: "https://www.clarin.com/img/2017/10/05/SkWTevV3-_1200x0.jpg",
+      direccion: "Walnut Street",
+      altura: "123",
+      latitud: "39.808327",
+      longitud: "-89.643204",
+      porcentajeApp: "3",
+      porcentajeAutor: "3",
+      metodosDePago: {
+        QR: true,
+        Efectivo: true,
+        Transferencia: false
+      }
+    }
   function guardarCambios() {
     /* Muesta los datos ingresados; después es la acción que va a enviar los datos del form al back*/
     const datosLocal = {
@@ -16,9 +31,9 @@
       porcentajeApp,
       porcentajeAutor,
       metodosDePago: {
-        QR: metodos.qr,
-        Efectivo: metodos.efectivo,
-        Transferencia: metodos.transferencia
+        QR: metodosDePago.QR,
+        Efectivo: metodosDePago.Efectivo,
+        Transferencia: metodosDePago.Transferencia
       }
     }
 
@@ -43,19 +58,17 @@
     alert('Cambios descartados :(')
   }
   
-  let nombreLocal = ''
-  let urlImagen = ''
-  let direccion = ''
-  let altura = ''
-  let latitud = ''
-  let longitud = ''
-  let porcentajeApp = ''
-  let porcentajeAutor = ''
-  let metodos = {
-    efectivo: false,
-    qr: false,
-    transferencia: false
-  }
+  let { 
+    nombreLocal, 
+    urlImagen, 
+    direccion, 
+    altura, 
+    latitud, 
+    longitud, 
+    porcentajeApp, 
+    porcentajeAutor, 
+    metodosDePago
+  } = mockInfoLocal
 
 </script>
 
@@ -128,9 +141,9 @@
 
       <h3>Métodos de pago</h3>
       <div class="metodos-de-pago">
-        <Checkbox label="QR" bind:checked={metodos.qr} />
-        <Checkbox label="Efectivo" bind:checked={metodos.efectivo} />
-        <Checkbox label="Transferencia" bind:checked={metodos.transferencia} />
+        <Checkbox label="QR" bind:checked={metodosDePago.QR} />
+        <Checkbox label="Efectivo" bind:checked={metodosDePago.Efectivo} />
+        <Checkbox label="Transferencia" bind:checked={metodosDePago.Transferencia} />
       </div>
     </div>
 </ProfileCard>
