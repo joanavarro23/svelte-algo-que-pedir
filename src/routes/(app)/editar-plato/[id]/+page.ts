@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit'
-import { PLATOS_MOCK } from '$lib/data/mock/PLATO'
+import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
 // import type { PageProps } from './$types'
 
 export function load({ params }: { params: { id: string } }) {
