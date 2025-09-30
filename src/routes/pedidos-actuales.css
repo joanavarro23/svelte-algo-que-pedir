@@ -1,10 +1,4 @@
 /* -----> Vista Desktop */
-.contenedor-general{
-    background-color: var(--color-secundario);
-    border-radius: 20px; 
-    padding: 1rem;
-}
-
 .container-principal {                      /* Container flex de toda la vista */
     display: flex;
     flex-direction: column;
@@ -20,7 +14,7 @@
 
 .link-estados:hover {
     font-weight: bold;
-    border-bottom: 4px solid rgb(109, 109, 109); 
+    border-bottom: 2px solid rgb(109, 109, 109); 
 }
 
 .link-estados {
