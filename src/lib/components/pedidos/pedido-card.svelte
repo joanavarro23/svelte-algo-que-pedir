@@ -15,7 +15,7 @@
   const { pedido }: Props = $props()
 
   const pedidoHora = (fecha: Date): string => {
-    /* Extra de un tipo Date la hh:mm */
+    /* Extrae de un tipo Date la hh:mm */
     return fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   }
 
