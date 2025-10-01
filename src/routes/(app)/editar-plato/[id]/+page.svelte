@@ -1,7 +1,8 @@
 <script lang='ts'>
   import './editar-plato.css'
   import type { PageProps } from './$types'
-  
+  import { goto } from '$app/navigation'
+
   // Componentes
   import Input from '$lib/components/generales/input/input.svelte'
   import Textarea from '$lib/components/generales/input/textarea.svelte'
@@ -9,14 +10,15 @@
   import Boton from '$lib/components/generales/boton/boton.svelte'
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   import Validador from '$lib/utils/validador.svelte'
-  
+
   // Lista de ingredientes
   import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
-  // Platos
-//   import { PlatoForm } from '$lib/data/forms/platoForm.svelte'
-  
-  const { params, data: plato }: PageProps = $props()
+
+  let { params, data: plato }: PageProps = $props()
+//   let { data } = $props()
+//   const { plato } = data
+  const descartar = () => { goto ('/menu') }
 </script>
 
 <main class="main-vista vista-editar-plato">
@@ -37,12 +39,12 @@
             accept="image/jpeg,image/jpg,image/png" bind:value={plato.imagen}/>
             <Validador elemento={plato} atributo="imagen"/>
         </form>
-        
+
         <!-- Imagen de referencia -->
         <div class="editar-plato__imagen">
             <img class="foto" src={plato.imagen} alt="Vista previa del plato">
         </div>
-    </section> 
+    </section>
 
     <!-- Costos del plato -->
     <section class="contenedor-general contenedor-general_especifico">
