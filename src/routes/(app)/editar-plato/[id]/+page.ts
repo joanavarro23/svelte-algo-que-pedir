@@ -14,6 +14,5 @@ export async function load({ params }: { params: { id: string } }) {
   // Buscar el plato por ID
   const plato = await platosService.obtenerPorId(platoId)
 
-  
-  return plato
+  return { plato }
 }
