@@ -1,8 +1,5 @@
 import { error } from '@sveltejs/kit'
-import { platosService } from '$lib/services/plato.service'
-
-
-// import type { PageProps } from './$types'
+import { platosService } from '$lib/services/platoService'
 
 export async function load({ params }: { params: { id: string } }) {
   const platoId = Number(params.id)
