@@ -1,8 +1,10 @@
 import { error } from '@sveltejs/kit'
-import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
+import { platosService } from '$lib/services/plato.service'
+
+
 // import type { PageProps } from './$types'
 
-export function load({ params }: { params: { id: string } }) {
+export async function load({ params }: { params: { id: string } }) {
   const platoId = Number(params.id)
 
   if (isNaN(platoId)) {
@@ -10,10 +12,8 @@ export function load({ params }: { params: { id: string } }) {
   }
   
   // Buscar el plato por ID
-  const plato = PLATOS_MOCK.find(p => p.id === platoId)
-  if (!plato) {
-    throw error(404, `El plato con id ${platoId} no fue encontrado`)
-  }
+  const plato = await platosService.obtenerPorId(platoId)
+
   
   return plato
 }
