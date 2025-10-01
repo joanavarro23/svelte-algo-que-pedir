@@ -5,8 +5,8 @@
   import tarjetaCreditoIcono from '$lib/assets/tarjeta-credito.svg'
 
   //import { pedidos } from '$lib/types/pedido'
-  import { platos } from '$lib/components/menu/platos'
-  import type { EstadoDelPedido } from '$lib/types/pedido'
+  import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
+  import { EstadoDelPedido } from '$lib/types/pedido'
 
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
@@ -14,9 +14,9 @@
   import EstadoBadge from '$lib/components/detalle-pedido/estadoBadge.svelte'
 
   const itemsPedido = [
-    { ...platos[0], cantidad: 1 }, // Hamburguesa con Queso
-    { ...platos[1], cantidad: 1 }, // Papas Fritas
-    { ...platos[2], cantidad: 1 } // Refresco
+    { ...PLATOS_MOCK[0], cantidad: 1 }, // Hamburguesa con Queso
+    { ...PLATOS_MOCK[1], cantidad: 1 }, // Papas Fritas
+    { ...PLATOS_MOCK[2], cantidad: 1 } // Refresco
   ]
 
   const subtotal = itemsPedido.reduce(
@@ -30,7 +30,7 @@
   //hasta tener el componente queda hardcodeado asi
   const pedidoDetalle = {
     id: '12345',
-    estado: 'Cancelado' as EstadoDelPedido,
+    estado: EstadoDelPedido.Cancelado,
     cliente: {
       nombre: 'Sofia Miller',
       usuario: 'smiller2005'

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/state'
-  import errorImg  from 'lib/assets/errorImg.png'
+  import errorImg  from '$lib/assets/errorImg.png'
 </script>
 
 <h1>Error: {page.status}</h1>

@@ -1,5 +1,6 @@
 <script lang='ts'>
   import './editar-plato.css'
+  import type { PageProps } from './$types'
   
   // Componentes
   import Input from '$lib/components/generales/input/input.svelte'
@@ -13,19 +14,19 @@
   import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
   // Platos
-  import { PlatoForm } from '$lib/data/forms/platoForm.svelte'
+//   import { PlatoForm } from '$lib/data/forms/platoForm.svelte'
   
-  let plato: PlatoForm = new PlatoForm()
+  const { params, data: plato }: PageProps = $props()
 </script>
 
 <main class="main-vista vista-editar-plato">
-    <h1 class="titulo">Editar Plato</h1>
+    <h1 class="titulo">Editar Plato {params.id}: {plato.nombre}</h1>
 
     <!-- Descripción del plato -->
     <section class="contenedor-general editar-plato">
         <form>
             <Input data-testid="titulo" nombre_label="Nombre del plato*" type="text" id="nombre"
-            bind:value={plato.titulo} maxlength={30} placeholder="Ej: Hamburguesa completa con cheddar"/>
+            bind:value={plato.nombre} maxlength={30} placeholder="Ej: Hamburguesa completa con cheddar"/>
             <Validador elemento={plato} atributo="titulo"/>
 
             <Textarea data-testid="descripcion" id="descripcion" nombre_label="Descripcion*" textarea={true}
