@@ -2,7 +2,7 @@ export class Ingrediente {
   id: number | null = null
   nombre = $state<string>('')
   costo = $state<number>(0)
-  grupo: GrupoAlimenticio | null = $state(null) 
+  grupo: GrupoAlimenticio = $state(GrupoAlimenticio.CEREALES_Y_TUBERCULOS) 
   origen: Origen = $state('vegetal')
 
   get esAnimal() {

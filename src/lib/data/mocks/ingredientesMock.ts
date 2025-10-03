@@ -6,7 +6,7 @@ function ingredienteBuilder(init: Partial<Ingrediente>) {
   ingrediente.id = init.id ?? null
   ingrediente.nombre = init.nombre ?? ''
   ingrediente.costo = init.costo ?? 0
-  ingrediente.grupo = init.grupo ?? null
+  ingrediente.grupo = init.grupo ?? GrupoAlimenticio.CEREALES_Y_TUBERCULOS
   ingrediente.origen = init.origen ?? 'vegetal'
   return ingrediente
 }
