@@ -4,7 +4,7 @@ export class Ingrediente {
   id: number | null = null
   nombre = $state<string>('')
   costo = $state<number>(0)
-  grupo: GrupoAlimenticio = $state(GrupoAlimenticio.CEREALES_Y_TUBERCULOS) 
+  grupo: GrupoAlimenticio | string = $state('') 
   origen: Origen = $state('vegetal')
   errors: ValidarMensaje[] = $state([])
 
