@@ -9,6 +9,7 @@ export const PLATOS_MOCK: Plato[] = [
     imagen: '/src/lib/assets/pasta-cremosa.png',
     precio: 12.99,
     errors: [],
+    platoDeAutor: true,
     tieneError: function (campo: string): boolean {
       throw new Error('Function not implemented.')
     },
