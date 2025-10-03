@@ -1,4 +1,15 @@
 import { Plato } from '$lib/models/plato.svelte'
+import { INGREDIENTES_MOCK } from "$lib/data/mocks/ingredientesMock"
+
+const INGREDIENTES_A = [
+  INGREDIENTES_MOCK[0],
+  INGREDIENTES_MOCK[2],
+  INGREDIENTES_MOCK[3]
+]
+const INGREDIENTES_B = [
+  INGREDIENTES_MOCK[1],
+  INGREDIENTES_MOCK[4]
+]
 
 // builder de plato para que use correctamente metodos
 function PlatosBuilder(Init: Partial<Plato>){
@@ -8,9 +19,10 @@ function PlatosBuilder(Init: Partial<Plato>){
   plato.descripcion = Init.descripcion ?? ''
   plato.imagen = Init.imagen ?? ''
   plato.precio = Init.precio ?? 0
-  plato.errors = Init.errors ?? []
   plato.platoDeAutor = Init.platoDeAutor ?? false
   plato.platoDePromocion = Init.platoDePromocion ?? false
+  plato.ingredientes = Init.ingredientes ?? []
+  plato.errors = Init.errors ?? []
 
   return plato
 }
@@ -23,9 +35,10 @@ export const PLATOS_MOCK: Plato[] = [
     descripcion: 'Deliciosa pasta con salsa cremosa',
     imagen: '/src/lib/assets/pasta-cremosa.png',
     precio: 12.99,
-    errors: [],
     platoDeAutor: true,
-    platoDePromocion: true
+    platoDePromocion: true,
+    ingredientes: INGREDIENTES_A,
+    errors: [],
   }),
   PlatosBuilder({
     id: 2,
@@ -33,6 +46,7 @@ export const PLATOS_MOCK: Plato[] = [
     descripcion: 'Alitas de pollo picantes con salsa para mojar',
     imagen: '/src/lib/assets/alitas-picantes.png',
     precio: 9.99,
+    ingredientes: INGREDIENTES_B,
     errors: []
   }),
   PlatosBuilder({
