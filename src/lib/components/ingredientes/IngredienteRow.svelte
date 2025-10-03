@@ -32,7 +32,7 @@ const iconoOrigen = mapaIconos[ingrediente.origen]
         </button> -->
     </td>
   {:else}
-    <td>{ingrediente.costo}</td>
+    <td>${(ingrediente.costo).toFixed(2)}</td>
     <td class="celda-alimenticio">{ingrediente.grupo}</td>
     <td class="icono-origen">
       <img src={iconoOrigen} alt="palta" />
