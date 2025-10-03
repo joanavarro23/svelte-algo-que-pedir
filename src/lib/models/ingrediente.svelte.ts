@@ -1,12 +1,43 @@
+import { ValidarMensaje } from '$lib/utils/validarMensaje'
+
 export class Ingrediente {
   id: number | null = null
   nombre = $state<string>('')
   costo = $state<number>(0)
   grupo: GrupoAlimenticio = $state(GrupoAlimenticio.CEREALES_Y_TUBERCULOS) 
   origen: Origen = $state('vegetal')
+  errors: ValidarMensaje[] = $state([])
 
   get esAnimal() {
     return this.origen === 'animal'
+  }
+
+  tieneError(campo: string): boolean {
+    return this.errors.some((_) => _.campo === campo)
+  }
+  agregarError(campo: string, mensaje: string) {
+    this.errors.push( new ValidarMensaje(campo, mensaje))
+  }
+  mensajesError(campo: string): string {
+    return this.errors
+      .filter((_) => _.campo === campo)
+      .map((_) => _.mensaje)
+      .join('. ')
+  }
+
+  validarIngrediente() {
+    this.errors.length = 0 // se limpian errores anteriores
+    if (!this.nombre || this.nombre.trim().length === 0) {
+      this.agregarError('nombre', 'Debe ingresar un nombre para el ingrediente')
+    }
+
+    if (this.costo == null || this.costo <= 0) {
+      this.agregarError('costo', 'Debe ingresar un costo válido y mayor a 0')
+    }
+
+    if (this.grupo == null || this.grupo === '') {
+      this.agregarError('grupo', 'Debe seleccionar un grupo alimenticio')
+    }
   }
 }
 

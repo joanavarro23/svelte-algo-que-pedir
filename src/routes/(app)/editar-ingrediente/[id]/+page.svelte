@@ -1,10 +1,10 @@
 <script lang='ts'>
-  import { page } from '$app/state'
   import './editar-ingrediente.css'
   import Input from '$lib/components/generales/input/input.svelte'
   import Switch from '$lib/components/generales/switch/switch.svelte'
   import Textarea from '$lib/components/generales/input/textarea.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
+  import Validador from '$lib/utils/validador.svelte'
   import { GrupoAlimenticio } from '$lib/models/ingrediente.svelte'
 
   let { data } = $props()
@@ -35,6 +35,7 @@
           required={true}
           bind:value={data.ingrediente.nombre}
         />
+        <Validador elemento={data.ingrediente} atributo="nombre" />
 
         <Input
           nombre_label="Costo*"
@@ -44,6 +45,7 @@
           required={true}
           bind:value={data.ingrediente.costo}
         />
+        <Validador elemento={data.ingrediente} atributo="costo" />
 
         <Textarea
           nombre_label="Grupo Alimenticio"
@@ -52,6 +54,8 @@
           options={[{ value: '', label: 'Selecciona una opción' }, ...opcionesGrupo]}
           bind:value={data.ingrediente.grupo}
         />
+        <Validador elemento={data.ingrediente} atributo="grupo" />
+
         <article class="origen-toggle">
           <Switch id="origen-toggle" titulo="Origen animal" bind:checked={data.ingrediente.esAnimal} />
         </article>
@@ -59,7 +63,7 @@
     </article>
   </section>
   <div class="container-botones-edicion">             <!-- Contenedor de los botones de guardar y descartar cambios -->
-      <Boton data-testid="btnGuardar" type="submit" class="boton-primario boton-guardar">Guardar cambios</Boton>
+      <Boton data-testid="btnGuardar" type="submit" class="boton-primario boton-guardar" onclick={() => data.ingrediente.validarIngrediente()}>Guardar cambios</Boton>
       <Boton data-testid="btnDescartar" class="boton-secundario boton-descartar">Descartar cambios</Boton>
   </div>
 </main>
