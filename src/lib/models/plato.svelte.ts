@@ -52,15 +52,15 @@ export class Plato {
     }
   }
 
-  // guardar(){
-  //   this.validarPlato()
-  //   if (this.errors.length > 0) return
+  guardar(){
+    this.validarPlato()
+    if (this.errors.length > 0) return
   /* deberia validar que este ok, mostrar los mensjaes de error
       convertir los valores en un plato
       mandar al back los valores actualizados
     EN REALIDAD TENDRIA QUE LLAMAR AL SERVICE QUE SE ENCARGUE, NO ES SU RESPONSABILIDAD
   */
-  // }
+ }
 
   // Quizas algun metodo extra para devolver el precio total (copiar metodo del back), entre otros metodos utiles
 }

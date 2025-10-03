@@ -73,6 +73,7 @@ export const PLATOS_MOCK: Plato[] = [
     descripcion: 'Pescado crujiente y papas fritas con salsa tártara',
     imagen: '/src/lib/assets/pescado-papas-fritas.png',
     precio: 11.75,
+    ingredientes: INGREDIENTES_A,
     errors: []
   }),
   PlatosBuilder({
@@ -81,6 +82,7 @@ export const PLATOS_MOCK: Plato[] = [
     descripcion: 'Pizza vegetariana con ingredientes variados',
     imagen: '/src/lib/assets/pizza-vegetariana.png',
     precio: 14.25,
+    ingredientes: INGREDIENTES_B,
     errors: []
   }),
   PlatosBuilder({
@@ -89,6 +91,7 @@ export const PLATOS_MOCK: Plato[] = [
     descripcion: 'Pastel de chocolate rico con glaseado',
     imagen: '/src/lib/assets/pastel-chocolate.png',
     precio: 6.50,
+    ingredientes: INGREDIENTES_A,
     errors: []
   })
 ]
