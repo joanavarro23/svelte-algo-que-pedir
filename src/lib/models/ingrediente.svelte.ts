@@ -1,9 +1,9 @@
-export type Ingrediente = {
-  id: number,
-  nombre: string,
-  costo: string,
-  grupo: GrupoAlimenticio,
-  origen: Origen
+export class Ingrediente {
+  id: number | null = null
+  nombre = $state<string>('')
+  costo = $state<number>(0)
+  grupo: GrupoAlimenticio | null = $state(null) 
+  origen: Origen = $state('vegetal')
 }
 
 export type Origen = 'animal' | 'vegetal'

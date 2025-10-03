@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { Plato } from '$lib/types'
+import { Plato } from '$lib/models/plato.svelte'
 
 export const PLATOS_MOCK: Plato[] = [
   {

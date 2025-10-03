@@ -1,4 +1,4 @@
-import type { Ingrediente } from '../types/ingrediente'
+import type { Ingrediente } from '$lib/models/ingrediente.svelte'
 
 export class ValidarMensaje {  
   constructor(
