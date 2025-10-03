@@ -9,7 +9,7 @@
   <header class="boton-titulo">
       <h1>Gestión del Menú</h1>
         <Boton onclick={()=>{
-          goto('./editar-plato/nuevo')
+          goto('./editar-plato/')
         }}>Agregar nuevo plato</Boton>
   </header>
   <section class="contenedor-general">

@@ -14,8 +14,7 @@
 
   // Dinamismo para el titulo
   const titulo = $derived(
-    // data.esNuevo ? 'Agregar nuevo plato' : 
-    `Editar Plato ${data.plato.id}: ${data.plato?.nombre ?? ''}`
+    data.esNuevo ? 'Agregar nuevo plato' : `Editar Plato ${data.plato.id}: ${data.plato?.nombre ?? ''}`
   )
 
 //   const guardar = () => {}
@@ -91,7 +90,7 @@
     </section>
 
     <div class="botones-juntos">
-        <Boton data-testid="btnGuardar" type="submit" onclick={() => data.plato.validarPlato()}>Guardar cambios</Boton>
+        <Boton data-testid="btnGuardar" type="submit" onclick={() => data.plato.guardar()}>Guardar cambios</Boton>
         <Boton data-testid="btnDescartar" tipo='secundario'>Descartar cambios</Boton>
     </div>
 </main>
