@@ -4,6 +4,10 @@ export class Ingrediente {
   costo = $state<number>(0)
   grupo: GrupoAlimenticio | null = $state(null) 
   origen: Origen = $state('vegetal')
+
+  get esAnimal() {
+    return this.origen === 'animal'
+  }
 }
 
 export type Origen = 'animal' | 'vegetal'
