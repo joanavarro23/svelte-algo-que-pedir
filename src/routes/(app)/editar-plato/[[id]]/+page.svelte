@@ -1,7 +1,6 @@
 <script lang='ts'>
   import './editar-plato.css'
-  import type { PageProps } from './$types'
-  import { goto } from '$app/navigation'
+//   import { goto } from '$app/navigation'
 
   // Componentes
   import Input from '$lib/components/generales/input/input.svelte'
@@ -9,40 +8,48 @@
   import Switch from '$lib/components/generales/switch/switch.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
-  import Validador from '$lib/utils/validador.svelte'
+//   import Validador from '$lib/utils/validador.svelte'
 
   // Lista de ingredientes
   import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
 
-  let { params, data: plato }: PageProps = $props()
-//   let { data } = $props()
-//   const { plato } = data
-  const descartar = () => { goto ('/menu') }
+  let { data } = $props()
+
+  // Dinamismo para el titulo
+  const titulo = $derived(
+    // data.esNuevo ? 'Agregar nuevo plato' : 
+    `Editar Plato ${data.plato.id}: ${data.plato?.nombre ?? ''}`
+  )
+
+  const guardar = () => {}
+//   const descartar = () => { goto ('/menu') }
 </script>
 
 <main class="main-vista vista-editar-plato">
-    <h1 class="titulo">Editar Plato {params.id}: {plato.nombre}</h1>
+    <h1 class="titulo">{titulo}</h1>
 
     <!-- Descripción del plato -->
     <section class="contenedor-general editar-plato">
         <form>
             <Input data-testid="titulo" nombre_label="Nombre del plato*" type="text" id="nombre"
-            bind:value={plato.nombre} maxlength={30} placeholder="Ej: Hamburguesa completa con cheddar"/>
-            <Validador elemento={plato} atributo="titulo"/>
+            bind:value={data.plato.nombre} maxlength={30} placeholder="Ej: Hamburguesa completa con cheddar"/>
+            <!-- <Validador elemento={data.plato} atributo="titulo"/> -->
 
             <Textarea data-testid="descripcion" id="descripcion" nombre_label="Descripcion*" textarea={true}
-            bind:value={plato.descripcion}/>
-            <Validador elemento={plato} atributo="descripcion"/>
+            bind:value={data.plato.descripcion}/>
+            <!-- <Validador elemento={data.plato} atributo="descripcion"/> -->
 
-            <Input data-testid="imagen" nombre_label="URL de la imagen del plato*" type="file" id="imagen"
-            accept="image/jpeg,image/jpg,image/png" bind:value={plato.imagen}/>
-            <Validador elemento={plato} atributo="imagen"/>
+            <!-- <Input data-testid="imagen" nombre_label="URL de la imagen del plato*" type="file" id="imagen"
+            accept="image/jpeg,image/jpg,image/png" bind:value={data.plato.imagen}/> -->
+            <Input data-testid="imagen" nombre_label="URL de la imagen del plato*" type="text" id="imagen"
+            bind:value={data.plato.imagen}/>
+            <!-- <Validador elemento={data.plato} atributo="imagen"/> -->
         </form>
 
         <!-- Imagen de referencia -->
         <div class="editar-plato__imagen">
-            <img class="foto" src={plato.imagen} alt="Vista previa del plato">
+            <img class="foto" src={data.plato.imagen} alt="Vista previa del plato">
         </div>
     </section>
 
@@ -50,8 +57,9 @@
     <section class="contenedor-general contenedor-general_especifico">
         <h2>Costos</h2>
         <form class="costos-plato">
-            <Input data-testid="precio" nombre_label="Precio Base*" type="number" id="precio" placeholder="Ej: 500" min=0 />
-            <Validador elemento={plato} atributo="precio"/>
+            <Input data-testid="precio" nombre_label="Precio Base*" type="number" id="precio" 
+            bind:value={data.plato.precio} placeholder="Ej: 500" min=0 />
+            <!-- <Validador elemento={data.plato} atributo="precio"/> -->
 
             <Switch id="platoDeAutor" titulo="Plato de Autor" subtitulo="Aplica un porcentaje adicional al precio de venta" />
             <Switch id="platoDePromocion" titulo="Plato en Promoción" subtitulo="Aplica un descuento al precio de venta" />
@@ -81,7 +89,7 @@
     </section>
 
     <div class="botones-juntos">
-        <Boton data-testid="btnGuardar" type="submit" onclick={() => plato.guardar()}>Guardar cambios</Boton>
+        <Boton data-testid="btnGuardar" type="submit" onclick={() => guardar()}>Guardar cambios</Boton>
         <Boton data-testid="btnDescartar" tipo='secundario'>Descartar cambios</Boton>
     </div>
 </main>

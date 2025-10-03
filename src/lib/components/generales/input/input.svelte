@@ -4,13 +4,13 @@
 
   // el tipo '' es para el textarea que se trabaja sin type, pero
   //   para mayor control lo pongo en este componente
-  export type InputType = '' | 'email' | 'file' | 'number' | 'password' | 'text'
+  export type InputType = 'email' | 'file' | 'number' | 'password' | 'text'
 
   interface PropsInput extends HTMLInputAttributes {
     nombre_label: string,
     type: InputType,
     id: string,
-    value?: File | string
+    value?: File | number | string
   }
   
   let { nombre_label, type, id, value=$bindable(''), required=true, ...rest }: PropsInput = $props()
