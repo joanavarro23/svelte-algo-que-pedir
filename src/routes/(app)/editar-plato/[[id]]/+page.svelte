@@ -1,6 +1,5 @@
 <script lang='ts'>
   import './editar-plato.css'
-//   import { goto } from '$app/navigation'
 
   // Componentes
   import Input from '$lib/components/generales/input/input.svelte'
@@ -9,9 +8,6 @@
   import Boton from '$lib/components/generales/boton/boton.svelte'
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   import Validador from '$lib/utils/validador.svelte'
-
-  // Lista de ingredientes
-  import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
 
   let { data } = $props()
@@ -22,7 +18,7 @@
     `Editar Plato ${data.plato.id}: ${data.plato?.nombre ?? ''}`
   )
 
-  const guardar = () => {}
+//   const guardar = () => {}
 //   const descartar = () => { goto ('/menu') }
 </script>
 
@@ -70,7 +66,7 @@
     <section class="contenedor-general contenedor-general_especifico">
         <h2>Ingredientes</h2>
         <div class="contenedor_titulo-span">
-            <h3 class="subtitulo">Costo de producción</h3><span>$ 100</span>
+            <h3 class="subtitulo">Costo de producción</h3><span>{data.plato.precio}</span>
         </div>
 
         <Tabla>
@@ -81,9 +77,15 @@
                 <th class="icono">Acciones</th>
             {/snippet}
             {#snippet datosFilas()}
-                {#each INGREDIENTES_MOCK as ingrediente (ingrediente.id)}
-                    <IngredienteRow {ingrediente} editarPlato={true} />
-                {/each}
+                {#if data.plato.ingredientes?.length}
+                    {#each data.plato.ingredientes as ingrediente (ingrediente.id)}
+                        <IngredienteRow {ingrediente} editarPlato={true} />
+                    {/each}
+                {:else}
+                    <tr>
+                        <td colspan="4">No hay ingredientes</td>
+                    </tr>
+                {/if}
             {/snippet}
         </Tabla>
     </section>
