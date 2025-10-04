@@ -18,6 +18,13 @@
     text-align: center;
 }
 
+/* Estilo de iconos acciones */
+.iconos-acciones {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
 /* Media query mobile */
 @media (max-width: 400px) {
     .cabecera-origen,
