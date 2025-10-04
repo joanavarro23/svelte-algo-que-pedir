@@ -12,7 +12,7 @@ export class Plato {
   nombre = $state<string>('')
   descripcion = $state<string>('')
   // imagen = $state<File | null>(null) 
-  imagen = $state<string>('')             // DEBERIA SER FILE: DESCOMENTAR LA VALIDACION QUE SEA IMAGEN
+  imagen = $state<string>('/src/lib/assets/plato-nuevo.jpg')             // DEBERIA SER FILE: DESCOMENTAR LA VALIDACION QUE SEA IMAGEN
   precio = $state<number>(0)
   platoDeAutor? = $state(false)
   platoDePromocion? = $state(false)
