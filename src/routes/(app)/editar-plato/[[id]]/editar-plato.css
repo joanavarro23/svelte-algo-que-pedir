@@ -31,7 +31,7 @@
   
   .editar-plato__imagen {
     width: auto;
-    height: auto;
+    max-height: 350px;
     border-radius: 2rem;
     overflow: hidden; /* Se recorta lo que "sobra" */
   }
