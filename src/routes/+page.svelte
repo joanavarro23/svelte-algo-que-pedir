@@ -1,6 +1,5 @@
 <script lang="ts">
   import './pedidos-actuales.css'
-  import '$lib/styles/general.css'
   import Header from '$lib/components/layout/header/Header.svelte'
   import PedidoCard from '$lib/components/pedidos/pedido-card.svelte'
   import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
