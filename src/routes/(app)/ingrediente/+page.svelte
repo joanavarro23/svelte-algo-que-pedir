@@ -17,7 +17,7 @@ import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
 
 {#snippet datosFilas()}
   {#each INGREDIENTES_MOCK as ingrediente (ingrediente.id)}
-    <IngredienteRow {ingrediente} editarPlato={false}/>
+    <IngredienteRow {ingrediente}/>
   {/each}
 {/snippet}
 
