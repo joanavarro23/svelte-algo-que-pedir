@@ -2,6 +2,8 @@
   import './ingrediente-row.css'
   import type { Snippet } from 'svelte'
   import type { Ingrediente } from '$lib/types'
+  import IconoBoton from '../generales/icono boton/iconoBoton.svelte'
+  
   import cow from '$lib/assets/cow.svg'
   import palta from '$lib/assets/palta.svg'
   import trash from '$lib/assets/trash.svg'
@@ -26,21 +28,18 @@ const iconoOrigen = mapaIconos[ingrediente.origen]
   {/if}
   
   <td>{ingrediente.grupo}</td>
-  <!-- <td class="celda-alimenticio">{ingrediente.grupo}</td> -->
 
-  <td class="icono"><img src={iconoOrigen} alt="palta"></td>
-  <!-- arriba: class="icono-origen" -->
+  <td class="icono-origen"><img src={iconoOrigen} alt="palta"></td>
 
   {#if acciones}
     <td>
       {@render acciones(ingrediente)}
     </td>  
   {:else} <!-- sino por defecto dejamos el tacho -->
-    <td class="icono">
-      <img src={trash} alt="eliminar">
-      <!-- <button class="boton-icono" type="button" aria-label="Eliminar">
-          <img src="assets/trash.svg" alt="">
-      </button> -->
+    <td class="icono-accion">
+      <IconoBoton onclick={() => ingrediente.eliminar()}>
+        <img src={trash} alt="eliminar">
+      </IconoBoton>
     </td>
   {/if}
 </tr>
