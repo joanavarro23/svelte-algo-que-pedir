@@ -11,6 +11,7 @@
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   import Validador from '$lib/utils/validador.svelte'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
+  import IconoBoton from '$lib/components/generales/icono boton/iconoBoton.svelte'
 
   import plus from '$lib/assets/plus-circle.svg'
   // Recibo la carga del plato segun corresponda
@@ -90,10 +91,10 @@
             {/snippet}
             {#snippet  datosExtra()}
                 <td colspan="3">Seleccionar ingrediente...</td>
-                <td class="icono">
-                    <button type="button">
-                    <img src={plus} alt="agregar" />
-                    </button>
+                <td class="icono-accion">
+                    <IconoBoton onclick={() => data.plato.agregarIngrediente()}>
+                        <img src={plus} alt="agregar" />
+                    </IconoBoton>
                 </td>               
             {/snippet}
         </Tabla>
