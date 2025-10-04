@@ -80,8 +80,8 @@
             {#snippet nombreColumnas()}
                 <th>Nombre</th>
                 <th>Grupo</th>
-                <th class="icono">Origen</th>
-                <th class="icono">Acciones</th>
+                <th class="txtColumna">Origen</th>
+                <th class="txtColumna">Acciones</th>
             {/snippet}
             {#snippet datosFilas()}
                     {#each data.plato.ingredientes as ingrediente (ingrediente.id)}
@@ -89,9 +89,9 @@
                     {/each}
             {/snippet}
             {#snippet  datosExtra()}
-                <td colspan="3" class="placeholder">Seleccionar ingrediente...</td>
+                <td colspan="3">Seleccionar ingrediente...</td>
                 <td class="icono">
-                    <button type="button" aria-label="Agregar ingrediente">
+                    <button type="button">
                     <img src={plus} alt="agregar" />
                     </button>
                 </td>               
