@@ -4,10 +4,7 @@
   import type { Ingrediente } from '$lib/types'
   import cow from '$lib/assets/cow.svg'
   import palta from '$lib/assets/palta.svg'
-
-import eye from '$lib/assets/eye.svg'
-import pencil from '$lib/assets/pencil-simple.svg'
-import trash from '$lib/assets/trash.svg'
+  import trash from '$lib/assets/trash.svg'
 
 type IngredienteRowProps = {
   ingrediente: Ingrediente,
@@ -26,25 +23,17 @@ const iconoOrigen = mapaIconos[ingrediente.origen]
   
   {#if columnasExtra}
     {@render columnasExtra()}
-    <!-- <td>{ingrediente.costo}</td> -->
   {/if}
   
   <td>{ingrediente.grupo}</td>
   <!-- <td class="celda-alimenticio">{ingrediente.grupo}</td> -->
-   
+
   <td class="icono"><img src={iconoOrigen} alt="palta"></td>
   <!-- arriba: class="icono-origen" -->
 
   {#if acciones}
     <td>
       {@render acciones(ingrediente)}
-      <!-- <div class="iconos-acciones">
-        <img src={eye} alt="ojo" class="icono-ojo">
-        <a href={`./editar-ingrediente/${ingrediente.id}`}>
-          <img src={pencil} alt="lapiz">
-        </a>
-        <img src={trash} alt="tacho">
-      </div> -->
     </td>  
   {:else} <!-- sino por defecto dejamos el tacho -->
     <td class="icono">
