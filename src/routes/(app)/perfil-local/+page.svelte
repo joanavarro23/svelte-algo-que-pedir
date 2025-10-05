@@ -55,6 +55,18 @@
     porcentajeAutor,
     metodosDePago
   } = PERFIL_LOCAL_MOCK
+
+  // Validaciones para el campo porcentaje, que no puede ser mayor a 100
+  $: if (+porcentajeApp > 100) {
+    alert("El porcentaje de comisión con la app no puede ser mayor a 100%");
+    porcentajeApp = 100;
+  }
+
+  $: if (+porcentajeAutor > 100) {
+    alert("El porcentaje de comisión con autores de platos no puede ser mayor a 100%");
+    porcentajeAutor = 100;
+  }
+
 </script>
 
 <main class="contenedor-principal main-vista">
@@ -113,30 +125,29 @@
 
   <ProfileCard>
     <h3>Porcentajes</h3>
-    <div>
-      <div class="card-inputs">
-        <div>
-          <label for="porcentaje-comision-app">Porcentaje de comisión con la app*</label>
-          <input
-            id="porcentaje-comision-app"
-            type="number"
-            bind:value={porcentajeApp}
-            placeholder="Escribir"
-            required
-          />
-        </div>
-        <div>
-          <label for="porcentaje-comision-plato-autor"
-            >Porcentaje de comisión con autores de platos*</label
-          >
-          <input
-            id="porcentaje-comision-plato-autor"
-            type="number"
-            bind:value={porcentajeAutor}
-            placeholder="Escribir"
-            required
-          />
-        </div>
+    <div class="card-inputs">
+      <div>
+        <label for="porcentaje-comision-app">Porcentaje de comisión con la app*</label>
+        <input
+          id="porcentaje-comision-app"
+          type="number"
+          bind:value={porcentajeApp}
+          placeholder="Escribir"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="porcentaje-comision-plato-autor">
+          Porcentaje de comisión con autores de platos*
+        </label>
+        <input
+          id="porcentaje-comision-plato-autor"
+          type="number"
+          bind:value={porcentajeAutor}
+          placeholder="Escribir"
+          required
+        />
       </div>
 
       <h3>Métodos de pago</h3>
