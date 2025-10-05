@@ -25,13 +25,13 @@
   {#each INGREDIENTES_MOCK as ingrediente (ingrediente.id)}
     <IngredienteRow {ingrediente}>
       {#snippet columnasExtra()}
-        <td>{ingrediente.costo}</td>
+        <td>${(ingrediente.costo).toFixed(2)}</td>
       {/snippet}
       {#snippet acciones()}
         <div class="iconos-acciones">
           <!-- AGREGAR ACCION PARA EL ICONO BOTON EYE -->
-          <IconoBoton claseIcono="icono-ojo">
-            <img src={eye} alt="ojo">
+          <IconoBoton>
+            <img src={eye} alt="ojo" class="icono-ojo">
           </IconoBoton>
           <IconoBoton onclick={() => editar(ingrediente.id)} >
             <img src={pencil} alt="lapiz">
