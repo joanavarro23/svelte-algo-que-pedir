@@ -15,6 +15,6 @@
         <span class="titulo-label"><b>{titulo}</b></span>
         <span class="subtitulo-label">{subtitulo}</span>
     </span>
-    <input type="checkbox" id={id} bind:checked={checked}/>
+    <input type="checkbox" id={id} bind:checked={checked}>
     <span class="slider"></span>
 </label>

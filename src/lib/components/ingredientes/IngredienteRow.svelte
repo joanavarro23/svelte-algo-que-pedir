@@ -1,54 +1,45 @@
 <script lang='ts'>
-import { Ingrediente } from '$lib/models/ingrediente.svelte'
-import cow from '$lib/assets/cow.svg'
-import palta from '$lib/assets/palta.svg'
-import eye from '$lib/assets/eye.svg'
-import pencil from '$lib/assets/pencil-simple.svg'
-import trash from '$lib/assets/trash.svg'
-  // import type { Snippet } from 'svelte'
+  import './ingrediente-row.css'
+  import type { Snippet } from 'svelte'
+  import type { Ingrediente } from '$lib/types'
+  import IconoBoton from '../generales/icono boton/iconoBoton.svelte'
+  
+  import cow from '$lib/assets/cow.svg'
+  import palta from '$lib/assets/palta.svg'
+  import trash from '$lib/assets/trash.svg'
 
 type IngredienteRowProps = {
   ingrediente: Ingrediente,
-  editarPlato: boolean
-  // contenidoTabla: Snippet
+  columnasExtra?: Snippet<[]>,
+  acciones?: Snippet<[Ingrediente]>
 }
 
-let { ingrediente, editarPlato=false }: IngredienteRowProps = $props()
+let { ingrediente, columnasExtra, acciones }: IngredienteRowProps = $props()
+
 const mapaIconos = {vegetal: palta, animal: cow }
 const iconoOrigen = mapaIconos[ingrediente.origen]
-
 </script>
 
 <tr>
   <td>{ingrediente.nombre}</td>
-  <!-- {@render contenidoTabla()} -->
-  {#if editarPlato}
-    <td>{ingrediente.grupo}</td>
-    <td class="icono"><img src={iconoOrigen} alt="palta"></td>
-    <td class="icono">
-      <img src={trash} alt="eliminar">
-        <!-- <button class="boton-icono" type="button" aria-label="Eliminar">
-            <img src="assets/trash.svg" alt="">
-        </button> -->
-    </td>
-  {:else}
-    <td>${(ingrediente.costo).toFixed(2)}</td>
-    <td class="celda-alimenticio">{ingrediente.grupo}</td>
-    <td class="icono-origen">
-      <img src={iconoOrigen} alt="palta" />
-    </td>
+  
+  {#if columnasExtra}
+    {@render columnasExtra()}
+  {/if}
+  
+  <td>{ingrediente.grupo}</td>
+
+  <td class="icono-origen"><img src={iconoOrigen} alt="palta"></td>
+
+  {#if acciones}
     <td>
-      <div class="iconos-acciones">
-        <img src={eye} alt="ojo" class="icono-ojo">
-        <a href={`./editar-ingrediente/${ingrediente.id}`}>
-          <img src={pencil} alt="lapiz">
-        </a>
-        <img src={trash} alt="tacho">
-      </div>
+      {@render acciones(ingrediente)}
+    </td>  
+  {:else} <!-- sino por defecto dejamos el tacho -->
+    <td class="icono-accion">
+      <IconoBoton onclick={() => ingrediente.eliminar()}>
+        <img src={trash} alt="eliminar">
+      </IconoBoton>
     </td>
   {/if}
 </tr>
-
-<style>
-  @import './ingrediente-row.css';
-</style>

@@ -1,11 +1,4 @@
-/* Estilo de iconos acciones */
-.iconos-acciones {
-    display: flex;
-    justify-content: center;
-    gap: 0.3rem;
-}
-
-.icono-origen {
+.icono-origen, .icono-accion {
     text-align: center;
 }
 
