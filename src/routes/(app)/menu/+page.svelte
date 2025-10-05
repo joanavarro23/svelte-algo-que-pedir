@@ -3,14 +3,18 @@
   import Boton from '$lib/components/generales/boton/boton.svelte'
   import ItemMenu from '$lib/components/menu/ItemMenu.svelte'
   import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
+
+  const navegarANuevoPlato = () => {
+    goto('./editar-plato/nuevo')
+  }
 </script>
 
 <main class="menu-container main-vista">
   <header class="boton-titulo">
       <h1>Gestión del Menú</h1>
-        <Boton onclick={()=>{
-          goto('./editar-plato/')
-        }}>Agregar nuevo plato</Boton>
+        <Boton onclick={
+          navegarANuevoPlato
+        }>Agregar nuevo plato</Boton>
   </header>
   <section class="contenedor-general">
       <h2>Platos Disponibles</h2>
