@@ -1,10 +1,16 @@
 <script lang='ts'>
-import Boton from '$lib/components/generales/boton/boton.svelte'
-import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
-import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
-import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
+  import Boton from '$lib/components/generales/boton/boton.svelte'
+  import IconoBoton from '$lib/components/generales/icono boton/iconoBoton.svelte'
+  import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
+  import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
+  import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
   import { goto } from '$app/navigation'
 
+  import eye from '$lib/assets/eye.svg'
+  import pencil from '$lib/assets/pencil-simple.svg'
+  import trash from '$lib/assets/trash.svg'
+
+  const editar = (id) => { goto (`/editar-ingrediente/${id}`)}
 </script>
 
 {#snippet nombreColumnas()}
@@ -17,7 +23,26 @@ import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
 
 {#snippet datosFilas()}
   {#each INGREDIENTES_MOCK as ingrediente (ingrediente.id)}
-    <IngredienteRow {ingrediente} editarPlato={false}/>
+    <IngredienteRow {ingrediente}>
+      {#snippet columnasExtra()}
+        <td>{ingrediente.costo}</td>
+      {/snippet}
+      {#snippet acciones()}
+        <div class="iconos-acciones">
+          <!-- AGREGAR ACCION PARA EL ICONO BOTON EYE -->
+          <IconoBoton claseIcono="icono-ojo">
+            <img src={eye} alt="ojo">
+          </IconoBoton>
+          <IconoBoton onclick={() => editar(ingrediente.id)} >
+            <img src={pencil} alt="lapiz">
+          </IconoBoton>
+          <!-- AGREGAR ACCION PARA EL ICONO BOTON TRASH -->
+          <IconoBoton>
+            <img src={trash} alt="tacho">
+          </IconoBoton>
+        </div>
+      {/snippet}
+    </IngredienteRow>
   {/each}
 {/snippet}
 
