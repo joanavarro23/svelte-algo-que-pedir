@@ -9,6 +9,8 @@
   import Switch from '$lib/components/generales/switch/switch.svelte'
   import Textarea from '$lib/components/generales/input/textarea.svelte'
   import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
+
+  import { showToast } from '$lib/toasts/toasts'
   
   
   //Variables del formulario que en caso de edición
@@ -40,12 +42,13 @@
   }
 
   function guardarCambios() {
-    alert('Ingredientes guardados')
+    //alert('Ingredientes guardados')
+    showToast("Cambios guardados","success",3000)
     onClose()
   }
 
   function descartarCambios() {
-    alert('Cambios descartados :(')
+    showToast('Cambios descartados :(','error',3000)
     onClose()
   }
 

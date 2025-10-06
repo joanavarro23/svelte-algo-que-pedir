@@ -1,0 +1,28 @@
+<script lang="ts">
+  import { toast, showToast } from "$lib/toasts/toasts";
+</script>
+
+{#if $toast}
+  <div class="toast {$toast.type}">
+    {$toast.message}
+  </div>
+{/if}
+
+<style>
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.toast.success { background: #4caf50; }
+.toast.error { background: #f44336; }
+.toast.info { background: #2196f3; }
+.toast.warning { background: #ff9800; }
+</style>
