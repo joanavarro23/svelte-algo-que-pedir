@@ -17,7 +17,7 @@
       </figcaption>
   </figure>
   <div class="precio-menu">
-      <span>${plato.precio}</span>
+      <span>${(plato.precio).toFixed(2)}</span>
   </div>
 </li>
 

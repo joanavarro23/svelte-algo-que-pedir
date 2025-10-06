@@ -10,9 +10,3 @@
     }
 }
 
-/* Ocultar icono de ojo en tablet y desktop */
-@media (min-width: 401px) {
-    .icono-ojo {
-        display: none;
-    }
-}

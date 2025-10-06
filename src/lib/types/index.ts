@@ -1,5 +1,3 @@
 export type { Pedido } from './pedido'
 export { MedioDePago, EstadoDelPedido } from './pedido'
-export type { Ingrediente, Origen } from './ingrediente'
-export { GrupoAlimenticio } from './ingrediente'
 export type { Plato } from '../models/plato.svelte'
