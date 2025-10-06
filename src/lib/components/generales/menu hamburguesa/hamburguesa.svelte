@@ -6,15 +6,14 @@
 
   let estadoMenu = $state(false) //El menu arranca cerrado
 
+  //Cierra/Abre el menu
   const toggleMenu = () => {
-    //Cierra/Abre el menu
     estadoMenu = !estadoMenu
   }
 </script>
 
 <section class="hamburguesa-container">
-  
-  <button class="hamburguesa" aria-haspopup="menu" aria-expanded={estadoMenu} on:click={toggleMenu}>
+  <button class="hamburguesa" aria-haspopup="menu" aria-expanded={estadoMenu} onclick={toggleMenu}>
     <img class="hamburguesa-icono" src={hamburguesa} alt="Menu desplegable" />
   </button>
 
@@ -22,7 +21,7 @@
     <ul class="tablet-dropdown" role="menu">
       {#each urlsNavegacion as { href, icono, label } (href)}
         <li role="none">
-          <a {href} class="dropdown-item" role="menuitem" on:click={toggleMenu}>
+          <a {href} class="dropdown-item" role="menuitem" onclick={toggleMenu}>
             <span>{label}</span>
           </a>
         </li>
