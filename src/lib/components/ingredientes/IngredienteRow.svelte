@@ -27,7 +27,7 @@ const iconoOrigen = mapaIconos[ingrediente.origen]
     {@render columnasExtra()}
   {/if}
   
-  <td>{ingrediente.grupo}</td>
+  <td class="celda-alimenticio">{ingrediente.grupo}</td>
 
   <td class="icono-origen"><img src={iconoOrigen} alt="palta"></td>
 

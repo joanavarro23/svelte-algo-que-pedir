@@ -1,11 +1,5 @@
-import type { Ingrediente } from '../types/ingrediente'
-
-export class ValidarMensaje {  
-  constructor(
-    public campo: string,
-    public mensaje: string
-  ) {}
-}
+import type { Ingrediente } from '$lib/models/ingrediente.svelte'
+import { ValidarMensaje } from '$lib/utils/validarMensaje'
 
 export class Plato {
   id: number | null = null
