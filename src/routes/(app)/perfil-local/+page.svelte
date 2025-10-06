@@ -1,11 +1,4 @@
 <script>
-
-  let message = "Hello, World!";
-  let types = ["success", "error", "info"];
-  let type = "success";
-  let dismissible = true;
-  let timeout = 0;
-  
   /* import moesBar from '$lib/assets/moes-bar.jpg' */
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
