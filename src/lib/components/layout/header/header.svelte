@@ -11,6 +11,8 @@
   import hamburguesa from '$lib/assets/hamburguesa-menu.svg'
   import usuarioInfo from '$lib/assets/usuario-chica.svg'
 
+  import MenuHamburguesa from '$lib/components/generales/menu hamburguesa/hamburguesa.svelte'
+
   //Array de todas las urls (c/u un objeto)
   const urls = [
     { href: '/', icono: carrito, label: 'Pedidos' },
@@ -19,10 +21,10 @@
     { href: '/perfil-local', icono: usuarioIcono, label: 'Cuenta' }
   ]
 
-  //Arrow function para obtener la pagina activa que se muestra al lado del menu hamburguesa 
+  //Arrow function para obtener la pagina activa que se muestra al lado del menu hamburguesa
   const paginaActiva = () => {
-    const rutaActual = page.url.pathname    //Obtengo la ruta actual
-    return urls.find(i => rutaActual.startsWith(i.href)) ?? urls[0]           //Recorro el array de objetos y busco la ruta cuyo href coincide con la ruta actual - la default route es la pag principal
+    const rutaActual = page.url.pathname //Obtengo la ruta actual
+    return urls.find((i) => rutaActual.startsWith(i.href)) ?? urls[0] //Recorro el array de objetos y busco la ruta cuyo href coincide con la ruta actual - la default route es la pag principal
   }
 </script>
 
@@ -54,10 +56,8 @@
     <div class="container-usuario">
       <!-- Container del icono usuario + hamburguesa -->
       <a class="vista-activa" href={paginaActiva().href}>{paginaActiva().label}</a>
-      
-      <button class="hamburguesa">
-        <img class="hamburguesa-icono" src={hamburguesa} alt="Menu desplegable" />
-      </button>
+
+      <MenuHamburguesa urlsNavegacion={urls} />
 
       <img class="usuario-logo" src={usuarioInfo} alt="Cuenta" />
     </div>
