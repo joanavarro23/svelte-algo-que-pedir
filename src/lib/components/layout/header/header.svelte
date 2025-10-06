@@ -8,24 +8,32 @@
   import menu from '$lib/assets/menu.svg'
   import ingredientes from '$lib/assets/ingredientes.svg'
   import usuarioIcono from '$lib/assets/usuario.svg'
-  import hamburguesa from '$lib/assets/hamburguesa-menu.svg'
   import usuarioInfo from '$lib/assets/usuario-chica.svg'
 
   import MenuHamburguesa from '$lib/components/generales/menu hamburguesa/hamburguesa.svelte'
 
-  //Array de todas las urls (c/u un objeto)
+  //Array de todas las urls de la barra de navegacion del header
   const urls = [
-    { href: '/', icono: carrito, label: 'Pedidos' },
-    { href: '/menu', icono: menu, label: 'Menú' },
-    { href: '/ingrediente', icono: ingredientes, label: 'Ingredientes' },
-    { href: '/perfil-local', icono: usuarioIcono, label: 'Cuenta' }
+    { href: '/', icono: carrito, label: 'Pedidos', alias: ['/'] },
+    { href: '/menu', icono: menu, label: 'Menú', alias: ['/menu', '/editar-plato'] },
+    { href: '/ingrediente', icono: ingredientes, label: 'Ingredientes', alias: ['/ingrediente','/editar-ingrediente'] },
+    { href: '/perfil-local', icono: usuarioIcono, label: 'Cuenta', alias: ['/perfil-local'] }
   ]
 
   //Arrow function para obtener la pagina activa que se muestra al lado del menu hamburguesa
-  const paginaActiva = () => {
-    const rutaActual = page.url.pathname //Obtengo la ruta actual
-    return urls.find((i) => rutaActual.startsWith(i.href)) ?? urls[0] //Recorro el array de objetos y busco la ruta cuyo href coincide con la ruta actual - la default route es la pag principal
-  }
+const paginaActiva = () => {
+  const rutaActual = page.url.pathname
+
+  //Verifica si alguna de las rutas alias coincide con la ruta actual
+  const matcheaAlguna = (rutas: string[]) =>
+    rutas.some((ruta) =>
+      ruta === '/'
+        ? rutaActual === '/'
+        : rutaActual === ruta || rutaActual.startsWith(ruta + '/')
+    )
+
+  return urls.find((rutaParaAnalizar) => matcheaAlguna(rutaParaAnalizar.alias)) ?? urls[0]
+}
 </script>
 
 <header class="header-pagina">
