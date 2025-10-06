@@ -10,10 +10,10 @@
   import Textarea from '$lib/components/generales/input/textarea.svelte'
   import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
   
-
   
   //Variables del formulario que en caso de edición
   //deberían llenarse con los datos del ingrediente que se está editando
+  // TODO: no funciona con el Switch porque no está declarado como bindeable.
 
   let nombre = ''
   let costo = 0
