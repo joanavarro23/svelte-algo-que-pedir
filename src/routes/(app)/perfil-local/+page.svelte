@@ -1,9 +1,11 @@
 <script>
   /* import moesBar from '$lib/assets/moes-bar.jpg' */
+  export let data
+  import { showToast } from '$lib/toasts/toasts.js';
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
-  export let data
+  
 
   function guardarCambios() {
     /* Muesta los datos ingresados; después será la acción que va a enviar los datos del form al back*/
@@ -23,38 +25,14 @@
       }
     }
 
-    alert(
-      'Datos ingresados:\n' +
-        `Nombre Local: ${datosLocal.nombreLocal}\n` +
-        `URL Imagen: ${datosLocal.urlImagen}\n` +
-        `Dirección: ${datosLocal.direccion}\n` +
-        `Altura: ${datosLocal.altura}\n` +
-        `Latitud: ${datosLocal.latitud}\n` +
-        `Longitud: ${datosLocal.longitud}\n` +
-        `Porc. App: ${datosLocal.porcentajeApp}\n` +
-        `Porc. Autor: ${datosLocal.porcentajeAutor}\n` +
-        'Métodos de pago:\n' +
-        `  QR: ${datosLocal.metodosDePago.QR ? '✅' : '❌'}\n` +
-        `  Efectivo: ${datosLocal.metodosDePago.Efectivo ? '✅' : '❌'}\n` +
-        `  Transferencia: ${datosLocal.metodosDePago.Transferencia ? '✅' : '❌'}`
-    )
+    showToast(('La información del local fue guardada correctamente'),'success',3000)
   }
 
   function descartarCambios() {
-    alert('Cambios descartados :(')
+    showToast(('Cambios descartados, no se realizaron modificaciones'),'warning',3000)
   }
 
-  let {
-    nombreLocal,
-    urlImagen,
-    direccion,
-    altura,
-    latitud,
-    longitud,
-    porcentajeApp,
-    porcentajeAutor,
-    metodosDePago
-  } = data.perfilLocal
+  let {nombreLocal,urlImagen,direccion,altura,latitud,longitud,porcentajeApp,porcentajeAutor,metodosDePago} = data.perfilLocal
 
   // Validaciones para el campo porcentaje, que no puede ser mayor a 100
   $: if (+porcentajeApp > 100) {
