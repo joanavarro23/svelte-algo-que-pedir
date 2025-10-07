@@ -3,7 +3,7 @@
   export let onClose: () => void
 
   import './ingredientes-form.css'
-  import { GrupoAlimenticio } from '$lib/types'
+  import { GrupoAlimenticio } from '$lib/models/ingrediente.svelte'
   import Boton from '../generales/boton/boton.svelte'
   import Input from '$lib/components/generales/input/input.svelte'
   import Switch from '$lib/components/generales/switch/switch.svelte'
