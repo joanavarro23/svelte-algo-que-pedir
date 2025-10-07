@@ -16,12 +16,17 @@
   }
 
   onMount(() => {
-    window.addEventListener('keydown', handleKeyDown)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('keydown', handleKeyDown)
+    }
   })
 
   onDestroy(() => {
-    window.removeEventListener('keydown', handleKeyDown)
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
   })
+
 </script>
 
 {#if open}
