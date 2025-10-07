@@ -1,43 +1,49 @@
 <script lang="ts">
   import './detalle-pedido.css'
-  import usuarioIcono from '$lib/assets/usuario.svg'
-  import pinUbicacionIcono from '$lib/assets/pin-ubicacion.svg'
   import tarjetaCreditoIcono from '$lib/assets/tarjeta-credito.svg'
 
-  //import { pedidos } from '$lib/types/pedido'
+  import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
   import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
+  import { Plato } from '$lib/models/plato.svelte'
   import { EstadoDelPedido } from '$lib/types/pedido'
+  //DEPRECATED PERO ESTOY HACIENDO EL SERVICE
+  import { page } from '$app/stores'
 
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
   import PedidoRow from '$lib/components/detalle-pedido/pedidoRow.svelte'
   import EstadoBadge from '$lib/components/detalle-pedido/estadoBadge.svelte'
+  import UsuarioSection from '$lib/components/pedidos/usuario-section.svelte'
+  import DireccionSection from '$lib/components/pedidos/direccion-section.svelte'
 
-  const itemsPedido = [
-    { ...PLATOS_MOCK[0], cantidad: 1 }, // Hamburguesa con Queso
-    { ...PLATOS_MOCK[1], cantidad: 1 }, // Papas Fritas
-    { ...PLATOS_MOCK[2], cantidad: 1 } // Refresco
-  ]
+  const pedidoId = Number($page.params.id)
+  const pedido = PEDIDOS_MOCK.find((p) => p.id === pedidoId)
 
-  const subtotal = itemsPedido.reduce(
-    (monto, plato) => monto + Number(plato.precio) * plato.cantidad,
-    0
-  )
+  // Generar items del pedido con datos de platos mockeados (que quilombo, cambiar por service lo antes posible para poder usar ID bien)
+  type PlatoConCantidad = Plato & { cantidad: number }
+  let itemsPedido: PlatoConCantidad[] = []
+
+  if (pedido) {
+    itemsPedido = Array.from({ length: pedido.items }, (_, i) => {
+      const plato = PLATOS_MOCK[i % PLATOS_MOCK.length]
+      return Object.assign(plato, { cantidad: 1 }) as PlatoConCantidad
+    })
+  }
+
+  const subtotal = itemsPedido.reduce((monto, plato) => monto + plato.precio * plato.cantidad, 0)
   const comisionDelivery = subtotal * 0.02
   const incrementoPago = subtotal * 0.055
   const total = subtotal + comisionDelivery + incrementoPago
 
-  //hasta tener el componente queda hardcodeado asi
   const pedidoDetalle = {
-    id: '12345',
-    estado: EstadoDelPedido.Cancelado,
+    id: pedido?.id.toString(),
+    estado: pedido?.estado ?? EstadoDelPedido.Pendiente,
     cliente: {
-      nombre: 'Sofia Miller',
-      usuario: 'smiller2005'
+      nombre: pedido?.cliente,
+      usuario: pedido?.cliente.toLowerCase().replace(' ', '')
     },
     direccion: {
-      calle: 'Av. Siempre Viva 555',
-      detalles: 'Lp 05, 1798 Tay - 19-09047'
+      calle: pedido?.direccion
     },
     items: itemsPedido,
     pago: {
@@ -45,7 +51,7 @@
       comisionDelivery,
       incrementoPago,
       total,
-      metodo: 'Pago con tarjeta de crédito'
+      metodo: pedido?.medioDePago
     }
   }
 
@@ -65,23 +71,14 @@
   <section class="contenedor-general contenedor-info">
     <div class="cliente-info">
       <h2>Cliente</h2>
-      <div class="cliente-content">
-        <img src={usuarioIcono} class="icono" alt="Cliente" />
-        <div class="cliente-texto">
-          <span class="texto-principal">{pedidoDetalle.cliente.nombre}</span>
-          <span class="texto-secundario"><b>Usuario:</b> {pedidoDetalle.cliente.usuario}</span>
-        </div>
-      </div>
+      <UsuarioSection
+        nombre={pedidoDetalle.cliente.nombre}
+        username={pedidoDetalle.cliente.usuario}
+      />
     </div>
     <div class="cliente-info">
       <h2>Dirección de entrega</h2>
-      <div class="cliente-content">
-        <img src={pinUbicacionIcono} class="icono" alt="Ubicacion" />
-        <div class="cliente-texto">
-          <span class="texto-principal">{pedidoDetalle.direccion.calle}</span>
-          <span class="texto-secundario">{pedidoDetalle.direccion.detalles}</span>
-        </div>
-      </div>
+      <DireccionSection direccion={pedidoDetalle.direccion.calle} />
     </div>
   </section>
 

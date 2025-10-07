@@ -1,6 +1,6 @@
 <script lang="ts">
   import './pedidoRow.css'
-  import type { Plato } from '$lib/components/menu/platos'
+  import type { Plato } from '$lib/types/plato'
 
   type PedidoItem = Plato & {
     cantidad: number
@@ -15,9 +15,9 @@
 
 <tr>
   <td class="plato-detalle">
-    <img src={item.imagen} class="icono" alt={item.titulo} />
+    <img src={item.imagen} class="icono" alt={item.nombre} />
     <div>
-      <span class="texto-principal">{item.titulo}</span><br />
+      <span class="texto-principal">{item.nombre}</span><br />
       <span class="texto-secundario">{item.descripcion}</span>
     </div>
   </td>
