@@ -8,7 +8,7 @@
 
   let usuario = $state('')
   let password = $state('')
-  let intentoFallido = $state(false)
+  let mensajeError = $state('')
 
   function hashPassword(password: string): string {
     return hash53(password).toString(16)
@@ -30,7 +30,7 @@
       window.location.assign('/') // Redirigir a la pedidos actuales
     } else {
       password = '' // Limpiar el campo de contraseña
-      intentoFallido = true
+      mensajeError = 'Usuario o contraseña incorrecto. Vuelva a intentarlo.'
     }
   }
 </script>
@@ -49,10 +49,8 @@
       }}
     >
       <div class="grupo-formulario">
-        {#if intentoFallido}
-          <figure class="mensaje-error">
-            Usuario o contraseña incorrectos. Intente nuevamente.
-          </figure>
+        {#if mensajeError}
+          <p class="mensaje-error">{mensajeError}</p>
         {/if}
         <Input
           nombre_label="Usuario"

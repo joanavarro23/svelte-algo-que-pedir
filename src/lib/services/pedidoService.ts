@@ -9,7 +9,7 @@ const obtenerPorId = async (id: number): Promise<Pedido> => {
   // Lógica
   const pedido = PEDIDOS_MOCK.find(p => p.id === id)
   if (!pedido)
-    throw error(404, `El ingrediente con el id ${id} no fue encontrado`)
+    throw error(404, `El pedido con el id ${id} no fue encontrado`)
 
   return pedido
 }
