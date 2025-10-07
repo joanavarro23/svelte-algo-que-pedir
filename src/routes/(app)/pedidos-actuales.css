@@ -33,6 +33,10 @@
     padding: 1rem;
 }
 
+.link-estados.estado-activo {
+    font-weight: bold;
+}
+
 /* Container grid de todas las tarjetas */
 .container-tarjetas {                              
     display: grid;
