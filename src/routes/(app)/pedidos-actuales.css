@@ -21,7 +21,24 @@
     color: var(--color-texto-secundario);
     border-bottom: 2px solid var(--color-bordes);       /* Linea de c/estado */
     padding-bottom: 0.7rem;   
-    transition: border-bottom 0.3s;                    
+    transition: border-bottom 0.3s;
+    background: none;
+    cursor: pointer;
+    border-radius: 0;                    
+}
+
+.link-estados:focus{
+    outline: none;
+}
+
+.estado-notfound{
+    font-weight: bold;
+    color: var(--color-texto-secundario);
+    padding: 1rem;
+}
+
+.link-estados.estado-activo {
+    font-weight: bold;
 }
 
 /* Container grid de todas las tarjetas */
@@ -113,19 +130,30 @@
 @media (min-width: 401px) and (max-width: 769px) {      
     .container-tarjetas {
         grid-template-columns: repeat(2, 1fr);
-    } 
+    }
 } 
 
 /* -----> Vista Mobile*/
 @media (max-width: 400px) {         
     .container-principal {
-        margin: 2rem 1.5rem 0 1.5rem;              /*Mantengo margin laterales+top pero el margin-bottom de mobile ya viene fijado en general.css*/
+        margin-top: 2rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
     }
     
     .container-estados {
-        margin: 1rem 0 0 0;
+        justify-content: center;
         gap: 0.8rem;
-        font-size: 0.8rem;
+        margin: 1rem 0 0 0;
+    }
+
+    .link-estados{
+        font-size: 0.9rem;
+        border-left: none;     
+        border-right: none;
+        border-top: none;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .container-tarjetas {               /* Contenedor de todas las tarjetas de pedidos */

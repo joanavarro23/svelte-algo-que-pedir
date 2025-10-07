@@ -1,10 +1,32 @@
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte'
+
   export let open: boolean
   export let onClose: () => void
   export let componente: any = null
   export let props: any = {}
 
   import './modal.css'
+
+  // Cerrar modal con tecla "Esc"
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && open) {
+      onClose()
+    }
+  }
+
+  onMount(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('keydown', handleKeyDown)
+    }
+  })
+
+  onDestroy(() => {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  })
+
 </script>
 
 {#if open}
@@ -18,5 +40,3 @@
     </div>
   </div>
 {/if}
-
-
