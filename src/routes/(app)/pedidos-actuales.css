@@ -140,14 +140,24 @@
     }
     
     .container-estados {
-        margin: 1rem 0 0 0;
+        justify-content: center;
         gap: 0.8rem;
-        font-size: 0.8rem;
+        margin: 1rem 0 0 0;
+    }
+
+    .link-estados{
+        font-size: 0.9rem;
+        border-left: none;     
+        border-right: none;
+        border-top: none;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .container-tarjetas {               /* Contenedor de todas las tarjetas de pedidos */
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        min-width: 100%;                /* Para que la card tome el 100% del tamñano de la vista mobile*/
     }
 
 }
