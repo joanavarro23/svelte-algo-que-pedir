@@ -1,11 +1,13 @@
 <script lang="ts">
   import './detalle-pedido.css'
-  import tarjetaCreditoIcono from '$lib/assets/tarjeta-credito.svg'
+  import tarjetaIcono from '$lib/assets/tarjeta-credito.svg'
+  import efectivoIcono from '$lib/assets/efectivo.svg'
+  import QRIcono from '$lib/assets/codigo-qr.svg'
 
   import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
   import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
   import { Plato } from '$lib/models/plato.svelte'
-  import { EstadoDelPedido } from '$lib/types/pedido'
+  import { EstadoDelPedido, MedioDePago } from '$lib/types/pedido'
   //DEPRECATED PERO ESTOY HACIENDO EL SERVICE
   import { page } from '$app/stores'
 
@@ -51,7 +53,18 @@
       comisionDelivery,
       incrementoPago,
       total,
-      metodo: pedido?.medioDePago
+      metodo: pedido?.medioDePago ?? MedioDePago.Efectivo
+    }
+  }
+
+  const iconoMedioDePago = (medio: MedioDePago): string => {
+    /* Para el renderizado de iconos de medio de pago diferentes */
+    if (medio === MedioDePago.Efectivo) {
+      return efectivoIcono
+    } else if (medio === MedioDePago.QR) {
+      return QRIcono
+    } else {
+      return tarjetaIcono
     }
   }
 
@@ -113,7 +126,7 @@
       </dl>
       <h3>Método de Pago</h3>
       <div class="metodo-pago">
-        <img src={tarjetaCreditoIcono} class="icono" alt="Metodo de pago" />
+        <img src={iconoMedioDePago(pedidoDetalle.pago.metodo)} class="icono" alt="Metodo de pago" />
         <p>{pedidoDetalle.pago.metodo}</p>
       </div>
     </div>
