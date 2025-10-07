@@ -38,7 +38,7 @@ export const PEDIDOS_MOCK: Pedido[] = [
     fecha: new Date('2025-09-28T13:30:00'),
     items: 3,
     precio: 35,
-    estado: EstadoDelPedido.Pendiente,
+    estado: EstadoDelPedido.Preparado,
     direccion: 'Calle Falsa 123',
     medioDePago: MedioDePago.Tarjeta
   },
@@ -58,7 +58,7 @@ export const PEDIDOS_MOCK: Pedido[] = [
     fecha: new Date('2025-09-28T14:30:00'),
     items: 3,
     precio: 45,
-    estado: EstadoDelPedido.Pendiente,
+    estado: EstadoDelPedido.Entregado,
     direccion: 'Av. Siempre Viva 555',
     medioDePago: MedioDePago.Tarjeta
   },
@@ -68,7 +68,7 @@ export const PEDIDOS_MOCK: Pedido[] = [
     fecha: new Date('2025-09-20T16:30:00'),
     items: 2,
     precio: 25,
-    estado: EstadoDelPedido.Pendiente,
+    estado: EstadoDelPedido.Entregado,
     direccion: 'Av. Siempre Viva 556',
     medioDePago: MedioDePago.Efectivo
   }
