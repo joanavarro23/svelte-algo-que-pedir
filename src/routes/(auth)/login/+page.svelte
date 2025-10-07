@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+  import users from '../users.txt?raw'
+  import { hash53 } from '$lib/utils/hash53'
   import logo from '$lib/assets/logo.svg'
   import InputOcultable from '$lib/components/login/inputOcultable.svelte'
   import Input from '$lib/components/generales/input/input.svelte'
@@ -6,9 +8,30 @@
 
   let usuario = $state('')
   let password = $state('')
+  let intentoFallido = $state(false)
 
+  function hashPassword(password: string): string {
+    return hash53(password).toString(16)
+  }
   function enviarFormulario() {
-    // lógica de login
+    const usuariosLocales: Record<string, string> = {}
+
+    const archivoUsuarios = users.split('\n')
+    archivoUsuarios.forEach((linea) => {
+      const [fileUser, filePass] = linea.trim().split(',')
+      if (fileUser && filePass) {
+        usuariosLocales[fileUser] = filePass
+      }
+    })
+
+    const hashedPassword = hashPassword(password)
+
+    if (usuariosLocales[usuario] && usuariosLocales[usuario] === hashedPassword) {
+      window.location.assign('/') // Redirigir a la pedidos actuales
+    } else {
+      password = '' // Limpiar el campo de contraseña
+      intentoFallido = true
+    }
   }
 </script>
 
@@ -18,8 +41,19 @@
       <img class="imagen-logo" src={logo} alt="Logo Algo que Pedir" />
       <h1 class="app-name">Algo que pedir</h1>
     </div>
-    <form class="contenedor-formulario" onsubmit={enviarFormulario}>
+    <form
+      class="contenedor-formulario"
+      onsubmit={(event) => {
+        event.preventDefault()
+        enviarFormulario()
+      }}
+    >
       <div class="grupo-formulario">
+        {#if intentoFallido}
+          <figure class="mensaje-error">
+            Usuario o contraseña incorrectos. Intente nuevamente.
+          </figure>
+        {/if}
         <Input
           nombre_label="Usuario"
           type="text"
@@ -40,9 +74,7 @@
         />
       </div>
       <div>
-        <Boton class="boton-primario boton-login" type="submit" onclick={enviarFormulario}
-          >Iniciar Sesión</Boton
-        >
+        <Boton class="boton-primario boton-login" type="submit">Iniciar Sesión</Boton>
       </div>
     </form>
     <p class="enlace-registro">¿No tienes una cuenta? <a href="registro">Regístrate</a></p>

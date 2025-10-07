@@ -54,7 +54,7 @@ export class Plato {
       mandar al back los valores actualizados
     EN REALIDAD TENDRIA QUE LLAMAR AL SERVICE QUE SE ENCARGUE, NO ES SU RESPONSABILIDAD
   */
- }
+  }
 
   // Quizas algun metodo extra para devolver el precio total (copiar metodo del back), entre otros metodos utiles
 }

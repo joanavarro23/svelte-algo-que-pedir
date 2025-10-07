@@ -1,5 +1,5 @@
 import { Plato } from '$lib/models/plato.svelte'
-import { INGREDIENTES_MOCK } from "$lib/data/mocks/ingredientesMock"
+import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
 
 const INGREDIENTES_A = [
   INGREDIENTES_MOCK[0],
