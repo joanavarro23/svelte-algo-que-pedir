@@ -88,7 +88,7 @@
           options={grupoOptions}
         />
 
-        <Switch id="origen-toggle" titulo="Origen animal" />
+        <Switch id="origen-toggle" bind:checked={origen} titulo="Origen animal" />
 
       </form>
       <div class="button">

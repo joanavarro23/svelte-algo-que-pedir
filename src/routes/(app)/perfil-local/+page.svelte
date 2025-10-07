@@ -1,7 +1,8 @@
-<script>
+<script lang='ts'>
   /* import moesBar from '$lib/assets/moes-bar.jpg' */
   export let data
-  import { showToast } from '$lib/toasts/toasts.js';
+  import { showToast } from '$lib/toasts/toasts'
+  import { numMaximo, noNegativo } from '$lib/validaciones/validaciones'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
@@ -35,14 +36,32 @@
   let {nombreLocal,urlImagen,direccion,altura,latitud,longitud,porcentajeApp,porcentajeAutor,metodosDePago} = data.perfilLocal
 
   // Validaciones para el campo porcentaje, que no puede ser mayor a 100
-  $: if (+porcentajeApp > 100) {
-    alert("El porcentaje de comisión con la app no puede ser mayor a 100%");
-    porcentajeApp = 100
+  $: {
+    if (!numMaximo(porcentajeApp, 100)) {
+      alert('El porcentaje no puede ser mayor a 100')
+      porcentajeApp = 100
+    }
   }
 
-  $: if (+porcentajeAutor > 100) {
-    alert("El porcentaje de comisión con autores de platos no puede ser mayor a 100%");
-    porcentajeAutor = 100
+  $: {
+    if (!numMaximo(porcentajeAutor, 100)) {
+      showToast('El porcentaje no puede ser mayor a 100','warning',3000)
+      porcentajeAutor = 100
+    }
+  }
+
+  $: {
+    if (!noNegativo(porcentajeApp)) {
+      alert('El porcentaje no puede ser negativo')
+      porcentajeApp = 0
+    }
+  }
+
+  $: {
+    if (!noNegativo(porcentajeAutor)) {
+      alert('El porcentaje no puede ser negativo')
+      porcentajeAutor = 0
+    }
   }
 
 </script>

@@ -5,8 +5,8 @@ export const PERFIL_LOCAL_MOCK = {
   altura: '123',
   latitud: '39.808327',
   longitud: '-89.643204',
-  porcentajeApp: '3',
-  porcentajeAutor: '3',
+  porcentajeApp: 3,
+  porcentajeAutor: 3,
   metodosDePago: {
     QR: true,
     Efectivo: true,
