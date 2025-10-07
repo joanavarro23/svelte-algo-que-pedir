@@ -3,6 +3,7 @@
     background-color: var(--color-secundario);
     height: 3.5rem;
     width: 100%;
+    z-index: 100;
 }
 
 /* Alineado general de barra-navegacion */
