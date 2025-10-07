@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
   import './editar-ingrediente.css'
   import Input from '$lib/components/generales/input/input.svelte'
   import Switch from '$lib/components/generales/switch/switch.svelte'
@@ -9,15 +9,18 @@
 
   let { data } = $props()
 
-  const titulo = $derived(`Editar Ingrediente ${data.ingrediente.id}: ${data.ingrediente?.nombre ?? ''}`)
-  const opcionesGrupo = [
-    GrupoAlimenticio.CEREALES_Y_TUBERCULOS,
-    GrupoAlimenticio.AZUCARES_Y_DULCES,
-    GrupoAlimenticio.LACTEOS,
-    GrupoAlimenticio.FRUTAS_Y_VERDURAS,
-    GrupoAlimenticio.GRASAS_Y_ACEITES,
-    GrupoAlimenticio.PROTEINAS
-  ].map(v => ({ value: v, label: v }))
+  const titulo = $derived(
+    `Editar Ingrediente ${data.ingrediente.id}: ${data.ingrediente?.nombre ?? ''}`
+  )
+
+  const opcionesGrupo: { value: GrupoAlimenticio; label: string }[] = [
+    { value: GrupoAlimenticio.CEREALES_Y_TUBERCULOS, label: 'Cereales y tubérculos' },
+    { value: GrupoAlimenticio.AZUCARES_Y_DULCES, label: 'Azúcares y dulces' },
+    { value: GrupoAlimenticio.LACTEOS, label: 'Lácteos' },
+    { value: GrupoAlimenticio.FRUTAS_Y_VERDURAS, label: 'Frutas y verduras' },
+    { value: GrupoAlimenticio.GRASAS_Y_ACEITES, label: 'Grasas y aceites' },
+    { value: GrupoAlimenticio.PROTEINAS, label: 'Proteínas' }
+  ]
 </script>
 
 <main class="vista-edicion-ingrediente main-vista">
@@ -57,13 +60,25 @@
         <Validador elemento={data.ingrediente} atributo="grupo" />
 
         <article class="origen-toggle">
-          <Switch id="origen-toggle" titulo="Origen animal" bind:checked={data.ingrediente.esAnimal} />
+          <Switch
+            id="origen-toggle"
+            titulo="Origen animal"
+            bind:checked={data.ingrediente.esAnimal}
+          />
         </article>
       </form>
     </article>
   </section>
-  <div class="container-botones-edicion">             <!-- Contenedor de los botones de guardar y descartar cambios -->
-      <Boton data-testid="btnGuardar" type="submit" class="boton-primario boton-guardar" onclick={() => data.ingrediente.validarIngrediente()}>Guardar cambios</Boton>
-      <Boton data-testid="btnDescartar" class="boton-secundario boton-descartar">Descartar cambios</Boton>
+  <div class="container-botones-edicion">
+    <!-- Contenedor de los botones de guardar y descartar cambios -->
+    <Boton
+      data-testid="btnGuardar"
+      type="submit"
+      class="boton-primario boton-guardar"
+      onclick={() => data.ingrediente.validarIngrediente()}>Guardar cambios</Boton
+    >
+    <Boton data-testid="btnDescartar" class="boton-secundario boton-descartar"
+      >Descartar cambios</Boton
+    >
   </div>
 </main>
