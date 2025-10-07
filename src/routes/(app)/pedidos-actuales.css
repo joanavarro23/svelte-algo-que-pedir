@@ -27,6 +27,10 @@
     border-radius: 0;                    
 }
 
+.link-estados:focus{
+    outline: none;
+}
+
 .estado-notfound{
     font-weight: bold;
     color: var(--color-texto-secundario);
