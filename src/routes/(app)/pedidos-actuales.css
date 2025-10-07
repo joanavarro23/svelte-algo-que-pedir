@@ -136,7 +136,9 @@
 /* -----> Vista Mobile*/
 @media (max-width: 400px) {         
     .container-principal {
-        margin: 2rem 1.5rem 0 1.5rem;              /*Mantengo margin laterales+top pero el margin-bottom de mobile ya viene fijado en general.css*/
+        margin-top: 2rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
     }
     
     .container-estados {
@@ -157,7 +159,6 @@
     .container-tarjetas {               /* Contenedor de todas las tarjetas de pedidos */
         grid-template-columns: 1fr;
         gap: 1.5rem;
-        min-width: 100%;                /* Para que la card tome el 100% del tamñano de la vista mobile*/
     }
 
 }
