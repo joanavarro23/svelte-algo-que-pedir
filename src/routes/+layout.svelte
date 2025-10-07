@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './general.css'
 	import Logo from '$lib/assets/logo.svg'
-	import Toast from '$lib/components/toasts/Toast.svelte'
+	import Toast from '$lib/utils/toasts/Toast.svelte'
 
 	let { children } = $props()
 </script>
