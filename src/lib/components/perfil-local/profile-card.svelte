@@ -11,6 +11,4 @@
   <div class="card">
     {@render children?.()}
   </div>
-
 </section>
-

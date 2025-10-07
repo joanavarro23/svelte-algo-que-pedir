@@ -1,4 +1,5 @@
 export type Ingrediente = {
+  eliminar(): void
   id: number,
   nombre: string,
   costo: string,

@@ -3,7 +3,8 @@
 
 /* Estilo basico, sin icono */
 .iconoBoton-basico {
-  background-image: none;
+  background: none;
   cursor: pointer;
   border: none;
+  padding: 0;
 }

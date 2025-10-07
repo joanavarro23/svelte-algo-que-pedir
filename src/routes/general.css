@@ -43,7 +43,7 @@ ul {
 
 /* Para que solo se apliquen los estilos si el dispositivo lo permite */
 @media (hover: hover) {
-    button:hover {
+    .boton-primario:hover, .boton-secundario:hover {
         box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.2);
     }
     .links-navegacion:hover {

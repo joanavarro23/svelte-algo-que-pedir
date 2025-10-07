@@ -10,7 +10,27 @@
   import pencil from '$lib/assets/pencil-simple.svg'
   import trash from '$lib/assets/trash.svg'
 
-  const editar = (id) => { goto (`/editar-ingrediente/${id}`)}
+  import Modal from '$lib/components/modales/Modal.svelte'
+  import IngredientesForm from '$lib/components/editar-ingredientes/IngredientesForm.svelte'
+
+  let modalOpen = false
+  let ingredienteId: string | null = null
+
+  const abrirNuevo = () => {
+    ingredienteId = null
+    modalOpen = true
+  }
+
+  const abrirEditar = (id: string) => {
+    ingredienteId = id
+    modalOpen = true
+  }
+
+  const cerrarModal = () => {
+    modalOpen = false
+  }
+
+  const editar = (id: string) => { abrirEditar(id)}
 </script>
 
 {#snippet nombreColumnas()}
@@ -25,13 +45,13 @@
   {#each INGREDIENTES_MOCK as ingrediente (ingrediente.id)}
     <IngredienteRow {ingrediente}>
       {#snippet columnasExtra()}
-        <td>${(ingrediente.costo).toFixed(2)}</td>
+        <td>{ingrediente.costo}</td>
       {/snippet}
       {#snippet acciones()}
         <div class="iconos-acciones">
           <!-- AGREGAR ACCION PARA EL ICONO BOTON EYE -->
-          <IconoBoton>
-            <img src={eye} alt="ojo" class="icono-ojo">
+          <IconoBoton claseIcono="icono-ojo">
+            <img src={eye} alt="ojo">
           </IconoBoton>
           <IconoBoton onclick={() => editar(ingrediente.id)} >
             <img src={pencil} alt="lapiz">
@@ -56,6 +76,14 @@
     </header>
     <Tabla {nombreColumnas} {datosFilas}/>
 </main> 
+
+<Modal
+  open={modalOpen}
+  onClose={cerrarModal}
+  componente={IngredientesForm}
+  props={{ ingredienteId }}
+/>
+
 
 <style>
   @import './ingredientes.css';

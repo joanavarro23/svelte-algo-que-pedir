@@ -1,11 +1,4 @@
-/* Estilo de iconos acciones */
-.iconos-acciones {
-    display: flex;
-    justify-content: center;
-    gap: 0.3rem;
-}
-
-.icono-origen {
+.icono-origen, .icono-accion {
     text-align: center;
 }
 
@@ -17,9 +10,3 @@
     }
 }
 
-/* Ocultar icono de ojo en tablet y desktop */
-@media (min-width: 401px) {
-    .icono-ojo {
-        display: none;
-    }
-}

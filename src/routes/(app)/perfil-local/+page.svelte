@@ -1,24 +1,10 @@
 <script>
-  import moesBar from '$lib/assets/moes-bar.jpg'
+  /* import moesBar from '$lib/assets/moes-bar.jpg' */
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
+  export let data
 
-  const mockInfoLocal = {
-    nombreLocal: 'Taberna de Moe',
-    urlImagen: 'https://www.clarin.com/img/2017/10/05/SkWTevV3-_1200x0.jpg',
-    direccion: 'Walnut Street',
-    altura: '123',
-    latitud: '39.808327',
-    longitud: '-89.643204',
-    porcentajeApp: '3',
-    porcentajeAutor: '3',
-    metodosDePago: {
-      QR: true,
-      Efectivo: true,
-      Transferencia: false
-    }
-  }
   function guardarCambios() {
     /* Muesta los datos ingresados; después será la acción que va a enviar los datos del form al back*/
     const datosLocal = {
@@ -68,7 +54,19 @@
     porcentajeApp,
     porcentajeAutor,
     metodosDePago
-  } = mockInfoLocal
+  } = data.perfilLocal
+
+  // Validaciones para el campo porcentaje, que no puede ser mayor a 100
+  $: if (+porcentajeApp > 100) {
+    alert("El porcentaje de comisión con la app no puede ser mayor a 100%");
+    porcentajeApp = 100
+  }
+
+  $: if (+porcentajeAutor > 100) {
+    alert("El porcentaje de comisión con autores de platos no puede ser mayor a 100%");
+    porcentajeAutor = 100
+  }
+
 </script>
 
 <main class="contenedor-principal main-vista">
@@ -98,7 +96,8 @@
         />
       </form>
 
-      <img src={moesBar} alt="Imagen del local" class="imagen-local" />
+      <img src={urlImagen} alt="Imagen del local" class="imagen-local" />
+      <!-- La imagen está siendo cargada directamente desde la URL declarada -->
     </div>
   </ProfileCard>
 
@@ -126,30 +125,29 @@
 
   <ProfileCard>
     <h3>Porcentajes</h3>
-    <div>
-      <div class="card-inputs">
-        <div>
-          <label for="porcentaje-comision-app">Porcentaje de comisión con la app*</label>
-          <input
-            id="porcentaje-comision-app"
-            type="number"
-            bind:value={porcentajeApp}
-            placeholder="Escribir"
-            required
-          />
-        </div>
-        <div>
-          <label for="porcentaje-comision-plato-autor"
-            >Porcentaje de comisión con autores de platos*</label
-          >
-          <input
-            id="porcentaje-comision-plato-autor"
-            type="number"
-            bind:value={porcentajeAutor}
-            placeholder="Escribir"
-            required
-          />
-        </div>
+    <div class="card-inputs">
+      <div>
+        <label for="porcentaje-comision-app">Porcentaje de comisión con la app*</label>
+        <input
+          id="porcentaje-comision-app"
+          type="number"
+          bind:value={porcentajeApp}
+          placeholder="Escribir"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="porcentaje-comision-plato-autor">
+          Porcentaje de comisión con autores de platos*
+        </label>
+        <input
+          id="porcentaje-comision-plato-autor"
+          type="number"
+          bind:value={porcentajeAutor}
+          placeholder="Escribir"
+          required
+        />
       </div>
 
       <h3>Métodos de pago</h3>

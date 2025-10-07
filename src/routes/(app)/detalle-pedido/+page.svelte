@@ -6,7 +6,7 @@
 
   //import { pedidos } from '$lib/types/pedido'
   import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
-  import type { EstadoDelPedido } from '$lib/types/pedido'
+  import { EstadoDelPedido } from '$lib/types/pedido'
 
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
@@ -32,7 +32,7 @@
   //hasta tener el componente queda hardcodeado asi
   const pedidoDetalle = {
     id: '12345',
-    estado: 'Cancelado' as EstadoDelPedido,
+    estado: EstadoDelPedido.Cancelado,
     cliente: {
       nombre: 'Sofia Miller',
       usuario: 'smiller2005'
