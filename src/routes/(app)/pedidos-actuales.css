@@ -136,13 +136,24 @@
 /* -----> Vista Mobile*/
 @media (max-width: 400px) {         
     .container-principal {
-        margin: 2rem 1.5rem 0 1.5rem;              /*Mantengo margin laterales+top pero el margin-bottom de mobile ya viene fijado en general.css*/
+        margin-top: 2rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
     }
     
     .container-estados {
-        margin: 1rem 0 0 0;
+        justify-content: center;
         gap: 0.8rem;
-        font-size: 0.8rem;
+        margin: 1rem 0 0 0;
+    }
+
+    .link-estados{
+        font-size: 0.9rem;
+        border-left: none;     
+        border-right: none;
+        border-top: none;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .container-tarjetas {               /* Contenedor de todas las tarjetas de pedidos */
