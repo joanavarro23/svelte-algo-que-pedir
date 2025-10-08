@@ -4,6 +4,7 @@
   import DireccionSection from './direccion-section.svelte'
 
   import { iconoMedioDePago } from '$lib/utils/medioPagoIcono'
+  import { goto } from '$app/navigation'
 
   interface Props {
     pedido: Pedido
@@ -14,10 +15,13 @@
   const pedidoHora = (fecha: Date): string => {
     /* Extrae de un tipo Date la hh:mm */
     return fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-  }  
+  }
+
+  // Redirige al detalle del pedido, toma el id del pedido para armar la ruta
+  const redireccionADetalle = () => goto(`/detalle-pedido/${pedido.id}`)
 </script>
 
-<article class="pedido-tarjeta contenedor-general">
+<article class="pedido-tarjeta contenedor-general" onclick={redireccionADetalle}>
   <!-- Tarjeta de pedido -->
   <header class="pedido-header">
     <p>Pedido #{pedido.id}</p>
