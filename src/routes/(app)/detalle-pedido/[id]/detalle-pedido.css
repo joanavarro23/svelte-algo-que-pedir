@@ -101,7 +101,7 @@ img.pin-ubicacion {
 /* SECCIONES */
 section {
     margin-bottom: 1rem;
-    background-color: var(--color-secundario);
+    /* background-color: var(--color-secundario); */
     border-radius: 0.8rem;
 }
 
