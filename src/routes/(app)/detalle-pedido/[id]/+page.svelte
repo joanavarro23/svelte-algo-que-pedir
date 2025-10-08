@@ -114,7 +114,7 @@
       <h3>Método de Pago</h3>
       <div class="metodo-pago">
         <img src={iconoMedioDePago(pedidoDetalle.pago.metodo)} class="icono" alt="Metodo de pago" />
-        <p>{pedidoDetalle.pago.metodo}</p>
+        <p>Pago con {pedidoDetalle.pago.metodo}</p>
       </div>
     </div>
   </section>
