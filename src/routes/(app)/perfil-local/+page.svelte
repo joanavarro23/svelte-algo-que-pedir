@@ -1,39 +1,57 @@
-<script lang='ts'>
+<script lang="ts">
   /* import moesBar from '$lib/assets/moes-bar.jpg' */
   export let data
+  import { getLocal } from '$lib/services/localService'
   import { showToast } from '$lib/toasts/toasts'
-  import { numMaximo, noNegativo } from '$lib/validaciones/validaciones'
+  import Validador from '$lib/utils/validador.svelte'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
+  import { PERFIL_LOCAL_MOCK } from '$lib/data/mocks/perfilLocalMock'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
-  
+  import { numMaximo, positivo, requerido } from '$lib/validaciones/validaciones'
+
+  function validarPlato() {
+    /* Agregar validaciones del plato antes de enviar el formulario*/
+  }
 
   function guardarCambios() {
     /* Muesta los datos ingresados; después será la acción que va a enviar los datos del form al back*/
-    const datosLocal = {
-      nombreLocal,
-      urlImagen,
-      direccion,
-      altura,
-      latitud,
-      longitud,
-      porcentajeApp,
-      porcentajeAutor,
-      metodosDePago: {
-        QR: metodosDePago.QR,
-        Efectivo: metodosDePago.Efectivo,
-        Transferencia: metodosDePago.Transferencia
-      }
-    }
 
-    showToast(('La información del local fue guardada correctamente'),'success',3000)
+    showToast('La información del local fue guardada correctamente', 'success', 3000)
   }
 
   function descartarCambios() {
-    showToast(('Cambios descartados, no se realizaron modificaciones'),'warning',3000)
+    showToast('Cambios descartados, no se realizaron modificaciones', 'warning', 3000)
   }
 
-  let {nombreLocal,urlImagen,direccion,altura,latitud,longitud,porcentajeApp,porcentajeAutor,metodosDePago} = data.perfilLocal
+  let localData: any = null
+  // Cargar la data al iniciar la página
+
+  let nombreLocal = ''
+  let urlImagen = ''
+  let direccion = ''
+  let altura = 0
+  let latitud = 0
+  let longitud = 0
+  let porcentajeApp = 0
+  let porcentajeAutor = 0
+  let metodosDePago: Record<string, boolean> = { QR: false, Efectivo: false, Transferencia: false }
+
+  const fetchLocal = async () => {
+    const localData = await getLocal()
+
+    nombreLocal = localData?.nombre || ''
+    urlImagen = localData?.urlImagen || ''
+    direccion = localData?.direccion.calle || {}
+    altura = localData?.direccion?.altura || 0
+    latitud = localData?.direccion?.ubicacion?.x || 0
+    longitud = localData?.direccion?.ubicacion?.y || 0
+    porcentajeApp = localData?.porcentajeSobreCadaPlato || 0
+    porcentajeAutor = localData?.porcentajeRegaliasDeAutor || 0
+    metodosDePago = localData?.mediosDePago || []
+  }
+
+  fetchLocal()
 
   // Validaciones para el campo porcentaje, que no puede ser mayor a 100
   $: {
@@ -45,25 +63,24 @@
 
   $: {
     if (!numMaximo(porcentajeAutor, 100)) {
-      showToast('El porcentaje no puede ser mayor a 100','warning',3000)
+      showToast('El porcentaje no puede ser mayor a 100', 'warning', 3000)
       porcentajeAutor = 100
     }
   }
 
   $: {
-    if (!noNegativo(porcentajeApp)) {
+    if (!positivo(porcentajeApp)) {
       alert('El porcentaje no puede ser negativo')
       porcentajeApp = 0
     }
   }
 
   $: {
-    if (!noNegativo(porcentajeAutor)) {
+    if (!positivo(porcentajeAutor)) {
       alert('El porcentaje no puede ser negativo')
       porcentajeAutor = 0
     }
   }
-
 </script>
 
 <main class="contenedor-principal main-vista">
@@ -158,7 +175,6 @@
 
   <div class="button">
     <PropsButton tipo="primario" onclick={guardarCambios}>Guardar Cambios</PropsButton>
-
     <PropsButton tipo="secundario" onclick={descartarCambios}>Descartar Cambios</PropsButton>
   </div>
 </main>
