@@ -1,12 +1,9 @@
 <script lang="ts">
   import type { Pedido } from '$lib/types'
-  import { MedioDePago } from '$lib/types'
   import UsuarioSection from '$lib/components/pedidos/usuario-section.svelte'
   import DireccionSection from './direccion-section.svelte'
 
-  import tarjetaIcono from '$lib/assets/tarjeta-credito.svg'
-  import efectivoIcono from '$lib/assets/efectivo.svg'
-  import QRIcono from '$lib/assets/codigo-qr.svg'
+  import { iconoMedioDePago } from '$lib/utils/medioPagoIcono'
 
   interface Props {
     pedido: Pedido
@@ -17,18 +14,7 @@
   const pedidoHora = (fecha: Date): string => {
     /* Extrae de un tipo Date la hh:mm */
     return fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-  }
-
-  const iconoMedioDePago = (medio: MedioDePago): string => {
-    /* Para el renderizado de iconos de medio de pago diferentes */
-    if (medio === MedioDePago.Efectivo) {
-      return efectivoIcono
-    } else if (medio === MedioDePago.QR) {
-      return QRIcono
-    } else {
-      return tarjetaIcono
-    }
-  }
+  }  
 </script>
 
 <article class="pedido-tarjeta contenedor-general">

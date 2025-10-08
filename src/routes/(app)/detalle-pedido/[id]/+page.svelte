@@ -1,8 +1,6 @@
 <script lang="ts">
   import './detalle-pedido.css'
-  import tarjetaIcono from '$lib/assets/tarjeta-credito.svg'
-  import efectivoIcono from '$lib/assets/efectivo.svg'
-  import QRIcono from '$lib/assets/codigo-qr.svg'
+  import { iconoMedioDePago } from '$lib/utils/medioPagoIcono'
 
   import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
   import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
@@ -54,17 +52,6 @@
       incrementoPago,
       total,
       metodo: pedido?.medioDePago ?? MedioDePago.Efectivo
-    }
-  }
-
-  const iconoMedioDePago = (medio: MedioDePago): string => {
-    /* Para el renderizado de iconos de medio de pago diferentes */
-    if (medio === MedioDePago.Efectivo) {
-      return efectivoIcono
-    } else if (medio === MedioDePago.QR) {
-      return QRIcono
-    } else {
-      return tarjetaIcono
     }
   }
 
