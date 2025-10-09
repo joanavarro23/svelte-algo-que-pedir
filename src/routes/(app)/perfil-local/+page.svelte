@@ -6,7 +6,7 @@
   import { showToast } from '$lib/toasts/toasts'
   import Validador from '$lib/utils/validador.svelte'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
-  //import { PERFIL_LOCAL_MOCK } from '$lib/data/mocks/perfilLocalMock'
+  import { PERFIL_LOCAL_MOCK } from '$lib/data/mocks/perfilLocalMock'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
   import { numMaximo, positivo, requerido } from '$lib/validaciones/validaciones'
@@ -34,7 +34,7 @@
     const localData = await getLocal()
 
     local.nombreLocal = localData?.nombre || ''
-    local.urlImagen = localData?.urlImagen || ''
+    local.urlImagen = localData?.urlImagenLocal || ''
     local.direccion = localData?.direccion.calle || {}
     local.altura = localData?.direccion?.altura || 0
     local.latitud = localData?.direccion?.ubicacion?.x || 0
