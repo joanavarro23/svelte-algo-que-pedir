@@ -67,43 +67,47 @@
     color: var(--color-texto-secundario);
 } 
 
-.info-usuario{                      /* Icono/info usuario de la tarjeta */
-    display: flex;
-    gap: 1rem;
-    margin: 0.7rem 1rem;
-}
 
-.icono-usuario-pedido{
-    width: 3.5rem;
-}
+.container-tarjetas {
 
-.nombre-usuario,                  /* Alineacion nombre-user del header tarjeta */ 
-.direccion-coordenadas {          /* Alineacion direccion/coordenadas de tarjeta */             
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-}
-
-.nombre-usuario > p,                /* Color violeta para parrafos de la tarjeta */
-.direccion-coordenadas > p {               
-    color: var(--color-parrafos); 
-}
-
-.info-pedido {                          /*Alineacion parrafo hora/articulos/total del header tarjeta */
-    font-size: 15px;
-    color: var(--color-texto-secundario);
-}
-
-.info-direccion {                       /* Alineacion info direccion pedido */
-    display: flex;
-    margin: 1.5rem 0;
-}
-
-.pin-ubicacion {
-    padding: 0.5rem;
-    margin-right: 1rem;
-    background-color: rgb(230, 224, 236);     /* Fondo del pin gris-violaceo */
-    border-radius: 20%;
+    .info-usuario{                      /* Icono/info usuario de la tarjeta */
+        display: flex;
+        gap: 1rem;
+        margin: 0.7rem 1rem;
+    }
+    
+    .icono-usuario-pedido{
+        width: 3.5rem;
+    }
+    
+    .nombre-usuario,                  /* Alineacion nombre-user del header tarjeta */ 
+    .direccion-coordenadas {          /* Alineacion direccion/coordenadas de tarjeta */             
+        display: flex;
+        flex-direction: column; 
+        justify-content: center;
+    }
+    
+    .nombre-usuario > p,                /* Color violeta para parrafos de la tarjeta */
+    .direccion-coordenadas > p {               
+        color: var(--color-parrafos); 
+    }
+    
+    .info-pedido {                          /*Alineacion parrafo hora/articulos/total del header tarjeta */
+        font-size: 15px;
+        color: var(--color-texto-secundario);
+    }
+    
+    .info-direccion {                       /* Alineacion info direccion pedido */
+        display: flex;
+        margin: 1.5rem 0;
+    }
+    
+    .pin-ubicacion {
+        padding: 0.5rem;
+        margin-right: 1rem;
+        background-color: rgb(230, 224, 236);     /* Fondo del pin gris-violaceo */
+        border-radius: 20%;
+    }
 }
 
 .pedido-footer {
@@ -136,13 +140,24 @@
 /* -----> Vista Mobile*/
 @media (max-width: 400px) {         
     .container-principal {
-        margin: 2rem 1.5rem 0 1.5rem;              /*Mantengo margin laterales+top pero el margin-bottom de mobile ya viene fijado en general.css*/
+        margin-top: 2rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
     }
     
     .container-estados {
-        margin: 1rem 0 0 0;
+        justify-content: center;
         gap: 0.8rem;
-        font-size: 0.8rem;
+        margin: 1rem 0 0 0;
+    }
+
+    .link-estados{
+        font-size: 0.9rem;
+        border-left: none;     
+        border-right: none;
+        border-top: none;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .container-tarjetas {               /* Contenedor de todas las tarjetas de pedidos */

@@ -1,11 +1,11 @@
 <script lang="ts">
   import './detalle-pedido.css'
-  import tarjetaCreditoIcono from '$lib/assets/tarjeta-credito.svg'
+  import { iconoMedioDePago } from '$lib/utils/medioPagoIcono'
 
   import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
   import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
   import { Plato } from '$lib/models/plato.svelte'
-  import { EstadoDelPedido } from '$lib/types/pedido'
+  import { EstadoDelPedido, MedioDePago } from '$lib/types/pedido'
   //DEPRECATED PERO ESTOY HACIENDO EL SERVICE
   import { page } from '$app/stores'
 
@@ -51,7 +51,7 @@
       comisionDelivery,
       incrementoPago,
       total,
-      metodo: pedido?.medioDePago
+      metodo: pedido?.medioDePago ?? MedioDePago.Efectivo
     }
   }
 
@@ -113,8 +113,8 @@
       </dl>
       <h3>Método de Pago</h3>
       <div class="metodo-pago">
-        <img src={tarjetaCreditoIcono} class="icono" alt="Metodo de pago" />
-        <p>{pedidoDetalle.pago.metodo}</p>
+        <img src={iconoMedioDePago(pedidoDetalle.pago.metodo)} class="icono" alt="Metodo de pago" />
+        <p>Pago con {pedidoDetalle.pago.metodo}</p>
       </div>
     </div>
   </section>

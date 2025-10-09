@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './(app)/pedidos-actuales.css'
 	import './general.css'
 	import Logo from '$lib/assets/logo.svg'
 	import Toast from '$lib/utils/toasts/Toast.svelte'
