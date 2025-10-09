@@ -1,6 +1,6 @@
 <script lang="ts">
   /* import moesBar from '$lib/assets/moes-bar.jpg' */
-  export let data
+  //export let data
   import { Local } from '$lib/models/local.svelte.js'
   import { getLocal } from '$lib/services/localService'
   import { showToast } from '$lib/toasts/toasts'
@@ -10,6 +10,7 @@
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
   import { numMaximo, positivo, requerido } from '$lib/validaciones/validaciones'
+  import type { MetodoDePago } from '$lib/models/metodosDePago.svelte'
 
   function validarPlato() {
     /* Agregar validaciones del plato antes de enviar el formulario*/
@@ -32,6 +33,7 @@
 
   const fetchLocal = async () => {
     const localData = await getLocal()
+    console.log(localData)
 
     local.nombreLocal = localData?.nombre || ''
     local.urlImagen = localData?.urlImagenLocal || ''
@@ -41,7 +43,20 @@
     local.longitud = localData?.direccion?.ubicacion?.y || 0
     local.porcentajeApp = localData?.porcentajeSobreCadaPlato || 0
     local.porcentajeAutor = localData?.porcentajeRegaliasDeAutor || 0
-    local.metodosDePago = localData?.mediosDePago || []
+
+    localData.mediosDePago.forEach((medio: string) => {
+      if (medio === 'EFECTIVO') local.metodosDePago.Efectivo = true
+      if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
+      if (medio === 'QR') local.metodosDePago.QR = true
+    })
+
+    //if (localData.mediosDePago) {
+    //  localData.mediosDePago.forEach((medio: MetodoDePago) => {
+    //    local.metodosDePago[medio] = true
+
+    //    local.metodosDePago = { ...local.metodosDePago }
+    //  })
+    //}
   }
 
   fetchLocal()
