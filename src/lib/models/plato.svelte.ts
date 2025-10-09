@@ -1,5 +1,5 @@
 import type { Ingrediente } from '$lib/models/ingrediente.svelte'
-import { ValidarMensaje } from '$lib/utils/validarMensaje'
+import { ValidarMensaje } from '$lib/utils/validadorMensaje/ValidarMensaje' 
 
 export class Plato {
   id: number | null = null

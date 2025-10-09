@@ -1,11 +1,16 @@
 import { platosService } from '$lib/services/platoService'
+import { error } from '@sveltejs/kit'
 
 export async function load({ params }: { params: { id: string } }) {
-  const platoId = Number(params.id)
-
-  if (isNaN(platoId)) {
+  if(params.id === undefined) {
     const plato =  platosService.crearPlatoVacio()
     return { plato, esNuevo: true}
+  }
+
+  const platoId = Number(params.id)
+  
+  if (isNaN(platoId)) {
+    throw error (400, `El parametro debe ser un número válido`)
   }
   
   // Buscar el plato por ID

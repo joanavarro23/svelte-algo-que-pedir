@@ -5,7 +5,7 @@
   import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
 
   const navegarANuevoPlato = () => {
-    goto('./editar-plato/nuevo')
+    goto('./plato/')
   }
 </script>
 
@@ -20,7 +20,7 @@
       <h2>Platos Disponibles</h2>
       <ul class="lista-menu">
         {#each PLATOS_MOCK as plato (plato.id)}
-          <a href="./editar-plato/{plato.id}">
+          <a href="./plato/{plato.id}">
             <ItemMenu {plato} />
           </a>
         {/each}
