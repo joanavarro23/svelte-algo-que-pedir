@@ -2,13 +2,13 @@
   /* import moesBar from '$lib/assets/moes-bar.jpg' */
   export let data
   import { getLocal } from '$lib/services/localService'
-  import { showToast } from '$lib/toasts/toasts'
-  import Validador from '$lib/utils/validador.svelte'
+  import { showToast } from '$lib/utils/toasts/toasts.js' 
+  import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import { PERFIL_LOCAL_MOCK } from '$lib/data/mocks/perfilLocalMock'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
-  import { numMaximo, positivo, requerido } from '$lib/validaciones/validaciones'
+  import { numMaximo, positivo, requerido } from '$lib/utils/validaciones.js'
 
   function validarPlato() {
     /* Agregar validaciones del plato antes de enviar el formulario*/

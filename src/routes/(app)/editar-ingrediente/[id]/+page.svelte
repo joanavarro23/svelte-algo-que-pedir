@@ -4,7 +4,7 @@
   import Switch from '$lib/components/generales/switch/switch.svelte'
   import Textarea from '$lib/components/generales/input/textarea.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
-  import Validador from '$lib/utils/validador.svelte'
+  import Validador from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
   import { GrupoAlimenticio } from '$lib/models/ingrediente.svelte'
 
   let { data } = $props()

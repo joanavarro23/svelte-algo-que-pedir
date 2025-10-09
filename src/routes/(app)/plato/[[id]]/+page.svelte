@@ -9,7 +9,7 @@
   import Switch from '$lib/components/generales/switch/switch.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
-  import Validador from '$lib/utils/validador.svelte'
+  import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
   import IconoBoton from '$lib/components/generales/icono boton/iconoBoton.svelte'
 
@@ -36,17 +36,17 @@
         <form>
             <Input data-testid="titulo" nombre_label="Nombre del plato*" type="text" id="nombre"
             bind:value={data.plato.nombre} maxlength={30} placeholder="Ej: Hamburguesa completa con cheddar"/>
-            <Validador elemento={data.plato} atributo="titulo"/>
+            <ValidadorMensaje elemento={data.plato} atributo="titulo"/>
 
             <Textarea data-testid="descripcion" id="descripcion" nombre_label="Descripcion*" textarea={true}
             bind:value={data.plato.descripcion}/>
-            <Validador elemento={data.plato} atributo="descripcion"/>
+            <ValidadorMensaje elemento={data.plato} atributo="descripcion"/>
 
             <!-- <Input data-testid="imagen" nombre_label="URL de la imagen del plato*" type="file" id="imagen"
             accept="image/jpeg,image/jpg,image/png" bind:value={data.plato.imagen}/> -->
             <Input data-testid="imagen" nombre_label="URL de la imagen del plato*" type="text" id="imagen"
             bind:value={data.plato.imagen}/>
-            <Validador elemento={data.plato} atributo="imagen"/>
+            <ValidadorMensaje elemento={data.plato} atributo="imagen"/>
         </form>
 
         <!-- Imagen de referencia -->
@@ -61,7 +61,7 @@
         <form class="costos-plato">
             <Input data-testid="precio" nombre_label="Precio Base*" type="number" id="precio" 
             bind:value={data.plato.precio} placeholder="Ej: 500" min=0 />
-            <Validador elemento={data.plato} atributo="precio"/>
+            <ValidadorMensaje elemento={data.plato} atributo="precio"/>
 
             <Switch id="platoDeAutor" titulo="Plato de Autor" subtitulo="Aplica un porcentaje adicional al precio de venta" 
             bind:checked={data.plato.platoDeAutor}/>

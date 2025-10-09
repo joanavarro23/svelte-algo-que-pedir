@@ -1,7 +1,7 @@
 <script lang='ts'>
   import './ingrediente-row.css'
   import type { Snippet } from 'svelte'
-  import type { Ingrediente } from '$lib/types'
+  import type { Ingrediente } from '$lib/models/ingrediente.svelte' 
   import IconoBoton from '../generales/icono boton/iconoBoton.svelte'
   
   import cow from '$lib/assets/cow.svg'
