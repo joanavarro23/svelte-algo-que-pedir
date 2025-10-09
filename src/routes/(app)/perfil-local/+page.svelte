@@ -1,11 +1,12 @@
 <script lang="ts">
   /* import moesBar from '$lib/assets/moes-bar.jpg' */
   export let data
+  import { Local } from '$lib/models/local.svelte.js'
   import { getLocal } from '$lib/services/localService'
   import { showToast } from '$lib/toasts/toasts'
   import Validador from '$lib/utils/validador.svelte'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
-  import { PERFIL_LOCAL_MOCK } from '$lib/data/mocks/perfilLocalMock'
+  //import { PERFIL_LOCAL_MOCK } from '$lib/data/mocks/perfilLocalMock'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
   import { numMaximo, positivo, requerido } from '$lib/validaciones/validaciones'
@@ -27,58 +28,50 @@
   let localData: any = null
   // Cargar la data al iniciar la página
 
-  let nombreLocal = ''
-  let urlImagen = ''
-  let direccion = ''
-  let altura = 0
-  let latitud = 0
-  let longitud = 0
-  let porcentajeApp = 0
-  let porcentajeAutor = 0
-  let metodosDePago: Record<string, boolean> = { QR: false, Efectivo: false, Transferencia: false }
+  let local = new Local()
 
   const fetchLocal = async () => {
     const localData = await getLocal()
 
-    nombreLocal = localData?.nombre || ''
-    urlImagen = localData?.urlImagen || ''
-    direccion = localData?.direccion.calle || {}
-    altura = localData?.direccion?.altura || 0
-    latitud = localData?.direccion?.ubicacion?.x || 0
-    longitud = localData?.direccion?.ubicacion?.y || 0
-    porcentajeApp = localData?.porcentajeSobreCadaPlato || 0
-    porcentajeAutor = localData?.porcentajeRegaliasDeAutor || 0
-    metodosDePago = localData?.mediosDePago || []
+    local.nombreLocal = localData?.nombre || ''
+    local.urlImagen = localData?.urlImagen || ''
+    local.direccion = localData?.direccion.calle || {}
+    local.altura = localData?.direccion?.altura || 0
+    local.latitud = localData?.direccion?.ubicacion?.x || 0
+    local.longitud = localData?.direccion?.ubicacion?.y || 0
+    local.porcentajeApp = localData?.porcentajeSobreCadaPlato || 0
+    local.porcentajeAutor = localData?.porcentajeRegaliasDeAutor || 0
+    local.metodosDePago = localData?.mediosDePago || []
   }
 
   fetchLocal()
 
   // Validaciones para el campo porcentaje, que no puede ser mayor a 100
   $: {
-    if (!numMaximo(porcentajeApp, 100)) {
+    if (!numMaximo(local.porcentajeApp, 100)) {
       alert('El porcentaje no puede ser mayor a 100')
-      porcentajeApp = 100
+      local.porcentajeApp = 100
     }
   }
 
   $: {
-    if (!numMaximo(porcentajeAutor, 100)) {
+    if (!numMaximo(local.porcentajeAutor, 100)) {
       showToast('El porcentaje no puede ser mayor a 100', 'warning', 3000)
-      porcentajeAutor = 100
+      local.porcentajeAutor = 100
     }
   }
 
   $: {
-    if (!positivo(porcentajeApp)) {
+    if (!positivo(local.porcentajeApp)) {
       alert('El porcentaje no puede ser negativo')
-      porcentajeApp = 0
+      local.porcentajeApp = 0
     }
   }
 
   $: {
-    if (!positivo(porcentajeAutor)) {
+    if (!positivo(local.porcentajeAutor)) {
       alert('El porcentaje no puede ser negativo')
-      porcentajeAutor = 0
+      local.porcentajeAutor = 0
     }
   }
 </script>
@@ -95,7 +88,7 @@
         <input
           id="nombre-local"
           type="text"
-          bind:value={nombreLocal}
+          bind:value={local.nombreLocal}
           placeholder="Escribir"
           required
         />
@@ -104,13 +97,13 @@
         <input
           id="url-imagen-local"
           type="text"
-          bind:value={urlImagen}
+          bind:value={local.urlImagen}
           placeholder="Escribir"
           required
         />
       </form>
 
-      <img src={urlImagen} alt="Imagen del local" class="imagen-local" />
+      <img src={local.urlImagen} alt="Imagen del local" class="imagen-local" />
       <!-- La imagen está siendo cargada directamente desde la URL declarada -->
     </div>
   </ProfileCard>
@@ -120,19 +113,43 @@
     <div class="card-inputs">
       <div>
         <label for="direccion">Dirección*</label>
-        <input id="direccion" type="text" bind:value={direccion} placeholder="Escribir" required />
+        <input
+          id="direccion"
+          type="text"
+          bind:value={local.direccion}
+          placeholder="Escribir"
+          required
+        />
       </div>
       <div>
         <label for="altura">Altura*</label>
-        <input id="altura" type="number" bind:value={altura} placeholder="Escribir" required />
+        <input
+          id="altura"
+          type="number"
+          bind:value={local.altura}
+          placeholder="Escribir"
+          required
+        />
       </div>
       <div>
         <label for="latitud">Latitud*</label>
-        <input id="latitud" type="number" bind:value={latitud} placeholder="Escribir" required />
+        <input
+          id="latitud"
+          type="number"
+          bind:value={local.latitud}
+          placeholder="Escribir"
+          required
+        />
       </div>
       <div>
         <label for="longitud">Longitud*</label>
-        <input id="longitud" type="number" bind:value={longitud} placeholder="Escribir" required />
+        <input
+          id="longitud"
+          type="number"
+          bind:value={local.longitud}
+          placeholder="Escribir"
+          required
+        />
       </div>
     </div>
   </ProfileCard>
@@ -145,7 +162,7 @@
         <input
           id="porcentaje-comision-app"
           type="number"
-          bind:value={porcentajeApp}
+          bind:value={local.porcentajeApp}
           placeholder="Escribir"
           required
         />
@@ -158,7 +175,7 @@
         <input
           id="porcentaje-comision-plato-autor"
           type="number"
-          bind:value={porcentajeAutor}
+          bind:value={local.porcentajeAutor}
           placeholder="Escribir"
           required
         />
@@ -166,9 +183,9 @@
 
       <h3>Métodos de pago</h3>
       <div class="metodos-de-pago">
-        <Checkbox label="QR" bind:checked={metodosDePago.QR} />
-        <Checkbox label="Efectivo" bind:checked={metodosDePago.Efectivo} />
-        <Checkbox label="Transferencia" bind:checked={metodosDePago.Transferencia} />
+        <Checkbox label="QR" bind:checked={local.metodosDePago.QR} />
+        <Checkbox label="Efectivo" bind:checked={local.metodosDePago.Efectivo} />
+        <Checkbox label="Transferencia" bind:checked={local.metodosDePago.Transferencia} />
       </div>
     </div>
   </ProfileCard>
