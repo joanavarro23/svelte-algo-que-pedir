@@ -37,10 +37,10 @@
 
     local.nombreLocal = localData?.nombre || ''
     local.urlImagen = localData?.urlImagenLocal || ''
-    local.direccion = localData?.direccion.calle || {}
-    local.altura = localData?.direccion?.altura || 0
-    local.latitud = localData?.direccion?.ubicacion?.x || 0
-    local.longitud = localData?.direccion?.ubicacion?.y || 0
+    local.direccion = localData?.direccion || {}
+    local.altura = localData?.altura || 0
+    local.latitud = localData?.latitud || 0
+    local.longitud = localData?.longitud || 0
     local.porcentajeApp = localData?.porcentajeSobreCadaPlato || 0
     local.porcentajeAutor = localData?.porcentajeRegaliasDeAutor || 0
 
