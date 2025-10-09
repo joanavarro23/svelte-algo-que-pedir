@@ -118,6 +118,7 @@ section {
     justify-content: space-between;
     align-items: center;
     background-color: var(--color-fondo-secundario);
+    margin-top: 1rem;
 }
 
 .contenedor-estado h2 {
