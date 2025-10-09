@@ -11,12 +11,6 @@ export interface Toast {
 
 export const toast = writable<Toast | null>(null)
 
-/**
- * Muestra un toast
- * @param message Texto del toast
- * @param type Tipo de toast: 'error' | 'info' | 'success' | 'warning'
- * @param duration Tiempo que se muestra el toast en ms (por defecto 3000)
- */
 export function showToast(message: string, type?: ToastType, duration: number = 3000) {
   toast.set({ message, type, duration })
 
