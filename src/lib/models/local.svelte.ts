@@ -22,11 +22,14 @@ export class Local {
     Transferencia: false
   }
 
-  private original?: Local
-
   errors: ValidarMensaje[] = $state([])
 
-  setOriginal() {
+  //Variable para hacer una copia de los valores originales de carga
+  //por si el usuario descarta los cambios que realiza
+  private original?: Local
+
+  // Consultar por una mejor forma de hacer esto
+  copiaOriginal() {
     this.original = new Local()
     this.original.nombreLocal = this.nombreLocal
     this.original.urlImagen = this.urlImagen
@@ -39,7 +42,7 @@ export class Local {
     this.original.metodosDePago = { ...this.metodosDePago }
   }
 
-  restaurar() {
+  restaurarValores() {
     if (!this.original) return
 
     this.nombreLocal = this.original.nombreLocal
@@ -56,9 +59,11 @@ export class Local {
   tieneError(campo: string): boolean {
     return this.errors.some((_) => _.campo === campo)
   }
+
   agregarError(campo: string, mensaje: string) {
     this.errors.push( new ValidarMensaje(campo, mensaje))
   }
+
   mensajesError(campo: string): string {
     return this.errors
       .filter((_) => _.campo === campo)
@@ -79,7 +84,7 @@ export class Local {
     this.errors.length = 0 // se limpian errores anteriores
 
     if (vacio(this.nombreLocal)) {
-      this.agregarError('nombreLocal', 'Debe ingresar un nombre para el local')
+      this.agregarError('nombreLocal', 'El nombre del local no puede estar vacío')
     }
 
     if (vacio(this.urlImagen)) {
@@ -87,15 +92,11 @@ export class Local {
     }
 
     if (vacio(this.direccion)) {
-      this.agregarError('nombreLocal', 'Debe ingresar una dirección válida')
+      this.agregarError('nombreLocal', 'Por favor, ingrese una dirección válida')
     }
 
     if (!positivo(this.altura) || !esEntero(this.altura)) {
       this.agregarError('altura', 'Debe ingresar una altura válida')
-    }
-
-    if (PORCENTAJE_MINIMO >= this.porcentajeApp || this.porcentajeApp >= PORCENTAJE_MAXIMO) {
-      this.agregarError('porcentajeApp', 'Debe ingresar un valor entre 0 y 100')
     }
 
     if (LATITUD_MINIMA >= this.latitud || this.latitud >= LATITUD_MAXIMA) {
@@ -104,6 +105,10 @@ export class Local {
 
     if (LONGITUD_MINIMA >= this.longitud || this.longitud >= LONGITUD_MAXIMA) {
       this.agregarError('longitud', 'La longitud debe ser un valor entre -180° y 180°')
+    }
+
+    if (PORCENTAJE_MINIMO >= this.porcentajeApp || this.porcentajeApp >= PORCENTAJE_MAXIMO) {
+      this.agregarError('porcentajeApp', 'Debe ingresar un valor entre 0 y 100')
     }
 
     if (PORCENTAJE_MINIMO >= this.porcentajeAutor || this.porcentajeAutor >= PORCENTAJE_MAXIMO) {
@@ -137,7 +142,7 @@ export class Local {
       showToast('La información del local fue guardada correctamente', 'success', 3000)
     } catch (error) {
       showToast('Error al guardar la información del local: ' + error, 'error', 10000)
-      console.error(error)
+      //console.error(error)
     }
   }
 

@@ -9,7 +9,7 @@
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
 
   function descartarCambios() {
-    local.restaurar()
+    local.restaurarValores()
     showToast('Cambios descartados', 'warning', 3000)
   }
 
@@ -18,7 +18,6 @@
   }
 
   let local = new Local()
-  let localOriginal: Local = new Local()
 
   const fetchLocal = async () => {
     const localData: LocalDTO = await getLocal()
@@ -33,22 +32,12 @@
     local.porcentajeAutor = localData?.porcentajeRegaliasDeAutor || 0
 
     localData.mediosDePago.forEach((medio: string) => {
+      if (medio === 'QR') local.metodosDePago.QR = true
       if (medio === 'EFECTIVO') local.metodosDePago.Efectivo = true
       if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
-      if (medio === 'QR') local.metodosDePago.QR = true
     })
 
-    localOriginal.nombreLocal = local.nombreLocal
-    localOriginal.urlImagen = local.urlImagen
-    localOriginal.direccion = local.direccion
-    localOriginal.altura = local.altura
-    localOriginal.latitud = local.latitud
-    localOriginal.longitud = local.longitud
-    localOriginal.porcentajeApp = local.porcentajeApp
-    localOriginal.porcentajeAutor = local.porcentajeAutor
-    localOriginal.metodosDePago = { ...local.metodosDePago }
-
-    local.setOriginal()
+    local.copiaOriginal() //Se hace una copia por si el usuario descarta los cambios
   }
 
   fetchLocal()
