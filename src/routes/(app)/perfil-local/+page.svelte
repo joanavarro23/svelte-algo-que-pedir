@@ -9,17 +9,7 @@
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
 
   function descartarCambios() {
-    // Consultar por una mejor forma de hacer esto
-    local.nombreLocal = localOriginal.nombreLocal
-    local.urlImagen = localOriginal.urlImagen
-    local.direccion = localOriginal.direccion
-    local.altura = localOriginal.altura
-    local.latitud = localOriginal.latitud
-    local.longitud = localOriginal.longitud
-    local.porcentajeApp = localOriginal.porcentajeApp
-    local.porcentajeAutor = localOriginal.porcentajeAutor
-    local.metodosDePago = { ...localOriginal.metodosDePago }
-
+    local.restaurar()
     showToast('Cambios descartados', 'warning', 3000)
   }
 
@@ -57,6 +47,8 @@
     localOriginal.porcentajeApp = local.porcentajeApp
     localOriginal.porcentajeAutor = local.porcentajeAutor
     localOriginal.metodosDePago = { ...local.metodosDePago }
+
+    local.setOriginal()
   }
 
   fetchLocal()

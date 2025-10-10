@@ -22,7 +22,36 @@ export class Local {
     Transferencia: false
   }
 
+  private original?: Local
+
   errors: ValidarMensaje[] = $state([])
+
+  setOriginal() {
+    this.original = new Local()
+    this.original.nombreLocal = this.nombreLocal
+    this.original.urlImagen = this.urlImagen
+    this.original.direccion = this.direccion
+    this.original.altura = this.altura
+    this.original.latitud = this.latitud
+    this.original.longitud = this.longitud
+    this.original.porcentajeApp = this.porcentajeApp
+    this.original.porcentajeAutor = this.porcentajeAutor
+    this.original.metodosDePago = { ...this.metodosDePago }
+  }
+
+  restaurar() {
+    if (!this.original) return
+
+    this.nombreLocal = this.original.nombreLocal
+    this.urlImagen = this.original.urlImagen
+    this.direccion = this.original.direccion
+    this.altura = this.original.altura
+    this.latitud = this.original.latitud
+    this.longitud = this.original.longitud
+    this.porcentajeApp = this.original.porcentajeApp
+    this.porcentajeAutor = this.original.porcentajeAutor
+    this.metodosDePago = { ...this.original.metodosDePago }
+  }
 
   tieneError(campo: string): boolean {
     return this.errors.some((_) => _.campo === campo)
@@ -80,11 +109,6 @@ export class Local {
     if (PORCENTAJE_MINIMO >= this.porcentajeAutor || this.porcentajeAutor >= PORCENTAJE_MAXIMO) {
       this.agregarError('porcentajeAutor', 'Debe ingresar un valor entre 0 y 100')
     }
-    
-    // if (this.imagen && !this.imagen.type.startsWith('image/')) {
-    //   this.agregarError('imagen', 'El archivo debe ser una imagen válida')
-    // }
-
   }
 
   async guardar() {
@@ -116,4 +140,6 @@ export class Local {
       console.error(error)
     }
   }
+
+  
 }
