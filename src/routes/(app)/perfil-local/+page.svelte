@@ -1,29 +1,65 @@
 <script lang="ts">
   /* import moesBar from '$lib/assets/moes-bar.jpg' */
   //export let data
-  import { Local } from '$lib/models/local.svelte.js'
-  import { getLocal } from '$lib/services/localService'
+
   import { showToast } from '$lib/toasts/toasts'
+  import type { LocalDTO } from '$lib/dto/localDTO'
+  import { Local } from '$lib/models/local.svelte.js'
   import Validador from '$lib/utils/validador.svelte'
+  import { getLocal } from '$lib/services/localService'
+  import { updateLocal } from '$lib/services/localService'
+  //import { PERFIL_LOCAL_MOCK } from '$lib/data/mocks/perfilLocalMock'
+  import type { MetodoDePago } from '$lib/models/metodosDePago.svelte'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
-  import { PERFIL_LOCAL_MOCK } from '$lib/data/mocks/perfilLocalMock'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
   import { numMaximo, positivo, requerido } from '$lib/validaciones/validaciones'
-  import type { MetodoDePago } from '$lib/models/metodosDePago.svelte'
 
   function validarPlato() {
     /* Agregar validaciones del plato antes de enviar el formulario*/
-  }
-
-  function guardarCambios() {
-    /* Muesta los datos ingresados; después será la acción que va a enviar los datos del form al back*/
-
-    showToast('La información del local fue guardada correctamente', 'success', 3000)
+    return true
   }
 
   function descartarCambios() {
-    showToast('Cambios descartados, no se realizaron modificaciones', 'warning', 3000)
+    showToast('Se descartaron los cambios, no se realizaron modificaciones', 'warning')
+  }
+
+  function guardarCambiosBackup() {
+    /* Muesta los datos ingresados; después será la acción que va a enviar los datos del form al back*/
+    if (validarPlato()) {
+      showToast('La información del local fue guardada correctamente', 'success', 3000)
+    } else {
+      showToast('Error!', 'error', 3000)
+    }
+  }
+
+  async function guardarCambios() {
+    const mediosParaBackend: MetodoDePago[] = []
+
+    if (local.metodosDePago.QR) mediosParaBackend.push('QR' as MetodoDePago)
+    if (local.metodosDePago.Efectivo) mediosParaBackend.push('EFECTIVO' as MetodoDePago)
+    if (local.metodosDePago.Transferencia)
+      mediosParaBackend.push('TRANSFERENCIA_BANCARIA' as MetodoDePago)
+
+    const localDTO: LocalDTO = {
+      nombre: local.nombreLocal,
+      urlImagenLocal: local.urlImagen,
+      direccion: local.direccion,
+      altura: local.altura,
+      latitud: local.latitud,
+      longitud: local.longitud,
+      porcentajeSobreCadaPlato: local.porcentajeApp,
+      porcentajeRegaliasDeAutor: local.porcentajeAutor,
+      mediosDePago: mediosParaBackend
+    }
+
+    try {
+      await updateLocal(localDTO)
+      showToast('La información del local fue guardada correctamente', 'success', 3000)
+    } catch (error) {
+      showToast('Error al guardar la información del local: ' + error, 'error', 10000)
+      console.error(error)
+    }
   }
 
   let localData: any = null
@@ -33,7 +69,7 @@
 
   const fetchLocal = async () => {
     const localData = await getLocal()
-    console.log(localData)
+    //console.log(localData)
 
     local.nombreLocal = localData?.nombre || ''
     local.urlImagen = localData?.urlImagenLocal || ''
@@ -50,50 +86,15 @@
       if (medio === 'QR') local.metodosDePago.QR = true
     })
 
-    //if (localData.mediosDePago) {
-    //  localData.mediosDePago.forEach((medio: MetodoDePago) => {
-    //    local.metodosDePago[medio] = true
-
-    //    local.metodosDePago = { ...local.metodosDePago }
-    //  })
-    //}
+    // Agregar enlace de Google Maps
   }
 
   fetchLocal()
-
-  // Validaciones para el campo porcentaje, que no puede ser mayor a 100
-  $: {
-    if (!numMaximo(local.porcentajeApp, 100)) {
-      alert('El porcentaje no puede ser mayor a 100')
-      local.porcentajeApp = 100
-    }
-  }
-
-  $: {
-    if (!numMaximo(local.porcentajeAutor, 100)) {
-      showToast('El porcentaje no puede ser mayor a 100', 'warning', 3000)
-      local.porcentajeAutor = 100
-    }
-  }
-
-  $: {
-    if (!positivo(local.porcentajeApp)) {
-      alert('El porcentaje no puede ser negativo')
-      local.porcentajeApp = 0
-    }
-  }
-
-  $: {
-    if (!positivo(local.porcentajeAutor)) {
-      alert('El porcentaje no puede ser negativo')
-      local.porcentajeAutor = 0
-    }
-  }
 </script>
 
 <main class="contenedor-principal main-vista">
   <header class="titulo-principal">
-    <h1>Información del local</h1>
+    <h1>Información del local: {local.nombreLocal}</h1>
   </header>
 
   <ProfileCard>
