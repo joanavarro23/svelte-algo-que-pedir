@@ -7,73 +7,26 @@
   import { Local } from '$lib/models/local.svelte.js'
   import Validador from '$lib/utils/validador.svelte'
   import { getLocal } from '$lib/services/localService'
-  import { updateLocal } from '$lib/services/localService'
-  //import { PERFIL_LOCAL_MOCK } from '$lib/data/mocks/perfilLocalMock'
-  import type { MetodoDePago } from '$lib/models/metodosDePago.svelte'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
-  import { numMaximo, positivo, requerido } from '$lib/validaciones/validaciones'
-
-  function validarPlato() {
-    /* Agregar validaciones del plato antes de enviar el formulario*/
-    return true
-  }
 
   function descartarCambios() {
     showToast('Se descartaron los cambios, no se realizaron modificaciones', 'warning')
   }
 
-  function guardarCambiosBackup() {
-    /* Muesta los datos ingresados; después será la acción que va a enviar los datos del form al back*/
-    if (validarPlato()) {
-      showToast('La información del local fue guardada correctamente', 'success', 3000)
-    } else {
-      showToast('Error!', 'error', 3000)
-    }
+  const guardarCambios = async () => {
+    await local.guardar()
   }
-
-  async function guardarCambios() {
-    const mediosParaBackend: MetodoDePago[] = []
-
-    if (local.metodosDePago.QR) mediosParaBackend.push('QR' as MetodoDePago)
-    if (local.metodosDePago.Efectivo) mediosParaBackend.push('EFECTIVO' as MetodoDePago)
-    if (local.metodosDePago.Transferencia)
-      mediosParaBackend.push('TRANSFERENCIA_BANCARIA' as MetodoDePago)
-
-    const localDTO: LocalDTO = {
-      nombre: local.nombreLocal,
-      urlImagenLocal: local.urlImagen,
-      direccion: local.direccion,
-      altura: local.altura,
-      latitud: local.latitud,
-      longitud: local.longitud,
-      porcentajeSobreCadaPlato: local.porcentajeApp,
-      porcentajeRegaliasDeAutor: local.porcentajeAutor,
-      mediosDePago: mediosParaBackend
-    }
-
-    try {
-      await updateLocal(localDTO)
-      showToast('La información del local fue guardada correctamente', 'success', 3000)
-    } catch (error) {
-      showToast('Error al guardar la información del local: ' + error, 'error', 10000)
-      console.error(error)
-    }
-  }
-
-  let localData: any = null
-  // Cargar la data al iniciar la página
 
   let local = new Local()
 
   const fetchLocal = async () => {
-    const localData = await getLocal()
-    //console.log(localData)
+    const localData: LocalDTO = await getLocal()
 
     local.nombreLocal = localData?.nombre || ''
     local.urlImagen = localData?.urlImagenLocal || ''
-    local.direccion = localData?.direccion || {}
+    local.direccion = localData?.direccion || ''
     local.altura = localData?.altura || 0
     local.latitud = localData?.latitud || 0
     local.longitud = localData?.longitud || 0
@@ -85,8 +38,6 @@
       if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
       if (medio === 'QR') local.metodosDePago.QR = true
     })
-
-    // Agregar enlace de Google Maps
   }
 
   fetchLocal()
@@ -108,6 +59,7 @@
           placeholder="Escribir"
           required
         />
+        <Validador elemento={local} atributo="nombreLocal" />
 
         <label for="url-imagen-local">URL de la imagen*</label>
         <input
@@ -120,7 +72,7 @@
       </form>
 
       <img src={local.urlImagen} alt="Imagen del local" class="imagen-local" />
-      <!-- La imagen está siendo cargada directamente desde la URL declarada -->
+      <!-- La imagen se carga directamente desde la URL declarada -->
     </div>
   </ProfileCard>
 
@@ -183,8 +135,9 @@
           required
         />
       </div>
+      <Validador elemento={local} atributo="porcentajeApp" />
 
-      <div>
+      <div class="asd">
         <label for="porcentaje-comision-plato-autor">
           Porcentaje de comisión con autores de platos*
         </label>
@@ -195,6 +148,7 @@
           placeholder="Escribir"
           required
         />
+        <Validador elemento={local} atributo="porcentajeAutor" />
       </div>
 
       <h3>Métodos de pago</h3>

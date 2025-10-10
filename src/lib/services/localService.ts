@@ -21,9 +21,9 @@ export async function updateLocal(localDTO: LocalDTO): Promise<LocalDTO> {
   });
 
   if (!response.ok) {
-    const text = await response.text(); // ver el cuerpo de error
-    console.error('Error en POST /local:', response.status, text);
-    throw new Error(`Error al guardar el local: ${response.status}`);
+    const text = await response.text()
+    console.error('Error en POST /local:', response.status, text)
+    throw new Error(`Error al guardar el local: ${response.status}`)
   }
 
   return await response.json();
