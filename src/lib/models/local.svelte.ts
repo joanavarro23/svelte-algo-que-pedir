@@ -3,7 +3,7 @@ import type { LocalDTO } from "$lib/dto/localDTO"
 import { updateLocal } from "$lib/services/localService"
 import { ValidarMensaje } from "$lib/utils/validarMensaje"
 import type { MetodoDePago } from "./metodosDePago.svelte"
-import { vacio } from "$lib/validaciones/validaciones"
+import { esEntero, positivo, vacio } from "$lib/validaciones/validaciones"
 
 export class Local {
 
@@ -42,13 +42,45 @@ export class Local {
     
     const PORCENTAJE_MINIMO = 0
     const PORCENTAJE_MAXIMO = 100
+    const LATITUD_MINIMA = -90
+    const LATITUD_MAXIMA = 90
+    const LONGITUD_MINIMA = -180
+    const LONGITUD_MAXIMA = 180
+
     this.errors.length = 0 // se limpian errores anteriores
+
     if (vacio(this.nombreLocal)) {
       this.agregarError('nombreLocal', 'Debe ingresar un nombre para el local')
     }
-    if (this.porcentajeApp <= 100) {
+
+    if (vacio(this.urlImagen)) {
+      this.agregarError('urlImagen','Debe ingresar la URL de la imagen')
+    }
+
+    if (vacio(this.direccion)) {
+      this.agregarError('nombreLocal', 'Debe ingresar una dirección válida')
+    }
+
+    if (!positivo(this.altura) || !esEntero(this.altura)) {
+      this.agregarError('altura', 'Debe ingresar una altura válida')
+    }
+
+    if (PORCENTAJE_MINIMO >= this.porcentajeApp || this.porcentajeApp >= PORCENTAJE_MAXIMO) {
       this.agregarError('porcentajeApp', 'Debe ingresar un valor entre 0 y 100')
     }
+
+    if (LATITUD_MINIMA >= this.latitud || this.latitud >= LATITUD_MAXIMA) {
+      this.agregarError('latitud', 'La latitud debe ser un valor entre -90° y 90°')
+    }
+
+    if (LONGITUD_MINIMA >= this.longitud || this.longitud >= LONGITUD_MAXIMA) {
+      this.agregarError('longitud', 'La longitud debe ser un valor entre -180° y 180°')
+    }
+
+    if (PORCENTAJE_MINIMO >= this.porcentajeAutor || this.porcentajeAutor >= PORCENTAJE_MAXIMO) {
+      this.agregarError('porcentajeAutor', 'Debe ingresar un valor entre 0 y 100')
+    }
+    
     // if (this.imagen && !this.imagen.type.startsWith('image/')) {
     //   this.agregarError('imagen', 'El archivo debe ser una imagen válida')
     // }

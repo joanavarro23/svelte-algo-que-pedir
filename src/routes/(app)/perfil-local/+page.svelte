@@ -1,7 +1,4 @@
 <script lang="ts">
-  /* import moesBar from '$lib/assets/moes-bar.jpg' */
-  //export let data
-
   import { showToast } from '$lib/toasts/toasts'
   import type { LocalDTO } from '$lib/dto/localDTO'
   import { Local } from '$lib/models/local.svelte.js'
@@ -12,7 +9,18 @@
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
 
   function descartarCambios() {
-    showToast('Se descartaron los cambios, no se realizaron modificaciones', 'warning')
+    // Consultar por una mejor forma de hacer esto
+    local.nombreLocal = localOriginal.nombreLocal
+    local.urlImagen = localOriginal.urlImagen
+    local.direccion = localOriginal.direccion
+    local.altura = localOriginal.altura
+    local.latitud = localOriginal.latitud
+    local.longitud = localOriginal.longitud
+    local.porcentajeApp = localOriginal.porcentajeApp
+    local.porcentajeAutor = localOriginal.porcentajeAutor
+    local.metodosDePago = { ...localOriginal.metodosDePago }
+
+    showToast('Cambios descartados', 'warning', 3000)
   }
 
   const guardarCambios = async () => {
@@ -20,6 +28,7 @@
   }
 
   let local = new Local()
+  let localOriginal: Local = new Local()
 
   const fetchLocal = async () => {
     const localData: LocalDTO = await getLocal()
@@ -38,6 +47,16 @@
       if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
       if (medio === 'QR') local.metodosDePago.QR = true
     })
+
+    localOriginal.nombreLocal = local.nombreLocal
+    localOriginal.urlImagen = local.urlImagen
+    localOriginal.direccion = local.direccion
+    localOriginal.altura = local.altura
+    localOriginal.latitud = local.latitud
+    localOriginal.longitud = local.longitud
+    localOriginal.porcentajeApp = local.porcentajeApp
+    localOriginal.porcentajeAutor = local.porcentajeAutor
+    localOriginal.metodosDePago = { ...local.metodosDePago }
   }
 
   fetchLocal()
@@ -45,7 +64,7 @@
 
 <main class="contenedor-principal main-vista">
   <header class="titulo-principal">
-    <h1>Información del local: {local.nombreLocal}</h1>
+    <h1>Información del local</h1>
   </header>
 
   <ProfileCard>
@@ -69,6 +88,7 @@
           placeholder="Escribir"
           required
         />
+        <Validador elemento={local} atributo="urlImagen" />
       </form>
 
       <img src={local.urlImagen} alt="Imagen del local" class="imagen-local" />
@@ -88,6 +108,7 @@
           placeholder="Escribir"
           required
         />
+        <Validador elemento={local} atributo="direccion" />
       </div>
       <div>
         <label for="altura">Altura*</label>
@@ -98,6 +119,7 @@
           placeholder="Escribir"
           required
         />
+        <Validador elemento={local} atributo="altura" />
       </div>
       <div>
         <label for="latitud">Latitud*</label>
@@ -108,6 +130,7 @@
           placeholder="Escribir"
           required
         />
+        <Validador elemento={local} atributo="latitud" />
       </div>
       <div>
         <label for="longitud">Longitud*</label>
@@ -118,6 +141,7 @@
           placeholder="Escribir"
           required
         />
+        <Validador elemento={local} atributo="longitud" />
       </div>
     </div>
   </ProfileCard>
@@ -134,10 +158,10 @@
           placeholder="Escribir"
           required
         />
+        <Validador elemento={local} atributo="porcentajeApp" />
       </div>
-      <Validador elemento={local} atributo="porcentajeApp" />
 
-      <div class="asd">
+      <div>
         <label for="porcentaje-comision-plato-autor">
           Porcentaje de comisión con autores de platos*
         </label>
