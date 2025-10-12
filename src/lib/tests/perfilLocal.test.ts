@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom'
 import { Local } from '$lib/models/local.svelte'
-import { describe, it, expect, beforeEach } from 'vitest'
-import { render, screen } from '@testing-library/svelte'
+import { toast, type Toast } from '$lib/toasts/toasts'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import Page from '/src/routes/(app)/perfil-local/+page.svelte'
+import { render, screen, fireEvent } from '@testing-library/svelte'
 import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
 
 describe('ProfileCard', () => {
@@ -9,6 +11,69 @@ describe('ProfileCard', () => {
     render(ProfileCard, { props: { title: 'Perfil del Local' } })
     const heading = screen.getByText('Perfil del Local')
     expect(heading).toBeInTheDocument()
+  })
+})
+
+vi.mock('axios', () => ({
+  default: {
+    get: vi.fn(() =>
+      Promise.resolve({
+        data: {
+          nombre: 'Mi Local',
+          urlImagenLocal: 'https://example.com/imagen.png',
+          direccion: 'Calle Falsa',
+          altura: 123,
+          latitud: -34.6,
+          longitud: -58.4,
+          porcentajeSobreCadaPlato: 10,
+          porcentajeRegaliasDeAutor: 15,
+          mediosDePago: ['QR', 'EFECTIVO']
+        }
+      })
+    ),
+    put: vi.fn(() => Promise.resolve({ data: {} }))
+  }
+}))
+
+describe('Perfil del Local - Toasts', () => {
+  it('muestra un Toast cuando se descartan cambios', async () => {
+    vi.useFakeTimers()
+
+    render(Page)
+
+    let currentToast: Toast | null = null
+
+    const unsubscribe = toast.subscribe((value: Toast | null) => {
+      currentToast = value
+    })
+
+    //No debería haber ningún toast
+    expect(currentToast).toBeNull() 
+
+    const botonDescartar = await screen.findByText(/Descartar cambios/i)
+    await fireEvent.click(botonDescartar)
+
+    //Después de la llamada al botón descartar, debería haber un toast cargado
+    expect(currentToast).not.toBeNull()
+
+    expect(currentToast?.message).toBe('Cambios descartados')
+    expect(currentToast?.type).toBe('warning')
+    expect(currentToast?.duration).toBe(3000)
+
+    vi.advanceTimersByTime(1000)
+
+    //Después de 1 segundo, el toast debería seguir estando
+    expect(currentToast).not.toBeNull()
+
+    vi.advanceTimersByTime(3000)
+
+    //Una vez pasados los 3 segundos, el toast debería eliminarse
+    //y nuevamente no debería heber ninguno
+    expect(currentToast).toBeNull()
+
+    unsubscribe()
+
+    vi.useRealTimers()
   })
 })
 
