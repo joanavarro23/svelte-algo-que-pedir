@@ -1,16 +1,23 @@
-import { Ingrediente } from '$lib/models/ingrediente.svelte'
-import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
+import { Ingrediente, type IngredienteJSON } from '$lib/models/ingrediente.svelte'
+import { getAxiosData } from '$lib/services/common'
+import { REST_SERVER_URL } from '$lib/services/configuration'
+import axios from 'axios'
 import { error } from '@sveltejs/kit'
 
 /* CONVERTIR EN CLASE SI SE QUIERE POR EJEMPLO:
 Traer todos los platos, o ciertos platos 
 */
-const obtenerPorId = async (id: number): Promise<Ingrediente> => {
-  // Lógica
-  const ingrediente = INGREDIENTES_MOCK.find(p => p.id === id)
-  if (!ingrediente)
-    throw error(404, `El ingrediente con el id ${id} no fue encontrado`)
+class IngredienteService {
+  async todosLosIngredientes() {
+    const queryIngredientes = () => axios.get<IngredienteJSON[]>(`${REST_SERVER_URL}/ingrediente`)
+    return (await getAxiosData(queryIngredientes)).map(Ingrediente.fromJson)
+  }
 
-  return ingrediente
+  async getIngredienteById(id: number) {
+    const queryById = () => axios.get<IngredienteJSON>(`${REST_SERVER_URL}/ingrediente/${id}`)
+    const ingredienteJson = await getAxiosData(queryById)
+    return Ingrediente.fromJson(ingredienteJson)
+  }
 }
-export const ingredientesService = {obtenerPorId}
+
+export const ingredientesService = new IngredienteService()
