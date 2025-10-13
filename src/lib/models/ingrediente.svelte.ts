@@ -46,6 +46,20 @@ export class Ingrediente {
       this.agregarError('grupo', 'Debe seleccionar un grupo alimenticio')
     }
   }
+
+  invalid(): boolean {
+    return this.errors.length > 0
+  }
+
+  toJSON(): IngredienteJSON {
+    return {
+      id: this.id ?? undefined,
+      nombre: this.nombre,
+      costo: this.costo,
+      grupo: grupoToEnum(this.grupo),
+      origenAnimal: this.esAnimal
+    }
+  }
 }
 
 export type Origen = 'animal' | 'vegetal'
@@ -62,7 +76,7 @@ export enum GrupoAlimenticio {
 export type IngredienteJSON = {
   id?: number,
   nombre: string,
-  costo: string,
+  costo: number,
   grupo: string,
   origenAnimal: boolean
 }
@@ -70,4 +84,13 @@ export type IngredienteJSON = {
 // función que mapea el enum del grupo alimenticio con el label
 function mapGrupo(grupo: string): GrupoAlimenticio {
   return GrupoAlimenticio[grupo as keyof typeof GrupoAlimenticio]
+}
+
+// vuelve a mandar el label con el formato de enum
+type GrupoEnum = keyof typeof GrupoAlimenticio
+
+function grupoToEnum(label: string): string {
+  const keys = Object.keys(GrupoAlimenticio) as GrupoEnum[]
+  const found = keys.find(k => GrupoAlimenticio[k] === label)
+  return found ?? label
 }
