@@ -8,6 +8,13 @@ export class Ingrediente {
   origen: Origen = $state('vegetal')
   errors: ValidarMensaje[] = $state([])
 
+  static fromJson(ingredienteJSON: IngredienteJSON): Ingrediente {
+    return Object.assign(new Ingrediente(), ingredienteJSON, {
+      origen: ingredienteJSON.origenAnimal ? 'animal' : 'vegetal',
+      grupo: mapGrupo(ingredienteJSON.grupo) 
+    })
+  }
+  
   get esAnimal() {
     return this.origen === 'animal'
   }
@@ -50,4 +57,17 @@ export enum GrupoAlimenticio {
   FRUTAS_Y_VERDURAS = 'Frutas y verduras',
   GRASAS_Y_ACEITES = 'Grasas y aceites',
   PROTEINAS = 'Proteínas'
+}
+
+export type IngredienteJSON = {
+  id?: number,
+  nombre: string,
+  costo: string,
+  grupo: string,
+  origenAnimal: boolean
+}
+
+// función que mapea el enum del grupo alimenticio con el label
+function mapGrupo(grupo: string): GrupoAlimenticio {
+  return GrupoAlimenticio[grupo as keyof typeof GrupoAlimenticio]
 }
