@@ -17,6 +17,14 @@ class IngredienteService {
     const ingredienteJson = await getAxiosData(queryById)
     return Ingrediente.fromJson(ingredienteJson)
   }
+
+  async actualizarIngrediente(ingrediente: Ingrediente) {
+    return axios.put<IngredienteJSON>( `${REST_SERVER_URL}/ingrediente/${ingrediente.id}`, ingrediente.toJSON())
+  }
+
+  async crearIngrediente(ingrediente: Ingrediente) {
+    return axios.post<IngredienteJSON>( `${REST_SERVER_URL}/ingrediente`, ingrediente.toJSON())
+  }
 }
 
 export const ingredientesService = new IngredienteService()
