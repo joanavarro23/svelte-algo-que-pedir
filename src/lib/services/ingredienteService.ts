@@ -2,7 +2,6 @@ import { Ingrediente, type IngredienteJSON } from '$lib/models/ingrediente.svelt
 import { getAxiosData } from '$lib/services/common'
 import { REST_SERVER_URL } from '$lib/services/configuration'
 import axios from 'axios'
-import { error } from '@sveltejs/kit'
 
 /* CONVERTIR EN CLASE SI SE QUIERE POR EJEMPLO:
 Traer todos los platos, o ciertos platos 
