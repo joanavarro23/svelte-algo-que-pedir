@@ -4,7 +4,6 @@
   import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
   import { EstadoDelPedido, type Pedido } from '$lib/types'
   import { goto } from '$app/navigation'
-  import { estadoPlural } from '$lib/utils/estadoPedidos'
 
   const { data } = $props<{ data: { estado: EstadoDelPedido | null } }>()
 
@@ -17,7 +16,7 @@
   ]
 
   //Por default la vista arranca con el filtrado de los pedidos Pendientes
-  let estadoActivo = $state<EstadoDelPedido>(data.estado ?? EstadoDelPedido.Pendiente)
+  let estadoActivo = $state<EstadoDelPedido>(data.estado)
 
   //Mantiene el filtrado si volves atras
   $effect(() => {
@@ -32,7 +31,7 @@
   //Cambia el estado activo por el seleccionado tras el onclick
   const switchEstado = (nuevoEstado: EstadoDelPedido) => {
     estadoActivo = nuevoEstado
-    goto(`/pedidos?estado=${estadoPlural(nuevoEstado)}`)
+    goto(`/pedidos?estado=${nuevoEstado}`)
   }
 </script>
 
