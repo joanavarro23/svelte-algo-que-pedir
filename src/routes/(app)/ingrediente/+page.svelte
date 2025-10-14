@@ -3,7 +3,7 @@
   import IconoBoton from '$lib/components/generales/icono boton/iconoBoton.svelte'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
-  import { goto, invalidate } from '$app/navigation'
+  import { goto } from '$app/navigation'
   import type { PageProps } from './$types'
 
   import eye from '$lib/assets/eye.svg'
