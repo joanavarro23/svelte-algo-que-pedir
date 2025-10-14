@@ -9,16 +9,12 @@ export const aceptaEstadoMinMayus = (estado? : string | null) : EstadoDelPedido 
 
   switch (estadoNormalizado) {
   case 'pendientes':
-  case 'pendientes'.toUpperCase():
     return EstadoDelPedido.Pendiente
   case 'preparados':
-  case 'preparados'.toUpperCase():
     return EstadoDelPedido.Preparado
   case 'entregados':
-  case 'entregados'.toUpperCase():
     return EstadoDelPedido.Entregado
   case 'cancelados':
-  case 'cancelados'.toUpperCase():
     return EstadoDelPedido.Cancelado
   default:
     return null             //Si la ruta es /pedidos asi sin nada, no hace nada. Por eso admite la posibilidad de null.
