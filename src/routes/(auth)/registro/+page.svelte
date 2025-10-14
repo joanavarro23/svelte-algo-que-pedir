@@ -3,6 +3,7 @@
   import InputOcultable from '$lib/components/login/inputOcultable.svelte'
   import Input from '$lib/components/generales/input/input.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
+  import axios from 'axios'
 
   let usuario = $state('')
   let password = $state('')
@@ -23,20 +24,20 @@
     }
 
     try {
-      const response = await fetch('http://localhost:9000/api/auth/registro', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ usuario, password, confirmarPassword })
+      const response = await axios.post('http://localhost:9000/api/auth/registro', {
+        usuario,
+        password,
+        confirmarPassword
       })
 
-      const data = await response.json()
-
-      if (!response.ok || !data.success) {
-        // Error en el login
-        mensajeError = data.message || 'Error al crear la cuenta. Vuelva a intentarlo.'
+      if (!response.data.success) {
+        mensajeError = response.data.message || 'Error al crear la cuenta. Vuelva a intentarlo.'
       }
-    } catch {
-      mensajeError = 'Error de conexión. Por favor, inténtelo de nuevo más tarde.'
+    } catch (err) {
+      if (axios.isAxiosError(err) && err.response) {
+        mensajeError =
+          err.response.data.message || 'Error en el servidor. Inténtelo de nuevo más tarde.'
+      } else mensajeError = 'Error de conexión. Inténtelo de nuevo más tarde.'
     } finally {
       password = ''
       confirmarPassword = ''

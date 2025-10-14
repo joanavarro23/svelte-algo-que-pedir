@@ -1,4 +1,5 @@
 <script lang="ts">
+  import axios from 'axios'
   import logo from '$lib/assets/logo.svg'
   import InputOcultable from '$lib/components/login/inputOcultable.svelte'
   import Input from '$lib/components/generales/input/input.svelte'
@@ -14,26 +15,28 @@
     mensajeError = ''
 
     try {
-      const response = await fetch('http://localhost:9000/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ usuario, password })
+      const response = await axios.post('http://localhost:9000/api/auth/login', {
+        usuario,
+        password
       })
-      const data = await response.json()
 
-      if (response.ok && data.success) {
+      if (response.data.success) {
         // Login exitoso
-        sessionStorage.setItem('usuario', data.usuario)
+        sessionStorage.setItem('usuario', response.data.usuario)
         window.location.assign('/')
       } else {
         // Error en el login
-        mensajeError = data.message || 'Usuario o contraseña incorrecto. Vuelva a intentarlo.'
-        password = ''
+        mensajeError =
+          response.data.message || 'Usuario o contraseña incorrecto. Vuelva a intentarlo.'
       }
-    } catch {
-      mensajeError = 'Error de conexión. Por favor, inténtelo de nuevo más tarde.'
-      password = ''
+    } catch (err) {
+      if (axios.isAxiosError(err) && err.response) {
+        mensajeError =
+          err.response.data.message ||
+          'Error en el servidor. Por favor, inténtelo de nuevo más tarde.'
+      } else mensajeError = 'Error de conexión. Por favor, inténtelo de nuevo más tarde.'
     } finally {
+      password = ''
       cargando = false
     }
   }
