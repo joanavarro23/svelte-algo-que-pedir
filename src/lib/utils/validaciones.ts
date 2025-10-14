@@ -9,6 +9,10 @@ export function numMaximo(value: number, max: number): boolean {
 }
 
 //Función para validar que un campo no esté vacío
-export function requerido(value: string): boolean {
-  return value.trim().length > 0
+export function vacio(value: string): boolean {
+  return value.trim().length == 0
+}
+
+export function esEntero(value: number): boolean {
+  return Number.isInteger(value)
 }

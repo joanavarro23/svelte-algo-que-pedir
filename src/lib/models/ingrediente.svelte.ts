@@ -1,4 +1,4 @@
-import { ValidarMensaje } from "$lib/utils/validadorMensaje/ValidarMensaje"
+import { ValidarMensaje } from '$lib/utils/ValidarMensaje'
 
 export class Ingrediente {
   id: number | null = null
@@ -8,8 +8,20 @@ export class Ingrediente {
   origen: Origen = $state('vegetal')
   errors: ValidarMensaje[] = $state([])
 
+  static fromJson(ingredienteJSON: IngredienteJSON): Ingrediente {
+    return Object.assign(new Ingrediente(), ingredienteJSON, {
+      origen: ingredienteJSON.origenAnimal ? 'animal' : 'vegetal',
+      grupo: mapGrupo(ingredienteJSON.grupo) 
+    })
+  }
+  
   get esAnimal() {
     return this.origen === 'animal'
+  }
+
+  // Setter para que funcione correctamente el binding con el slider
+  set esAnimal(value: boolean) {
+    this.origen = value ? 'animal' : 'vegetal'
   }
 
   tieneError(campo: string): boolean {
@@ -39,6 +51,20 @@ export class Ingrediente {
       this.agregarError('grupo', 'Debe seleccionar un grupo alimenticio')
     }
   }
+
+  invalid(): boolean {
+    return this.errors.length > 0
+  }
+
+  toJSON(): IngredienteJSON {
+    return {
+      id: this.id ?? undefined,
+      nombre: this.nombre,
+      costo: this.costo,
+      grupo: grupoToEnum(this.grupo),
+      origenAnimal: this.esAnimal
+    }
+  }
 }
 
 export type Origen = 'animal' | 'vegetal'
@@ -50,4 +76,26 @@ export enum GrupoAlimenticio {
   FRUTAS_Y_VERDURAS = 'Frutas y verduras',
   GRASAS_Y_ACEITES = 'Grasas y aceites',
   PROTEINAS = 'Proteínas'
+}
+
+export type IngredienteJSON = {
+  id?: number,
+  nombre: string,
+  costo: number,
+  grupo: string,
+  origenAnimal: boolean
+}
+
+// función que mapea el enum del grupo alimenticio con el label
+function mapGrupo(grupo: string): GrupoAlimenticio {
+  return GrupoAlimenticio[grupo as keyof typeof GrupoAlimenticio]
+}
+
+// vuelve a mandar el label con el formato de enum
+type GrupoEnum = keyof typeof GrupoAlimenticio
+
+function grupoToEnum(label: string): string {
+  const keys = Object.keys(GrupoAlimenticio) as GrupoEnum[]
+  const found = keys.find(k => GrupoAlimenticio[k] === label)
+  return found ?? label
 }
