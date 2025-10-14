@@ -19,6 +19,11 @@ export class Ingrediente {
     return this.origen === 'animal'
   }
 
+  // Setter para que funcione correctamente el binding con el slider
+  set esAnimal(value: boolean) {
+    this.origen = value ? 'animal' : 'vegetal'
+  }
+
   tieneError(campo: string): boolean {
     return this.errors.some((_) => _.campo === campo)
   }
