@@ -2,7 +2,10 @@
   import './pedidos-actuales.css'
   import PedidoCard from '$lib/components/pedidos/pedido-card.svelte'
   import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
-  import { EstadoDelPedido, type Pedido } from '$lib/types'
+  import { EstadoDelPedido, estadoARuta, type Pedido } from '$lib/types'
+  import { goto } from '$app/navigation'
+
+  const { data } = $props<{ data: { estado: EstadoDelPedido | null } }>()
 
   //Defino array de estados para each de construccion de c/boton
   const estados: { estado: EstadoDelPedido; label: string }[] = [
@@ -13,7 +16,12 @@
   ]
 
   //Por default la vista arranca con el filtrado de los pedidos Pendientes
-  let estadoActivo = $state<EstadoDelPedido>(EstadoDelPedido.Pendiente)
+  let estadoActivo = $state<EstadoDelPedido>(data.estado ?? EstadoDelPedido.Pendiente)
+
+  //Mantiene el filtrado si volves atras
+  $effect(() => {
+    if (data.estado) estadoActivo = data.estado
+  })
 
   //Filtrado de los mocks de pedidos segun el estado activo
   const pedidosFiltrados = $derived<Pedido[]>(
@@ -21,7 +29,10 @@
   )
 
   //Cambia el estado activo por el seleccionado tras el onclick
-  const switchEstado = (nuevoEstado: EstadoDelPedido) => (estadoActivo = nuevoEstado)
+  const switchEstado = (nuevoEstado: EstadoDelPedido) => {
+    estadoActivo = nuevoEstado
+    goto(`/pedidos/${estadoARuta[nuevoEstado]}`)
+  }
 </script>
 
 <main class="container-principal main-vista">
