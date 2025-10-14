@@ -10,6 +10,7 @@
   import { showError } from '$lib/utils/errorHandler'
   import { ingredientesService } from '$lib/services/ingredienteService'
   import { goto } from '$app/navigation'
+  import { showToast } from '$lib/toasts/toasts'
 
   const volver = () => {
     goto('/ingrediente')
@@ -25,8 +26,10 @@
       if (!ingredienteActual.invalid()){
         if (nuevoIngrediente) {
           await ingredientesService.crearIngrediente(ingredienteActual)
+          showToast('Ingrediente creado con éxito', 'success')
         } else {
           await ingredientesService.actualizarIngrediente(ingredienteActual)
+          showToast('Ingrediente actualizado con éxito', 'success')
         }
         volver()
       }
