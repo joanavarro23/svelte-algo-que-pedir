@@ -3,19 +3,38 @@
   import IconoBoton from '$lib/components/generales/icono boton/iconoBoton.svelte'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
-  import { goto } from '$app/navigation'
+  import { goto, invalidate } from '$app/navigation'
   import type { PageProps } from './$types'
 
   import eye from '$lib/assets/eye.svg'
   import pencil from '$lib/assets/pencil-simple.svg'
   import trash from '$lib/assets/trash.svg'
   import type { Ingrediente } from '$lib/models/ingrediente.svelte'
+  import { ingredientesService } from '$lib/services/ingredienteService'
+  import { showError } from '$lib/utils/errorHandler'
+  import { showToast } from '$lib/toasts/toasts'
 
   let { data }: PageProps = $props()
   let ingredientes = $derived(data.ingredientes)
 
+  const buscarIngredientes = async () => {
+    await invalidate('ingredientes:list')
+  }
+
   const editar = (ingrediente: Ingrediente) => { goto (`/editar-ingrediente/${ingrediente.id}`)}
   const crearIngrediente = () => { goto ('/editar-ingrediente/nuevo')}
+  
+  const eliminar = async (ingrediente: Ingrediente) => {
+    try {
+      await ingredientesService.eliminarIngrediente(ingrediente.id)
+      buscarIngredientes()
+      showToast('Ingrediente eliminado con éxito', 'success')
+    } catch (error: unknown) {
+      showError('Error al eliminar el ingrediente', error)
+      await buscarIngredientes()
+    }
+  }
+
 </script>
 
 {#snippet nombreColumnas()}
@@ -42,7 +61,7 @@
             <img src={pencil} alt="lapiz">
           </IconoBoton>
           <!-- AGREGAR ACCION PARA EL ICONO BOTON TRASH -->
-          <IconoBoton>
+          <IconoBoton onclick={() => eliminar(ingrediente)}>
             <img src={trash} alt="tacho">
           </IconoBoton>
         </div>
