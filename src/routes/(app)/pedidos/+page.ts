@@ -2,7 +2,7 @@ import { aceptaEstadoMinMayus } from '$lib/utils/estadoPedidos'
 import type { PageLoad } from './$types'
 import { error } from '@sveltejs/kit'
 
-export const load : PageLoad = async ( { url } ) => {
+export const load : PageLoad = ( { url } ) => {
   const estado = url.searchParams.get('estado')
 
   //Siempre va a devolver algo en plural y minuscula, no importa si llega en min o mayus
