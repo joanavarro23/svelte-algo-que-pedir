@@ -25,6 +25,10 @@ class IngredienteService {
   async crearIngrediente(ingrediente: Ingrediente) {
     return axios.post<IngredienteJSON>( `${REST_SERVER_URL}/ingrediente`, ingrediente.toJSON())
   }
+
+  async eliminarIngrediente(id: number|null) {
+    return axios.delete<IngredienteJSON>( `${REST_SERVER_URL}/ingrediente/${id}`)
+  }
 }
 
 export const ingredientesService = new IngredienteService()
