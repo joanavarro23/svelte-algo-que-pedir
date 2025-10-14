@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { showToast } from '$lib/toasts/toasts'
+  import { showToast } from '$lib/utils/toasts/toasts'
   import type { LocalDTO } from '$lib/dto/localDTO'
   import { Local } from '$lib/models/local.svelte.js'
-  import Validador from '$lib/utils/validador.svelte'
+  import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
   import { getLocal } from '$lib/services/localService'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
@@ -59,7 +59,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="nombreLocal" />
+        <ValidadorMensaje elemento={local} atributo="nombreLocal" />
 
         <label for="url-imagen-local">URL de la imagen*</label>
         <input
@@ -69,7 +69,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="urlImagen" />
+        <ValidadorMensaje elemento={local} atributo="urlImagen" />
       </form>
 
       <img src={local.urlImagen} alt="Imagen del local" class="imagen-local" />
@@ -89,7 +89,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="direccion" />
+        <ValidadorMensaje elemento={local} atributo="direccion" />
       </div>
       <div>
         <label for="altura">Altura*</label>
@@ -100,7 +100,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="altura" />
+        <ValidadorMensaje elemento={local} atributo="altura" />
       </div>
       <div>
         <label for="latitud">Latitud*</label>
@@ -111,7 +111,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="latitud" />
+        <ValidadorMensaje elemento={local} atributo="latitud" />
       </div>
       <div>
         <label for="longitud">Longitud*</label>
@@ -122,7 +122,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="longitud" />
+        <ValidadorMensaje elemento={local} atributo="longitud" />
       </div>
     </div>
   </ProfileCard>
@@ -139,7 +139,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="porcentajeApp" />
+        <ValidadorMensaje elemento={local} atributo="porcentajeApp" />
       </div>
 
       <div>
@@ -153,7 +153,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="porcentajeAutor" />
+        <ValidadorMensaje elemento={local} atributo="porcentajeAutor" />
       </div>
 
       <h3>Métodos de pago</h3>

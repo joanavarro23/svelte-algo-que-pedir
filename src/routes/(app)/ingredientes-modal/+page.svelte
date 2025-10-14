@@ -10,7 +10,7 @@
   import trash from '$lib/assets/trash.svg'
   import pencil from '$lib/assets/pencil-simple.svg'
   
-  import Modal from '$lib/components/modales/Modal.svelte'
+  import Modal from '$lib/utils/modales/Modal.svelte'
   import IngredientesForm from '$lib/components/editar-ingredientes/IngredientesForm.svelte'
 
   let modalOpen = false

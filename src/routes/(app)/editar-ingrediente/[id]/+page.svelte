@@ -10,7 +10,7 @@
   import { showError } from '$lib/utils/errorHandler'
   import { ingredientesService } from '$lib/services/ingredienteService'
   import { goto } from '$app/navigation'
-  import { showToast } from '$lib/toasts/toasts'
+  import { showToast } from '$lib/utils/toasts/toasts'
 
   const volver = () => {
     goto('/ingrediente')
