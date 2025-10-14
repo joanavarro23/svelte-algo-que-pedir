@@ -15,7 +15,7 @@ export async function getLocal() {
 
 export async function updateLocal(localDTO: LocalDTO): Promise<LocalDTO> {
   const response = await fetch(API_URL, {
-    method: 'POST',
+    method: 'PUT', //Cambiar y probar con PUT
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(localDTO)
   });
