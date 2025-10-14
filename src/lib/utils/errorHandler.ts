@@ -1,4 +1,4 @@
-import { showToast } from '$lib/toasts/toasts'
+import { showToast } from '$lib/utils/toasts/toasts'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getErrorMessage = (error: any): string => {
