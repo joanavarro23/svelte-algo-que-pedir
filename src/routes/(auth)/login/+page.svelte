@@ -1,6 +1,4 @@
 <script lang="ts">
-  import users from '../users.txt?raw'
-  import { hash53 } from '$lib/utils/hash53'
   import logo from '$lib/assets/logo.svg'
   import InputOcultable from '$lib/components/login/inputOcultable.svelte'
   import Input from '$lib/components/generales/input/input.svelte'
@@ -9,28 +7,34 @@
   let usuario = $state('')
   let password = $state('')
   let mensajeError = $state('')
+  let cargando = $state(false)
 
-  function hashPassword(password: string): string {
-    return hash53(password).toString(16)
-  }
-  function enviarFormulario() {
-    const usuariosLocales: Record<string, string> = {}
+  async function enviarFormulario() {
+    cargando = true
+    mensajeError = ''
 
-    const archivoUsuarios = users.split('\n')
-    archivoUsuarios.forEach((linea) => {
-      const [fileUser, filePass] = linea.trim().split(',')
-      if (fileUser && filePass) {
-        usuariosLocales[fileUser] = filePass
+    try {
+      const response = await fetch('http://localhost:9000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ usuario, password })
+      })
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        // Login exitoso
+        sessionStorage.setItem('usuario', data.usuario)
+        window.location.assign('/')
+      } else {
+        // Error en el login
+        mensajeError = data.message || 'Usuario o contraseña incorrecto. Vuelva a intentarlo.'
+        password = ''
       }
-    })
-
-    const hashedPassword = hashPassword(password)
-
-    if (usuariosLocales[usuario] && usuariosLocales[usuario] === hashedPassword) {
-      window.location.assign('/') // Redirigir a la pedidos actuales
-    } else {
-      password = '' // Limpiar el campo de contraseña
-      mensajeError = 'Usuario o contraseña incorrecto. Vuelva a intentarlo.'
+    } catch {
+      mensajeError = 'Error de conexión. Por favor, inténtelo de nuevo más tarde.'
+      password = ''
+    } finally {
+      cargando = false
     }
   }
 </script>
@@ -60,6 +64,7 @@
           placeholder="Escribir"
           required
           bind:value={usuario}
+          disabled={cargando}
         />
       </div>
       <div class="grupo-formulario">
@@ -69,10 +74,13 @@
           nombre="password"
           required
           bind:value={password}
+          disabled={cargando}
         />
       </div>
       <div>
-        <Boton class="boton-primario boton-login" type="submit">Iniciar Sesión</Boton>
+        <Boton class="boton-primario boton-login" type="submit" disabled={cargando}
+          >{cargando ? 'Iniciando...' : 'Iniciar Sesión'}</Boton
+        >
       </div>
     </form>
     <p class="enlace-registro">¿No tienes una cuenta? <a href="registro">Regístrate</a></p>
