@@ -21,7 +21,7 @@
   )
 
   //Cambia el estado activo por el seleccionado tras el onclick
-  const switchEstado = (nuevoEstado: EstadoDelPedido) => (estadoActivo = nuevoEstado)
+  const switchEstado = (nuevoEstado: EstadoDelPedido) => estadoActivo = nuevoEstado
 </script>
 
 <main class="container-principal main-vista">

@@ -43,7 +43,7 @@
 
   function guardarCambios() {
     //alert('Ingredientes guardados')
-    showToast("Cambios guardados","success",3000)
+    showToast('Cambios guardados','success',3000)
     onClose()
   }
 

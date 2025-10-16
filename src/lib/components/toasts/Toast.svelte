@@ -1,6 +1,6 @@
 <script lang="ts">
   import './toast.css'
-  import { toast, showToast } from "$lib/toasts/toasts";
+  import { toast, showToast } from '$lib/toasts/toasts'
 
 </script>
 
