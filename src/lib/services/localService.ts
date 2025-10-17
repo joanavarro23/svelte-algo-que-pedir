@@ -11,11 +11,14 @@ export async function getLocal() {
   } catch (err) {
     throw error(404, 'Local not found' + err)
   }
+
+  //No agarrar el error acá, y no asumir que es un 404
+  //porque el error va a ser el que devuelva el back
 }
 
 export async function updateLocal(localDTO: LocalDTO): Promise<LocalDTO> {
   const response = await fetch(API_URL, {
-    method: 'POST',
+    method: 'PUT', //Cambiar a AXIOS
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(localDTO)
   });

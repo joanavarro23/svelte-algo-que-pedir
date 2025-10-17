@@ -4,6 +4,7 @@
   import { Local } from '$lib/models/local.svelte.js'
   import Validador from '$lib/utils/validador.svelte'
   import { getLocal } from '$lib/services/localService'
+  import Modal from '$lib/components/modales/Modal.svelte'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
@@ -14,7 +15,12 @@
   }
 
   const guardarCambios = async () => {
-    await local.guardar()
+    const modalError = Modal
+    try {
+      await local.guardar()
+    } catch {
+      //Pasar el mensaje de error y usarlo como booleano
+    }
   }
 
   let local = new Local()
