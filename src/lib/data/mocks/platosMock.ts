@@ -18,9 +18,9 @@ function PlatosBuilder(Init: Partial<Plato>){
   plato.nombre = Init.nombre ?? ''
   plato.descripcion = Init.descripcion ?? ''
   plato.imagen = Init.imagen ?? ''
-  plato.precio = Init.precio ?? 0
-  plato.platoDeAutor = Init.platoDeAutor ?? false
-  plato.platoDePromocion = Init.platoDePromocion ?? false
+  plato.valorBase = Init.valorBase ?? 0
+  plato.esDeAutor = Init.esDeAutor ?? false
+  plato.estaEnPromocion = Init.estaEnPromocion ?? false
   plato.ingredientes = Init.ingredientes ?? []
   plato.errors = Init.errors ?? []
 
@@ -34,9 +34,9 @@ export const PLATOS_MOCK: Plato[] = [
     nombre: 'Pasta cremosa',
     descripcion: 'Deliciosa pasta con salsa cremosa',
     imagen: '/src/lib/assets/pasta-cremosa.png',
-    precio: 12.99,
-    platoDeAutor: true,
-    platoDePromocion: true,
+    valorBase: 12.99,
+    esDeAutor: true,
+    estaEnPromocion: true,
     ingredientes: INGREDIENTES_A,
     errors: [],
   }),
@@ -45,7 +45,7 @@ export const PLATOS_MOCK: Plato[] = [
     nombre: 'Alitas picantes',
     descripcion: 'Alitas de pollo picantes con salsa para mojar',
     imagen: '/src/lib/assets/alitas-picantes.png',
-    precio: 9.99,
+    valorBase: 9.99,
     ingredientes: INGREDIENTES_B,
     errors: []
   }),
@@ -54,25 +54,25 @@ export const PLATOS_MOCK: Plato[] = [
     nombre: 'Ensalada de la Huerta',
     descripcion: 'Ensalada fresca con hojas mixtas y vinagreta',
     imagen: '/src/lib/assets/ensalada-huerta.png',
-    precio: 7.50,
+    valorBase: 7.50,
     errors: [],
-    platoDeAutor: true
+    esDeAutor: true
   }),
   PlatosBuilder({
     id: 4,
     nombre: 'Hamburguesa con queso',
     descripcion: 'Hamburguesa clásica con queso y papas fritas',
     imagen: '/src/lib/assets/hamburguesa-con-queso.png',
-    precio: 10.50,
+    valorBase: 10.50,
     errors: [],
-    platoDePromocion: true
+    estaEnPromocion: true
   }),
   PlatosBuilder({
     id: 5,
     nombre: 'Pescado y Papas Fritas',
     descripcion: 'Pescado crujiente y papas fritas con salsa tártara',
     imagen: '/src/lib/assets/pescado-papas-fritas.png',
-    precio: 11.75,
+    valorBase: 11.75,
     ingredientes: INGREDIENTES_A,
     errors: []
   }),
@@ -81,7 +81,7 @@ export const PLATOS_MOCK: Plato[] = [
     nombre: 'Pizza Vegetariana',
     descripcion: 'Pizza vegetariana con ingredientes variados',
     imagen: '/src/lib/assets/pizza-vegetariana.png',
-    precio: 14.25,
+    valorBase: 14.25,
     ingredientes: INGREDIENTES_B,
     errors: []
   }),
@@ -90,7 +90,7 @@ export const PLATOS_MOCK: Plato[] = [
     nombre: 'Pastel de Chocolate',
     descripcion: 'Pastel de chocolate rico con glaseado',
     imagen: '/src/lib/assets/pastel-chocolate.png',
-    precio: 6.50,
+    valorBase: 6.50,
     ingredientes: INGREDIENTES_A,
     errors: []
   })
