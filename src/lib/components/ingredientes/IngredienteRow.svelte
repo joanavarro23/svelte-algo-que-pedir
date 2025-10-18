@@ -12,9 +12,10 @@ type IngredienteRowProps = {
   ingrediente: Ingrediente,
   columnasExtra?: Snippet<[]>,
   acciones?: Snippet<[Ingrediente]>
+  eliminar?: () => void
 }
 
-let { ingrediente, columnasExtra, acciones }: IngredienteRowProps = $props()
+let { ingrediente, columnasExtra, acciones, eliminar }: IngredienteRowProps = $props()
 
 const mapaIconos = {vegetal: palta, animal: cow }
 const iconoOrigen = mapaIconos[ingrediente.origen]
@@ -37,7 +38,7 @@ const iconoOrigen = mapaIconos[ingrediente.origen]
     </td>  
   {:else} <!-- sino por defecto dejamos el tacho -->
     <td class="icono-accion">
-      <IconoBoton onclick={() => ingrediente.eliminar()}>
+      <IconoBoton onclick={() => eliminar}>
         <img src={trash} alt="eliminar">
       </IconoBoton>
     </td>
