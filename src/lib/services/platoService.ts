@@ -1,44 +1,38 @@
 import { Plato, type PlatoJSON } from '$lib/models/plato.svelte'
-import { error } from '@sveltejs/kit'
-import { REST_SERVER_URL } from './configuration'
 import axios from 'axios'
+import { REST_SERVER_URL } from './configuration'
 import { getAxiosData } from './common'
 
-const crearPlatoVacio = (): Plato => {
-  return new Plato()
+class PlatoService {
+  crearPlatoVacio(): Plato { return new Plato() }
+
+  async todosLosPlatos() {
+    const queryPlatos = () => axios.get<PlatoJSON[]>(`${REST_SERVER_URL}/plato`)
+    return (await getAxiosData(queryPlatos)).map(Plato.fromJson)
+  }
+  
+  async obtenerPorId(id: number) {
+    const queryById = () => axios.get<PlatoJSON>(`${REST_SERVER_URL}/plato/${id}`)
+    const platoJson = await getAxiosData(queryById)
+    return Plato.fromJson(platoJson)
+  }
+
+  async actualizarPlato(plato: Plato) {
+    return axios.put<PlatoJSON>(`${REST_SERVER_URL}/plato/${plato}`, plato.toJSON())
+  }
+
+  async crearPlato(plato: Plato) {
+    return axios.post<PlatoJSON>(`${REST_SERVER_URL}/plato`, plato.toJSON())
+  }
+
+  async eliminarPlato(id: number){
+    return axios.delete<PlatoJSON>(`${REST_SERVER_URL}/plato/${id}`)
+  }
 }
 
-const obtenerPorId = async (id: number): Promise<Plato> => {
-  const queryById = () => axios.get<PlatoJSON>(REST_SERVER_URL + '')
-  const plato = PLATOS_MOCK.find(p => p.id === id)
-  if (!plato)
-    throw error(404, `El plato con el id ${id} no fue encontrado`)
+export const platosService = new PlatoService()
 
-  return plato
-}
-
-const actualizarPlato = async (plato: Plato): Promise<Plato> => {
-  return axios.put<PlatoJSON>(REST_SERVER_URL + '/plato' + plato.id, plato.toJSON())
-}
-const crearPlato = async(plato: Plato): Promise<Plato> => {
-  return axios.post(REST_SERVER_URL + '/plato', plato.toJSON())
-}
-
-const eliminarPlato = async (plato: Plato): Promise<Plato> => {
-  return axios.delete(REST_SERVER_URL + '/plato/' + plato.id)
-}
-
-export const platosService = {
-  crearPlatoVacio,
-  obtenerPorId, 
-  actualizarPlato,
-  crearPlato,
-  eliminarPlato
-}
-
-// CUANDO LA LLAMADA SEA AL BACK, LA BUSQUEDA SERIA:
-/* const obtenerPorId = async (id: number): Promise<Plato | undefined> => {
-    const response = await axios.get(`/api/platos/${id}`)
-    return toPlato(response.data)
-}
-*/
+// const obtenerPorId = async (id: number): Promise<Plato> => {
+//   if (!plato)
+//     throw error(404, `El plato con el id ${id} no fue encontrado`)
+// }
