@@ -22,5 +22,5 @@
     </div>
   </td>
   <td>{item.cantidad}</td>
-  <td>${Number(item.precio).toFixed(2)}</td>
+  <td>${Number(item.valorBase).toFixed(2)}</td>
 </tr>
