@@ -126,7 +126,7 @@ export class Local {
     if (this.metodosDePago.Transferencia) mediosDePagoParaBackend.push('TRANSFERENCIA_BANCARIA' as MetodoDePago)
 
     const localDTO: LocalDTO = {
-      idLocal: this.idLocal ?? 0,
+      idLocal: this.idLocal ?? 1,
       nombre: this.nombreLocal,
       urlImagenLocal: this.urlImagen,
       direccion: this.direccion,
