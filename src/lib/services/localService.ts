@@ -5,6 +5,7 @@ import type { LocalDTO } from '$lib/dto/localDTO'
 const API_URL = 'http://localhost:9000/local'
 
 export async function getLocal() {
+  
   try {
     const response = await axios.get(API_URL)
     return response.data
@@ -17,17 +18,25 @@ export async function getLocal() {
 }
 
 export async function updateLocal(localDTO: LocalDTO): Promise<LocalDTO> {
-  const response = await fetch(API_URL, {
-    method: 'PUT', //Cambiar a AXIOS
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(localDTO)
-  });
+  try {
+    const response = await axios.put<LocalDTO>(API_URL, localDTO, {
+      headers: { "Content-Type": "application/json" },
+    })
 
-  if (!response.ok) {
-    const text = await response.text()
-    console.error('Error en POST /local:', response.status, text)
-    throw new Error(`Error al guardar el local: ${response.status}`)
+    return response.data;
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      console.error(
+        "Error en PUT /local:",
+        error.response?.status,
+        error.response?.data || error.message
+      );
+      throw new Error(
+        `Error al guardar el local: ${error.response?.status || "desconocido"}`
+      );
+    } else {
+      console.error("Error inesperado:", error)
+      throw new Error("Error inesperado al guardar el local")
+    }
   }
-
-  return await response.json();
 }
