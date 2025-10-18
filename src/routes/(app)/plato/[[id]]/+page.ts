@@ -1,12 +1,11 @@
-import { platosService } from '$lib/services/platoService'
-import { Plato } from '$lib/models/plato.svelte' 
+import { platosService } from '$lib/services/platoService' 
 import { error, redirect } from '@sveltejs/kit'
 
 export async function load({ params }: { params: { id: string } }) {
   try {
     const nuevoPlato = params.id === undefined
     const plato = nuevoPlato ?
-      new Plato() :
+      platosService.crearPlatoVacio() :
       await platosService.obtenerPorId(+params.id)
     if (isNaN(+params.id)) {
       throw error (400, `El parametro debe ser un número válido`)
