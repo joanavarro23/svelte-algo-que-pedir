@@ -9,44 +9,38 @@
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
 
+  let { data } = $props()
+  console.log(data.localDataBackend.nombre)
+
+  let local = new Local()
+
+  local.nombreLocal = data.localDataBackend.nombre
+  local.urlImagen = data.localDataBackend.urlImagenLocal
+  local.direccion = data.localDataBackend.direccion
+  local.altura = data.localDataBackend.altura
+  local.latitud = data.localDataBackend.latitud
+  local.longitud = data.localDataBackend.longitud
+  local.porcentajeApp = data.localDataBackend.porcentajeSobreCadaPlato
+  local.porcentajeAutor = data.localDataBackend.porcentajeRegaliasDeAutor
+
+  data.localDataBackend.mediosDePago.forEach((medio: string) => {
+    if (medio === 'QR') local.metodosDePago.QR = true
+    if (medio === 'EFECTIVO') local.metodosDePago.Efectivo = true
+    if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
+  })
+
   function descartarCambios() {
     local.restaurarValores()
     showToast('Cambios descartados', 'warning', 3000)
   }
 
   const guardarCambios = async () => {
-    const modalError = Modal
     try {
       await local.guardar()
     } catch {
-      //Pasar el mensaje de error y usarlo como booleano
+      // manejar error si es necesario
     }
   }
-
-  let local = new Local()
-
-  const fetchLocal = async () => {
-    const localData: LocalDTO = await getLocal()
-
-    local.nombreLocal = localData?.nombre || ''
-    local.urlImagen = localData?.urlImagenLocal || ''
-    local.direccion = localData?.direccion || ''
-    local.altura = localData?.altura || 0
-    local.latitud = localData?.latitud || 0
-    local.longitud = localData?.longitud || 0
-    local.porcentajeApp = localData?.porcentajeSobreCadaPlato || 0
-    local.porcentajeAutor = localData?.porcentajeRegaliasDeAutor || 0
-
-    localData.mediosDePago.forEach((medio: string) => {
-      if (medio === 'QR') local.metodosDePago.QR = true
-      if (medio === 'EFECTIVO') local.metodosDePago.Efectivo = true
-      if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
-    })
-
-    local.copiaOriginal() //Se hace una copia por si el usuario descarta los cambios
-  }
-
-  fetchLocal()
 </script>
 
 <main class="contenedor-principal main-vista">
