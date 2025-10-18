@@ -17,6 +17,6 @@ td, th {
 }
 
   /* Sin borde inferior en última fila */
-tr:last-child td { 
+tbody, tfoot > tr:last-child td { 
   border-bottom: none;
 }
