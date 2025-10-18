@@ -32,9 +32,13 @@
   local.copiaOriginal()
 
   function descartarCambios() {
-    local.restaurarValores()
-    showToast('Cambios descartados', 'warning', 3000)
-  } //
+    if (local.hayCambios()) {
+      local.restaurarValores()
+      showToast('Cambios descartados', 'warning', 3000)
+    } else {
+      showToast('No hay cambios para descartar', 'warning', 3000)
+    }
+  }
 
   const guardarCambios = async () => {
     try {
