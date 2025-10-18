@@ -29,6 +29,8 @@
     if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
   })
 
+  local.copiaOriginal()
+
   function descartarCambios() {
     local.restaurarValores()
     showToast('Cambios descartados', 'warning', 3000)
