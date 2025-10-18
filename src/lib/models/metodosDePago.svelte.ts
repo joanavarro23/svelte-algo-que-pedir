@@ -1,0 +1,1 @@
+export type MetodoDePago = 'QR' | 'Efectivo' | 'Transferencia'

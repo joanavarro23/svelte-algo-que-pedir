@@ -3,7 +3,7 @@
   import UsuarioSection from '$lib/components/pedidos/usuario-section.svelte'
   import DireccionSection from './direccion-section.svelte'
 
-  import { iconoMedioDePago } from '$lib/utils/medioPagoIcono'
+  import { mapaIconoPago } from '$lib/utils/medioPagoIcono'
   import { goto } from '$app/navigation'
 
   interface Props {
@@ -39,7 +39,7 @@
 
   <footer class="pedido-footer">
     <div class="modo-pago">
-      <img src={iconoMedioDePago(pedido.medioDePago)} alt="modo de pago" class="icono-pago" />
+      <img src={mapaIconoPago[pedido.medioDePago]} alt="modo de pago" class="icono-pago" />
       <p><b>Pago con {pedido.medioDePago}</b></p>
     </div>
   </footer>

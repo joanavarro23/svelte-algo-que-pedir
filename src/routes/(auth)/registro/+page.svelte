@@ -1,50 +1,47 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
-  import users from '../users.txt?raw'
-  import { hash53 } from '$lib/utils/hash53'
   import logo from '$lib/assets/logo.svg'
   import InputOcultable from '$lib/components/login/inputOcultable.svelte'
   import Input from '$lib/components/generales/input/input.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
+  import axios from 'axios'
 
   let usuario = $state('')
   let password = $state('')
   let confirmarPassword = $state('')
   let mensajeError = $state('')
+  let cargando = $state(false)
 
-  function hashPassword(password: string): string {
-    return hash53(password).toString(16)
-  }
-
-  function enviarFormulario() {
-    const usuariosLocales: Record<string, string> = {}
-
-    const archivoUsuarios = users.split('\n')
-    archivoUsuarios.forEach((linea) => {
-      const [fileUser, filePass] = linea.trim().split(',')
-      if (fileUser && filePass) {
-        usuariosLocales[fileUser] = filePass
-      }
-    })
+  async function enviarFormulario() {
+    cargando = true
+    mensajeError = ''
 
     if (password !== confirmarPassword) {
-      password = ''
-      confirmarPassword = ''
       mensajeError = 'Las contraseñas no coinciden'
-      return
-    } else if (usuariosLocales[usuario]) {
       password = ''
       confirmarPassword = ''
-      mensajeError = 'El usuario ya existe'
+      cargando = false
       return
-    } else {
-      //Simular agregar usuario al archivo users.txt porque el backend no está implementado
-      //No se puede escribir en un archivo desde el frontend por razones de seguridad
-      const hashedPassword = hashPassword(password)
-      const nuevaLinea = `${usuario},${hashedPassword}\n`
-      /* eslint-disable no-console */
-      console.log('Nueva linea a agregar:', nuevaLinea)
-      goto('/login') // Redirigir a la pagina de login
+    }
+
+    try {
+      const response = await axios.post('http://localhost:9000/api/auth/registro', {
+        usuario,
+        password,
+        confirmarPassword
+      })
+
+      if (!response.data.success) {
+        mensajeError = response.data.message || 'Error al crear la cuenta. Vuelva a intentarlo.'
+      }
+    } catch (err) {
+      if (axios.isAxiosError(err) && err.response) {
+        mensajeError =
+          err.response.data.message || 'Error en el servidor. Inténtelo de nuevo más tarde.'
+      } else mensajeError = 'Error de conexión. Inténtelo de nuevo más tarde.'
+    } finally {
+      password = ''
+      confirmarPassword = ''
+      cargando = false
     }
   }
 </script>
@@ -74,6 +71,7 @@
           placeholder="Escribir"
           required
           bind:value={usuario}
+          disabled={cargando}
         />
       </div>
       <div class="grupo-formulario">
@@ -83,6 +81,7 @@
           nombre="password"
           required
           bind:value={password}
+          disabled={cargando}
         />
       </div>
       <div class="grupo-formulario">
@@ -92,10 +91,13 @@
           nombre="confirmar"
           required
           bind:value={confirmarPassword}
+          disabled={cargando}
         />
       </div>
       <div>
-        <Boton class="boton-primario boton-login" type="submit">Crear Cuenta</Boton>
+        <Boton class="boton-primario boton-login" type="submit" disabled={cargando}
+          >{cargando ? 'Creando cuenta..' : 'Crear Cuenta'}</Boton
+        >
       </div>
     </form>
     <p class="enlace-registro">¿Ya tienes una cuenta? <a href="login">Inicia sesión</a></p>

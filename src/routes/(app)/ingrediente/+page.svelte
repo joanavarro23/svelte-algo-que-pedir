@@ -26,7 +26,7 @@
   
   const eliminar = async (ingrediente: Ingrediente) => {
     try {
-      await ingredientesService.eliminarIngrediente(ingrediente.id)
+      await ingredientesService.eliminarIngrediente(ingrediente.id!)
       buscarIngredientes()
       showToast('Ingrediente eliminado con éxito', 'success')
     } catch (error: unknown) {
