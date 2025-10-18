@@ -34,7 +34,7 @@
   function descartarCambios() {
     local.restaurarValores()
     showToast('Cambios descartados', 'warning', 3000)
-  }
+  } //
 
   const guardarCambios = async () => {
     try {
