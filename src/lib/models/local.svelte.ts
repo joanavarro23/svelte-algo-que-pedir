@@ -141,6 +141,7 @@ export class Local {
     try {
       await updateLocal(localDTO)
       showToast('La información del local fue guardada correctamente', 'success', 3000)
+      this.copiaOriginal()
     } catch (error) {
       showToast('Error al guardar la información del local: ' + error, 'error', 10000)
       //console.error(error)
