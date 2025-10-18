@@ -1,17 +1,6 @@
 import { Ingrediente, type IngredienteJSON } from '$lib/models/ingrediente.svelte'
 import { ValidarMensaje } from '$lib/utils/validadorMensaje/ValidarMensaje'
 
-export type PlatoJSON = {
-  id?: number,
-  nombre: String,
-  descripcion: String,
-  valorBase: number,
-  esDeAutor?: Boolean,
-  estaEnPromocion?: Boolean,
-  valorPorcentaje: number,
-  ingredientes: IngredienteJSON[]
-}
-
 export class Plato {
   id: number | null = null
   nombre = $state<string>('')
@@ -29,24 +18,23 @@ export class Plato {
   // Si el plato es nuevo (viene la info del back)
   esNuevo = $derived(this.estaEnPromocion === false)
 
-  // Crea desde el DTO del back un plato
-  static fromJson(platoJSON: PlatoJSON): Plato {
-    return Object.assign(new Plato(), platoJSON, {
-      ingrediente: platoJSON.ingredientes
-        ? Ingrediente.fromJson(platoJSON.ingredientes)
-        : undefined
-    })
-  }
-
   // Administrar ingredientes
   agregarIngrediente(ingrediente: Ingrediente) {
     if (!this.ingredientes.find(i => i.id === ingrediente.id)) {
       this.ingredientes.push(ingrediente)
     }
   }
-  
   eliminarIngrediente(id: number) {
     this.ingredientes = this.ingredientes.filter(i => i.id !== id)
+  }
+
+  // Crea desde el DTO del back un plato
+  static fromJson(platoJSON: PlatoJSON): Plato {
+    return Object.assign(new Plato(), platoJSON, {
+      ingredientes: platoJSON.ingredientes
+        ? platoJSON.ingredientes.map(ing => Ingrediente.fromJson(ing))
+        : []
+    })
   }
 
   // Convierte a DTO el plato para enviarlo al back
@@ -61,10 +49,6 @@ export class Plato {
       valorPorcentaje: this.valorPorcentaje,
       ingredientes: this.ingredientes.map(i =>  i.toJSON())
     }
-  }
-
-  invalid(): boolean {
-    return this.errors.length > 0
   }
 
   tieneError(campo: string): boolean {
@@ -102,17 +86,19 @@ export class Plato {
       this.agregarError('valorPorcentaje', "El porcentaje debe estar entre 1 y 100")
     }
   }
-
-
-  async guardar(): Promise<void>{
-    this.validarPlato()
-    if (this.errors.length > 0) {
-
-    }
-  /* deberia validar que este ok, mostrar los mensjaes de error
-      convertir los valores en un plato
-      mandar al back los valores actualizados
-    EN REALIDAD TENDRIA QUE LLAMAR AL SERVICE QUE SE ENCARGUE, NO ES SU RESPONSABILIDAD
-  */
+  
+  invalid(): boolean {
+    return this.errors.length > 0
   }
+}
+
+export type PlatoJSON = {
+  id?: number,
+  nombre: string,
+  descripcion: string,
+  valorBase: number,
+  esDeAutor?: boolean,
+  estaEnPromocion?: boolean,
+  valorPorcentaje: number,
+  ingredientes: IngredienteJSON[]
 }
