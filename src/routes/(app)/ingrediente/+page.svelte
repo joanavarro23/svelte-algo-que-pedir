@@ -3,14 +3,38 @@
   import IconoBoton from '$lib/components/generales/icono boton/iconoBoton.svelte'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
-  import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
-  import { goto } from '$app/navigation'
+  import { goto, invalidate } from '$app/navigation'
+  import type { PageProps } from './$types'
 
   import eye from '$lib/assets/eye.svg'
   import pencil from '$lib/assets/pencil-simple.svg'
   import trash from '$lib/assets/trash.svg'
+  import type { Ingrediente } from '$lib/models/ingrediente.svelte'
+  import { ingredientesService } from '$lib/services/ingredienteService'
+  import { showError } from '$lib/utils/errorHandler'
+  import { showToast } from '$lib/toasts/toasts'
 
-  const editar = (id) => { goto (`/editar-ingrediente/${id}`)}
+  let { data }: PageProps = $props()
+  let ingredientes = $derived(data.ingredientes)
+
+  const buscarIngredientes = async () => {
+    await invalidate('ingredientes:list')
+  }
+
+  const editar = (ingrediente: Ingrediente) => { goto (`/editar-ingrediente/${ingrediente.id}`)}
+  const crearIngrediente = () => { goto ('/editar-ingrediente/nuevo')}
+  
+  const eliminar = async (ingrediente: Ingrediente) => {
+    try {
+      await ingredientesService.eliminarIngrediente(ingrediente.id!)
+      buscarIngredientes()
+      showToast('Ingrediente eliminado con éxito', 'success')
+    } catch (error: unknown) {
+      showError('Error al eliminar el ingrediente', error)
+      await buscarIngredientes()
+    }
+  }
+
 </script>
 
 {#snippet nombreColumnas()}
@@ -22,7 +46,7 @@
 {/snippet}
 
 {#snippet datosFilas()}
-  {#each INGREDIENTES_MOCK as ingrediente (ingrediente.id)}
+  {#each ingredientes as ingrediente (ingrediente.id)}
     <IngredienteRow {ingrediente}>
       {#snippet columnasExtra()}
         <td>${(ingrediente.costo).toFixed(2)}</td>
@@ -33,11 +57,11 @@
           <IconoBoton>
             <img src={eye} alt="ojo" class="icono-ojo">
           </IconoBoton>
-          <IconoBoton onclick={() => editar(ingrediente.id)} >
+          <IconoBoton onclick={() => editar(ingrediente)} >
             <img src={pencil} alt="lapiz">
           </IconoBoton>
           <!-- AGREGAR ACCION PARA EL ICONO BOTON TRASH -->
-          <IconoBoton>
+          <IconoBoton onclick={() => eliminar(ingrediente)}>
             <img src={trash} alt="tacho">
           </IconoBoton>
         </div>
@@ -50,9 +74,7 @@
 <main class="ingrediente-container main-vista">
     <header class="boton-titulo">
         <h1>Ingredientes</h1>
-        <Boton onclick={()=>{
-          goto('./editar-ingrediente/nuevo')
-        }} >Nuevo ingrediente</Boton>
+        <Boton onclick={crearIngrediente}>Nuevo ingrediente</Boton>
     </header>
     <Tabla {nombreColumnas} {datosFilas}/>
 </main> 

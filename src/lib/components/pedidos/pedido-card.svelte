@@ -1,12 +1,10 @@
 <script lang="ts">
   import type { Pedido } from '$lib/types'
-  import { MedioDePago } from '$lib/types'
   import UsuarioSection from '$lib/components/pedidos/usuario-section.svelte'
   import DireccionSection from './direccion-section.svelte'
 
-  import tarjetaIcono from '$lib/assets/tarjeta-credito.svg'
-  import efectivoIcono from '$lib/assets/efectivo.svg'
-  import QRIcono from '$lib/assets/codigo-qr.svg'
+  import { mapaIconoPago } from '$lib/utils/medioPagoIcono'
+  import { goto } from '$app/navigation'
 
   interface Props {
     pedido: Pedido
@@ -19,19 +17,11 @@
     return fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   }
 
-  const iconoMedioDePago = (medio: MedioDePago): string => {
-    /* Para el renderizado de iconos de medio de pago diferentes */
-    if (medio === MedioDePago.Efectivo) {
-      return efectivoIcono
-    } else if (medio === MedioDePago.QR) {
-      return QRIcono
-    } else {
-      return tarjetaIcono
-    }
-  }
+  // Redirige al detalle del pedido, toma el id del pedido para armar la ruta
+  const redireccionADetalle = () => goto(`/detalle-pedido/${pedido.id}`)
 </script>
 
-<article class="pedido-tarjeta contenedor-general">
+<article class="pedido-tarjeta contenedor-general" onclick={redireccionADetalle}>
   <!-- Tarjeta de pedido -->
   <header class="pedido-header">
     <p>Pedido #{pedido.id}</p>
@@ -49,7 +39,7 @@
 
   <footer class="pedido-footer">
     <div class="modo-pago">
-      <img src={iconoMedioDePago(pedido.medioDePago)} alt="modo de pago" class="icono-pago" />
+      <img src={mapaIconoPago[pedido.medioDePago]} alt="modo de pago" class="icono-pago" />
       <p><b>Pago con {pedido.medioDePago}</b></p>
     </div>
   </footer>

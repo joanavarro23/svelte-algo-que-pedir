@@ -9,6 +9,7 @@
     placeholder?: string
     required?: boolean
     value: string
+    disabled?: boolean
   }
 
   let {
@@ -17,7 +18,8 @@
     nombre: name,
     placeholder = 'Escribir',
     required = true,
-    value = $bindable()
+    value = $bindable(),
+    disabled = false
   }: Props = $props()
 
   let passOculta = $state(false)
@@ -36,12 +38,14 @@
     {placeholder}
     {required}
     bind:value
+    {disabled}
   />
   <IconoBoton
     onclick={togglePassword}
     claseIcono="icono-ojo {passOculta ? 'mostrar' : ''}"
     claseBoton="base-toggle-password toggle-button"
     ariaLabel={passOculta ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+    {disabled}
   />
 </div>
 
