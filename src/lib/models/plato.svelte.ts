@@ -8,9 +8,9 @@ export class Plato {
   // imagen = $state<File | null>(null) 
   imagen = $state<string>('/src/lib/assets/plato-nuevo.jpg')             // DEBERIA SER FILE: DESCOMENTAR LA VALIDACION QUE SEA IMAGEN
   valorBase = $state<number>(0)
-  esDeAutor? = $state(false)
-  estaEnPromocion? = $state(false)
-  valorPorcentaje = $state<number>(0)
+  esDeAutor = $state(false)
+  estaEnPromocion = $state(false)
+  porcentajeDescuento = $state<number>(0)
   costoProduccion = $state<number>(0)
   ingredientes: Ingrediente[] = $state([])
   errors: ValidarMensaje[] = $state([])
@@ -31,23 +31,24 @@ export class Plato {
   // Crea desde el DTO del back un plato
   static fromJson(platoJSON: PlatoJSON): Plato {
     return Object.assign(new Plato(), platoJSON, {
-      ingredientes: platoJSON.ingredientes
-        ? platoJSON.ingredientes.map(ing => Ingrediente.fromJson(ing))
+      ingredientes: platoJSON.listaDeIngredientes
+        ? platoJSON.listaDeIngredientes.map(ing => Ingrediente.fromJson(ing))
         : []
     })
   }
 
   // Convierte a DTO el plato para enviarlo al back
   toJSON(): PlatoJSON {
-    return{
+    return {
       id: this.id ?? undefined,
       nombre: this.nombre,
       descripcion: this.descripcion,
       valorBase: this.valorBase,
       esDeAutor: this.esDeAutor,
       estaEnPromocion: this.estaEnPromocion,
-      valorPorcentaje: this.valorPorcentaje,
-      ingredientes: this.ingredientes.map(i =>  i.toJSON())
+      porcentajeDescuento: this.porcentajeDescuento,
+      costoProduccion: this.costoProduccion,
+      listaDeIngredientes: this.ingredientes.map(i =>  i.toJSON())
     }
   }
 
@@ -82,8 +83,8 @@ export class Plato {
     if (this.valorBase == null || this.valorBase <= 0) {
       this.agregarError('valorBase', 'Debe ingresar un precio válido y mayor a 0')
     }
-    if (this.estaEnPromocion && (this.valorPorcentaje <= 0 || this.valorPorcentaje >= 100)) {
-      this.agregarError('valorPorcentaje', "El porcentaje debe estar entre 1 y 100")
+    if (this.estaEnPromocion && (this.porcentajeDescuento <= 0 || this.porcentajeDescuento >= 100)) {
+      this.agregarError('porcentajeDescuento', 'El porcentaje debe estar entre 1% y 100%')
     }
   }
   
@@ -97,8 +98,9 @@ export type PlatoJSON = {
   nombre: string,
   descripcion: string,
   valorBase: number,
-  esDeAutor?: boolean,
-  estaEnPromocion?: boolean,
-  valorPorcentaje: number,
-  ingredientes: IngredienteJSON[]
+  esDeAutor: boolean,
+  estaEnPromocion: boolean,
+  porcentajeDescuento: number,
+  costoProduccion: number,
+  listaDeIngredientes: IngredienteJSON[]
 }
