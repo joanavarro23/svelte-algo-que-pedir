@@ -18,7 +18,7 @@ class PlatoService {
   }
 
   async actualizarPlato(plato: Plato) {
-    return axios.put<PlatoJSON>(`${REST_SERVER_URL}/plato/${plato}`, plato.toJSON())
+    return axios.put<PlatoJSON>(`${REST_SERVER_URL}/plato/${plato.id}`, plato.toJSON())
   }
 
   async crearPlato(plato: Plato) {
@@ -31,8 +31,3 @@ class PlatoService {
 }
 
 export const platosService = new PlatoService()
-
-// const obtenerPorId = async (id: number): Promise<Plato> => {
-//   if (!plato)
-//     throw error(404, `El plato con el id ${id} no fue encontrado`)
-// }
