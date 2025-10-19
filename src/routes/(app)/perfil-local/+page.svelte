@@ -60,6 +60,7 @@
         <label for="nombre-local">Nombre del local*</label>
         <input
           id="nombre-local"
+          data-testid="nombre-local"
           type="text"
           bind:value={local.nombreLocal}
           placeholder="Escribir"
@@ -172,7 +173,11 @@
   </ProfileCard>
 
   <div class="button">
-    <PropsButton tipo="primario" onclick={guardarCambios}>Guardar Cambios</PropsButton>
-    <PropsButton tipo="secundario" onclick={descartarCambios}>Descartar Cambios</PropsButton>
+    <PropsButton tipo="primario" onclick={guardarCambios} data-testid="guardar-cambios"
+      >Guardar Cambios</PropsButton
+    >
+    <PropsButton tipo="secundario" onclick={descartarCambios} data-testid="descartar-cambios"
+      >Descartar Cambios</PropsButton
+    >
   </div>
 </main>
