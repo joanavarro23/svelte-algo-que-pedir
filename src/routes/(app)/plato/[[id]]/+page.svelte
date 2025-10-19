@@ -15,7 +15,7 @@
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
   import IconoBoton from '$lib/components/generales/icono boton/iconoBoton.svelte'
   import Modal from '$lib/utils/modales/Modal.svelte'
-  import ModalIngredientes from '$lib/utils/modales/ModalIngredientes.svelte'
+  import ModalIngredientes from '$lib/utils/modales/ListaIngredientes/ModalIngredientes.svelte'
   import { showToast } from '$lib/utils/toasts/toasts'
   import { showError } from '$lib/utils/errorHandler'
   import type { Plato } from '$lib/types'
