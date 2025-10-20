@@ -94,13 +94,13 @@
 
       <!-- <Input data-testid="imagen" nombre_label="URL de la imagen del plato*" type="file" id="imagen"
             accept="image/jpeg,image/jpg,image/png" bind:value={data.plato.imagen}/> -->
-      <Input data-testid="imagen" nombre_label="URL de la imagen del plato*" type="text" id="imagen" bind:value={plato.imagen} />
+      <Input data-testid="imagen" nombre_label="URL de la imagen del plato*" type="text" id="imagen" bind:value={plato.imagenUrlCompleta} />
       <ValidadorMensaje elemento={plato} atributo="imagen" />
     </form>
 
     <!-- Imagen de referencia -->
     <div class="editar-plato__imagen">
-      <img class="foto" src={plato.imagen} alt="Vista previa del plato" />
+      <img class="foto" src={plato.imagenUrlCompleta} alt="Vista previa del plato" />
     </div>
   </section>
 

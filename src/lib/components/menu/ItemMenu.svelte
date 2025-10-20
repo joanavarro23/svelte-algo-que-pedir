@@ -10,7 +10,7 @@
 
 <li class="item-menu">
   <figure class="detalles-menu" data-testid={`plato-${plato.id}`}>
-    <img src={plato.imagen} class="imagen-menu" alt="Imagen del plato {plato.nombre}" />
+    <img src={plato.imagenUrlCompleta} class="imagen-menu" alt="Imagen del plato {plato.nombre}" />
     <figcaption>
       <p>{plato.nombre}</p>
       <p class="descripcion-plato">{plato.descripcion}</p>
