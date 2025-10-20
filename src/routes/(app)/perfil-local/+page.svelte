@@ -8,6 +8,7 @@
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
+  import { error } from '@sveltejs/kit'
 
   let { data } = $props()
   console.log(data.localDataBackend.nombre)
@@ -43,8 +44,9 @@
   const guardarCambios = async () => {
     try {
       await local.guardar()
-    } catch {
-      // manejar error si es necesario
+    } catch (err) {
+      console.error(err)
+      showToast('No se pudo actualizar la información del local. Error: ' + err, 'error', 10000)
     }
   }
 </script>
