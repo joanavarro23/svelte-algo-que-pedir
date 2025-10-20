@@ -1,8 +1,10 @@
 <script lang="ts">
   import './editar-plato.css'
   import { goto } from '$app/navigation'
-  import { platosService } from '$lib/services/platoService'
+  import type { Plato } from '$lib/types'
   import { Ingrediente } from '$lib/models/ingrediente.svelte'
+  import { platosService } from '$lib/services/platoService'
+  import { opcionesImagen } from '$lib/utils/imagenesPlato'
   import plus from '$lib/assets/plus-circle.svg'
 
   // Componentes
@@ -18,7 +20,6 @@
   import ModalIngredientes from '$lib/utils/modales/ListaIngredientes/ModalIngredientes.svelte'
   import { showToast } from '$lib/utils/toasts/toasts'
   import { showError } from '$lib/utils/errorHandler'
-  import type { Plato } from '$lib/types'
 
   // Recibo la carga del plato segun corresponda
   let { data } = $props()
@@ -27,6 +28,15 @@
   // Estado local para deshabilitar botones
   let guardando = $state(false)
   let modalAbierto = $state(false)
+
+  // Effect y variable para manejar archivo
+  let imagenSeleccionada = $state(plato.imagenUrl.split('/').pop())
+
+  $effect(() => {
+    if (imagenSeleccionada) {
+      plato.imagenUrl = `/images/${imagenSeleccionada}`
+    }
+  })
 
   // Dinamismo para el titulo y el texto del boton primario
   const titulo = $derived( nuevoPlato ? 'Agregar nuevo plato' : `Editar Plato: ${plato?.nombre}` )
@@ -87,14 +97,16 @@
         data-testid="titulo" nombre_label="Nombre del plato*" type="text" id="nombre" 
         bind:value={plato.nombre} maxlength={30} placeholder="Ej: Hamburguesa completa con cheddar"
       />
-      <ValidadorMensaje elemento={plato} atributo="titulo" />
+      <ValidadorMensaje elemento={plato} atributo="nombre" />
 
       <Textarea data-testid="descripcion" id="descripcion" nombre_label="Descripcion*" textarea={true} bind:value={plato.descripcion} />
       <ValidadorMensaje elemento={plato} atributo="descripcion" />
 
-      <!-- <Input data-testid="imagen" nombre_label="URL de la imagen del plato*" type="file" id="imagen"
-            accept="image/jpeg,image/jpg,image/png" bind:value={data.plato.imagen}/> -->
-      <Input data-testid="imagen" nombre_label="URL de la imagen del plato*" type="text" id="imagen" bind:value={plato.imagenUrlCompleta} />
+      <!-- Imagen cargada como select, son brindadas desde el back -->
+       <Textarea data-testid="imagen" nombre_label="URL de la imagen del plato*" id="imagen" select={true}
+        options={[{value: '', label: 'Selecciona una imagen para tu plato'}, ...opcionesImagen]}
+        bind:value={imagenSeleccionada}
+       />
       <ValidadorMensaje elemento={plato} atributo="imagen" />
     </form>
 
