@@ -42,11 +42,12 @@
   }
 
   const guardarCambios = async () => {
+    await local.guardar()
     try {
       await local.guardar()
     } catch (err) {
       console.error(err)
-      showToast('No se pudo actualizar la información del local. Error: ' + err, 'error', 10000)
+      //showToast('No se pudo actualizar la información del local. Error: ' + err, 'error', 10000)
     }
   }
 </script>
