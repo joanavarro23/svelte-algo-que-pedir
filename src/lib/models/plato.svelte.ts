@@ -9,14 +9,14 @@ export class Plato {
   imagenUrl = $state<string>('')    // Lo dejo vacio, viene del back la imagen respectiva, e incluso la imagen vacia para ponerle a un plato nuevo
   valorBase = $state<number>(0)
   esDeAutor = $state(false)
-  estaEnPromocion = $state(false)
+  esNuevo = $state(false)
   porcentajeDescuento = $state<number>(0)
   costoProduccion = $state<number>(0)
   ingredientes: Ingrediente[] = $state([])
   errors: ValidarMensaje[] = $state([])
 
   // Si el plato es nuevo y la URL completa de la imagen (viene la info del back)
-  esNuevo = $derived(this.estaEnPromocion === false)
+  estaEnPromocion = $state(false)
   imagenUrlCompleta = $derived(`${REST_SERVER_URL}/${this.imagenUrl}`)
 
   // Administrar ingredientes
@@ -49,7 +49,7 @@ export class Plato {
       imagenNombre: imagenNombre,
       valorBase: this.valorBase,
       esDeAutor: this.esDeAutor,
-      estaEnPromocion: this.estaEnPromocion,
+      esNuevo: this.esNuevo,
       porcentajeDescuento: this.porcentajeDescuento,
       costoProduccion: this.costoProduccion,
       listaDeIngredientes: this.ingredientes.map(i =>  i.toJSON())
@@ -81,8 +81,14 @@ export class Plato {
     if (!this.imagenUrl) {
       this.agregarError('imagen', 'Debe seleccionar una imagen')
     }
-    if (this.valorBase == null || this.valorBase <= 0) {
-      this.agregarError('valorBase', 'Debe ingresar un precio válido y mayor a 0')
+    if (this.valorBase == null) {
+      this.agregarError('valorBase', 'Debe ingresar un precio válido')
+    }
+    if (this.valorBase <= 0) {
+      this.agregarError('valorBase', 'El precio debe ser mayor a 0')
+    }
+    if (this.estaEnPromocion && this.porcentajeDescuento == null) {
+      this.agregarError('porcentajeDescuento', 'Debe ingresar un porcentaje de descuento')
     }
     if (this.estaEnPromocion && (this.porcentajeDescuento <= 0 || this.porcentajeDescuento >= 100)) {
       this.agregarError('porcentajeDescuento', 'El porcentaje debe estar entre 1% y 100%')
@@ -101,7 +107,7 @@ export type PlatoJSON = {
   imagenNombre: string,
   valorBase: number,
   esDeAutor: boolean,
-  estaEnPromocion: boolean,
+  esNuevo: boolean,
   porcentajeDescuento: number,
   costoProduccion: number,
   listaDeIngredientes: IngredienteJSON[]

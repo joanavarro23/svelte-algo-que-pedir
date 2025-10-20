@@ -137,7 +137,7 @@
         {#if plato.estaEnPromocion}
           <Input data-testid="porcentajeDescuento" nombre_label="Porcentaje de descuento*" type="number" id="porcentajeDescuento"
             bind:value={plato.porcentajeDescuento} placeholder="Ej: 25%" min="0" max="100" />
-          <ValidadorMensaje elemento={plato} atributo="valorPorcentaje" />
+          <ValidadorMensaje elemento={plato} atributo="porcentajeDescuento" />
         {/if}
       {/if}
     </form>
