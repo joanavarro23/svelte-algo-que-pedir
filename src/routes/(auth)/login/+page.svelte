@@ -1,9 +1,9 @@
 <script lang="ts">
-  import axios from 'axios'
   import logo from '$lib/assets/logo.svg'
   import InputOcultable from '$lib/components/login/inputOcultable.svelte'
   import Input from '$lib/components/generales/input/input.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
+  import { login } from '$lib/services/authService'
 
   let usuario = $state('')
   let password = $state('')
@@ -14,31 +14,14 @@
     cargando = true
     mensajeError = ''
 
-    try {
-      const response = await axios.post('http://localhost:9000/api/auth/login', {
-        usuario,
-        password
-      })
-
-      if (response.data.success) {
-        // Login exitoso
-        sessionStorage.setItem('usuario', response.data.usuario)
-        window.location.assign('/')
-      } else {
-        // Error en el login
-        mensajeError =
-          response.data.message || 'Usuario o contraseña incorrecto. Vuelva a intentarlo.'
-      }
-    } catch (err) {
-      if (axios.isAxiosError(err) && err.response) {
-        mensajeError =
-          err.response.data.message ||
-          'Error en el servidor. Por favor, inténtelo de nuevo más tarde.'
-      } else mensajeError = 'Error de conexión. Por favor, inténtelo de nuevo más tarde.'
-    } finally {
-      password = ''
-      cargando = false
+    const result = await login(usuario, password)
+    if (result.success) {
+      window.location.assign('/')
+    } else {
+      mensajeError = result.message || 'Error al iniciar sesión'
     }
+    password = ''
+    cargando = false
   }
 </script>
 
