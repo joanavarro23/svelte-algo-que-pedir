@@ -1,12 +1,12 @@
 import { Ingrediente, type IngredienteJSON } from '$lib/models/ingrediente.svelte'
 import { ValidarMensaje } from '$lib/utils/validadorMensaje/ValidarMensaje'
+import { REST_SERVER_URL } from '$lib/services/configuration'
 
 export class Plato {
   id: number | null = null
   nombre = $state<string>('')
   descripcion = $state<string>('')
-  // imagen = $state<File | null>(null) 
-  imagen = $state<string>('/src/lib/assets/plato-nuevo.jpg')             // DEBERIA SER FILE: DESCOMENTAR LA VALIDACION QUE SEA IMAGEN
+  imagenUrl = $state<string>('')    // Lo dejo vacio, viene del back la imagen respectiva, e incluso la imagen vacia para ponerle a un plato nuevo
   valorBase = $state<number>(0)
   esDeAutor = $state(false)
   estaEnPromocion = $state(false)
@@ -15,8 +15,9 @@ export class Plato {
   ingredientes: Ingrediente[] = $state([])
   errors: ValidarMensaje[] = $state([])
 
-  // Si el plato es nuevo (viene la info del back)
+  // Si el plato es nuevo y la URL completa de la imagen (viene la info del back)
   esNuevo = $derived(this.estaEnPromocion === false)
+  imagenUrlCompleta = $derived(`${REST_SERVER_URL}/${this.imagenUrl}`)
 
   // Administrar ingredientes
   agregarIngrediente(ingrediente: Ingrediente) {
@@ -39,10 +40,13 @@ export class Plato {
 
   // Convierte a DTO el plato para enviarlo al back
   toJSON(): PlatoJSON {
+    const imagenNombre = this.imagenUrl.split('/').pop() || 'plato-nuevo.png'
+
     return {
       id: this.id ?? undefined,
       nombre: this.nombre,
       descripcion: this.descripcion,
+      imagenNombre: imagenNombre,
       valorBase: this.valorBase,
       esDeAutor: this.esDeAutor,
       estaEnPromocion: this.estaEnPromocion,
@@ -74,12 +78,9 @@ export class Plato {
     if (!this.descripcion || this.descripcion.trim().length === 0) {
       this.agregarError('descripcion', 'Debe ingresar una descripción')
     }
-    if (!this.imagen) {
+    if (!this.imagenUrl) {
       this.agregarError('imagen', 'Debe seleccionar una imagen')
     }
-    // if (this.imagen && !this.imagen.type.startsWith('image/')) {
-    //   this.agregarError('imagen', 'El archivo debe ser una imagen válida')
-    // }
     if (this.valorBase == null || this.valorBase <= 0) {
       this.agregarError('valorBase', 'Debe ingresar un precio válido y mayor a 0')
     }
@@ -97,6 +98,7 @@ export type PlatoJSON = {
   id?: number,
   nombre: string,
   descripcion: string,
+  imagenNombre: string,
   valorBase: number,
   esDeAutor: boolean,
   estaEnPromocion: boolean,
