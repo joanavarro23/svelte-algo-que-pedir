@@ -1,7 +1,7 @@
 import { showToast } from "$lib/toasts/toasts"
 import type { LocalDTO } from "$lib/dto/localDTO"
 import { updateLocal } from "$lib/services/localService"
-import { ValidarMensaje } from "$lib/utils/validarMensaje"
+import { ValidarMensaje } from "$lib/utils/ValidarMensaje"
 import type { MetodoDePago } from "./metodosDePago.svelte"
 import { esEntero, positivo, vacio } from "$lib/validaciones/validaciones"
 
