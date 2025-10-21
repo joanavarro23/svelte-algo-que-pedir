@@ -4,43 +4,52 @@
   import { Local } from '$lib/models/local.svelte.js'
   import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
   import { getLocal } from '$lib/services/localService'
+  import Modal from '$lib/components/modales/Modal.svelte'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
+  import { error } from '@sveltejs/kit'
+
+  let { data } = $props()
+  console.log(data.localDataBackend.nombre)
+
+  let local = new Local()
+
+  local.nombreLocal = data.localDataBackend.nombre
+  local.urlImagen = data.localDataBackend.urlImagenLocal
+  local.direccion = data.localDataBackend.direccion
+  local.altura = data.localDataBackend.altura
+  local.latitud = data.localDataBackend.latitud
+  local.longitud = data.localDataBackend.longitud
+  local.porcentajeApp = data.localDataBackend.porcentajeSobreCadaPlato
+  local.porcentajeAutor = data.localDataBackend.porcentajeRegaliasDeAutor
+
+  data.localDataBackend.mediosDePago.forEach((medio: string) => {
+    if (medio === 'QR') local.metodosDePago.QR = true
+    if (medio === 'EFECTIVO') local.metodosDePago.Efectivo = true
+    if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
+  })
+
+  local.copiaOriginal()
 
   function descartarCambios() {
-    local.restaurarValores()
-    showToast('Cambios descartados', 'warning', 3000)
+    if (local.hayCambios()) {
+      local.restaurarValores()
+      showToast('Cambios descartados', 'warning', 3000)
+    } else {
+      showToast('No hay cambios para descartar', 'warning', 3000)
+    }
   }
 
   const guardarCambios = async () => {
     await local.guardar()
+    try {
+      await local.guardar()
+    } catch (err) {
+      console.error(err)
+      //showToast('No se pudo actualizar la información del local. Error: ' + err, 'error', 10000)
+    }
   }
-
-  let local = new Local()
-
-  const fetchLocal = async () => {
-    const localData: LocalDTO = await getLocal()
-
-    local.nombreLocal = localData?.nombre || ''
-    local.urlImagen = localData?.urlImagenLocal || ''
-    local.direccion = localData?.direccion || ''
-    local.altura = localData?.altura || 0
-    local.latitud = localData?.latitud || 0
-    local.longitud = localData?.longitud || 0
-    local.porcentajeApp = localData?.porcentajeSobreCadaPlato || 0
-    local.porcentajeAutor = localData?.porcentajeRegaliasDeAutor || 0
-
-    localData.mediosDePago.forEach((medio: string) => {
-      if (medio === 'QR') local.metodosDePago.QR = true
-      if (medio === 'EFECTIVO') local.metodosDePago.Efectivo = true
-      if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
-    })
-
-    local.copiaOriginal() //Se hace una copia por si el usuario descarta los cambios
-  }
-
-  fetchLocal()
 </script>
 
 <main class="contenedor-principal main-vista">
@@ -54,6 +63,7 @@
         <label for="nombre-local">Nombre del local*</label>
         <input
           id="nombre-local"
+          data-testid="nombre-local"
           type="text"
           bind:value={local.nombreLocal}
           placeholder="Escribir"
@@ -166,7 +176,11 @@
   </ProfileCard>
 
   <div class="button">
-    <PropsButton tipo="primario" onclick={guardarCambios}>Guardar Cambios</PropsButton>
-    <PropsButton tipo="secundario" onclick={descartarCambios}>Descartar Cambios</PropsButton>
+    <PropsButton tipo="primario" onclick={guardarCambios} data-testid="guardar-cambios"
+      >Guardar Cambios</PropsButton
+    >
+    <PropsButton tipo="secundario" onclick={descartarCambios} data-testid="descartar-cambios"
+      >Descartar Cambios</PropsButton
+    >
   </div>
 </main>

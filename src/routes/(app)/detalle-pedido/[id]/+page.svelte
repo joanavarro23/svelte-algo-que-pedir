@@ -1,6 +1,6 @@
 <script lang="ts">
   import './detalle-pedido.css'
-  import { iconoMedioDePago } from '$lib/utils/medioPagoIcono'
+  import { mapaIconoPago } from '$lib/utils/medioPagoIcono'
 
   import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
   import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
@@ -113,7 +113,7 @@
       </dl>
       <h3>Método de Pago</h3>
       <div class="metodo-pago">
-        <img src={iconoMedioDePago(pedidoDetalle.pago.metodo)} class="icono" alt="Metodo de pago" />
+        <img src={mapaIconoPago[pedidoDetalle.pago.metodo]} class="icono" alt="Metodo de pago" />
         <p>Pago con {pedidoDetalle.pago.metodo}</p>
       </div>
     </div>
