@@ -1,15 +1,20 @@
+import { redirect } from '@sveltejs/kit'
 import { getLocal } from '$lib/services/localService'
+import { getIdDelLocal } from '$lib/utils/currentSession'
+import { hayUsuarioLogueado } from '$lib/utils/currentSession'
 
 export async function load() {
-  const idLocal = 1 // Este ID luego se trae del usuario/local que tiene la sesión iniciada
-  const localDataBackend = await getLocal(idLocal)
-  return { localDataBackend }
-  //try {
-  //const idLocal = 1 // Este ID luego se trae del usuario/local que tiene la sesión iniciada
-  //  const localDataBackend = await getLocal(idLocal)
-  //  return { localDataBackend }
-  //} catch (err) {
-    // Si se recibe un error desde el servicio, cae acá
-  //  throw error(404, 'Local no encontrado' + err)
-  //}
+  if(hayUsuarioLogueado()) {
+    const idLocal = getIdDelLocal()
+    const localDataBackend = await getLocal(idLocal!)
+    return { localDataBackend }
+  }
+  else {
+    //showToast('Debes estar logueado para acceder a esta página. Redirigiendo al login.','error',5000)
+    //setTimeout(() => {goto('/login')}, 5000)
+    //alert("Debes estar logueado para acceder a esa página")
+    throw redirect(302, '/login')
+  }
+  
+
 }
