@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
 
   export let open: boolean
@@ -39,4 +39,4 @@
       {/if}
     </div>
   </div>
-{/if}
+{/if} -->
