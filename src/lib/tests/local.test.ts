@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom'
 import { Local } from '$lib/models/local.svelte'
-import { toast, type Toast } from '$lib/toasts/toasts'
+import { toast, type Toast } from '$lib/utils/toasts/toasts'
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import Page from '/src/routes/(app)/perfil-local/+page.svelte'
+import Page from '../../routes/(app)/perfil-local/+page.svelte'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 
 describe('Dado el perfil de un local', () => {
