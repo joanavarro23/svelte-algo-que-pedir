@@ -4,7 +4,6 @@ import axios from 'axios'
 import type { PedidoDetalleDTO } from '$lib/dto/detalleDTO'
 import { REST_SERVER_URL } from '$lib/services/configuration'
 
-
 export async function load({ params }: { params: { id: string } }): Promise<PedidoDetalleDTO> {
   try {
     const pedidoId = Number(params.id)
@@ -12,7 +11,7 @@ export async function load({ params }: { params: { id: string } }): Promise<Pedi
       throw error(400, 'ID de pedido inválido')
     }
     const response = await axios.get<PedidoDetalleDTO>(`${REST_SERVER_URL}/detalle-pedido/${params.id}`)
-    return response.data
+    return response.data 
     
   } catch (err) {
     if (axios.isAxiosError(err)) {

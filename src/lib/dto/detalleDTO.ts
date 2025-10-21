@@ -6,6 +6,10 @@ export interface PlatoDTO {
   imagenUrl: string
 }
 
+export interface PlatoConCantidad extends PlatoDTO {
+  cantidad: number;
+}
+
 export interface ClienteInfoDTO {
   nombre: string
   username: string

@@ -2,8 +2,8 @@
   import './detalle-pedido.css'
   import { mapaIconoPago } from '$lib/utils/medioPagoIcono'
   import type { PedidoDetalleDTO } from '$lib/dto/detalleDTO'
-  import type { PlatoDTO } from '$lib/dto/detalleDTO'
   import { EstadoDelPedido, MedioDePago } from '$lib/types/pedido'
+  import type { PlatoConCantidad } from '$lib/dto/detalleDTO'
 
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
@@ -17,8 +17,6 @@
   }
 
   let { data }: Props = $props()
-
-  type PlatoConCantidad = PlatoDTO & { cantidad: number }
 
   const platosAgrupados = $derived(
     data.platos.reduce((acum: PlatoConCantidad[], plato) => {

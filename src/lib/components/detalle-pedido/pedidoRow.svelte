@@ -1,9 +1,7 @@
 <script lang="ts">
   import { REST_SERVER_URL } from '$lib/services/configuration'
   import './pedidoRow.css'
-  import type { PlatoDTO } from '$lib/dto/detalleDTO'
-
-  type PlatoConCantidad = PlatoDTO & { cantidad: number }
+  import type { PlatoConCantidad } from '$lib/dto/detalleDTO'
   interface Props {
     item: PlatoConCantidad
   }
