@@ -2,7 +2,7 @@
 import { error } from '@sveltejs/kit'
 import axios from 'axios'
 import type { PedidoDetalleDTO } from '$lib/dto/detalleDTO'
-import { REST_SERVER_URL } from '$lib/services/configuration'
+import { detalleService } from '$lib/services/detalleService'
 
 export async function load({ params }: { params: { id: string } }): Promise<PedidoDetalleDTO> {
   try {
@@ -10,9 +10,9 @@ export async function load({ params }: { params: { id: string } }): Promise<Pedi
     if (isNaN(pedidoId)) {
       throw error(400, 'ID de pedido inválido')
     }
-    const response = await axios.get<PedidoDetalleDTO>(`${REST_SERVER_URL}/detalle-pedido/${params.id}`)
-    return response.data 
-    
+    const response = await detalleService.obtenerDetallePedido(pedidoId)
+    return response
+
   } catch (err) {
     if (axios.isAxiosError(err)) {
       if (err.response?.status === 404) {
