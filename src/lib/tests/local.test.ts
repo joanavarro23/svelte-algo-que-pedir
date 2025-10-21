@@ -9,19 +9,19 @@ describe('Dado el perfil de un local', () => {
   it('muestra y oculta el toast al descartar cambios', async () => {
     vi.useFakeTimers()
 
-  const mockData = {
-    localDataBackend: {
-      nombre: 'Taberna de Moe',
-      urlImagenLocal: 'https://www.clarin.com/img/2017/10/05/SkWTevV3-_1200x0.jpg',
-      direccion: 'Av. Siempre Viva',
-      altura: 742,
-      latitud: 10,
-      longitud: 10,
-      porcentajeSobreCadaPlato: 3,
-      porcentajeRegaliasDeAutor: 3,
-      mediosDePago: ['QR', 'TRANSFERENCIA_BANCARIA'],
+    const mockData = {
+      localDataBackend: {
+        nombre: 'Taberna de Moe',
+        urlImagenLocal: 'https://www.clarin.com/img/2017/10/05/SkWTevV3-_1200x0.jpg',
+        direccion: 'Av. Siempre Viva',
+        altura: 742,
+        latitud: 10,
+        longitud: 10,
+        porcentajeSobreCadaPlato: 3,
+        porcentajeRegaliasDeAutor: 3,
+        mediosDePago: ['QR', 'TRANSFERENCIA_BANCARIA'],
+      }
     }
-  }
     render(Page, { props: { data: mockData } })
 
     let currentToast: Toast | null = null
@@ -96,19 +96,19 @@ describe('Dado el perfil de un local', () => {
   it('el toast de descartar cambios muestra el mensaje que corresponde', async () => {
     vi.useFakeTimers()
 
-  const mockData = {
-    localDataBackend: {
-      nombre: 'Taberna de Moe',
-      urlImagenLocal: 'https://www.clarin.com/img/2017/10/05/SkWTevV3-_1200x0.jpg',
-      direccion: 'Av. Siempre Viva',
-      altura: 742,
-      latitud: 10,
-      longitud: 10,
-      porcentajeSobreCadaPlato: 3,
-      porcentajeRegaliasDeAutor: 3,
-      mediosDePago: ['QR', 'TRANSFERENCIA_BANCARIA'],
+    const mockData = {
+      localDataBackend: {
+        nombre: 'Taberna de Moe',
+        urlImagenLocal: 'https://www.clarin.com/img/2017/10/05/SkWTevV3-_1200x0.jpg',
+        direccion: 'Av. Siempre Viva',
+        altura: 742,
+        latitud: 10,
+        longitud: 10,
+        porcentajeSobreCadaPlato: 3,
+        porcentajeRegaliasDeAutor: 3,
+        mediosDePago: ['QR', 'TRANSFERENCIA_BANCARIA'],
+      }
     }
-  }
     render(Page, { props: { data: mockData } })
 
     let currentToast: Toast | null = null

@@ -12,7 +12,7 @@
   import type { Ingrediente } from '$lib/models/ingrediente.svelte'
   import { ingredientesService } from '$lib/services/ingredienteService'
   import { showError } from '$lib/utils/errorHandler'
-  import { showToast } from '$lib/toasts/toasts'
+  import { showToast } from '$lib/utils/toasts/toasts'
 
   let { data }: PageProps = $props()
   let ingredientes = $derived(data.ingredientes)
@@ -47,21 +47,21 @@
 
 {#snippet datosFilas()}
   {#each ingredientes as ingrediente (ingrediente.id)}
-    <IngredienteRow {ingrediente}>
+    <IngredienteRow {ingrediente} data-testid={'ingrediente-'+ingrediente.id}>
       {#snippet columnasExtra()}
-        <td>${(ingrediente.costo).toFixed(2)}</td>
+        <td data-testid={'costo-'+ingrediente.id}>${ingrediente.costo.toFixed(2)}</td>
       {/snippet}
       {#snippet acciones()}
         <div class="iconos-acciones">
           <!-- AGREGAR ACCION PARA EL ICONO BOTON EYE -->
-          <IconoBoton>
+          <IconoBoton data-testid={'ver-'+ingrediente.id}>
             <img src={eye} alt="ojo" class="icono-ojo">
           </IconoBoton>
-          <IconoBoton onclick={() => editar(ingrediente)} >
+          <IconoBoton onclick={() => editar(ingrediente)} data-testid={'editar-'+ingrediente.id}>
             <img src={pencil} alt="lapiz">
           </IconoBoton>
           <!-- AGREGAR ACCION PARA EL ICONO BOTON TRASH -->
-          <IconoBoton onclick={() => eliminar(ingrediente)}>
+          <IconoBoton onclick={() => eliminar(ingrediente)} data-testid={'eliminar-'+ingrediente.id}>
             <img src={trash} alt="tacho">
           </IconoBoton>
         </div>
@@ -74,7 +74,7 @@
 <main class="ingrediente-container main-vista">
     <header class="boton-titulo">
         <h1>Ingredientes</h1>
-        <Boton onclick={crearIngrediente}>Nuevo ingrediente</Boton>
+        <Boton onclick={crearIngrediente} data-testid='crear'>Nuevo ingrediente</Boton>
     </header>
     <Tabla {nombreColumnas} {datosFilas}/>
 </main> 

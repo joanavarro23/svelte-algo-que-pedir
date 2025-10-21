@@ -19,7 +19,7 @@
 
   {#if estadoMenu}
     <ul class="tablet-dropdown" role="menu">
-      {#each urlsNavegacion as { href, icono, label } (href)}
+      {#each urlsNavegacion as { href, label } (href)}
         <li role="none">
           <a {href} class="dropdown-item" role="menuitem" onclick={toggleMenu}>
             <span>{label}</span>

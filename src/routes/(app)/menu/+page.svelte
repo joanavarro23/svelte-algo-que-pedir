@@ -2,10 +2,12 @@
   import { goto } from '$app/navigation'
   import Boton from '$lib/components/generales/boton/boton.svelte'
   import ItemMenu from '$lib/components/menu/ItemMenu.svelte'
-  import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
+
+  let { data } = $props()
+  let platos = $derived(data.platos)
 
   const navegarANuevoPlato = () => {
-    goto('./editar-plato/nuevo')
+    goto('./plato/')
   }
 </script>
 
@@ -19,8 +21,8 @@
   <section class="contenedor-general">
       <h2>Platos Disponibles</h2>
       <ul class="lista-menu">
-        {#each PLATOS_MOCK as plato (plato.id)}
-          <a href="./editar-plato/{plato.id}">
+        {#each platos as plato (plato.id)}
+          <a href="./plato/{plato.id}">
             <ItemMenu {plato} />
           </a>
         {/each}
