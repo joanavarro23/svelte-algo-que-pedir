@@ -1,7 +1,7 @@
 <script lang="ts">
   import { error } from '@sveltejs/kit'
-  import { showToast } from '$lib/toasts/toasts'
   import type { LocalDTO } from '$lib/dto/localDTO'
+  import { showToast } from '$lib/utils/toasts/toasts'
   import { Local } from '$lib/models/local.svelte.js'
   import { showError } from '$lib/utils/errorHandler.js'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
