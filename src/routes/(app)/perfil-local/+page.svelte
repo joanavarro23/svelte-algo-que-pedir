@@ -31,6 +31,7 @@
 
   function descartarCambios() {
     showToast('Botón descartar tocado', 'info', 2000)
+    // eslint-disable-next-line no-console
     console.log('Botón DESCARTAR tocado')
     if (local.hayCambios()) {
       local.restaurarValores()
@@ -41,6 +42,7 @@
   }
 
   const guardarCambios = async () => {
+    // eslint-disable-next-line no-console
     console.log('Botón GUARDAR tocado')
     await local.guardar()
     try {
