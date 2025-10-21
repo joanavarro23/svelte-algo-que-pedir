@@ -8,7 +8,7 @@
   const { data } = $props<{ data: { estado: EstadoDelPedido | null } }>()
 
   //Defino array de estados asociandolo con un String para su uso
-  const ESTADOS: { estado: EstadoDelPedido; label: string }[] = [
+  const estados: { estado: EstadoDelPedido; label: string }[] = [
     { estado: EstadoDelPedido.Pendiente, label: 'Pendientes' },
     { estado: EstadoDelPedido.Preparado, label: 'Preparados' },
     { estado: EstadoDelPedido.Entregado, label: 'Entregados' },
@@ -41,7 +41,7 @@
 
   <nav class="container-estados">
     <!-- Contenedor de los estados de los pedidos -->
-    {#each ESTADOS as { estado, label } (label)}
+    {#each estados as { estado, label } (label)}
       <button
         type="button"
         class="link-estados {estadoActivo === estado ? 'estado-activo' : ''}"
