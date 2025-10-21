@@ -1,9 +1,9 @@
-import { showToast } from "$lib/toasts/toasts"
-import type { LocalDTO } from "$lib/dto/localDTO"
-import { updateLocal } from "$lib/services/localService"
-import { ValidarMensaje } from "$lib/utils/validarMensaje"
-import type { MetodoDePago } from "./metodosDePago.svelte"
-import { esEntero, positivo, vacio } from "$lib/validaciones/validaciones"
+import { showToast } from '$lib/utils/toasts/toasts'
+import type { LocalDTO } from '$lib/dto/localDTO'
+import { updateLocal } from '$lib/services/localService'
+import { ValidarMensaje } from '$lib/utils/validadorMensaje/ValidarMensaje'
+import type { MetodoDePago } from './metodosDePago.svelte'
+import { esEntero, positivo, vacio } from '$lib/utils/validaciones'
 
 export class Local {
 
@@ -30,10 +30,10 @@ export class Local {
 
 
   hayCambios(): boolean {
-  if (!this.original) return false
+    if (!this.original) return false
 
-  return (
-    this.nombreLocal !== this.original.nombreLocal ||
+    return (
+      this.nombreLocal !== this.original.nombreLocal ||
     this.urlImagen !== this.original.urlImagen ||
     this.direccion !== this.original.direccion ||
     this.altura !== this.original.altura ||
@@ -44,8 +44,8 @@ export class Local {
     this.metodosDePago.QR !== this.original.metodosDePago.QR ||
     this.metodosDePago.Efectivo !== this.original.metodosDePago.Efectivo ||
     this.metodosDePago.Transferencia !== this.original.metodosDePago.Transferencia
-  )
-}
+    )
+  }
   // Consultar por una mejor forma de hacer esto
   copiaOriginal() {
     this.original = new Local()

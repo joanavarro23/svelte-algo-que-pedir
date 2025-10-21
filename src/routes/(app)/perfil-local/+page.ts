@@ -9,7 +9,7 @@ export async function load() {
   //  const localDataBackend = await getLocal(idLocal)
   //  return { localDataBackend }
   //} catch (err) {
-    // Si se recibe un error desde el servicio, cae acá
+  // Si se recibe un error desde el servicio, cae acá
   //  throw error(404, 'Local no encontrado' + err)
   //}
 }

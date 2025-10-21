@@ -1,17 +1,14 @@
 <script lang="ts">
-  import { showToast } from '$lib/toasts/toasts'
-  import type { LocalDTO } from '$lib/dto/localDTO'
+  import { showToast } from '$lib/utils/toasts/toasts'
   import { Local } from '$lib/models/local.svelte.js'
-  import Validador from '$lib/utils/validador.svelte'
-  import { getLocal } from '$lib/services/localService'
-  import Modal from '$lib/components/modales/Modal.svelte'
+  import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
-  import { error } from '@sveltejs/kit'
+  import { showError } from '$lib/utils/errorHandler.js'
 
   let { data } = $props()
-  console.log(data.localDataBackend.nombre)
+  // console.log(data.localDataBackend.nombre)
 
   let local = new Local()
 
@@ -46,8 +43,7 @@
     try {
       await local.guardar()
     } catch (err) {
-      console.error(err)
-      //showToast('No se pudo actualizar la información del local. Error: ' + err, 'error', 10000)
+      showError('Error al guardar los cambios del local', err)
     }
   }
 </script>
@@ -69,7 +65,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="nombreLocal" />
+        <ValidadorMensaje elemento={local} atributo="nombreLocal" />
 
         <label for="url-imagen-local">URL de la imagen*</label>
         <input
@@ -79,7 +75,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="urlImagen" />
+        <ValidadorMensaje elemento={local} atributo="urlImagen" />
       </form>
 
       <img src={local.urlImagen} alt="Imagen del local" class="imagen-local" />
@@ -99,7 +95,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="direccion" />
+        <ValidadorMensaje elemento={local} atributo="direccion" />
       </div>
       <div>
         <label for="altura">Altura*</label>
@@ -110,7 +106,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="altura" />
+        <ValidadorMensaje elemento={local} atributo="altura" />
       </div>
       <div>
         <label for="latitud">Latitud*</label>
@@ -121,7 +117,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="latitud" />
+        <ValidadorMensaje elemento={local} atributo="latitud" />
       </div>
       <div>
         <label for="longitud">Longitud*</label>
@@ -132,7 +128,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="longitud" />
+        <ValidadorMensaje elemento={local} atributo="longitud" />
       </div>
     </div>
   </ProfileCard>
@@ -149,7 +145,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="porcentajeApp" />
+        <ValidadorMensaje elemento={local} atributo="porcentajeApp" />
       </div>
 
       <div>
@@ -163,7 +159,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="porcentajeAutor" />
+        <ValidadorMensaje elemento={local} atributo="porcentajeAutor" />
       </div>
 
       <h3>Métodos de pago</h3>

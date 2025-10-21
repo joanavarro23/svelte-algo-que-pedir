@@ -4,13 +4,13 @@
   import Switch from '$lib/components/generales/switch/switch.svelte'
   import Textarea from '$lib/components/generales/input/textarea.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
-  import Validador from '$lib/utils/validador.svelte'
+  import Validador from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
   import { GrupoAlimenticio } from '$lib/models/ingrediente.svelte'
   import { Ingrediente } from '$lib/models/ingrediente.svelte'
   import { showError } from '$lib/utils/errorHandler'
   import { ingredientesService } from '$lib/services/ingredienteService'
   import { goto } from '$app/navigation'
-  import { showToast } from '$lib/toasts/toasts'
+  import { showToast } from '$lib/utils/toasts/toasts'
 
   const volver = () => {
     goto('/ingrediente')

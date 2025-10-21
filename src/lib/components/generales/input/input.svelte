@@ -2,8 +2,6 @@
   import './input.css'
   import type { HTMLInputAttributes } from 'svelte/elements'
 
-  // el tipo '' es para el textarea que se trabaja sin type, pero
-  //   para mayor control lo pongo en este componente
   export type InputType = 'email' | 'file' | 'number' | 'password' | 'text'
 
   interface PropsInput extends HTMLInputAttributes {

@@ -30,7 +30,7 @@
     })
   }
 
-  const subtotal = itemsPedido.reduce((monto, plato) => monto + plato.precio * plato.cantidad, 0)
+  const subtotal = itemsPedido.reduce((monto, plato) => monto + plato.valorBase * plato.cantidad, 0)
   const comisionDelivery = subtotal * 0.02
   const incrementoPago = subtotal * 0.055
   const total = subtotal + comisionDelivery + incrementoPago

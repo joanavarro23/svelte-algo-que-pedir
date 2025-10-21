@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
   import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
@@ -9,8 +8,8 @@
   import eye from '$lib/assets/eye.svg'
   import trash from '$lib/assets/trash.svg'
   import pencil from '$lib/assets/pencil-simple.svg'
-
-  import Modal from '$lib/components/modales/Modal.svelte'
+  
+  import Modal from '$lib/utils/modales/Modal.svelte'
   import IngredientesForm from '$lib/components/editar-ingredientes/IngredientesForm.svelte'
 
   let modalOpen = false

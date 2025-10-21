@@ -1,6 +1,6 @@
 <script lang="ts">
   import './pedidoRow.css'
-  import type { Plato } from '$lib/types/plato'
+  import type { Plato } from '$lib/types'
 
   type PedidoItem = Plato & {
     cantidad: number
@@ -22,5 +22,5 @@
     </div>
   </td>
   <td>{item.cantidad}</td>
-  <td>${Number(item.precio).toFixed(2)}</td>
+  <td>${Number(item.valorBase).toFixed(2)}</td>
 </tr>

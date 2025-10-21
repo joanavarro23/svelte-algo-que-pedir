@@ -2,7 +2,6 @@
 
   import './checkbox.css'
   import type { HTMLInputAttributes } from 'svelte/elements'
-  import type { Snippet } from 'svelte'
 
   interface PropsCheckbox extends HTMLInputAttributes {
     label?: string
