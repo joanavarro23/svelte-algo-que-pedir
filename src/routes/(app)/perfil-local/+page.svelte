@@ -1,17 +1,14 @@
 <script lang="ts">
   import { showToast } from '$lib/utils/toasts/toasts'
-  import type { LocalDTO } from '$lib/dto/localDTO'
   import { Local } from '$lib/models/local.svelte.js'
   import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
-  import { getLocal } from '$lib/services/localService'
-  import Modal from '$lib/components/modales/Modal.svelte'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
-  import { error } from '@sveltejs/kit'
+  import { showError } from '$lib/utils/errorHandler.js'
 
   let { data } = $props()
-  console.log(data.localDataBackend.nombre)
+  // console.log(data.localDataBackend.nombre)
 
   let local = new Local()
 
@@ -46,8 +43,7 @@
     try {
       await local.guardar()
     } catch (err) {
-      console.error(err)
-      //showToast('No se pudo actualizar la información del local. Error: ' + err, 'error', 10000)
+      showError('Error al guardar los cambios del local', err)
     }
   }
 </script>
