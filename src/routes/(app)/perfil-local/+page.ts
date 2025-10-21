@@ -12,6 +12,4 @@ export async function load() {
   else {
     throw redirect(302, '/login')
   }
-  
-
 }

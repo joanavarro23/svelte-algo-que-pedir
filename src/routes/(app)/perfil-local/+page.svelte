@@ -1,11 +1,13 @@
 <script lang="ts">
-  import { showToast } from '$lib/utils/toasts/toasts'
+  import { error } from '@sveltejs/kit'
+  import { showToast } from '$lib/toasts/toasts'
+  import type { LocalDTO } from '$lib/dto/localDTO'
   import { Local } from '$lib/models/local.svelte.js'
-  import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
+  import { showError } from '$lib/utils/errorHandler.js'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
-  import { showError } from '$lib/utils/errorHandler.js'
+  import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
 
   let { data } = $props()
   // console.log(data.localDataBackend.nombre)
@@ -31,8 +33,6 @@
 
   function descartarCambios() {
     showToast('Botón descartar tocado', 'info', 2000)
-    // eslint-disable-next-line no-console
-    console.log('Botón DESCARTAR tocado')
     if (local.hayCambios()) {
       local.restaurarValores()
       showToast('Cambios descartados', 'warning', 3000)
@@ -42,8 +42,6 @@
   }
 
   const guardarCambios = async () => {
-    // eslint-disable-next-line no-console
-    console.log('Botón GUARDAR tocado')
     await local.guardar()
     try {
       await local.guardar()
