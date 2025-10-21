@@ -1,10 +1,10 @@
-import { showToast } from '$lib/toasts/toasts'
 import type { LocalDTO } from '$lib/dto/localDTO'
+import { showToast } from '$lib/utils/toasts/toasts'
 import { updateLocal } from '$lib/services/localService'
-import { ValidarMensaje } from '$lib/utils/ValidarMensaje'
 import type { MetodoDePago } from './metodosDePago.svelte'
 import { getUsuarioDelLocal } from '$lib/utils/currentSession'
-import { esEntero, positivo, vacio } from '$lib/validaciones/validaciones'
+import { esEntero, positivo, vacio } from '$lib/utils/validaciones'
+import { ValidarMensaje } from '$lib/utils/validadorMensaje/ValidarMensaje'
 
 export class Local {
 
