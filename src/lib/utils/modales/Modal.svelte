@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte'
+  import { onMount, onDestroy, type Snippet } from 'svelte'
 
   export let open: boolean
   export let onClose: () => void
-  export let componente: any = null
-  export let props: any = {}
+  export let children: Snippet
 
   import './modal.css'
 
@@ -33,9 +32,8 @@
   <div class="overlay" on:click={() => onClose()}>
     <div class="modal" on:click|stopPropagation>
       <button class="close-btn" on:click={onClose}>Cerrar</button>
-
-      {#if componente}
-        <svelte:component this={componente} {...props} />
+      {#if children}
+        {@render children()}
       {/if}
     </div>
   </div>
