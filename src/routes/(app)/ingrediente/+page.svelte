@@ -49,7 +49,7 @@
   {#each ingredientes as ingrediente (ingrediente.id)}
     <IngredienteRow {ingrediente}>
       {#snippet columnasExtra()}
-        <td>${(ingrediente.costo).toFixed(2)}</td>
+        <td>${ingrediente.costo.toFixed(2)}</td>
       {/snippet}
       {#snippet acciones()}
         <div class="iconos-acciones">

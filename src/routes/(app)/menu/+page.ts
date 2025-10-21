@@ -1,5 +1,5 @@
-import { platosService } from "$lib/services/platoService"
-import { showError } from "$lib/utils/errorHandler"
+import { platosService } from '$lib/services/platoService'
+import { showError } from '$lib/utils/errorHandler'
 
 export const load = async ({ depends }) => {
   try {

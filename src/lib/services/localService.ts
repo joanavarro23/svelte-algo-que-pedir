@@ -18,7 +18,7 @@ export async function updateLocal(localDTO: LocalDTO): Promise<LocalDTO> {
     method: 'PUT', //Cambiar y probar con PUT
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(localDTO)
-  });
+  })
 
   if (!response.ok) {
     const text = await response.text()
@@ -26,5 +26,5 @@ export async function updateLocal(localDTO: LocalDTO): Promise<LocalDTO> {
     throw new Error(`Error al guardar el local: ${response.status}`)
   }
 
-  return await response.json();
+  return await response.json()
 }

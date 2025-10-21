@@ -1,1 +1,1 @@
-export type MetodoDePago = 'QR' | 'Efectivo' | 'Transferencia'
+export type MetodoDePago = 'Efectivo' | 'QR' | 'Transferencia'
