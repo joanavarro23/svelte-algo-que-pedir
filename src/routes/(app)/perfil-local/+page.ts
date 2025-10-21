@@ -5,6 +5,7 @@ import { getIdDelLocal, hayUsuarioLogueado } from '$lib/utils/currentSession'
 export async function load() {
   if(hayUsuarioLogueado()) {
     const idLocal = getIdDelLocal()
+    // eslint-disable-next-line
     const localDataBackend = await getLocal(idLocal!)
     return { localDataBackend }
   }
