@@ -1,9 +1,9 @@
-import { showToast } from "$lib/toasts/toasts"
-import type { LocalDTO } from "$lib/dto/localDTO"
-import { updateLocal } from "$lib/services/localService"
-import { ValidarMensaje } from "$lib/utils/validarMensaje"
-import type { MetodoDePago } from "./metodosDePago.svelte"
-import { esEntero, positivo, vacio } from "$lib/validaciones/validaciones"
+import { showToast } from '$lib/utils/toasts/toasts'
+import type { LocalDTO } from '$lib/dto/localDTO'
+import { updateLocal } from '$lib/services/localService'
+import { ValidarMensaje } from '$lib/utils/validadorMensaje/ValidarMensaje'
+import type { MetodoDePago } from './metodosDePago.svelte'
+import { esEntero, positivo, vacio } from '$lib/utils/validaciones'
 
 export class Local {
 
@@ -28,6 +28,24 @@ export class Local {
   //por si el usuario descarta los cambios que realiza
   private original?: Local
 
+
+  hayCambios(): boolean {
+    if (!this.original) return false
+
+    return (
+      this.nombreLocal !== this.original.nombreLocal ||
+    this.urlImagen !== this.original.urlImagen ||
+    this.direccion !== this.original.direccion ||
+    this.altura !== this.original.altura ||
+    this.latitud !== this.original.latitud ||
+    this.longitud !== this.original.longitud ||
+    this.porcentajeApp !== this.original.porcentajeApp ||
+    this.porcentajeAutor !== this.original.porcentajeAutor ||
+    this.metodosDePago.QR !== this.original.metodosDePago.QR ||
+    this.metodosDePago.Efectivo !== this.original.metodosDePago.Efectivo ||
+    this.metodosDePago.Transferencia !== this.original.metodosDePago.Transferencia
+    )
+  }
   // Consultar por una mejor forma de hacer esto
   copiaOriginal() {
     this.original = new Local()
@@ -126,6 +144,7 @@ export class Local {
     if (this.metodosDePago.Transferencia) mediosDePagoParaBackend.push('TRANSFERENCIA_BANCARIA' as MetodoDePago)
 
     const localDTO: LocalDTO = {
+      idLocal: this.idLocal ?? 1,
       nombre: this.nombreLocal,
       urlImagenLocal: this.urlImagen,
       direccion: this.direccion,
@@ -140,6 +159,7 @@ export class Local {
     try {
       await updateLocal(localDTO)
       showToast('La información del local fue guardada correctamente', 'success', 3000)
+      this.copiaOriginal()
     } catch (error) {
       showToast('Error al guardar la información del local: ' + error, 'error', 10000)
       //console.error(error)

@@ -10,7 +10,7 @@
   import Textarea from '$lib/components/generales/input/textarea.svelte'
   import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
 
-  import { showToast } from '$lib/toasts/toasts'
+  import { showToast } from '$lib/utils/toasts/toasts' 
   
   
   //Variables del formulario que en caso de edición
@@ -43,7 +43,7 @@
 
   function guardarCambios() {
     //alert('Ingredientes guardados')
-    showToast("Cambios guardados","success",3000)
+    showToast('Cambios guardados','success',3000)
     onClose()
   }
 

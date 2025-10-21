@@ -1,6 +1,7 @@
 import type { MetodoDePago } from '$lib/models/metodosDePago.svelte'
 
 export interface LocalDTO {
+  idLocal: number,
   nombre: string
   urlImagenLocal: string
   direccion: string
