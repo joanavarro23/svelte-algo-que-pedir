@@ -32,7 +32,6 @@
   local.copiaOriginal()
 
   function descartarCambios() {
-    showToast('Botón descartar tocado', 'info', 2000)
     if (local.hayCambios()) {
       local.restaurarValores()
       showToast('Cambios descartados', 'warning', 3000)
