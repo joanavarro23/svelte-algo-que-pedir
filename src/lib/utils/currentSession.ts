@@ -1,4 +1,4 @@
-import { browser } from '$app/environment';
+import { browser } from '$app/environment'
 
 export function getUsuarioDelLocal(): string | null {
   return sessionStorage.getItem('usuario')
@@ -10,7 +10,7 @@ export function getIdDelLocal(): number | null {
 }
 
 export function hayUsuarioLogueado(): boolean {
-  if (!browser) return false;
+  if (!browser) return false
   const id = sessionStorage.getItem('idLocal')
   return id !== null && id !== ''
 }

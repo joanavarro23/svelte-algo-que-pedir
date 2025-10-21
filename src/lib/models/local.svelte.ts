@@ -1,10 +1,10 @@
-import { showToast } from "$lib/toasts/toasts"
-import type { LocalDTO } from "$lib/dto/localDTO"
-import { updateLocal } from "$lib/services/localService"
-import { ValidarMensaje } from "$lib/utils/ValidarMensaje"
-import type { MetodoDePago } from "./metodosDePago.svelte"
-import { getUsuarioDelLocal } from "$lib/utils/currentSession"
-import { esEntero, positivo, vacio } from "$lib/validaciones/validaciones"
+import { showToast } from '$lib/toasts/toasts'
+import type { LocalDTO } from '$lib/dto/localDTO'
+import { updateLocal } from '$lib/services/localService'
+import { ValidarMensaje } from '$lib/utils/ValidarMensaje'
+import type { MetodoDePago } from './metodosDePago.svelte'
+import { getUsuarioDelLocal } from '$lib/utils/currentSession'
+import { esEntero, positivo, vacio } from '$lib/validaciones/validaciones'
 
 export class Local {
 
@@ -155,7 +155,7 @@ export class Local {
       longitud: this.longitud,
       porcentajeSobreCadaPlato: this.porcentajeApp,
       porcentajeRegaliasDeAutor: this.porcentajeAutor,
-      usuario: this.usuario() ?? "",
+      usuario: this.usuario() ?? '',
       mediosDePago: mediosDePagoParaBackend
     }
 
