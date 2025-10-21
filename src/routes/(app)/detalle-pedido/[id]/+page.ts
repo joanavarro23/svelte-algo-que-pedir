@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 import { error } from '@sveltejs/kit'
 import axios from 'axios'
 import type { PedidoDetalleDTO } from '$lib/dto/detalleDTO'
@@ -12,8 +12,6 @@ export async function load({ params }: { params: { id: string } }): Promise<Pedi
       throw error(400, 'ID de pedido inválido')
     }
     const response = await axios.get<PedidoDetalleDTO>(`${REST_SERVER_URL}/detalle-pedido/${params.id}`)
-     
-    console.log(response.data)
     return response.data
     
   } catch (err) {

@@ -1,6 +1,8 @@
 <script lang="ts">
   import './detalle-pedido.css'
   import { mapaIconoPago } from '$lib/utils/medioPagoIcono'
+  import type { PedidoDetalleDTO } from '$lib/dto/detalleDTO'
+  import type { PlatoDTO } from '$lib/dto/detalleDTO'
   import { EstadoDelPedido, MedioDePago } from '$lib/types/pedido'
 
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
@@ -9,13 +11,25 @@
   import EstadoBadge from '$lib/components/detalle-pedido/estadoBadge.svelte'
   import UsuarioSection from '$lib/components/pedidos/usuario-section.svelte'
   import DireccionSection from '$lib/components/pedidos/direccion-section.svelte'
-  import type { PedidoDetalleDTO } from '$lib/dto/detalleDTO'
 
   interface Props {
     data: PedidoDetalleDTO
   }
 
   let { data }: Props = $props()
+
+  type PlatoConCantidad = PlatoDTO & { cantidad: number }
+
+  const platosAgrupados = $derived(
+    data.platos.reduce((acum: PlatoConCantidad[], plato) => {
+      const existingPlato = acum.find((p) => p.id === plato.id)
+      if (existingPlato) {
+        existingPlato.cantidad++
+        return acum
+      }
+      return [...acum, { ...plato, cantidad: 1 }]
+    }, [])
+  )
 
   function volver() {
     history.back()
@@ -47,10 +61,11 @@
     <Tabla>
       {#snippet nombreColumnas()}
         <th>Plato</th>
+        <th>Cantidad</th>
         <th>Precio</th>
       {/snippet}
       {#snippet datosFilas()}
-        {#each data.platos as plato (plato.id)}
+        {#each platosAgrupados as plato (plato.id)}
           <PedidoRow item={plato} />
         {/each}
       {/snippet}
