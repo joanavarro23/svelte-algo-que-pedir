@@ -33,6 +33,8 @@
   local.copiaOriginal()
 
   function descartarCambios() {
+    showToast('Botón descartar tocado', 'info', 2000)
+    console.log('Botón DESCARTAR tocado')
     if (local.hayCambios()) {
       local.restaurarValores()
       showToast('Cambios descartados', 'warning', 3000)
@@ -42,6 +44,7 @@
   }
 
   const guardarCambios = async () => {
+    console.log('Botón GUARDAR tocado')
     await local.guardar()
     try {
       await local.guardar()
