@@ -34,7 +34,7 @@ const iconoOrigen = mapaIconos[ingrediente.origen]
   <td class="icono-origen" data-testid={'origen-'+ingrediente.id}><img src={iconoOrigen} alt="palta"></td>
 
   {#if acciones}
-    <td>
+    <td class="icono-accion">
       {@render acciones(ingrediente)}
     </td>  
   {:else} <!-- sino por defecto dejamos el tacho -->
