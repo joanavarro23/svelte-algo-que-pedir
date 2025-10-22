@@ -1,11 +1,13 @@
 <script lang="ts">
+  import { error } from '@sveltejs/kit'
+  import type { LocalDTO } from '$lib/dto/localDTO'
   import { showToast } from '$lib/utils/toasts/toasts'
   import { Local } from '$lib/models/local.svelte.js'
-  import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
+  import { showError } from '$lib/utils/errorHandler.js'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
-  import { showError } from '$lib/utils/errorHandler.js'
+  import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
 
   let { data } = $props()
   // console.log(data.localDataBackend.nombre)

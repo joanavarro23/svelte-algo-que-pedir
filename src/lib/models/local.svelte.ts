@@ -1,9 +1,10 @@
-import { showToast } from '$lib/utils/toasts/toasts'
 import type { LocalDTO } from '$lib/dto/localDTO'
+import { showToast } from '$lib/utils/toasts/toasts'
 import { updateLocal } from '$lib/services/localService'
-import { ValidarMensaje } from '$lib/utils/validadorMensaje/ValidarMensaje'
 import type { MetodoDePago } from './metodosDePago.svelte'
+import { getUsuarioDelLocal } from '$lib/utils/currentSession'
 import { esEntero, positivo, vacio } from '$lib/utils/validaciones'
+import { ValidarMensaje } from '$lib/utils/validadorMensaje/ValidarMensaje'
 
 export class Local {
 
@@ -16,6 +17,7 @@ export class Local {
   longitud = $state<number>(0)
   porcentajeApp = $state<number>(0)
   porcentajeAutor = $state<number>(0)
+  usuario = getUsuarioDelLocal
   metodosDePago: Record<MetodoDePago, boolean> = {
     QR: false,
     Efectivo: false,
@@ -153,6 +155,7 @@ export class Local {
       longitud: this.longitud,
       porcentajeSobreCadaPlato: this.porcentajeApp,
       porcentajeRegaliasDeAutor: this.porcentajeAutor,
+      usuario: this.usuario() ?? '',
       mediosDePago: mediosDePagoParaBackend
     }
 
