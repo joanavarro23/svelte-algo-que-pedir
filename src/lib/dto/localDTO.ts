@@ -10,5 +10,6 @@ export interface LocalDTO {
   longitud: number
   porcentajeSobreCadaPlato: number
   porcentajeRegaliasDeAutor: number
+  usuario: string
   mediosDePago: MetodoDePago[]
 }
