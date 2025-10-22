@@ -1,5 +1,6 @@
-import type { Ingrediente } from '$lib/models/ingrediente.svelte'
-import { ValidarMensaje } from '$lib/utils/validarMensaje'
+import { Ingrediente, type IngredienteDTO } from '$lib/models/ingrediente.svelte'
+import { ValidarMensaje } from '$lib/utils/ValidarMensaje'
+import { REST_SERVER_URL } from '$lib/services/configuration'
 
 export class Plato {
   id: number | null = null
@@ -12,6 +13,47 @@ export class Plato {
   platoDePromocion? = $state(false)
   ingredientes?: Ingrediente[]
   errors: ValidarMensaje[] = $state([])
+
+  // Si el plato es nuevo y la URL completa de la imagen (viene la info del back)
+  estaEnPromocion = $state(false)
+  imagenUrlCompleta = $derived(`${REST_SERVER_URL}/${this.imagenUrl}`)
+
+  // Administrar ingredientes
+  agregarIngrediente(ingrediente: Ingrediente) {
+    if (!this.ingredientes.find(i => i.id === ingrediente.id)) {
+      this.ingredientes.push(ingrediente)
+    }
+  }
+  eliminarIngrediente(id: number) {
+    this.ingredientes = this.ingredientes.filter(i => i.id !== id)
+  }
+
+  // Crea desde el DTO del back un plato
+  static fromJson(platoJSON: PlatoJSON): Plato {
+    return Object.assign(new Plato(), platoJSON, {
+      ingredientes: platoJSON.listaDeIngredientes
+        ? platoJSON.listaDeIngredientes.map(ing => Ingrediente.fromDTO(ing))
+        : []
+    })
+  }
+
+  // Convierte a DTO el plato para enviarlo al back
+  toJSON(): PlatoJSON {
+    const imagenNombre = this.imagenUrl.split('/').pop() || 'plato-nuevo.png'
+
+    return {
+      id: this.id ?? undefined,
+      nombre: this.nombre,
+      descripcion: this.descripcion,
+      imagenNombre: imagenNombre,
+      valorBase: this.valorBase,
+      esDeAutor: this.esDeAutor,
+      esNuevo: this.esNuevo,
+      porcentajeDescuento: this.porcentajeDescuento,
+      costoProduccion: this.costoProduccion,
+      listaDeIngredientes: this.ingredientes.map(i =>  i.toDTO())
+    }
+  }
 
   tieneError(campo: string): boolean {
     return this.errors.some((_) => _.campo === campo)
@@ -44,17 +86,25 @@ export class Plato {
     if (this.precio == null || this.precio <= 0) {
       this.agregarError('precio', 'Debe ingresar un precio válido y mayor a 0')
     }
+    if (this.estaEnPromocion && (this.porcentajeDescuento <= 0 || this.porcentajeDescuento >= 100)) {
+      this.agregarError('porcentajeDescuento', 'El porcentaje debe estar entre 1% y 100%')
+    }
   }
-
-  guardar(){
-    this.validarPlato()
-    if (this.errors.length > 0) return
-  /* deberia validar que este ok, mostrar los mensjaes de error
-      convertir los valores en un plato
-      mandar al back los valores actualizados
-    EN REALIDAD TENDRIA QUE LLAMAR AL SERVICE QUE SE ENCARGUE, NO ES SU RESPONSABILIDAD
-  */
+  
+  invalid(): boolean {
+    return this.errors.length > 0
   }
+}
 
-  // Quizas algun metodo extra para devolver el precio total (copiar metodo del back), entre otros metodos utiles
+export type PlatoJSON = {
+  id?: number,
+  nombre: string,
+  descripcion: string,
+  imagenNombre: string,
+  valorBase: number,
+  esDeAutor: boolean,
+  esNuevo: boolean,
+  porcentajeDescuento: number,
+  costoProduccion: number,
+  listaDeIngredientes: IngredienteDTO[]
 }
