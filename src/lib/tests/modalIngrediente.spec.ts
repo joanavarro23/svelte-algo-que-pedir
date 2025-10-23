@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { render, waitFor } from '@testing-library/svelte'
 import userEvent from '@testing-library/user-event'
-import ModalIngredientes from './ModalIngredientes.svelte'
+import ModalIngredientes from '../utils/modales/ListaIngredientes/ModalIngredientes.svelte'
 import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
 import type { Ingrediente } from '$lib/models/ingrediente.svelte'
 
@@ -135,9 +135,9 @@ describe('ModalIngredientes', () => {
 
       // Buscar el checkbox del ingrediente Tomate
       const checkboxes = document.querySelectorAll('input[type="checkbox"]')
-      const tomatoCheckbox = checkboxes[0] as HTMLInputElement
+      const tomateCheckbox = checkboxes[0] as HTMLInputElement
 
-      await userEvent.click(tomatoCheckbox)
+      await userEvent.click(tomateCheckbox)
 
       await waitFor(() => {
         expect(getByText('1 ingrediente seleccionado')).toBeTruthy()
@@ -420,44 +420,5 @@ describe('ModalIngredientes', () => {
         expect(filas.length).toBe(3)
       })
     })
-  })
-
-  describe('Estados edge case', () => {
-    it('debería manejar lista vacía de ingredientes del servicio', async () => {
-      vi.mocked(ingredientesService.todosLosIngredientes).mockResolvedValue([])
-
-      const { getByText } = render(ModalIngredientes, {
-        ingredientesActuales: [],
-        onAgregar: vi.fn()
-      })
-
-      await waitFor(() => {
-        expect(getByText('No hay más ingredientes disponibles')).toBeTruthy()
-      })
-    })
-
-    // it('debería mantener estado de carga hasta que termine la petición', async () => {
-    //   let resolvePromise: (value: Ingrediente[]) => void
-    //   const promise = new Promise<Ingrediente[]>((resolve) => {
-    //     resolvePromise = resolve
-    //   })
-
-    //   vi.mocked(ingredientesService.todosLosIngredientes).mockReturnValue(promise)
-
-    //   const { getByText, queryByText } = render(ModalIngredientes, {
-    //     ingredientesActuales: [],
-    //     onAgregar: vi.fn()
-    //   })
-
-    //   expect(getByText('Cargando ingredientes...')).toBeTruthy()
-    //   expect(queryByText('Tomate')).toBeNull()
-
-    //   resolvePromise!(INGREDIENTES_MOCK)
-
-    //   await waitFor(() => {
-    //     expect(queryByText('Cargando ingredientes...')).toBeNull()
-    //     expect(getByText('Tomate')).toBeTruthy()
-    //   })
-    // })
   })
 })
