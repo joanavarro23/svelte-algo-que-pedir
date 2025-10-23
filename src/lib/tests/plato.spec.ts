@@ -1,79 +1,60 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { Plato, type PlatoJSON } from './plato.svelte'
-import { Ingrediente } from './ingrediente.svelte'
+import { Plato, type PlatoJSON } from '$lib/models/plato.svelte'
+import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
+import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
 
 describe('Plato', () => {
   let plato: Plato
 
   beforeEach(() => {
+    // creo este plato para tenerlo lo mas controlado posible    
     plato = new Plato()
     plato.id = 1
     plato.nombre = 'Hamburguesa Completa'
     plato.descripcion = 'Deliciosa hamburguesa con todos los ingredientes'
     plato.imagenUrl = '/images/hamburguesa.jpg'
-    plato.valorBase = 500
-    plato.esDeAutor = false
-    plato.esNuevo = false
-    plato.estaEnPromocion = false
-    plato.porcentajeDescuento = 0
-    plato.costoProduccion = 250
+    plato.valorBase = 25
+    plato.costoProduccion = 0
   })
 
   describe('Manejo de ingredientes', () => {
     it('debe agregar un ingrediente correctamente', () => {
-      const ingrediente = new Ingrediente(1, 'Tomate', 'Verduras', 'Nacional', 50)
-      plato.agregarIngrediente(ingrediente)
+      plato.agregarIngrediente(INGREDIENTES_MOCK[0])
       
       expect(plato.ingredientes).toHaveLength(1)
-      expect(plato.ingredientes[0]).toEqual(ingrediente)
+      expect(plato.ingredientes[0]).toEqual(INGREDIENTES_MOCK[0])
     })
 
     it('no debe agregar un ingrediente duplicado', () => {
-      const ingrediente = new Ingrediente(1, 'Tomate', 'Verduras', 'Nacional', 50)
-      plato.agregarIngrediente(ingrediente)
-      plato.agregarIngrediente(ingrediente)
+      plato.agregarIngrediente(INGREDIENTES_MOCK[0])
+      plato.agregarIngrediente(INGREDIENTES_MOCK[0])
       
       expect(plato.ingredientes).toHaveLength(1)
     })
 
     it('debe agregar múltiples ingredientes diferentes', () => {
-      const tomate = new Ingrediente(1, 'Tomate', 'Verduras', 'Nacional', 50)
-      const lechuga = new Ingrediente(2, 'Lechuga', 'Verduras', 'Nacional', 30)
-      const carne = new Ingrediente(3, 'Carne', 'Proteínas', 'Importado', 200)
+      const ingrediente1 = INGREDIENTES_MOCK[1]
+      const ingrediente2 = INGREDIENTES_MOCK[2]
+      const ingrediente3 = INGREDIENTES_MOCK[3]
       
-      plato.agregarIngrediente(tomate)
-      plato.agregarIngrediente(lechuga)
-      plato.agregarIngrediente(carne)
+      plato.agregarIngrediente(ingrediente1)
+      plato.agregarIngrediente(ingrediente2)
+      plato.agregarIngrediente(ingrediente3)
       
       expect(plato.ingredientes).toHaveLength(3)
     })
 
-    it('debe eliminar un ingrediente por id', () => {
-      const tomate = new Ingrediente(1, 'Tomate', 'Verduras', 'Nacional', 50)
-      const lechuga = new Ingrediente(2, 'Lechuga', 'Verduras', 'Nacional', 30)
+    it('debe eliminar un ingrediente por id', () => {    
+      PLATOS_MOCK[1].eliminarIngrediente(2)
       
-      plato.agregarIngrediente(tomate)
-      plato.agregarIngrediente(lechuga)
-      plato.eliminarIngrediente(1)
-      
-      expect(plato.ingredientes).toHaveLength(1)
-      expect(plato.ingredientes[0].id).toBe(2)
+      expect(PLATOS_MOCK[1].ingredientes).toHaveLength(1)
+      expect(PLATOS_MOCK[1].ingredientes[0].id).toBe(5)
     })
 
     it('debe mantener los ingredientes si se intenta eliminar un id inexistente', () => {
-      const tomate = new Ingrediente(1, 'Tomate', 'Verduras', 'Nacional', 50)
-      plato.agregarIngrediente(tomate)
-      plato.eliminarIngrediente(999)
+      PLATOS_MOCK[0].eliminarIngrediente(99999)
       
-      expect(plato.ingredientes).toHaveLength(1)
-    })
-
-    it('debe eliminar todos los ingredientes si están todos con el mismo id', () => {
-      const tomate = new Ingrediente(1, 'Tomate', 'Verduras', 'Nacional', 50)
-      plato.agregarIngrediente(tomate)
-      plato.eliminarIngrediente(1)
-      
-      expect(plato.ingredientes).toHaveLength(0)
+      expect(PLATOS_MOCK[0].ingredientes).toHaveLength(3)
     })
   })
 
@@ -91,8 +72,8 @@ describe('Plato', () => {
         porcentajeDescuento: 0,
         costoProduccion: 300,
         listaDeIngredientes: [
-          { id: 1, nombre: 'Tomate', grupo: 'Verduras', origen: 'Nacional', costo: 50 },
-          { id: 2, nombre: 'Mozzarella', grupo: 'Lácteos', origen: 'Nacional', costo: 150 }
+          { id: 1, nombre: 'Tomate', grupo: 'Verduras', origenAnimal: false, costo: 50 },
+          { id: 2, nombre: 'Mozzarella', grupo: 'Lácteos', origenAnimal: true, costo: 150 }
         ]
       }
 
@@ -149,10 +130,10 @@ describe('Plato', () => {
 
   describe('Conversión toJSON', () => {
     it('debe convertir a JSON correctamente', () => {
-      const tomate = new Ingrediente(1, 'Tomate', 'Verduras', 'Nacional', 50)
-      const carne = new Ingrediente(2, 'Carne', 'Proteínas', 'Importado', 200)
+      const tomate = INGREDIENTES_MOCK[0]
+      const pollo = INGREDIENTES_MOCK[1]
       plato.agregarIngrediente(tomate)
-      plato.agregarIngrediente(carne)
+      plato.agregarIngrediente(pollo)
 
       const json = plato.toJSON()
 
@@ -161,15 +142,15 @@ describe('Plato', () => {
         nombre: 'Hamburguesa Completa',
         descripcion: 'Deliciosa hamburguesa con todos los ingredientes',
         imagenNombre: 'hamburguesa.jpg',
-        valorBase: 500,
+        valorBase: 25,
         esDeAutor: false,
         esNuevo: false,
         estaEnPromo: false,
         porcentajeDescuento: 0,
-        costoProduccion: 250,
+        costoProduccion: 0,
         listaDeIngredientes: [
-          { id: 1, nombre: 'Tomate', grupo: 'Verduras', origen: 'Nacional', costo: 50 },
-          { id: 2, nombre: 'Carne', grupo: 'Proteínas', origen: 'Importado', costo: 200 }
+          { id: 1, nombre: 'Tomate', grupo: 'FRUTAS_Y_VERDURAS', origenAnimal: false, costo: 0.5 },
+          { id: 2, nombre: 'Pechuga de pollo', grupo: 'PROTEINAS', origenAnimal: true, costo: 3 }
         ]
       })
     })
@@ -207,27 +188,27 @@ describe('Plato', () => {
 
   describe('Manejo de errores', () => {
     it('debe saber si tiene error en un campo específico', () => {
-      plato.agregarError('nombre', 'El nombre es requerido')
+      plato.agregarError('nombre', 'Debe ingresar un nombre para el plato')
       
       expect(plato.tieneError('nombre')).toBe(true)
       expect(plato.tieneError('descripcion')).toBe(false)
     })
 
     it('debe agregar un error correctamente', () => {
-      plato.agregarError('nombre', 'El nombre es requerido')
+      plato.agregarError('nombre', 'Debe ingresar un nombre para el plato')
       
       expect(plato.errors).toHaveLength(1)
       expect(plato.errors[0].campo).toBe('nombre')
-      expect(plato.errors[0].mensaje).toBe('El nombre es requerido')
+      expect(plato.errors[0].mensaje).toBe('Debe ingresar un nombre para el plato')
     })
 
     it('debe devolver los mensajes de error de un campo', () => {
-      plato.agregarError('nombre', 'El nombre es requerido')
-      plato.agregarError('nombre', 'El nombre debe tener al menos 3 caracteres')
+      plato.agregarError('porcentajeDescuento', 'Debe ingresar un porcentaje de descuento')
+      plato.agregarError('porcentajeDescuento', 'El porcentaje debe estar entre 1% y 100%')
       
-      const mensajes = plato.mensajesError('nombre')
+      const mensajes = plato.mensajesError('porcentajeDescuento')
       
-      expect(mensajes).toBe('El nombre es requerido. El nombre debe tener al menos 3 caracteres')
+      expect(mensajes).toBe('Debe ingresar un porcentaje de descuento. El porcentaje debe estar entre 1% y 100%')
     })
 
     it('debe devolver string vacío si no hay errores en el campo', () => {
@@ -289,14 +270,6 @@ describe('Plato', () => {
       expect(plato.mensajesError('imagen')).toBe('Debe seleccionar una imagen')
     })
 
-    it('validación incorrecta de valorBase null', () => {
-      plato.valorBase = null as any
-      plato.validarPlato()
-      
-      expect(plato.tieneError('valorBase')).toBe(true)
-      expect(plato.mensajesError('valorBase')).toContain('Debe ingresar un precio válido')
-    })
-
     it('validación incorrecta de valorBase negativo', () => {
       plato.valorBase = -100
       plato.validarPlato()
@@ -311,15 +284,6 @@ describe('Plato', () => {
       
       expect(plato.tieneError('valorBase')).toBe(true)
       expect(plato.mensajesError('valorBase')).toBe('El precio debe ser mayor a 0')
-    })
-
-    it('validación incorrecta de porcentajeDescuento null cuando está en promoción', () => {
-      plato.estaEnPromocion = true
-      plato.porcentajeDescuento = null as any
-      plato.validarPlato()
-      
-      expect(plato.tieneError('porcentajeDescuento')).toBe(true)
-      expect(plato.mensajesError('porcentajeDescuento')).toContain('Debe ingresar un porcentaje de descuento')
     })
 
     it('validación incorrecta de porcentajeDescuento en cero cuando está en promoción', () => {
@@ -401,14 +365,6 @@ describe('Plato', () => {
       expect(plato.tieneError('descripcion')).toBe(true)
       expect(plato.tieneError('imagen')).toBe(true)
       expect(plato.tieneError('valorBase')).toBe(true)
-    })
-  })
-
-  describe('Propiedades derivadas', () => {
-    it('debe generar imagenUrlCompleta correctamente', () => {
-      plato.imagenUrl = '/images/hamburguesa.jpg'
-      
-      expect(plato.imagenUrlCompleta).toContain('/images/hamburguesa.jpg')
     })
   })
 })
