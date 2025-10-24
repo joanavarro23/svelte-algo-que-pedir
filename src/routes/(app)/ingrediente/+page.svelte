@@ -12,7 +12,7 @@
   import type { Ingrediente } from '$lib/models/ingrediente.svelte'
   import { ingredientesService } from '$lib/services/ingredienteService'
   import { showError } from '$lib/utils/errorHandler'
-  import { showToast } from '$lib/toasts/toasts'
+  import { showToast } from '$lib/utils/toasts/toasts'
 
   let { data }: PageProps = $props()
   let ingredientes = $derived(data.ingredientes)

@@ -13,9 +13,10 @@ type IngredienteRowProps = SvelteHTMLElements['tr'] & {
   ingrediente: Ingrediente,
   columnasExtra?: Snippet<[]>,
   acciones?: Snippet<[Ingrediente]>
+  eliminar?: () => void
 }
 
-let { ingrediente, columnasExtra, acciones, ...trAtributos }: IngredienteRowProps = $props()
+let { ingrediente, columnasExtra, acciones, eliminar = () => {}, ...trAtributos }: IngredienteRowProps = $props()
 
 const mapaIconos = {vegetal: palta, animal: cow }
 const iconoOrigen = mapaIconos[ingrediente.origen]
@@ -38,7 +39,7 @@ const iconoOrigen = mapaIconos[ingrediente.origen]
     </td>  
   {:else} <!-- sino por defecto dejamos el tacho -->
     <td class="icono-accion">
-      <IconoBoton> <!-- Acá debería la función para borrar ingrediente de la LISTA de PLATOS -->
+      <IconoBoton onclick={eliminar}>
         <img src={trash} alt="eliminar">
       </IconoBoton>
     </td>

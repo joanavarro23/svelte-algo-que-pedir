@@ -1,46 +1,53 @@
 <script lang="ts">
-  import { showToast } from '$lib/toasts/toasts'
+  import { error } from '@sveltejs/kit'
   import type { LocalDTO } from '$lib/dto/localDTO'
+  import { showToast } from '$lib/utils/toasts/toasts'
   import { Local } from '$lib/models/local.svelte.js'
-  import Validador from '$lib/utils/validador.svelte'
-  import { getLocal } from '$lib/services/localService'
+  import { showError } from '$lib/utils/errorHandler.js'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
+  import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
+
+  let { data } = $props()
+  // console.log(data.localDataBackend.nombre)
+
+  let local = new Local()
+
+  local.nombreLocal = data.localDataBackend.nombre
+  local.urlImagen = data.localDataBackend.urlImagenLocal
+  local.direccion = data.localDataBackend.direccion
+  local.altura = data.localDataBackend.altura
+  local.latitud = data.localDataBackend.latitud
+  local.longitud = data.localDataBackend.longitud
+  local.porcentajeApp = data.localDataBackend.porcentajeSobreCadaPlato
+  local.porcentajeAutor = data.localDataBackend.porcentajeRegaliasDeAutor
+
+  data.localDataBackend.mediosDePago.forEach((medio: string) => {
+    if (medio === 'QR') local.metodosDePago.QR = true
+    if (medio === 'EFECTIVO') local.metodosDePago.Efectivo = true
+    if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
+  })
+
+  local.copiaOriginal()
 
   function descartarCambios() {
-    local.restaurarValores()
-    showToast('Cambios descartados', 'warning', 3000)
+    if (local.hayCambios()) {
+      local.restaurarValores()
+      showToast('Cambios descartados', 'warning', 3000)
+    } else {
+      showToast('No hay cambios para descartar', 'warning', 3000)
+    }
   }
 
   const guardarCambios = async () => {
     await local.guardar()
+    try {
+      await local.guardar()
+    } catch (err) {
+      showError('Error al guardar los cambios del local', err)
+    }
   }
-
-  let local = new Local()
-
-  const fetchLocal = async () => {
-    const localData: LocalDTO = await getLocal()
-
-    local.nombreLocal = localData?.nombre || ''
-    local.urlImagen = localData?.urlImagenLocal || ''
-    local.direccion = localData?.direccion || ''
-    local.altura = localData?.altura || 0
-    local.latitud = localData?.latitud || 0
-    local.longitud = localData?.longitud || 0
-    local.porcentajeApp = localData?.porcentajeSobreCadaPlato || 0
-    local.porcentajeAutor = localData?.porcentajeRegaliasDeAutor || 0
-
-    localData.mediosDePago.forEach((medio: string) => {
-      if (medio === 'QR') local.metodosDePago.QR = true
-      if (medio === 'EFECTIVO') local.metodosDePago.Efectivo = true
-      if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
-    })
-
-    local.copiaOriginal() //Se hace una copia por si el usuario descarta los cambios
-  }
-
-  fetchLocal()
 </script>
 
 <main class="contenedor-principal main-vista">
@@ -54,12 +61,13 @@
         <label for="nombre-local">Nombre del local*</label>
         <input
           id="nombre-local"
+          data-testid="nombre-local"
           type="text"
           bind:value={local.nombreLocal}
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="nombreLocal" />
+        <ValidadorMensaje elemento={local} atributo="nombreLocal" />
 
         <label for="url-imagen-local">URL de la imagen*</label>
         <input
@@ -69,7 +77,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="urlImagen" />
+        <ValidadorMensaje elemento={local} atributo="urlImagen" />
       </form>
 
       <img src={local.urlImagen} alt="Imagen del local" class="imagen-local" />
@@ -89,7 +97,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="direccion" />
+        <ValidadorMensaje elemento={local} atributo="direccion" />
       </div>
       <div>
         <label for="altura">Altura*</label>
@@ -100,7 +108,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="altura" />
+        <ValidadorMensaje elemento={local} atributo="altura" />
       </div>
       <div>
         <label for="latitud">Latitud*</label>
@@ -111,7 +119,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="latitud" />
+        <ValidadorMensaje elemento={local} atributo="latitud" />
       </div>
       <div>
         <label for="longitud">Longitud*</label>
@@ -122,7 +130,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="longitud" />
+        <ValidadorMensaje elemento={local} atributo="longitud" />
       </div>
     </div>
   </ProfileCard>
@@ -139,7 +147,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="porcentajeApp" />
+        <ValidadorMensaje elemento={local} atributo="porcentajeApp" />
       </div>
 
       <div>
@@ -153,7 +161,7 @@
           placeholder="Escribir"
           required
         />
-        <Validador elemento={local} atributo="porcentajeAutor" />
+        <ValidadorMensaje elemento={local} atributo="porcentajeAutor" />
       </div>
 
       <h3>Métodos de pago</h3>
@@ -166,7 +174,11 @@
   </ProfileCard>
 
   <div class="button">
-    <PropsButton tipo="primario" onclick={guardarCambios}>Guardar Cambios</PropsButton>
-    <PropsButton tipo="secundario" onclick={descartarCambios}>Descartar Cambios</PropsButton>
+    <PropsButton tipo="primario" onclick={guardarCambios} data-testid="guardar-cambios"
+      >Guardar Cambios</PropsButton
+    >
+    <PropsButton tipo="secundario" onclick={descartarCambios} data-testid="descartar-cambios"
+      >Descartar Cambios</PropsButton
+    >
   </div>
 </main>

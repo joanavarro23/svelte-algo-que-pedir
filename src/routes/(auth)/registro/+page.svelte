@@ -3,7 +3,7 @@
   import InputOcultable from '$lib/components/login/inputOcultable.svelte'
   import Input from '$lib/components/generales/input/input.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
-  import axios from 'axios'
+  import { registro } from '$lib/services/authService'
 
   let usuario = $state('')
   let password = $state('')
@@ -15,34 +15,16 @@
     cargando = true
     mensajeError = ''
 
-    if (password !== confirmarPassword) {
-      mensajeError = 'Las contraseñas no coinciden'
-      password = ''
-      confirmarPassword = ''
-      cargando = false
-      return
-    }
+    const result = await registro(usuario, password, confirmarPassword)
 
-    try {
-      const response = await axios.post('http://localhost:9000/api/auth/registro', {
-        usuario,
-        password,
-        confirmarPassword
-      })
-
-      if (!response.data.success) {
-        mensajeError = response.data.message || 'Error al crear la cuenta. Vuelva a intentarlo.'
-      }
-    } catch (err) {
-      if (axios.isAxiosError(err) && err.response) {
-        mensajeError =
-          err.response.data.message || 'Error en el servidor. Inténtelo de nuevo más tarde.'
-      } else mensajeError = 'Error de conexión. Inténtelo de nuevo más tarde.'
-    } finally {
-      password = ''
-      confirmarPassword = ''
-      cargando = false
+    if (!result.success) {
+      mensajeError = result.message || 'Error al crear la cuenta'
     }
+    // Si es exitoso, podrías redirigir o mostrar un mensaje de éxito
+
+    password = ''
+    confirmarPassword = ''
+    cargando = false
   }
 </script>
 

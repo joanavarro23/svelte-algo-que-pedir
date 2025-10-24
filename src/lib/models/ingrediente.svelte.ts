@@ -1,4 +1,4 @@
-import { ValidarMensaje } from '$lib/utils/ValidarMensaje'
+import { ValidarMensaje } from '$lib/utils/validadorMensaje/ValidarMensaje'
 
 export class Ingrediente {
   id: number | null = null

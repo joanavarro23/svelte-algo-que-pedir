@@ -10,7 +10,7 @@
   import Textarea from '$lib/components/generales/input/textarea.svelte'
   import { INGREDIENTES_MOCK } from '$lib/data/mocks/ingredientesMock'
 
-  import { showToast } from '$lib/toasts/toasts'
+  import { showToast } from '$lib/utils/toasts/toasts' 
   
   
   //Variables del formulario que en caso de edición
