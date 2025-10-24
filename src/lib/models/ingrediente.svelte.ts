@@ -8,10 +8,10 @@ export class Ingrediente {
   origen: Origen = $state('vegetal')
   errors: ValidarMensaje[] = $state([])
 
-  static fromDTO(ingredienteDTO: IngredienteDTO): Ingrediente {
-    return Object.assign(new Ingrediente(), ingredienteDTO, {
-      origen: ingredienteDTO.origenAnimal ? 'animal' : 'vegetal',
-      grupo: mapGrupo(ingredienteDTO.grupo) 
+  static fromJson(ingredienteJSON: IngredienteJSON): Ingrediente {
+    return Object.assign(new Ingrediente(), ingredienteJSON, {
+      origen: ingredienteJSON.origenAnimal ? 'animal' : 'vegetal',
+      grupo: mapGrupo(ingredienteJSON.grupo) 
     })
   }
   
@@ -56,7 +56,7 @@ export class Ingrediente {
     return this.errors.length > 0
   }
 
-  toDTO(): IngredienteDTO {
+  toJSON(): IngredienteJSON {
     return {
       id: this.id ?? undefined,
       nombre: this.nombre,
@@ -78,7 +78,7 @@ export enum GrupoAlimenticio {
   PROTEINAS = 'Proteínas'
 }
 
-export type IngredienteDTO = {
+export type IngredienteJSON = {
   id?: number,
   nombre: string,
   costo: number,
