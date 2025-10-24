@@ -1,18 +1,16 @@
 <script lang="ts">
   import './modalIngredientes.css'
-
+  
   import { onMount } from 'svelte'
   import { SvelteSet } from 'svelte/reactivity'
   import Boton from '$lib/components/generales/boton/boton.svelte'
+  import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
-  import IconoBoton from '$lib/components/generales/icono boton/iconoBoton.svelte'
+  import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
+  
   import type { Ingrediente } from '$lib/models/ingrediente.svelte'
   import { ingredientesService } from '$lib/services/ingredienteService'
   import { showError } from '$lib/utils/errorHandler'
-
-  import plus from '$lib/assets/plus-circle.svg'
-  import trash from '$lib/assets/trash.svg'
-  import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
 
   interface IngredientesModalProps {
     ingredientesActuales: Ingrediente[]
@@ -60,7 +58,7 @@
   }
 </script>
 
-<div class="modal-ingredientes">
+<section class="modal-ingredientes">
   <h2>Agregar Ingredientes</h2>
 
   {#if cargando}
@@ -68,7 +66,7 @@
   {:else if ingredientesDisponibles.length === 0}
     <p class="sin-ingredientes">No hay más ingredientes disponibles</p>
   {:else}
-    <div class="lista-ingredientes">
+    <article class="lista-ingredientes">
       <Tabla>
         {#snippet nombreColumnas()}
           <th>Nombre</th>
@@ -80,23 +78,23 @@
           {#each ingredientesDisponibles as ingrediente (ingrediente.id)}
             <IngredienteRow {ingrediente}>
               {#snippet acciones()}
-                <IconoBoton onclick={() => toggleIngrediente(ingrediente.id!)} >
-                  <img src={ingredientesSeleccionados.has(ingrediente.id!) ? trash : plus } alt="seleccionar ingrediente">
-                </IconoBoton>
+                <Checkbox
+                checked={ingredientesSeleccionados.has(ingrediente.id!)} 
+                onchange={() => toggleIngrediente(ingrediente.id!)}/>
               {/snippet}
             </IngredienteRow>
           {/each}
         {/snippet}
       </Tabla>
-    </div>
+    </article>
 
-    <div class="modal-footer">
+    <section class="modal-footer">
       <p class="contador">
         {ingredientesSeleccionados.size} ingrediente{ingredientesSeleccionados.size !== 1 ? 's' : ''} seleccionado{ingredientesSeleccionados.size !== 1 ? 's' : ''}
       </p>
       <Boton onclick={confirmar} disabled={ingredientesSeleccionados.size === 0} >
         Agregar ({ingredientesSeleccionados.size})
       </Boton>
-    </div>
+    </section>
   {/if}
-</div>
+</section>

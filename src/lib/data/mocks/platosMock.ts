@@ -17,7 +17,7 @@ function PlatosBuilder(Init: Partial<Plato>){
   plato.id = Init.id ?? null
   plato.nombre = Init.nombre ?? ''
   plato.descripcion = Init.descripcion ?? ''
-  plato.imagen = Init.imagen ?? ''
+  plato.imagenUrl = Init.imagenUrl ?? ''
   plato.valorBase = Init.valorBase ?? 0
   plato.esDeAutor = Init.esDeAutor ?? false
   plato.estaEnPromocion = Init.estaEnPromocion ?? false
@@ -33,7 +33,7 @@ export const PLATOS_MOCK: Plato[] = [
     id: 1,
     nombre: 'Pasta cremosa',
     descripcion: 'Deliciosa pasta con salsa cremosa',
-    imagen: '/src/lib/assets/pasta-cremosa.png',
+    imagenUrl: '/src/lib/assets/pasta-cremosa.png',
     valorBase: 12.99,
     esDeAutor: true,
     estaEnPromocion: true,
@@ -44,7 +44,7 @@ export const PLATOS_MOCK: Plato[] = [
     id: 2,
     nombre: 'Alitas picantes',
     descripcion: 'Alitas de pollo picantes con salsa para mojar',
-    imagen: '/src/lib/assets/alitas-picantes.png',
+    imagenUrl: '/src/lib/assets/alitas-picantes.png',
     valorBase: 9.99,
     ingredientes: INGREDIENTES_B,
     errors: []
@@ -53,7 +53,7 @@ export const PLATOS_MOCK: Plato[] = [
     id: 3,
     nombre: 'Ensalada de la Huerta',
     descripcion: 'Ensalada fresca con hojas mixtas y vinagreta',
-    imagen: '/src/lib/assets/ensalada-huerta.png',
+    imagenUrl: '/src/lib/assets/ensalada-huerta.png',
     valorBase: 7.50,
     errors: [],
     esDeAutor: true
@@ -62,7 +62,7 @@ export const PLATOS_MOCK: Plato[] = [
     id: 4,
     nombre: 'Hamburguesa con queso',
     descripcion: 'Hamburguesa clásica con queso y papas fritas',
-    imagen: '/src/lib/assets/hamburguesa-con-queso.png',
+    imagenUrl: '/src/lib/assets/hamburguesa-con-queso.png',
     valorBase: 10.50,
     errors: [],
     estaEnPromocion: true
@@ -71,7 +71,7 @@ export const PLATOS_MOCK: Plato[] = [
     id: 5,
     nombre: 'Pescado y Papas Fritas',
     descripcion: 'Pescado crujiente y papas fritas con salsa tártara',
-    imagen: '/src/lib/assets/pescado-papas-fritas.png',
+    imagenUrl: '/src/lib/assets/pescado-papas-fritas.png',
     valorBase: 11.75,
     ingredientes: INGREDIENTES_A,
     errors: []
@@ -80,7 +80,7 @@ export const PLATOS_MOCK: Plato[] = [
     id: 6,
     nombre: 'Pizza Vegetariana',
     descripcion: 'Pizza vegetariana con ingredientes variados',
-    imagen: '/src/lib/assets/pizza-vegetariana.png',
+    imagenUrl: '/src/lib/assets/pizza-vegetariana.png',
     valorBase: 14.25,
     ingredientes: INGREDIENTES_B,
     errors: []
@@ -89,7 +89,7 @@ export const PLATOS_MOCK: Plato[] = [
     id: 7,
     nombre: 'Pastel de Chocolate',
     descripcion: 'Pastel de chocolate rico con glaseado',
-    imagen: '/src/lib/assets/pastel-chocolate.png',
+    imagenUrl: '/src/lib/assets/pastel-chocolate.png',
     valorBase: 6.50,
     ingredientes: INGREDIENTES_A,
     errors: []

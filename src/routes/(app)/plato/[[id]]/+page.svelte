@@ -190,10 +190,7 @@
 <!-- Modal de ingredientes -->
 <Modal 
     open={modalAbierto} 
-    onClose={() => modalAbierto = false} 
-    componente={ModalIngredientes}
-    props={{
-      ingredientesActuales: plato.ingredientes,
-      onAgregar: agregarIngredientes
-    }}
-/>
+    onClose={() => modalAbierto = false}
+>
+    <ModalIngredientes ingredientesActuales={plato.ingredientes} onAgregar= {agregarIngredientes}/>
+</Modal>
