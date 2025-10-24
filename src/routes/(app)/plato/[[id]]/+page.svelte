@@ -49,7 +49,7 @@
   }
   // Agregar ingredientes seleccionados del modal
   const agregarIngredientes = (ingredientes: Ingrediente[]) => {
-    ingredientes.forEach(ing => plato.agregarIngrediente(ing))
+    ingredientes.forEach((ing) => plato.agregarIngrediente(ing))
     showToast(`${ingredientes.length} ingrediente(s) agregado(s)`, 'success')
     modalAbierto = false
   }
@@ -106,7 +106,7 @@
        <Textarea data-testid="imagen" nombre_label="URL de la imagen del plato*" id="imagen" select={true}
         options={[{value: '', label: 'Selecciona una imagen para tu plato'}, ...opcionesImagen]}
         bind:value={imagenSeleccionada}
-       />
+      />
       <ValidadorMensaje elemento={plato} atributo="imagen" />
     </form>
 
@@ -166,7 +166,7 @@
       {#snippet datosExtra()}
         <td colspan="3">Seleccionar ingrediente...</td>
         <td class="icono-accion">
-          <IconoBoton onclick={() => modalAbierto = true }>
+          <IconoBoton data-testid="agregarIngredientes" onclick={() => modalAbierto = true}>
             <img src={plus} alt="agregar" />
           </IconoBoton>
         </td>
@@ -188,9 +188,6 @@
 </main>
 
 <!-- Modal de ingredientes -->
-<Modal 
-    open={modalAbierto} 
-    onClose={() => modalAbierto = false}
->
-    <ModalIngredientes ingredientesActuales={plato.ingredientes} onAgregar= {agregarIngredientes}/>
+<Modal open={modalAbierto} onClose={() => modalAbierto = false}>
+  <ModalIngredientes ingredientesActuales={plato.ingredientes} onAgregar={agregarIngredientes} />
 </Modal>
