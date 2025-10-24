@@ -1,6 +1,7 @@
 import { Pedido } from '$lib/models/pedido.svelte.ts'
-import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
-import { error } from '@sveltejs/kit'
+import { axios } from 'axios'
+import { getAxiosData } from '$lib/services/common'
+import { REST_SERVER_URL } from '$lib/services/configuration'
 
 /* CONVERTIR EN CLASE SI SE QUIERE POR EJEMPLO:
 Traer todos los platos, o ciertos platos 
