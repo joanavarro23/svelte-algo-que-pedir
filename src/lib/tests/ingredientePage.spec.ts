@@ -2,7 +2,7 @@ import { waitFor, render, type SvelteComponentOptions } from '@testing-library/s
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import '@testing-library/jest-dom' // Import custom matchers
-import IngredientePage from './+page.svelte'
+import IngredientePage from '../../routes/(app)/ingrediente/+page.svelte'
 import { Ingrediente } from '$lib/models/ingrediente.svelte'
 
 vi.mock('axios')
@@ -21,9 +21,9 @@ import axios from 'axios'
 
 import { invalidate, goto } from '$app/navigation'
 import type { Component } from 'svelte'
-import type { PageProps } from './$types'
+import type { PageProps } from '../../routes/(app)/ingrediente/$types'
 import { showError } from '$lib/utils/errorHandler'
-import { showToast } from '$lib/toasts/toasts'
+import { showToast } from '$lib/utils/toasts/toasts'
 
 let defaultData: SvelteComponentOptions<Component<PageProps>>
 

@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom'
 import { Local } from '$lib/models/local.svelte'
-import { toast, type Toast } from '$lib/toasts/toasts'
+import { toast, type Toast } from '$lib/utils/toasts/toasts'
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import Page from '/src/routes/(app)/perfil-local/+page.svelte'
+import Page from '../../routes/(app)/perfil-local/+page.svelte'
 import { render, screen, fireEvent } from '@testing-library/svelte'
 
 describe('Dado el perfil de un local', () => {
@@ -89,6 +89,8 @@ describe('Restaurar valores originales', () => {
     expect(local.porcentajeApp).toBe(3)
     expect(local.metodosDePago.QR).toBe(true)
     expect(local.nombreLocal).toBe('Taberna de Moe')
+
+    
   })
 })
 
@@ -98,6 +100,7 @@ describe('Dado el perfil de un local', () => {
 
     const mockData = {
       localDataBackend: {
+        idLocal: 1,
         nombre: 'Taberna de Moe',
         urlImagenLocal: 'https://www.clarin.com/img/2017/10/05/SkWTevV3-_1200x0.jpg',
         direccion: 'Av. Siempre Viva',
@@ -111,11 +114,11 @@ describe('Dado el perfil de un local', () => {
     }
     render(Page, { props: { data: mockData } })
 
-    let currentToast: Toast | null = null
+    var currentToast: Toast | null = null
 
     const unsubscribe = toast.subscribe((value: Toast | null) => {
-      currentToast = value
-    })
+       currentToast = value
+     })
 
     const botonDescartar = screen.getByTestId('descartar-cambios')
     await fireEvent.click(botonDescartar)
