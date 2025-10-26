@@ -21,6 +21,8 @@ function PlatosBuilder(Init: Partial<Plato>){
   plato.valorBase = Init.valorBase ?? 0
   plato.esDeAutor = Init.esDeAutor ?? false
   plato.estaEnPromocion = Init.estaEnPromocion ?? false
+  plato.esNuevo = Init.esNuevo ?? false
+  plato.porcentajeDescuento = Init.porcentajeDescuento ?? 0
   plato.ingredientes = Init.ingredientes ?? []
   plato.errors = Init.errors ?? []
 
@@ -37,6 +39,8 @@ export const PLATOS_MOCK: Plato[] = [
     valorBase: 12.99,
     esDeAutor: true,
     estaEnPromocion: true,
+    esNuevo: false,
+    porcentajeDescuento: 10,
     ingredientes: INGREDIENTES_A,
     errors: [],
   }),
@@ -46,6 +50,7 @@ export const PLATOS_MOCK: Plato[] = [
     descripcion: 'Alitas de pollo picantes con salsa para mojar',
     imagenUrl: '/src/lib/assets/alitas-picantes.png',
     valorBase: 9.99,
+    esNuevo: true,
     ingredientes: INGREDIENTES_B,
     errors: []
   }),
