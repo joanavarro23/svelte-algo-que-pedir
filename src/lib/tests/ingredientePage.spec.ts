@@ -13,7 +13,7 @@ vi.mock('$app/navigation', () => ({
   goto: vi.fn(),
   invalidate: vi.fn().mockResolvedValue(true)
 }))
-vi.mock('$lib/toasts/toasts', () => ({
+vi.mock('$lib/utils/toasts/toasts', () => ({
   showToast: vi.fn()
 }))
 
