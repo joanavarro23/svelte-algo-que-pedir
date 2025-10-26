@@ -1,17 +1,6 @@
-import { Pedido } from '$lib/models/pedido.svelte.ts'
-import { axios } from 'axios'
+import { Pedido, type PedidoJSON } from '$lib/models/pedido.svelte.ts'
 import { getAxiosData } from '$lib/services/common'
 import { REST_SERVER_URL } from '$lib/services/configuration'
+import axios from 'axios'
 
-/* CONVERTIR EN CLASE SI SE QUIERE POR EJEMPLO:
-Traer todos los platos, o ciertos platos 
-*/
-const obtenerPorId = async (id: number): Promise<Pedido> => {
-  // Lógica
-  const pedido = PEDIDOS_MOCK.find(p => p.id === id)
-  if (!pedido)
-    throw error(404, `El pedido con el id ${id} no fue encontrado`)
 
-  return pedido
-}
-export const pedidoService = {obtenerPorId}

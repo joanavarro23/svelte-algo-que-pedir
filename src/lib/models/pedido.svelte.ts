@@ -1,10 +1,9 @@
-//Enums del front
+//Enums del front de medios de pago y estados posibles para el pedido
 export enum MedioDePago {
   Efectivo = 'Efectivo',
   QR = 'QR',
   Tarjeta = 'Tarjeta de credito'
 }
-
 
 export enum EstadoDelPedido {
   Pendiente = 'Pendiente',
@@ -13,7 +12,7 @@ export enum EstadoDelPedido {
   Cancelado = 'Cancelado'
 }
 
-//Tipos de DTOs del back
+//Tipado de DTOs del back para poder chequear que venga todo bien
 export type DireccionJSON = {
   calle: string,
   altura: number,
@@ -33,8 +32,8 @@ export type PedidoJSON = {
     hora: string,
     items: number,
     precioTotal: number,
-    medioDePago: MedioDePago | string,
-    estadoPedido: EstadoDelPedido | string
+    medioDePago: MedioDePago,
+    estadoPedido: EstadoDelPedido
 }
 
 //Clase de Pedido para el front
@@ -48,16 +47,18 @@ export class Pedido {
   medioDePago!: MedioDePago
   estadoPedido!: EstadoDelPedido
 
-  static fromJson(pedidoJSON: PedidoJSON): Pedido {
+  //Fx para crear un Pedido del front a partir del JSON que vino del back 
+  static fromJSON(pedidoJSON: PedidoJSON): Pedido {
     return Object.assign(new Pedido(), pedidoJSON, {
-      medioDePago: mapMedioPago(String(pedidoJSON.medioDePago)),
-      estadoPedido: mapEstado(String(pedidoJSON.estadoPedido)) 
+      medioDePago: pedidoJSON.medioDePago,        //mapMedioPago(String(pedidoJSON.medioDePago)) no se lo paso como string a la vista
+      estadoPedido: pedidoJSON.estadoPedido  //mapEstado(String(pedidoJSON.estadoPedido)) 
     })
   }
 
+  //Fx para mandar un Pedido del front al dto del back
   toJSON(): PedidoJSON {
     return {
-      id: this.id?? 0,
+      id: this.id?? 0,    //podria haber una validacion o algo
       cliente: this.cliente,
       direccion: this.direccion,
       hora: this.hora,
@@ -68,6 +69,14 @@ export class Pedido {
     }
   }
 }
+
+
+
+
+
+
+
+
 
 // -- AUXILIARES --
 
