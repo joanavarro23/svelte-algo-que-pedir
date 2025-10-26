@@ -50,6 +50,7 @@ export class Plato {
       valorBase: this.valorBase,
       esDeAutor: this.esDeAutor,
       esNuevo: this.esNuevo,
+      estaEnPromo: this.estaEnPromocion,
       porcentajeDescuento: this.porcentajeDescuento,
       costoProduccion: this.costoProduccion,
       listaDeIngredientes: this.ingredientes.map(i =>  i.toJSON())
@@ -111,6 +112,7 @@ export type PlatoJSON = {
   valorBase: number,
   esDeAutor: boolean,
   esNuevo: boolean,
+  estaEnPromo: boolean,
   porcentajeDescuento: number,
   costoProduccion: number,
   listaDeIngredientes: IngredienteJSON[]
