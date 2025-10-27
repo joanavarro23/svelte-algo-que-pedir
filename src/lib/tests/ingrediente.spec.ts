@@ -79,6 +79,32 @@ describe('Ingrediente', () => {
     })
   })
 
+  describe('esAnimal getter/setter', () => {
+    it('debe devolver true si el origen es animal', () => {
+      const ingrediente = new Ingrediente()
+      ingrediente.origenAnimal = 'animal'
+      expect(ingrediente.esAnimal).toBe(true)
+    })
+
+    it('debe devolver false si el origen es vegetal', () => {
+      const ingrediente = new Ingrediente()
+      ingrediente.origenAnimal = 'vegetal'
+      expect(ingrediente.esAnimal).toBe(false)
+    })
+
+    it('debe establecer el origen como animal cuando esAnimal se establece en true', () => {
+      const ingrediente = new Ingrediente()
+      ingrediente.esAnimal = true
+      expect(ingrediente.origenAnimal).toBe('animal')
+    })
+
+    it('debe establecer el origen como vegetal cuando esAnimal se establece en false', () => {
+      const ingrediente = new Ingrediente()
+      ingrediente.esAnimal = false
+      expect(ingrediente.origenAnimal).toBe('vegetal')
+    })
+  })
+
   describe('Manejo de errores', () => {
     it('debe agregar y verificar errores correctamente', () => {
       const ingrediente = new Ingrediente()
