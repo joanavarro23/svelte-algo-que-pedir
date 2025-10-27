@@ -14,11 +14,12 @@ const mapaEstadosValidos: Record<string, EstadoDelPedido> = {
   cancelado : EstadoDelPedido.CANCELADO
 } 
 
-function parseEstado(raw: string | null) {
-  const key = raw?.trim().toLowerCase()
-  if (!key) throw error(400, 'Falta el parámetro "estado".')
-  const estadoFront = mapaEstadosValidos[key]
-  if (!estadoFront) throw error(404, `El estado '${raw}' no es válido.`)
+function parseEstado(value: string | null) {
+  const key = value?.trim().toLowerCase()                     //Normalizo el valor que viene de la url. Si viene vacio, tira error
+  if (!key) throw error(400, 'Debes agregar un valor para el filtrado de pedidos!')
+  
+  const estadoFront = mapaEstadosValidos[key]               //Busca el valor en el mapa de los estados validos. Si no aparece, ingreso cualquier cosa.
+  if (!estadoFront) throw error(404, `El estado '${value}' no es válido.`)
   return { estadoFront, estadoBack: key }
 }
 
