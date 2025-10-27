@@ -30,7 +30,11 @@
   </header>
 
   <!--Componente info de direccion-->
-  <DireccionSection direccion={pedido.direccion.direccion} />
+  <DireccionSection
+    direccion={pedido.direccion.direccion}
+    latitud={pedido.direccion.latitud}
+    longitud={pedido.direccion.longitud}
+  />
 
   <footer class="pedido-footer">
     <div class="modo-pago">
