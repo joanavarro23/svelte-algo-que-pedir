@@ -1,15 +1,12 @@
-//Enums del front de medios de pago y estados posibles para el pedido
-export enum MedioDePago {
-  Efectivo = 'Efectivo',
-  QR = 'QR',
-  Tarjeta = 'Tarjeta de credito'
-}
+import { MedioDePago, medioPagoDesdeBack } from '$lib/models/metodosDePago.svelte'
 
+
+//Enum del Front para los Estados del Pedido
 export enum EstadoDelPedido {
-  Pendiente = 'Pendiente',
-  Preparado = 'Preparado',
-  Entregado = 'Entregado',
-  Cancelado = 'Cancelado'
+  PENDIENTE = 'PENDIENTE',
+  PREPARADO = 'PREPARADO',
+  ENTREGADO = 'ENTREGADO',
+  CANCELADO = 'CANCELADO'
 }
 
 //Tipado de DTOs del back para poder chequear que venga todo bien
@@ -50,7 +47,7 @@ export class Pedido {
   //Fx para crear un Pedido del front a partir del JSON que vino del back 
   static fromJSON(pedidoJSON: PedidoJSON): Pedido {
     return Object.assign(new Pedido(), pedidoJSON, {
-      medioDePago: pedidoJSON.medioDePago,        //mapMedioPago(String(pedidoJSON.medioDePago)) no se lo paso como string a la vista
+      medioDePago: medioPagoDesdeBack(pedidoJSON.medioDePago),        //mapMedioPago(String(pedidoJSON.medioDePago)) no se lo paso como string a la vista
       estadoPedido: pedidoJSON.estadoPedido  //mapEstado(String(pedidoJSON.estadoPedido)) 
     })
   }
@@ -69,45 +66,4 @@ export class Pedido {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-// -- AUXILIARES --
-
-
-//Auxiliares para poder mapear valor del enum con label
-function mapMedioPago(medio: string): MedioDePago {
-  return MedioDePago[medio as keyof typeof MedioDePago]
-}
-
-function mapEstado(medio: string): MedioDePago {
-  return MedioDePago[medio as keyof typeof MedioDePago]
-}
-
-
-
-//Auxiliares para poder devolver label formato enum
-const toLowercase = (texto : string) => texto.trim().toLowerCase()
-
-type MedioDePagoKey = keyof typeof MedioDePago
-type EstadoKey = keyof typeof EstadoDelPedido
-
-function medioPagoToEnum(label: string): string {
-  const keys = Object.keys(MedioDePago) as MedioDePagoKey[]
-  const found = keys.find(k => MedioDePago[k] === label)
-  return found ?? label
-}
-
-function estadoToEnum(label: string): string {
-  const keys = Object.keys(EstadoDelPedido) as EstadoKey[]
-  const found = keys.find(k => EstadoDelPedido[k] === label)
-  return found ?? label
-}
-
 
