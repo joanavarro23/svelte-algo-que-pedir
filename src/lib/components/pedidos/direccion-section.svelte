@@ -1,6 +1,5 @@
 <script lang="ts">
   import pinUbicacion from '$lib/assets/pin-ubicacion.svg'
-  import { type DireccionJSON } from '$lib/dto/infoPedidoDTO'
 
   interface Props {
     direccion?: string
@@ -16,6 +15,5 @@
   <div class="direccion-coordenadas">
     <h4>{direccion}</h4>
     <p>Lat: {latitud}, Long: {longitud}</p>
-    <!-- FALTA PENSAR LAT/LONG DE DIRECCION -->
   </div>
 </section>
