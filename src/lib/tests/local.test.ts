@@ -114,11 +114,11 @@ describe('Dado el perfil de un local', () => {
     }
     render(Page, { props: { data: mockData } })
 
-    var currentToast: Toast | null = null
+    let currentToast: Toast | null = null
 
     const unsubscribe = toast.subscribe((value: Toast | null) => {
-       currentToast = value
-     })
+      currentToast = value
+    })
 
     const botonDescartar = screen.getByTestId('descartar-cambios')
     await fireEvent.click(botonDescartar)

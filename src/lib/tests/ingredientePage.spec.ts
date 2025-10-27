@@ -1,7 +1,7 @@
 import { waitFor, render, type SvelteComponentOptions } from '@testing-library/svelte'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import '@testing-library/jest-dom' // Import custom matchers
+import '@testing-library/jest-dom'
 import IngredientePage from '../../routes/(app)/ingrediente/+page.svelte'
 import { Ingrediente } from '$lib/models/ingrediente.svelte'
 
@@ -30,23 +30,23 @@ let defaultData: SvelteComponentOptions<Component<PageProps>>
 const tomate = new Ingrediente()
 tomate.id = 1
 tomate.nombre = 'Tomate'
-tomate.costo = 0.5
-tomate.grupo = 'Frutas y verduras'
-tomate.origen = 'vegetal'
+tomate.costoMercado = 0.5
+tomate.grupoAlimenticio = 'Frutas y verduras'
+tomate.origenAnimal = 'vegetal'
 
 const arroz = new Ingrediente()
 arroz.id = 2
 arroz.nombre = 'Arroz'
-arroz.costo = 1.2
-arroz.grupo = 'Cereales y tubérculos'
-arroz.origen = 'vegetal'
+arroz.costoMercado = 1.2
+arroz.grupoAlimenticio = 'Cereales y tubérculos'
+arroz.origenAnimal = 'vegetal'
 
 const pollo = new Ingrediente()
 pollo.id = 3
 pollo.nombre = 'Pechuga de pollo'
-pollo.costo = 3.5
-pollo.grupo = 'Proteínas'
-pollo.origen = 'animal'
+pollo.costoMercado = 3.5
+pollo.grupoAlimenticio = 'Proteínas'
+pollo.origenAnimal = 'animal'
 
 const mockIngredientes: () => Ingrediente[] = () => [tomate, arroz, pollo]
 

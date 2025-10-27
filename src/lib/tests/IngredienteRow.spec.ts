@@ -11,8 +11,8 @@ import cow from '$lib/assets/cow.svg'
 const tomate = new Ingrediente()
 tomate.id = 1
 tomate.nombre = 'Tomate'
-tomate.grupo = 'Frutas y verduras'
-tomate.origen = 'vegetal'
+tomate.grupoAlimenticio = 'Frutas y verduras'
+tomate.origenAnimal = 'vegetal'
 
 describe('IngredienteRow', () => {
   it('debe renderizar la informacion del ingrediente', () => {
@@ -67,8 +67,8 @@ describe('IngredienteRow', () => {
 
   it('debe renderizar el icono de origen animal', () => {
     const carne = new Ingrediente()
-    carne.id = 2 // Use a different ID to avoid collisions
-    carne.origen = 'animal'
+    carne.id = 2
+    carne.origenAnimal = 'animal'
     render(IngredienteRow, { ingrediente: carne })
 
     const origenCell = screen.getByTestId('origen-2')

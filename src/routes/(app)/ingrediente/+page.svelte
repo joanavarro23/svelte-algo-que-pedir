@@ -49,7 +49,7 @@
   {#each ingredientes as ingrediente (ingrediente.id)}
     <IngredienteRow {ingrediente} data-testid={'ingrediente-'+ingrediente.id}>
       {#snippet columnasExtra()}
-        <td data-testid={'costo-'+ingrediente.id}>${ingrediente.costo.toFixed(2)}</td>
+        <td data-testid={'costo-'+ingrediente.id}>${ingrediente.costoMercado.toFixed(2)}</td>
       {/snippet}
       {#snippet acciones()}
         <div class="iconos-acciones">

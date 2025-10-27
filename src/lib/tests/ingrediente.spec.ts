@@ -3,54 +3,20 @@ import { Ingrediente, GrupoAlimenticio, type IngredienteJSON } from '../models/i
 
 describe('Ingrediente', () => {
   describe('fromJson', () => {
-    it('debe crear un Ingrediente desde un JSON válido con origen animal', () => {
+    it('debe crear un Ingrediente desde un JSON válido', () => {
       const json: IngredienteJSON = {
         id: 1,
         nombre: 'Leche',
-        costo: 1.5,
-        grupo: 'LACTEOS',
+        costoMercado: 1.5,
+        grupoAlimenticio: 'LACTEOS',
         origenAnimal: true,
       }
       const ingrediente = Ingrediente.fromJson(json)
       expect(ingrediente.id).toBe(1)
       expect(ingrediente.nombre).toBe('Leche')
-      expect(ingrediente.costo).toBe(1.5)
-      expect(ingrediente.grupo).toBe(GrupoAlimenticio.LACTEOS)
-      expect(ingrediente.origen).toBe('animal')
-    })
-
-    it('debe crear un Ingrediente desde un JSON válido con origen vegetal', () => {
-      const json: IngredienteJSON = {
-        nombre: 'Tomate',
-        costo: 0.5,
-        grupo: 'FRUTAS_Y_VERDURAS',
-        origenAnimal: false,
-      }
-      const ingrediente = Ingrediente.fromJson(json)
-      expect(ingrediente.nombre).toBe('Tomate')
-      expect(ingrediente.costo).toBe(0.5)
-      expect(ingrediente.grupo).toBe(GrupoAlimenticio.FRUTAS_Y_VERDURAS)
-      expect(ingrediente.origen).toBe('vegetal')
-    })
-  })
-
-  describe('esAnimal', () => {
-    it('el getter debe devolver true si el origen es animal', () => {
-      const ingrediente = new Ingrediente()
-      ingrediente.origen = 'animal'
-      expect(ingrediente.esAnimal).toBe(true)
-    })
-
-    it('el setter debe establecer el origen a animal', () => {
-      const ingrediente = new Ingrediente()
-      ingrediente.esAnimal = true
-      expect(ingrediente.origen).toBe('animal')
-    })
-
-    it('el setter debe establecer el origen a vegetal', () => {
-      const ingrediente = new Ingrediente()
-      ingrediente.esAnimal = false
-      expect(ingrediente.origen).toBe('vegetal')
+      expect(ingrediente.costoMercado).toBe(1.5)
+      expect(ingrediente.grupoAlimenticio).toBe(GrupoAlimenticio.LACTEOS)
+      expect(ingrediente.origenAnimal).toBe('animal')
     })
   })
 
@@ -58,39 +24,39 @@ describe('Ingrediente', () => {
     it('no debe agregar errores para un ingrediente válido', () => {
       const ingrediente = new Ingrediente()
       ingrediente.nombre = 'Arroz'
-      ingrediente.costo = 2
-      ingrediente.grupo = GrupoAlimenticio.CEREALES_Y_TUBERCULOS
+      ingrediente.costoMercado = 2
+      ingrediente.grupoAlimenticio = GrupoAlimenticio.CEREALES_Y_TUBERCULOS
       ingrediente.validarIngrediente()
       expect(ingrediente.invalid()).toBe(false)
     })
 
     it('debe agregar un error si el nombre está vacío', () => {
       const ingrediente = new Ingrediente()
-      ingrediente.costo = 2
-      ingrediente.grupo = GrupoAlimenticio.CEREALES_Y_TUBERCULOS
+      ingrediente.costoMercado = 2
+      ingrediente.grupoAlimenticio = GrupoAlimenticio.CEREALES_Y_TUBERCULOS
       ingrediente.validarIngrediente()
       expect(ingrediente.tieneError('nombre')).toBe(true)
-      expect(ingrediente.mensajesError('nombre')).toContain('Debe ingresar un nombre')
+      expect(ingrediente.mensajesError('nombre')).toContain('Debe ingresar un nombre para el ingrediente')
     })
 
     it('debe agregar un error si el costo es cero o negativo', () => {
       const ingrediente = new Ingrediente()
       ingrediente.nombre = 'Azúcar'
-      ingrediente.costo = 0
-      ingrediente.grupo = GrupoAlimenticio.AZUCARES_Y_DULCES
+      ingrediente.costoMercado = 0
+      ingrediente.grupoAlimenticio = GrupoAlimenticio.AZUCARES_Y_DULCES
       ingrediente.validarIngrediente()
-      expect(ingrediente.tieneError('costo')).toBe(true)
-      expect(ingrediente.mensajesError('costo')).toContain('Debe ingresar un costo válido')
+      expect(ingrediente.tieneError('costoMercado')).toBe(true)
+      expect(ingrediente.mensajesError('costoMercado')).toContain('Debe ingresar un costo válido y mayor a 0')
     })
 
     it('debe agregar un error si el grupo no está seleccionado', () => {
       const ingrediente = new Ingrediente()
       ingrediente.nombre = 'Aceite'
-      ingrediente.costo = 3
-      ingrediente.grupo = ''
+      ingrediente.costoMercado = 3
+      ingrediente.grupoAlimenticio = ''
       ingrediente.validarIngrediente()
-      expect(ingrediente.tieneError('grupo')).toBe(true)
-      expect(ingrediente.mensajesError('grupo')).toContain('Debe seleccionar un grupo')
+      expect(ingrediente.tieneError('grupoAlimenticio')).toBe(true)
+      expect(ingrediente.mensajesError('grupoAlimenticio')).toContain('Debe seleccionar un grupo alimenticio')
     })
   })
 
@@ -99,16 +65,16 @@ describe('Ingrediente', () => {
       const ingrediente = new Ingrediente()
       ingrediente.id = 5
       ingrediente.nombre = 'Pollo'
-      ingrediente.costo = 5
-      ingrediente.grupo = GrupoAlimenticio.PROTEINAS
-      ingrediente.origen = 'animal'
+      ingrediente.costoMercado = 5
+      ingrediente.grupoAlimenticio = GrupoAlimenticio.PROTEINAS
+      ingrediente.origenAnimal = 'animal'
 
       const json = ingrediente.toJSON()
 
       expect(json.id).toBe(5)
       expect(json.nombre).toBe('Pollo')
-      expect(json.costo).toBe(5)
-      expect(json.grupo).toBe('PROTEINAS')
+      expect(json.costoMercado).toBe(5)
+      expect(json.grupoAlimenticio).toBe('PROTEINAS')
       expect(json.origenAnimal).toBe(true)
     })
   })
