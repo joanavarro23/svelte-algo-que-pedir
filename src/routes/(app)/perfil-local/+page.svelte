@@ -25,8 +25,8 @@
 
   data.localDataBackend.mediosDePago.forEach((medio: string) => {
     if (medio === 'QR') local.metodosDePago.QR = true
-    if (medio === 'EFECTIVO') local.metodosDePago.Efectivo = true
-    if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
+    if (medio === 'EFECTIVO') local.metodosDePago.EFECTIVO = true
+    if (medio === 'TARJETA') local.metodosDePago.TARJETA = true
   })
 
   local.copiaOriginal()
@@ -167,8 +167,8 @@
       <h3>Métodos de pago</h3>
       <div class="metodos-de-pago">
         <Checkbox label="QR" bind:checked={local.metodosDePago.QR} />
-        <Checkbox label="Efectivo" bind:checked={local.metodosDePago.Efectivo} />
-        <Checkbox label="Transferencia" bind:checked={local.metodosDePago.Transferencia} />
+        <Checkbox label="Efectivo" bind:checked={local.metodosDePago.EFECTIVO} />
+        <Checkbox label="Tarjeta" bind:checked={local.metodosDePago.TARJETA} />
       </div>
     </div>
   </ProfileCard>

@@ -18,11 +18,11 @@ export class Local {
   porcentajeApp = $state<number>(0)
   porcentajeAutor = $state<number>(0)
   usuario = getUsuarioDelLocal
-  metodosDePago: Record<MetodoDePago, boolean> = {
+  metodosDePago = $state({
     QR: false,
-    Efectivo: false,
-    Transferencia: false
-  }
+    EFECTIVO: false,
+    TARJETA: false
+  })
 
   errors: ValidarMensaje[] = $state([])
 
@@ -44,8 +44,8 @@ export class Local {
     this.porcentajeApp !== this.original.porcentajeApp ||
     this.porcentajeAutor !== this.original.porcentajeAutor ||
     this.metodosDePago.QR !== this.original.metodosDePago.QR ||
-    this.metodosDePago.Efectivo !== this.original.metodosDePago.Efectivo ||
-    this.metodosDePago.Transferencia !== this.original.metodosDePago.Transferencia
+    this.metodosDePago.EFECTIVO !== this.original.metodosDePago.EFECTIVO ||
+    this.metodosDePago.TARJETA !== this.original.metodosDePago.TARJETA
     )
   }
   // Consultar por una mejor forma de hacer esto
@@ -142,8 +142,8 @@ export class Local {
 
     const mediosDePagoParaBackend: MetodoDePago[] = []
     if (this.metodosDePago.QR) mediosDePagoParaBackend.push('QR' as MetodoDePago)
-    if (this.metodosDePago.Efectivo) mediosDePagoParaBackend.push('EFECTIVO' as MetodoDePago)
-    if (this.metodosDePago.Transferencia) mediosDePagoParaBackend.push('TRANSFERENCIA_BANCARIA' as MetodoDePago)
+    if (this.metodosDePago.EFECTIVO) mediosDePagoParaBackend.push('EFECTIVO' as MetodoDePago)
+    if (this.metodosDePago.TARJETA) mediosDePagoParaBackend.push('TARJETA' as MetodoDePago)
 
     const localDTO: LocalDTO = {
       idLocal: this.idLocal ?? 1,

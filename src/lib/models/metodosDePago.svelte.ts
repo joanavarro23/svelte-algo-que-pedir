@@ -1,6 +1,9 @@
-export type MetodoDePago = 'Efectivo' | 'QR' | 'Transferencia'
+// export type MetodoDePago = 'Efectivo' | 'QR' | 'Transferencia'  DEPRECADO, no existe Transferencia en el Back
 
-//Enums del front de medios de pago
+//Tipo que matchea con el enum del Back
+export type MetodoDePago = 'EFECTIVO' | 'QR' | 'TARJETA'
+
+//Enums del front de medios de pago. Formato titlecase
 export enum MedioDePago {
   EFECTIVO = 'Efectivo',
   QR = 'Qr',
