@@ -1,22 +1,21 @@
 <script lang="ts">
   import './pedidos-actuales.css'
   import PedidoCard from '$lib/components/pedidos/pedido-card.svelte'
-  import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
-  import { EstadoDelPedido, type Pedido } from '$lib/types'
+  import { EstadoDelPedido, type Pedido } from '$lib/models/pedido.svelte'
   import { goto } from '$app/navigation'
 
-  const { data } = $props<{ data: { estado: EstadoDelPedido | null } }>()
+  const { data } = $props<{ data: { estado: EstadoDelPedido | null, pedidos: Pedido[] } }>()
 
   //Defino array de estados asociandolo con un String para su uso
   const estados: { estado: EstadoDelPedido; label: string }[] = [
-    { estado: EstadoDelPedido.Pendiente, label: 'Pendientes' },
-    { estado: EstadoDelPedido.Preparado, label: 'Preparados' },
-    { estado: EstadoDelPedido.Entregado, label: 'Entregados' },
-    { estado: EstadoDelPedido.Cancelado, label: 'Cancelados' }
+    { estado: EstadoDelPedido.PENDIENTE, label: 'Pendientes' },
+    { estado: EstadoDelPedido.PREPARADO, label: 'Preparados' },
+    { estado: EstadoDelPedido.ENTREGADO, label: 'Entregados' },
+    { estado: EstadoDelPedido.CANCELADO, label: 'Cancelados' }
   ]
 
   //Por default la vista arranca con el filtrado de los pedidos Pendientes
-  let estadoActivo = $state<EstadoDelPedido>(data.estado)
+  let estadoActivo = $state<EstadoDelPedido>(data.estado ?? EstadoDelPedido.PENDIENTE)
 
   //Mantiene el filtrado si volves atras
   $effect(() => {
@@ -25,7 +24,7 @@
 
   //Filtrado de los mocks de pedidos segun el estado activo
   const pedidosFiltrados = $derived<Pedido[]>(
-    PEDIDOS_MOCK.filter((pedido) => pedido.estado === estadoActivo)
+    (data.pedidos ?? []).filter((it : Pedido) => it.estadoPedido === estadoActivo)
   )
   
   //Cambia el estado activo por el seleccionado tras el onclick
