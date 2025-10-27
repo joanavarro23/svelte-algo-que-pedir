@@ -23,7 +23,7 @@
 
   //Agrego esta linea que llama a la fx medioPagoDesdeBack que recibe un string y lo matchea con el
   //valor correspondiente del Enum del fron. De esa manera renderiza bien el valor en texto y el icono
-  const medioDePagoEnum : MedioDePago = medioPagoDesdeBack(data.medioDePago)
+  const medioDePagoEnum: MedioDePago = medioPagoDesdeBack(data.medioDePago)
 
   const platosAgrupados = $derived(
     data.platos.reduce((acum: PlatoConCantidad[], plato) => {
@@ -57,7 +57,11 @@
     </div>
     <div class="cliente-info">
       <h2>Dirección de entrega</h2>
-      <DireccionSection direccion={data.cliente.direccion} />
+      <DireccionSection
+        direccion={data.direccion.direccion}
+        latitud={data.direccion.latitud}
+        longitud={data.direccion.longitud}
+      />
     </div>
   </section>
 
