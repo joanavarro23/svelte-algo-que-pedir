@@ -1,13 +1,5 @@
 import { MedioDePago, medioPagoDesdeBack } from '$lib/models/metodosDePago.svelte'
-
-
-//Enum del Front para los Estados del Pedido
-export enum EstadoDelPedido {
-  PENDIENTE = 'PENDIENTE',
-  PREPARADO = 'PREPARADO',
-  ENTREGADO = 'ENTREGADO',
-  CANCELADO = 'CANCELADO'
-}
+import { EstadoDelPedido } from '$lib/models/estadosPedido'
 
 //Tipado de DTOs del back para poder chequear que venga todo bien
 export type DireccionJSON = {
@@ -47,8 +39,8 @@ export class Pedido {
   //Fx para crear un Pedido del front a partir del JSON que vino del back 
   static fromJSON(pedidoJSON: PedidoJSON): Pedido {
     return Object.assign(new Pedido(), pedidoJSON, {
-      medioDePago: medioPagoDesdeBack(pedidoJSON.medioDePago),        //mapMedioPago(String(pedidoJSON.medioDePago)) no se lo paso como string a la vista
-      estadoPedido: pedidoJSON.estadoPedido  //mapEstado(String(pedidoJSON.estadoPedido)) 
+      medioDePago: medioPagoDesdeBack(pedidoJSON.medioDePago),        
+      estadoPedido: pedidoJSON.estadoPedido  
     })
   }
 

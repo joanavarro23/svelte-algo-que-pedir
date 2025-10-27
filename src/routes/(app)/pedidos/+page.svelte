@@ -1,18 +1,11 @@
 <script lang="ts">
   import './pedidos-actuales.css'
   import PedidoCard from '$lib/components/pedidos/pedido-card.svelte'
-  import { EstadoDelPedido, type Pedido } from '$lib/models/pedido.svelte'
+  import { Pedido } from '$lib/models/pedido.svelte'
+  import { EstadoDelPedido, estadosLabelBoton } from '$lib/models/estadosPedido'
   import { goto } from '$app/navigation'
 
-  const { data } = $props<{ data: { estado: EstadoDelPedido | null, pedidos: Pedido[] } }>()
-
-  //Defino array de estados asociandolo con un String para su uso
-  const estados: { estado: EstadoDelPedido; label: string }[] = [
-    { estado: EstadoDelPedido.PENDIENTE, label: 'Pendientes' },
-    { estado: EstadoDelPedido.PREPARADO, label: 'Preparados' },
-    { estado: EstadoDelPedido.ENTREGADO, label: 'Entregados' },
-    { estado: EstadoDelPedido.CANCELADO, label: 'Cancelados' }
-  ]
+  let { data } = $props<{ data: { estado: EstadoDelPedido, pedidos: Pedido[] } }>()
 
   //Por default la vista arranca con el filtrado de los pedidos Pendientes
   let estadoActivo = $state<EstadoDelPedido>(data.estado ?? EstadoDelPedido.PENDIENTE)
@@ -22,7 +15,7 @@
     if (data.estado) estadoActivo = data.estado
   })
 
-  //Filtrado de los mocks de pedidos segun el estado activo
+  //Filtrado de los pedidos segun el estado activo
   const pedidosFiltrados = $derived<Pedido[]>(
     (data.pedidos ?? []).filter((it : Pedido) => it.estadoPedido === estadoActivo)
   )
@@ -40,7 +33,7 @@
 
   <nav class="container-estados">
     <!-- Contenedor de los estados de los pedidos -->
-    {#each estados as { estado, label } (label)}
+    {#each estadosLabelBoton as { estado, label } (label)}
       <button
         type="button"
         class="link-estados {estadoActivo === estado ? 'estado-activo' : ''}"
