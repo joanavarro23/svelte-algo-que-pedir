@@ -3,25 +3,25 @@ import { ValidarMensaje } from '$lib/utils/validadorMensaje/ValidarMensaje'
 export class Ingrediente {
   id: number | null = null
   nombre = $state<string>('')
-  costo = $state<number>(0)
-  grupo: GrupoAlimenticio | string = $state('') 
-  origen: Origen = $state('vegetal')
+  costoMercado = $state<number>(0)
+  grupoAlimenticio: GrupoAlimenticio | string = $state('') 
+  origenAnimal: Origen = $state('vegetal')
   errors: ValidarMensaje[] = $state([])
 
   static fromJson(ingredienteJSON: IngredienteJSON): Ingrediente {
     return Object.assign(new Ingrediente(), ingredienteJSON, {
-      origen: ingredienteJSON.origenAnimal ? 'animal' : 'vegetal',
-      grupo: mapGrupo(ingredienteJSON.grupo) 
+      origenAnimal: ingredienteJSON.origenAnimal ? 'animal' : 'vegetal',
+      grupoAlimenticio: mapGrupo(ingredienteJSON.grupoAlimenticio) 
     })
   }
   
   get esAnimal() {
-    return this.origen === 'animal'
+    return this.origenAnimal === 'animal'
   }
 
   // Setter para que funcione correctamente el binding con el slider
   set esAnimal(value: boolean) {
-    this.origen = value ? 'animal' : 'vegetal'
+    this.origenAnimal = value ? 'animal' : 'vegetal'
   }
 
   tieneError(campo: string): boolean {
@@ -43,12 +43,12 @@ export class Ingrediente {
       this.agregarError('nombre', 'Debe ingresar un nombre para el ingrediente')
     }
 
-    if (this.costo == null || this.costo <= 0) {
-      this.agregarError('costo', 'Debe ingresar un costo válido y mayor a 0')
+    if (this.costoMercado == null || this.costoMercado <= 0) {
+      this.agregarError('costoMercado', 'Debe ingresar un costo válido y mayor a 0')
     }
 
-    if (this.grupo == null || this.grupo === '') {
-      this.agregarError('grupo', 'Debe seleccionar un grupo alimenticio')
+    if (this.grupoAlimenticio == null || this.grupoAlimenticio === '') {
+      this.agregarError('grupoAlimenticio', 'Debe seleccionar un grupo alimenticio')
     }
   }
 
@@ -60,8 +60,8 @@ export class Ingrediente {
     return {
       id: this.id ?? undefined,
       nombre: this.nombre,
-      costo: this.costo,
-      grupo: grupoToEnum(this.grupo),
+      costoMercado: this.costoMercado,
+      grupoAlimenticio: grupoToEnum(this.grupoAlimenticio),
       origenAnimal: this.esAnimal
     }
   }
@@ -81,14 +81,15 @@ export enum GrupoAlimenticio {
 export type IngredienteJSON = {
   id?: number,
   nombre: string,
-  costo: number,
-  grupo: string,
+  costoMercado: number,
+  grupoAlimenticio: string,
   origenAnimal: boolean
 }
 
 // función que mapea el enum del grupo alimenticio con el label
-function mapGrupo(grupo: string): GrupoAlimenticio {
-  return GrupoAlimenticio[grupo as keyof typeof GrupoAlimenticio]
+function mapGrupo(grupo: string): GrupoAlimenticio | '' {
+  const mappedValue = GrupoAlimenticio[grupo as keyof typeof GrupoAlimenticio]
+  return mappedValue ?? ''
 }
 
 // vuelve a mandar el label con el formato de enum
