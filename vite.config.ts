@@ -8,6 +8,9 @@ export default defineConfig({
     include: ['src/lib/tests/**/*.{test,spec}.{js,ts}'],
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./vitest-setup-client.ts']
+    setupFiles: ['./vitest-setup-client.ts'],
+    coverage: {
+      reportOnFailure: true,
+    }
   }
 })
