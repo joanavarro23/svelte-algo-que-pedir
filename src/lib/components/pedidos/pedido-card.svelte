@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { Pedido } from '$lib/types'
+  import type { Pedido } from '$lib/models/pedido.svelte'
   import UsuarioSection from '$lib/components/pedidos/usuario-section.svelte'
   import DireccionSection from './direccion-section.svelte'
 
-  import { mapaIconoPago } from '$lib/utils/medioPagoIcono'
+  import { iconoMedioPago } from '$lib/utils/medioPagoIcono'
   import { goto } from '$app/navigation'
 
   interface Props {
@@ -11,11 +11,6 @@
   }
 
   const { pedido }: Props = $props()
-
-  const pedidoHora = (fecha: Date): string => {
-    /* Extrae de un tipo Date la hh:mm */
-    return fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-  }
 
   // Redirige al detalle del pedido, toma el id del pedido para armar la ruta
   const redireccionADetalle = () => goto(`/detalle-pedido/${pedido.id}`)
@@ -27,19 +22,19 @@
     <p>Pedido #{pedido.id}</p>
 
     <!--Componente info de usuario-->
-    <UsuarioSection nombre={pedido.cliente} />
+    <UsuarioSection nombre={pedido.cliente.nombre} />
 
     <p class="info-pedido">
-      Hora: {pedidoHora(pedido.fecha)} | Articulos: {pedido.items} | Total: ${pedido.precio}
+      Hora: {pedido.hora} | Articulos: {pedido.items} | Total: ${pedido.precioTotal.toFixed(2)}
     </p>
   </header>
 
   <!--Componente info de direccion-->
-  <DireccionSection direccion={pedido.direccion} />
+  <DireccionSection direccion={pedido.direccion.direccion} />
 
   <footer class="pedido-footer">
     <div class="modo-pago">
-      <img src={mapaIconoPago[pedido.medioDePago]} alt="modo de pago" class="icono-pago" />
+      <img src={iconoMedioPago(pedido.medioDePago)} alt="modo de pago" class="icono-pago" />
       <p><b>Pago con {pedido.medioDePago}</b></p>
     </div>
   </footer>
