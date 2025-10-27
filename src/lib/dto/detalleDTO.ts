@@ -1,4 +1,4 @@
-import { type ClienteInfoJSON } from '$lib/dto/infoPedidoDTO'
+import { type DireccionJSON, type ClienteInfoJSON } from '$lib/dto/infoPedidoDTO'
 export interface PlatoDTO {
   id: number
   nombre: string
@@ -14,6 +14,7 @@ export interface PlatoConCantidad extends PlatoDTO {
 export interface PedidoDetalleDTO {
   id: number
   cliente: ClienteInfoJSON
+  direccion: DireccionJSON
   platos: PlatoDTO[]
   subtotal: number
   comisionDelivery: number
