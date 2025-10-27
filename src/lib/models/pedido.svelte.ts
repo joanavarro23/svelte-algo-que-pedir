@@ -1,18 +1,6 @@
 import { MedioDePago, medioPagoDesdeBack } from '$lib/models/metodosDePago.svelte'
 import { EstadoDelPedido } from '$lib/models/estadosPedido'
-
-//Tipado de DTOs del back para poder chequear que venga todo bien
-export type DireccionJSON = {
-  calle: string,
-  altura: number,
-  latitud: number,
-  longitud: number
-}
-
-export type ClienteInfoJSON = {
-  nombre: string,
-  username: string
-}
+import { type DireccionJSON, type ClienteInfoJSON } from '$lib/dto/infoPedidoDTO'
 
 export type PedidoJSON = {
     id: number,
