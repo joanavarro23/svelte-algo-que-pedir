@@ -1,6 +1,6 @@
 import { Ingrediente } from '$lib/models/ingrediente.svelte'
 import { ingredientesService } from '$lib/services/ingredienteService'
-import { error } from '@sveltejs/kit'
+import { redirect } from '@sveltejs/kit'
 
 export async function load({ params }) {
   try {
@@ -9,10 +9,9 @@ export async function load({ params }) {
       new Ingrediente() :
       await ingredientesService.getIngredienteById(+params.id)
     return { ingrediente, nuevoIngrediente }
-  } catch (err) {
-    if (err instanceof Error) {
-      throw error(404, err.message)
-    }
-    throw error(500, 'Error al cargar el pedido')
+  } catch (error: unknown) {
+    // eslint-disable-next-line no-console
+    console.error('Error al cargar el ignrediente', error)
+    throw redirect(302, '/ingrediente')
   }
 }
