@@ -17,7 +17,7 @@
   }
   
   let { data } = $props()
-  const { nuevoIngrediente, ingrediente } = data
+  const { ingrediente, nuevoIngrediente, readOnly } = data
 
   const actualizar = async () => {
     try {
@@ -38,8 +38,9 @@
     }
   }
 
-  const titulo = $derived(nuevoIngrediente ? 'Nuevo Ingrediente' : 'Editar Ingrediente')
-  
+  const titulo = $derived(readOnly ? 'Detalle Ingrediente' : (nuevoIngrediente ? 'Nuevo Ingrediente' : 'Editar Ingrediente')) // eslint-disable-line
+  const botonGuardar = $derived(nuevoIngrediente ? 'Crear ingrediente' : 'Guardar cambios')
+
   const opcionesGrupo: { value: GrupoAlimenticio; label: string }[] = [
     { value: GrupoAlimenticio.CEREALES_Y_TUBERCULOS, label: 'Cereales y tubérculos' },
     { value: GrupoAlimenticio.AZUCARES_Y_DULCES, label: 'Azúcares y dulces' },
@@ -52,7 +53,7 @@
 
 <main class="vista-edicion-ingrediente main-vista">
   <!-- Contenedor de toda la vista -->
-  <h1 class="titulo-edicion">{titulo}</h1>
+  <h1 class="titulo-edicion" data-testid='titulo'>{titulo}</h1>
   <section class="container-edicion contenedor-general">
     <!-- Contenedor de los campos de edicion ingrediente -->
     <article class="item-input-edicion">
@@ -63,7 +64,9 @@
           id="nombre-ingrediente"
           placeholder="Ingresa el nombre del ingrediente..."
           required={true}
+          data-testid="nombre"
           bind:value={ingrediente.nombre}
+          disabled={readOnly}
         />
         <Validador elemento={ingrediente} atributo="nombre" />
 
@@ -73,24 +76,30 @@
           id="costo-ingrediente"
           placeholder="Ingresa su costo..."
           required={true}
-          bind:value={ingrediente.costo}
+          data-testid="costo"
+          bind:value={ingrediente.costoMercado}
+          disabled={readOnly}
         />
-        <Validador elemento={ingrediente} atributo="costo" />
+        <Validador elemento={ingrediente} atributo="costoMercado" />
 
         <Textarea
           nombre_label="Grupo Alimenticio"
           id="grupo-alimenticio"
           select={true}
           options={[{ value: '', label: 'Selecciona una opción' }, ...opcionesGrupo]}
-          bind:value={ingrediente.grupo}
+          data-testid="grupo"
+          bind:value={ingrediente.grupoAlimenticio}
+          disabled={readOnly}
         />
-        <Validador elemento={ingrediente} atributo="grupo" />
+        <Validador elemento={ingrediente} atributo="grupoAlimenticio" />
 
         <article class="origen-toggle">
           <Switch
             id="origen-toggle"
             titulo="Origen animal"
+            data-testid="origen"
             bind:checked={ingrediente.esAnimal}
+            disabled={readOnly}
           />
         </article>
       </form>
@@ -98,9 +107,11 @@
   </section>
   <div class="container-botones-edicion">
     <!-- Contenedor de los botones de guardar y descartar cambios -->
-    <Boton data-testid="btnGuardar" type="button" class="boton-primario boton-guardar" onclick={actualizar}
-    >Guardar cambios</Boton>
-    <Boton data-testid="btnDescartar" class="boton-secundario boton-descartar"
-      >Descartar cambios</Boton>
+    {#if !readOnly}
+      <Boton data-testid="btnGuardar" type="button" class="boton-primario boton-guardar" onclick={actualizar}
+      >{botonGuardar}</Boton>
+      <Boton data-testid="btnDescartar" class="boton-secundario boton-descartar" onclick={volver}
+        >Descartar cambios</Boton>
+    {/if}
   </div>
 </main>

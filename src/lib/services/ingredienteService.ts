@@ -3,9 +3,6 @@ import { getAxiosData } from '$lib/services/common'
 import { REST_SERVER_URL } from '$lib/services/configuration'
 import axios from 'axios'
 
-/* CONVERTIR EN CLASE SI SE QUIERE POR EJEMPLO:
-Traer todos los platos, o ciertos platos 
-*/
 class IngredienteService {
   async todosLosIngredientes() {
     const queryIngredientes = () => axios.get<IngredienteJSON[]>(`${REST_SERVER_URL}/ingrediente`)
@@ -14,8 +11,8 @@ class IngredienteService {
 
   async getIngredienteById(id: number) {
     const queryById = () => axios.get<IngredienteJSON>(`${REST_SERVER_URL}/ingrediente/${id}`)
-    const ingredienteJson = await getAxiosData(queryById)
-    return Ingrediente.fromJson(ingredienteJson)
+    const ingredienteJSON = await getAxiosData(queryById)
+    return Ingrediente.fromJson(ingredienteJSON)
   }
 
   async actualizarIngrediente(ingrediente: Ingrediente) {

@@ -9,7 +9,7 @@
 
   const {
     nombre,
-    username = 'smiller2005',
+    username,
     avatar = iconoUsuario
   }: Props = $props()
 </script>
@@ -18,7 +18,6 @@
   <img src={avatar} alt="Icono de usuario" class="icono-usuario-pedido" />
   <div class="nombre-usuario">
     <h4>{nombre}</h4>
-    <p><b>usuario: </b>{username}</p>
-    <!-- FALTA PENSAR USUARIO -->
+    <p><b>usuario: </b> {username}</p>
   </div>
 </section>

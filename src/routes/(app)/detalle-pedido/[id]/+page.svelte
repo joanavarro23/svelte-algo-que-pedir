@@ -1,13 +1,12 @@
 <script lang="ts">
   import './detalle-pedido.css'
-  import { mapaIconoPago } from '$lib/utils/medioPagoIcono'
+  import { iconoMedioPago } from '$lib/utils/medioPagoIcono'
+  import type { PedidoDetalleDTO } from '$lib/dto/detalleDTO'
 
-  import { PEDIDOS_MOCK } from '$lib/data/mocks/pedidosMock'
-  import { PLATOS_MOCK } from '$lib/data/mocks/platosMock'
-  import { Plato } from '$lib/models/plato.svelte'
-  import { EstadoDelPedido, MedioDePago } from '$lib/types/pedido'
-  //DEPRECATED PERO ESTOY HACIENDO EL SERVICE
-  import { page } from '$app/stores'
+  import { MedioDePago, medioPagoDesdeBack } from '$lib/models/metodosDePago.svelte'
+  import { EstadoDelPedido } from '$lib/models/estadosPedido'
+
+  import type { PlatoConCantidad } from '$lib/dto/detalleDTO'
 
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
   import Boton from '$lib/components/generales/boton/boton.svelte'
@@ -16,44 +15,26 @@
   import UsuarioSection from '$lib/components/pedidos/usuario-section.svelte'
   import DireccionSection from '$lib/components/pedidos/direccion-section.svelte'
 
-  const pedidoId = Number($page.params.id)
-  const pedido = PEDIDOS_MOCK.find((p) => p.id === pedidoId)
-
-  // Generar items del pedido con datos de platos mockeados (que quilombo, cambiar por service lo antes posible para poder usar ID bien)
-  type PlatoConCantidad = Plato & { cantidad: number }
-  let itemsPedido: PlatoConCantidad[] = []
-
-  if (pedido) {
-    itemsPedido = Array.from({ length: pedido.items }, (_, i) => {
-      const plato = PLATOS_MOCK[i % PLATOS_MOCK.length]
-      return Object.assign(plato, { cantidad: 1 }) as PlatoConCantidad
-    })
+  interface Props {
+    data: PedidoDetalleDTO
   }
 
-  const subtotal = itemsPedido.reduce((monto, plato) => monto + plato.valorBase * plato.cantidad, 0)
-  const comisionDelivery = subtotal * 0.02
-  const incrementoPago = subtotal * 0.055
-  const total = subtotal + comisionDelivery + incrementoPago
+  let { data }: Props = $props()
 
-  const pedidoDetalle = {
-    id: pedido?.id.toString(),
-    estado: pedido?.estado ?? EstadoDelPedido.Pendiente,
-    cliente: {
-      nombre: pedido?.cliente,
-      usuario: pedido?.cliente.toLowerCase().replace(' ', '')
-    },
-    direccion: {
-      calle: pedido?.direccion
-    },
-    items: itemsPedido,
-    pago: {
-      subtotal,
-      comisionDelivery,
-      incrementoPago,
-      total,
-      metodo: pedido?.medioDePago ?? MedioDePago.Efectivo
-    }
-  }
+  //Agrego esta linea que llama a la fx medioPagoDesdeBack que recibe un string y lo matchea con el
+  //valor correspondiente del Enum del fron. De esa manera renderiza bien el valor en texto y el icono
+  const medioDePagoEnum: MedioDePago = medioPagoDesdeBack(data.medioDePago)
+
+  const platosAgrupados = $derived(
+    data.platos.reduce((acum: PlatoConCantidad[], plato) => {
+      const existingPlato = acum.find((p) => p.id === plato.id)
+      if (existingPlato) {
+        existingPlato.cantidad++
+        return acum
+      }
+      return [...acum, { ...plato, cantidad: 1 }]
+    }, [])
+  )
 
   function volver() {
     history.back()
@@ -62,23 +43,25 @@
 
 <main class="main-vista">
   <section class="contenedor-estado">
-    <h1>Pedido #{pedidoDetalle.id}</h1>
+    <h1>Pedido #{data.id}</h1>
     <div>
       <h2>Estado del Pedido</h2>
-      <EstadoBadge estado={pedidoDetalle.estado} />
+      <EstadoBadge estado={data.estado as EstadoDelPedido} />
     </div>
   </section>
+
   <section class="contenedor-general contenedor-info">
     <div class="cliente-info">
       <h2>Cliente</h2>
-      <UsuarioSection
-        nombre={pedidoDetalle.cliente.nombre}
-        username={pedidoDetalle.cliente.usuario}
-      />
+      <UsuarioSection nombre={data.cliente.nombre} username={data.cliente.username} />
     </div>
     <div class="cliente-info">
       <h2>Dirección de entrega</h2>
-      <DireccionSection direccion={pedidoDetalle.direccion.calle} />
+      <DireccionSection
+        direccion={data.direccion.direccion}
+        latitud={data.direccion.latitud}
+        longitud={data.direccion.longitud}
+      />
     </div>
   </section>
 
@@ -91,8 +74,8 @@
         <th>Precio</th>
       {/snippet}
       {#snippet datosFilas()}
-        {#each pedidoDetalle.items as item (item.id)}
-          <PedidoRow {item} />
+        {#each platosAgrupados as plato (plato.id)}
+          <PedidoRow item={plato} />
         {/each}
       {/snippet}
     </Tabla>
@@ -103,18 +86,20 @@
       <h3>Pago</h3>
       <dl class="tabla-pago">
         <dt>Subtotal</dt>
-        <dd>${pedidoDetalle.pago.subtotal.toFixed(2)}</dd>
+        <dd>${data.subtotal.toFixed(2)}</dd>
         <dt>Comisión del delivery</dt>
-        <dd>${pedidoDetalle.pago.comisionDelivery.toFixed(2)}</dd>
-        <dt>Incremento por tipo de pago</dt>
-        <dd>${pedidoDetalle.pago.incrementoPago.toFixed(2)}</dd>
-        <dt>Total</dt>
-        <dd>${pedidoDetalle.pago.total.toFixed(2)}</dd>
+        <dd>${data.comisionDelivery.toFixed(2)}</dd>
+        {#if data.incrementoPago > 0}
+          <dt>Incremento por tipo de pago</dt>
+          <dd>${data.incrementoPago.toFixed(2)}</dd>
+        {/if}
+        <dt class="total-label">Total</dt>
+        <dd class="total-amount">${data.total.toFixed(2)}</dd>
       </dl>
       <h3>Método de Pago</h3>
       <div class="metodo-pago">
-        <img src={mapaIconoPago[pedidoDetalle.pago.metodo]} class="icono" alt="Metodo de pago" />
-        <p>Pago con {pedidoDetalle.pago.metodo}</p>
+        <img src={iconoMedioPago(medioDePagoEnum)} class="icono" alt="Método de pago" />
+        <p>Pago con {medioDePagoEnum}</p>
       </div>
     </div>
   </section>

@@ -1,26 +1,24 @@
 <script lang="ts">
+  import { REST_SERVER_URL } from '$lib/services/configuration'
   import './pedidoRow.css'
-  import type { Plato } from '$lib/types'
-
-  type PedidoItem = Plato & {
-    cantidad: number
+  import type { PlatoConCantidad } from '$lib/dto/detalleDTO'
+  interface Props {
+    item: PlatoConCantidad
   }
 
-  type PedidoRowProps = {
-    item: PedidoItem
-  }
+  let { item }: Props = $props()
 
-  let { item }: PedidoRowProps = $props()
+  const imagenCompleta = `${REST_SERVER_URL}/${item.imagenUrl}`
 </script>
 
 <tr>
   <td class="plato-detalle">
-    <img src={item.imagen} class="icono" alt={item.nombre} />
+    <img src={imagenCompleta} class="icono" alt={item.nombre} />
     <div>
       <span class="texto-principal">{item.nombre}</span><br />
       <span class="texto-secundario">{item.descripcion}</span>
     </div>
   </td>
   <td>{item.cantidad}</td>
-  <td>${Number(item.valorBase).toFixed(2)}</td>
+  <td>${item.precio.toFixed(2)}</td>
 </tr>

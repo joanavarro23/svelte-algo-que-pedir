@@ -50,6 +50,7 @@ export class Plato {
       valorBase: this.valorBase,
       esDeAutor: this.esDeAutor,
       esNuevo: this.esNuevo,
+      estaEnPromo: this.estaEnPromocion,
       porcentajeDescuento: this.porcentajeDescuento,
       costoProduccion: this.costoProduccion,
       listaDeIngredientes: this.ingredientes.map(i =>  i.toJSON())
@@ -93,6 +94,9 @@ export class Plato {
     if (this.estaEnPromocion && (this.porcentajeDescuento <= 0 || this.porcentajeDescuento >= 100)) {
       this.agregarError('porcentajeDescuento', 'El porcentaje debe estar entre 1% y 100%')
     }
+    if (this.estaEnPromocion && (this.porcentajeDescuento <= 0 || this.porcentajeDescuento >= 100)) {
+      this.agregarError('porcentajeDescuento', 'El porcentaje debe estar entre 1% y 100%')
+    }
   }
   
   invalid(): boolean {
@@ -108,6 +112,7 @@ export type PlatoJSON = {
   valorBase: number,
   esDeAutor: boolean,
   esNuevo: boolean,
+  estaEnPromo: boolean,
   porcentajeDescuento: number,
   costoProduccion: number,
   listaDeIngredientes: IngredienteJSON[]
