@@ -7,7 +7,7 @@ import { detalleService } from '$lib/services/detalleService'
 export async function load({ params }: { params: { id: string } }): Promise<PedidoDetalleDTO> {
   try {
     const pedidoId = Number(params.id)
-    if (isNaN(pedidoId)) {
+    if (isNaN(pedidoId) || pedidoId <= 0) {
       throw error(400, 'ID de pedido inválido')
     }
     const response = await detalleService.obtenerDetallePedido(pedidoId)
@@ -21,8 +21,7 @@ export async function load({ params }: { params: { id: string } }): Promise<Pedi
       if (err.response?.status === 400) {
         throw error(400, 'Solicitud inválida')
       }
-      throw error(500, 'Error al cargar el pedido')
     }
-    throw error(500, 'Error inesperado')
+    throw err
   }
 }
