@@ -1,6 +1,4 @@
 import type { LocalDTO } from '$lib/dto/localDTO'
-import { showToast } from '$lib/utils/toasts/toasts'
-import { updateLocal } from '$lib/services/localService'
 import type { MetodoDePago } from './metodosDePago.svelte'
 import { getUsuarioDelLocal } from '$lib/utils/currentSession'
 import { esEntero, positivo, vacio } from '$lib/utils/validaciones'
@@ -17,12 +15,71 @@ export class Local {
   longitud = $state<number>(0)
   porcentajeApp = $state<number>(0)
   porcentajeAutor = $state<number>(0)
-  usuario = getUsuarioDelLocal
-  metodosDePago = $state({
+  usuario = getUsuarioDelLocal()
+  metodosDePago = $state<Record<MetodoDePago, boolean>>({
     QR: false,
-    EFECTIVO: false,
-    TARJETA: false
+    Efectivo: false,
+    Transferencia: false
   })
+
+  // Setters - puntualmente para que funcione bien la reactividad al momento de descartar cambios
+  // y que la actualización sea hecha por page.svelte y no por la clase Local
+  setNombre(nombre: string) {
+    this.nombreLocal = nombre
+  }
+
+  setUrlImagen(url: string) {
+    this.urlImagen = url
+  }
+  setDireccion(direccion: string) {
+    this.direccion = direccion
+  }
+
+  setAltura(valor: number) {
+    this.altura = valor
+  }
+
+  setLatitud(valor: number) {
+    this.latitud = valor
+  }
+
+  setLongitud(valor: number) {
+    this.longitud = valor
+  }
+
+  setPorcentajeApp(valor: number) {
+    this.porcentajeApp = valor
+  }
+
+  setPorcentajeAutor(valor: number) {
+    this.porcentajeAutor = valor
+  }
+
+  setMetodoDePago(medio: MetodoDePago, activo: boolean) {
+    this.metodosDePago = { ...this.metodosDePago, [medio]: activo }
+  }
+
+  prepararDTO(): LocalDTO {
+    const medios: MetodoDePago[] = []
+
+    if (this.metodosDePago.QR) medios.push('QR' as MetodoDePago)
+    if (this.metodosDePago.Efectivo) medios.push('EFECTIVO' as MetodoDePago)
+    if (this.metodosDePago.Transferencia) medios.push('TRANSFERENCIA_BANCARIA' as MetodoDePago)
+
+    return {
+      idLocal: this.idLocal ?? 1,
+      nombre: this.nombreLocal,
+      urlImagenLocal: this.urlImagen,
+      direccion: this.direccion,
+      altura: this.altura,
+      latitud: this.latitud,
+      longitud: this.longitud,
+      porcentajeSobreCadaPlato: this.porcentajeApp,
+      porcentajeRegaliasDeAutor: this.porcentajeAutor,
+      usuario: this.usuario!,
+      mediosDePago: medios
+    }
+  }
 
   errors: ValidarMensaje[] = $state([])
 
@@ -30,51 +87,6 @@ export class Local {
   //por si el usuario descarta los cambios que realiza
   private original?: Local
 
-
-  hayCambios(): boolean {
-    if (!this.original) return false
-
-    return (
-      this.nombreLocal !== this.original.nombreLocal ||
-    this.urlImagen !== this.original.urlImagen ||
-    this.direccion !== this.original.direccion ||
-    this.altura !== this.original.altura ||
-    this.latitud !== this.original.latitud ||
-    this.longitud !== this.original.longitud ||
-    this.porcentajeApp !== this.original.porcentajeApp ||
-    this.porcentajeAutor !== this.original.porcentajeAutor ||
-    this.metodosDePago.QR !== this.original.metodosDePago.QR ||
-    this.metodosDePago.EFECTIVO !== this.original.metodosDePago.EFECTIVO ||
-    this.metodosDePago.TARJETA !== this.original.metodosDePago.TARJETA
-    )
-  }
-  // Consultar por una mejor forma de hacer esto
-  copiaOriginal() {
-    this.original = new Local()
-    this.original.nombreLocal = this.nombreLocal
-    this.original.urlImagen = this.urlImagen
-    this.original.direccion = this.direccion
-    this.original.altura = this.altura
-    this.original.latitud = this.latitud
-    this.original.longitud = this.longitud
-    this.original.porcentajeApp = this.porcentajeApp
-    this.original.porcentajeAutor = this.porcentajeAutor
-    this.original.metodosDePago = { ...this.metodosDePago }
-  }
-
-  restaurarValores() {
-    if (!this.original) return
-
-    this.nombreLocal = this.original.nombreLocal
-    this.urlImagen = this.original.urlImagen
-    this.direccion = this.original.direccion
-    this.altura = this.original.altura
-    this.latitud = this.original.latitud
-    this.longitud = this.original.longitud
-    this.porcentajeApp = this.original.porcentajeApp
-    this.porcentajeAutor = this.original.porcentajeAutor
-    this.metodosDePago = { ...this.original.metodosDePago }
-  }
 
   tieneError(campo: string): boolean {
     return this.errors.some((_) => _.campo === campo)
@@ -90,6 +102,7 @@ export class Local {
       .map((_) => _.mensaje)
       .join('. ')
   }
+
 
   // Validaciones
   validarLocal() {
@@ -135,39 +148,4 @@ export class Local {
       this.agregarError('porcentajeAutor', 'Debe ingresar un valor entre 0 y 100')
     }
   }
-
-  async guardar() {
-    this.validarLocal()
-    if (this.errors.length > 0) return
-
-    const mediosDePagoParaBackend: MetodoDePago[] = []
-    if (this.metodosDePago.QR) mediosDePagoParaBackend.push('QR' as MetodoDePago)
-    if (this.metodosDePago.EFECTIVO) mediosDePagoParaBackend.push('EFECTIVO' as MetodoDePago)
-    if (this.metodosDePago.TARJETA) mediosDePagoParaBackend.push('TARJETA' as MetodoDePago)
-
-    const localDTO: LocalDTO = {
-      idLocal: this.idLocal ?? 1,
-      nombre: this.nombreLocal,
-      urlImagenLocal: this.urlImagen,
-      direccion: this.direccion,
-      altura: this.altura,
-      latitud: this.latitud,
-      longitud: this.longitud,
-      porcentajeSobreCadaPlato: this.porcentajeApp,
-      porcentajeRegaliasDeAutor: this.porcentajeAutor,
-      usuario: this.usuario() ?? '',
-      mediosDePago: mediosDePagoParaBackend
-    }
-
-    try {
-      await updateLocal(localDTO)
-      showToast('La información del local fue guardada correctamente', 'success', 3000)
-      this.copiaOriginal()
-    } catch (error) {
-      showToast('Error al guardar la información del local: ' + error, 'error', 10000)
-      //console.error(error)
-    }
-  }
-
-  
 }
