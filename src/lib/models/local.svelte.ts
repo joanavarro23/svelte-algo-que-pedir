@@ -93,16 +93,16 @@ export class Local {
 
     return (
       this.nombreLocal !== this.original.nombreLocal ||
-    this.urlImagen !== this.original.urlImagen ||
-    this.direccion !== this.original.direccion ||
-    this.altura !== this.original.altura ||
-    this.latitud !== this.original.latitud ||
-    this.longitud !== this.original.longitud ||
-    this.porcentajeApp !== this.original.porcentajeApp ||
-    this.porcentajeAutor !== this.original.porcentajeAutor ||
-    this.metodosDePago.QR !== this.original.metodosDePago.QR ||
-    this.metodosDePago.Efectivo !== this.original.metodosDePago.Efectivo ||
-    this.metodosDePago.Transferencia !== this.original.metodosDePago.Transferencia
+      this.urlImagen !== this.original.urlImagen ||
+      this.direccion !== this.original.direccion ||
+      this.altura !== this.original.altura ||
+      this.latitud !== this.original.latitud ||
+      this.longitud !== this.original.longitud ||
+      this.porcentajeApp !== this.original.porcentajeApp ||
+      this.porcentajeAutor !== this.original.porcentajeAutor ||
+      this.metodosDePago.QR !== this.original.metodosDePago.QR ||
+      this.metodosDePago.Efectivo !== this.original.metodosDePago.Efectivo ||
+      this.metodosDePago.Transferencia !== this.original.metodosDePago.Transferencia
     )
   }
 
