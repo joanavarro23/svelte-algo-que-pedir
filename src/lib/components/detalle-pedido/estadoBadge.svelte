@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { EstadoDelPedido } from '$lib/types/pedido'
+  import { EstadoDelPedido } from '$lib/models/estadosPedido'
   import './estadoBadge.css'
 
   type EstadoBadgeProps = {
@@ -9,13 +9,13 @@
   let { estado }: EstadoBadgeProps = $props()
 
   const estadoColores: Record<EstadoDelPedido, string> = {
-    [EstadoDelPedido.Pendiente]: '#ff9800', // Orange
-    [EstadoDelPedido.Preparado]: '#2196f3', // Blue
-    [EstadoDelPedido.Entregado]: '#4caf50', // Green
-    [EstadoDelPedido.Cancelado]: '#f44336' // Red
+    [EstadoDelPedido.PENDIENTE]: '#ff9800', // Orange
+    [EstadoDelPedido.PREPARADO]: '#2196f3', // Blue
+    [EstadoDelPedido.ENTREGADO]: '#4caf50', // Green
+    [EstadoDelPedido.CANCELADO]: '#f44336' // Red
   }
 
-  const colorBadge = estadoColores[estado] || estadoColores[EstadoDelPedido.Pendiente]
+  const colorBadge = estadoColores[estado] || estadoColores[EstadoDelPedido.PENDIENTE]
 </script>
 
 <span class="estado-badge" style="background-color: {colorBadge}">

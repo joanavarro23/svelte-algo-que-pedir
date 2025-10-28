@@ -1,8 +1,11 @@
 <script lang="ts">
   import './detalle-pedido.css'
-  import { mapaIconoPago } from '$lib/utils/medioPagoIcono'
+  import { iconoMedioPago } from '$lib/utils/medioPagoIcono'
   import type { PedidoDetalleDTO } from '$lib/dto/detalleDTO'
-  import { EstadoDelPedido, MedioDePago } from '$lib/types/pedido'
+
+  import { MedioDePago, medioPagoDesdeBack } from '$lib/models/metodosDePago.svelte'
+  import { EstadoDelPedido } from '$lib/models/estadosPedido'
+
   import type { PlatoConCantidad } from '$lib/dto/detalleDTO'
 
   import Tabla from '$lib/components/generales/tabla/Tabla.svelte'
@@ -17,6 +20,10 @@
   }
 
   let { data }: Props = $props()
+
+  //Agrego esta linea que llama a la fx medioPagoDesdeBack que recibe un string y lo matchea con el
+  //valor correspondiente del Enum del fron. De esa manera renderiza bien el valor en texto y el icono
+  const medioDePagoEnum: MedioDePago = medioPagoDesdeBack(data.medioDePago)
 
   const platosAgrupados = $derived(
     data.platos.reduce((acum: PlatoConCantidad[], plato) => {
@@ -50,7 +57,11 @@
     </div>
     <div class="cliente-info">
       <h2>Dirección de entrega</h2>
-      <DireccionSection direccion={data.cliente.direccion} />
+      <DireccionSection
+        direccion={data.direccion.direccion}
+        latitud={data.direccion.latitud}
+        longitud={data.direccion.longitud}
+      />
     </div>
   </section>
 
@@ -87,12 +98,8 @@
       </dl>
       <h3>Método de Pago</h3>
       <div class="metodo-pago">
-        <img
-          src={mapaIconoPago[data.medioDePago as MedioDePago]}
-          class="icono"
-          alt="Método de pago"
-        />
-        <p>Pago con {data.medioDePago}</p>
+        <img src={iconoMedioPago(medioDePagoEnum)} class="icono" alt="Método de pago" />
+        <p>Pago con {medioDePagoEnum}</p>
       </div>
     </div>
   </section>
