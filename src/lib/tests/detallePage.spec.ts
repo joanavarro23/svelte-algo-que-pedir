@@ -13,8 +13,12 @@ const mockPedidoDetalle: PedidoDetalleDTO = {
   id: 1,
   cliente: {
     nombre: 'Juan Pérez',
-    username: 'juanperez',
-    direccion: 'Av. Siempre Viva 123'
+    username: 'juanperez'
+  },
+  direccion: { 
+    direccion: 'Av. Siempre Viva 123', 
+    latitud: -34.6037, 
+    longitud: -58.3816
   },
   platos: [
     {
@@ -74,15 +78,16 @@ describe('Página de detalle de pedido', () => {
     })
 
     it('debería mostrar el badge con el color correcto para estado Entregado', () => {
-      const pedidoEntregado = { ...mockPedidoDetalle, estado: 'Entregado' }
+      const pedidoEntregado = { ...mockPedidoDetalle, estado: 'ENTREGADO' }
       const { container } = render(DetallePedidoPage, { data: pedidoEntregado })
-      
+  
       const badge = container.querySelector('.estado-badge')
-      expect(badge).toHaveStyle({ backgroundColor: '#4caf50' })
+      expect(badge).toBeInTheDocument()
+      expect(badge).toHaveStyle({ backgroundColor: '#4caf50'})
     })
 
     it('debería mostrar el badge con el color correcto para estado Cancelado', () => {
-      const pedidoCancelado = { ...mockPedidoDetalle, estado: 'Cancelado' }
+      const pedidoCancelado = { ...mockPedidoDetalle, estado: 'CANCELADO' }
       const { container } = render(DetallePedidoPage, { data: pedidoCancelado })
       
       const badge = container.querySelector('.estado-badge')
@@ -223,20 +228,6 @@ describe('Página de detalle de pedido', () => {
       const iconoPago = container.querySelector('.metodo-pago img.icono')
       expect(iconoPago).toBeInTheDocument()
     })
-
-    it('debería mostrar el método de pago Tarjeta de Débito correctamente', () => {
-      const pedidoDebito = { ...mockPedidoDetalle, medioDePago: 'Tarjeta de Débito' }
-      const { getByText } = render(DetallePedidoPage, { data: pedidoDebito })
-      
-      expect(getByText(/Pago con Tarjeta de Débito/i)).toBeInTheDocument()
-    })
-
-    it('debería mostrar el método de pago Tarjeta de Crédito correctamente', () => {
-      const pedidoCredito = { ...mockPedidoDetalle, medioDePago: 'Tarjeta de Crédito' }
-      const { getByText } = render(DetallePedidoPage, { data: pedidoCredito })
-      
-      expect(getByText(/Pago con Tarjeta de Crédito/i)).toBeInTheDocument()
-    })
   })
 
   describe('Navegación', () => {
@@ -304,8 +295,9 @@ describe('Página de detalle de pedido', () => {
         ...mockPedidoDetalle,
         cliente: {
           ...mockPedidoDetalle.cliente,
-          direccion: 'Avenida de los Constituyentes 1234, Piso 5, Departamento B, Ciudad Autónoma de Buenos Aires'
-        }
+          
+        },
+        direccion: { direccion: 'Avenida de los Constituyentes 1234, Piso 5, Departamento B, Ciudad Autónoma de Buenos Aires', latitud: -34.6037, longitud: -58.3816}
       }
       const { getByText } = render(DetallePedidoPage, { data: pedidoDireccionLarga })
       

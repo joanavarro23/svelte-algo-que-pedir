@@ -3,22 +3,22 @@ import { waitFor } from '@testing-library/svelte'
 import { load } from '../../routes/(app)/detalle-pedido/[id]/+page'
 import type { PedidoDetalleDTO } from '$lib/dto/detalleDTO'
 
-vi.mock('axios')
-vi.mock('$lib/services/detalleService', () => ({
-  detalleService: {
-    obtenerDetallePedido: vi.fn()
-  }
-}))
 
-import { detalleService } from '$lib/services/detalleService'
+import axios from 'axios'
+
+vi.mock('axios')
 
 const mockPedidoDetalle: PedidoDetalleDTO = {
   id: 1,
   cliente: {
     nombre: 'Juan Pérez',
     username: 'juanperez',
-    direccion: 'Av. Siempre Viva 123'
+    
   },
+  direccion: { 
+    direccion: 'Av. Siempre Viva 123', 
+    latitud: -34.6037, 
+    longitud: -58.3816},
   platos: [
     {
       id: 1,
@@ -50,7 +50,7 @@ describe('+page.ts load - detalle pedido', () => {
 
   describe('Carga exitosa de pedido', () => {
     it('devuelve los detalles del pedido cuando el service responde OK', async () => {
-      vi.mocked(detalleService.obtenerDetallePedido).mockResolvedValue(mockPedidoDetalle)
+      vi.mocked(axios.get).mockResolvedValue({ data: mockPedidoDetalle, status: 200 })
       
       const resultado = await load({ 
         params: { id: '1' } 
@@ -64,7 +64,7 @@ describe('+page.ts load - detalle pedido', () => {
     })
 
     it('devuelve los platos del pedido correctamente', async () => {
-      vi.mocked(detalleService.obtenerDetallePedido).mockResolvedValue(mockPedidoDetalle)
+      vi.mocked(axios.get).mockResolvedValue({ data: mockPedidoDetalle, status: 200 })
       
       const resultado = await load({ 
         params: { id: '1' } 
@@ -78,7 +78,7 @@ describe('+page.ts load - detalle pedido', () => {
     })
 
     it('devuelve los datos del cliente correctamente', async () => {
-      vi.mocked(detalleService.obtenerDetallePedido).mockResolvedValue(mockPedidoDetalle)
+      vi.mocked(axios.get).mockResolvedValue({ data: mockPedidoDetalle, status: 200 })
       
       const resultado = await load({ 
         params: { id: '1' } 
@@ -87,12 +87,12 @@ describe('+page.ts load - detalle pedido', () => {
       await waitFor(() => {
         expect(resultado.cliente.nombre).toBe('Juan Pérez')
         expect(resultado.cliente.username).toBe('juanperez')
-        expect(resultado.cliente.direccion).toBe('Av. Siempre Viva 123')
+        expect(resultado.direccion.direccion).toBe('Av. Siempre Viva 123')
       })
     })
 
     it('devuelve los totales correctamente', async () => {
-      vi.mocked(detalleService.obtenerDetallePedido).mockResolvedValue(mockPedidoDetalle)
+      vi.mocked(axios.get).mockResolvedValue({ data: mockPedidoDetalle, status: 200 })
       
       const resultado = await load({ 
         params: { id: '1' } 
@@ -107,7 +107,7 @@ describe('+page.ts load - detalle pedido', () => {
     })
 
     it('devuelve el estado y medio de pago correctamente', async () => {
-      vi.mocked(detalleService.obtenerDetallePedido).mockResolvedValue(mockPedidoDetalle)
+      vi.mocked(axios.get).mockResolvedValue({ data: mockPedidoDetalle, status: 200 })
       
       const resultado = await load({ 
         params: { id: '1' } 
@@ -148,6 +148,42 @@ describe('+page.ts load - detalle pedido', () => {
       try {
         await load({ 
           params: { id: '0' } 
+        } as Parameters<typeof load>[0])
+        expect.fail('Debería haber lanzado un error')
+      } catch (error: unknown) {
+        expect((error as { status: number }).status).toBe(400)
+      }
+    })
+  })
+
+  describe('Manejo de errores', () => {
+    it('lanza error 404 cuando el pedido no existe', async () => {
+      const axiosError = {
+        response: { status: 404 }
+      }
+      vi.mocked(axios.isAxiosError).mockReturnValue(true)
+      vi.mocked(axios.get).mockRejectedValue(axiosError)
+      
+      try {
+        await load({ 
+          params: { id: '999' } 
+        } as Parameters<typeof load>[0])
+        expect.fail('Debería haber lanzado un error')
+      } catch (error: unknown) {
+        expect((error as { status: number }).status).toBe(404)
+      }
+    })
+
+    it('lanza error 400 para solicitud inválida', async () => {
+      const axiosError = {
+        response: { status: 400 }
+      }
+      vi.mocked(axios.isAxiosError).mockReturnValue(true)
+      vi.mocked(axios.get).mockRejectedValue(axiosError)
+      
+      try {
+        await load({ 
+          params: { id: '1' } 
         } as Parameters<typeof load>[0])
         expect.fail('Debería haber lanzado un error')
       } catch (error: unknown) {

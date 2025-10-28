@@ -9,8 +9,12 @@ const mockPedidoDetalle: PedidoDetalleDTO = {
   id: 1,
   cliente: {
     nombre: 'Juan Pérez',
-    username: 'juanperez',
-    direccion: 'Av. Siempre Viva 123'
+    username: 'juanperez'
+  },
+  direccion: { 
+    direccion: 'Av. Siempre Viva 123', 
+    latitud: -34.6037, 
+    longitud: -58.3816
   },
   platos: [
     {
@@ -87,7 +91,7 @@ describe('DetalleService', () => {
 
       expect(resultado.cliente.nombre).toBe('Juan Pérez')
       expect(resultado.cliente.username).toBe('juanperez')
-      expect(resultado.cliente.direccion).toBe('Av. Siempre Viva 123')
+      expect(resultado.direccion.direccion).toBe('Av. Siempre Viva 123')
     })
 
     it('debería retornar los platos del pedido', async () => {
