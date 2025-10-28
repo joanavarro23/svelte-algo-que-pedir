@@ -10,10 +10,14 @@ vi.mock('axios')
 vi.mock('$lib/utils/errorHandler', () => ({
   showError: vi.fn()
 }))
+vi.mock('$app/navigation', () => ({
+  goto: vi.fn()
+}))
 
 import axios from 'axios'
 import { showError } from '$lib/utils/errorHandler'
 import { REST_SERVER_URL } from '$lib/services/configuration'
+import { goto } from '$app/navigation'
 
 describe('Crear un nuevo ingrediente', () => {
   it('Al abrir la página debe mostrar un ingrediente vacío y las accinoes', async () => {
@@ -95,6 +99,7 @@ describe('Crear un nuevo ingrediente', () => {
       grupoAlimenticio: 'FRUTAS_Y_VERDURAS',
       origenAnimal: true
     })
+    expect(goto).toHaveBeenCalledWith('/ingrediente')
   })
 })
 
@@ -187,6 +192,7 @@ describe('Actualizar un nuevo ingrediente', () => {
       grupoAlimenticio: 'AZUCARES_Y_DULCES',
       origenAnimal: false
     })
+    expect(goto).toHaveBeenCalledWith('/ingrediente')
   })
 
   it('si el ingrediente falla al actualizar debe mostrar un mensaje de error', async() => {
