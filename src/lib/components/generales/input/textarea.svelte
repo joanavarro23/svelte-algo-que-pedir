@@ -9,7 +9,8 @@
     textarea?: boolean,
     select?: boolean,
     options?: {value: string, label: string}[] //array de opciones para el dropdown
-    required?: boolean
+    required?: boolean,
+    disabled?: boolean
   }
   
   let { nombre_label, id, value=$bindable(''), required=true, textarea=false, select=false, options=[], ...rest }: PropsTextarea = $props()
