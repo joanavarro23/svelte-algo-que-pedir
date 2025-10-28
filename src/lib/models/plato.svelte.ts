@@ -94,6 +94,9 @@ export class Plato {
     if (this.estaEnPromocion && (this.porcentajeDescuento <= 0 || this.porcentajeDescuento >= 100)) {
       this.agregarError('porcentajeDescuento', 'El porcentaje debe estar entre 1% y 100%')
     }
+    if (this.estaEnPromocion && (this.porcentajeDescuento <= 0 || this.porcentajeDescuento >= 100)) {
+      this.agregarError('porcentajeDescuento', 'El porcentaje debe estar entre 1% y 100%')
+    }
   }
   
   invalid(): boolean {

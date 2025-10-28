@@ -46,7 +46,7 @@
   {#each INGREDIENTES_MOCK as ingrediente (ingrediente.id)}
     <IngredienteRow {ingrediente}>
       {#snippet columnasExtra()}
-        <td>{ingrediente.costo}</td>
+        <td>{ingrediente.costoMercado}</td>
       {/snippet}
       {#snippet acciones()}
         <div class="iconos-acciones">

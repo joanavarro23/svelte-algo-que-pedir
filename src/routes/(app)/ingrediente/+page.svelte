@@ -21,7 +21,7 @@
     await invalidate('ingredientes:list')
   }
 
-  const editar = (ingrediente: Ingrediente) => { goto (`/editar-ingrediente/${ingrediente.id}`)}
+  const editar = (ingrediente: Ingrediente, readOnly: boolean = false) => { goto (`/editar-ingrediente/${ingrediente.id}?readOnly=${readOnly}`)}
   const crearIngrediente = () => { goto ('/editar-ingrediente/nuevo')}
   
   const eliminar = async (ingrediente: Ingrediente) => {
@@ -49,12 +49,11 @@
   {#each ingredientes as ingrediente (ingrediente.id)}
     <IngredienteRow {ingrediente} data-testid={'ingrediente-'+ingrediente.id}>
       {#snippet columnasExtra()}
-        <td data-testid={'costo-'+ingrediente.id}>${ingrediente.costo.toFixed(2)}</td>
+        <td data-testid={'costo-'+ingrediente.id}>${ingrediente.costoMercado.toFixed(2)}</td>
       {/snippet}
       {#snippet acciones()}
         <div class="iconos-acciones">
-          <!-- AGREGAR ACCION PARA EL ICONO BOTON EYE -->
-          <IconoBoton data-testid={'ver-'+ingrediente.id}>
+          <IconoBoton onclick={() => editar(ingrediente, true)} data-testid={'ver-'+ingrediente.id}>
             <img src={eye} alt="ojo" class="icono-ojo">
           </IconoBoton>
           <IconoBoton onclick={() => editar(ingrediente)} data-testid={'editar-'+ingrediente.id}>

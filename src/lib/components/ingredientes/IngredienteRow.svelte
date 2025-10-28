@@ -18,8 +18,8 @@ type IngredienteRowProps = SvelteHTMLElements['tr'] & {
 
 let { ingrediente, columnasExtra, acciones, eliminar = () => {}, ...trAtributos }: IngredienteRowProps = $props()
 
-const mapaIconos = {vegetal: palta, animal: cow }
-const iconoOrigen = mapaIconos[ingrediente.origen]
+const mapaIconos = {'vegetal': palta, 'animal': cow}
+const iconoOrigen = mapaIconos[ingrediente.origenAnimal]
 </script>
 
 <tr {...trAtributos}>
@@ -29,7 +29,7 @@ const iconoOrigen = mapaIconos[ingrediente.origen]
     {@render columnasExtra()}
   {/if}
   
-  <td class="celda-alimenticio" data-testid={'grupo-'+ingrediente.id}>{ingrediente.grupo}</td>
+  <td class="celda-alimenticio" data-testid={'grupo-'+ingrediente.id}>{ingrediente.grupoAlimenticio}</td>
 
   <td class="icono-origen" data-testid={'origen-'+ingrediente.id}><img src={iconoOrigen} alt="palta"></td>
 

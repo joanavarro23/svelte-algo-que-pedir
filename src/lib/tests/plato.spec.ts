@@ -72,8 +72,8 @@ describe('Plato', () => {
         porcentajeDescuento: 0,
         costoProduccion: 300,
         listaDeIngredientes: [
-          { id: 1, nombre: 'Tomate', grupo: 'Verduras', origenAnimal: false, costo: 50 },
-          { id: 2, nombre: 'Mozzarella', grupo: 'Lácteos', origenAnimal: true, costo: 150 }
+          { id: 1, nombre: 'Tomate', grupoAlimenticio: 'Verduras', origenAnimal: false, costoMercado: 50 },
+          { id: 2, nombre: 'Mozzarella', grupoAlimenticio: 'Lácteos', origenAnimal: true, costoMercado: 150 }
         ]
       }
 
@@ -149,8 +149,8 @@ describe('Plato', () => {
         porcentajeDescuento: 0,
         costoProduccion: 0,
         listaDeIngredientes: [
-          { id: 1, nombre: 'Tomate', grupo: 'FRUTAS_Y_VERDURAS', origenAnimal: false, costo: 0.5 },
-          { id: 2, nombre: 'Pechuga de pollo', grupo: 'PROTEINAS', origenAnimal: true, costo: 3 }
+          { id: 1, nombre: 'Tomate', grupoAlimenticio: 'FRUTAS_Y_VERDURAS', origenAnimal: false, costoMercado: 0.5 },
+          { id: 2, nombre: 'Pechuga de pollo', grupoAlimenticio: 'PROTEINAS', origenAnimal: true, costoMercado: 3 }
         ]
       })
     })

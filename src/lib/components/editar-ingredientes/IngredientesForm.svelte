@@ -18,9 +18,9 @@
   // TODO: no funciona con el Switch porque no está declarado como bindeable.
 
   let nombre = ''
-  let costo = 0
+  let costoMercado = 0
   let grupoAlimenticio = ''
-  let origen: 'animal' | 'vegetal' = 'vegetal'
+  let origenAnimal = false
 
   const grupoOptions = [
     { value: GrupoAlimenticio.CEREALES_Y_TUBERCULOS, label: 'Cereales y tubérculos' },
@@ -35,9 +35,9 @@
     const ingrediente = INGREDIENTES_MOCK.find(i => i.id === +ingredienteId)
     if (ingrediente) {
       nombre = ingrediente.nombre
-      costo = +ingrediente.costo
-      grupoAlimenticio = ingrediente.grupo
-      origen = ingrediente.origen
+      costoMercado = +ingrediente.costoMercado
+      grupoAlimenticio = ingrediente.grupoAlimenticio
+      origenAnimal = ingrediente.origenAnimal
     }
   }
 
@@ -74,7 +74,7 @@
         <Input
           nombre_label="Costo*"
           type="number"
-          bind:value={costo}
+          bind:value={costoMercado}
           id="costo-ingrediente"
           placeholder="Ingresa su costo..."
           required={true}
@@ -88,7 +88,7 @@
           options={grupoOptions}
         />
 
-        <Switch id="origen-toggle" bind:checked={origen} titulo="Origen animal" />
+        <Switch id="origen-toggle" bind:checked={origenAnimal} titulo="Origen animal" />
 
       </form>
       <div class="button">
