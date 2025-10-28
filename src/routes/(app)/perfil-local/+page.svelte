@@ -50,9 +50,33 @@
 
   let localCopiaOriginal = hacerCopiaDelLocal()
 
+  function hayCambios(): boolean {
+    if (
+      local.nombreLocal !== localCopiaOriginal.nombreLocal ||
+      local.urlImagen !== localCopiaOriginal.urlImagen ||
+      local.direccion !== localCopiaOriginal.direccion ||
+      local.altura !== localCopiaOriginal.altura ||
+      local.latitud !== localCopiaOriginal.latitud ||
+      local.longitud !== localCopiaOriginal.longitud ||
+      local.porcentajeApp !== localCopiaOriginal.porcentajeApp ||
+      local.porcentajeAutor !== localCopiaOriginal.porcentajeAutor
+    ) {
+      return true
+    }
+
+    for (const medio in local.metodosDePago) {
+      const clave = medio as keyof typeof local.metodosDePago
+      if (local.metodosDePago[clave] !== localCopiaOriginal.metodosDePago[clave]) {
+        return true
+      }
+    }
+
+    return false
+  }
+
   function descartarCambios() {
-    if (local.hayCambios()) {
-      //local.restaurarValores()
+    if (hayCambios()) {
+      //En caso de haber cambios, restauramos los valores originales
       local.setNombre(localCopiaOriginal.nombreLocal)
       local.setUrlImagen(localCopiaOriginal.urlImagen)
       local.setDireccion(localCopiaOriginal.direccion)
