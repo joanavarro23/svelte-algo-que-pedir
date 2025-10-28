@@ -16,12 +16,48 @@ export class Local {
   porcentajeApp = $state<number>(0)
   porcentajeAutor = $state<number>(0)
   usuario = getUsuarioDelLocal()
-  metodosDePago: Record<MetodoDePago, boolean> = {
+  metodosDePago = $state<Record<MetodoDePago, boolean>>({
     QR: false,
     Efectivo: false,
     Transferencia: false
+  })
+
+  // Setters - puntualmente para que funcione bien la reactividad al momento de descartar cambios
+  // y que la actualización sea hecha por page.svelte y no por la clase Local
+  setNombre(nombre: string) {
+    this.nombreLocal = nombre
   }
 
+  setUrlImagen(url: string) {
+    this.urlImagen = url
+  }
+  setDireccion(direccion: string) {
+    this.direccion = direccion
+  }
+
+  setAltura(valor: number) {
+    this.altura = valor
+  }
+
+  setLatitud(valor: number) {
+    this.latitud = valor
+  }
+
+  setLongitud(valor: number) {
+    this.longitud = valor
+  }
+
+  setPorcentajeApp(valor: number) {
+    this.porcentajeApp = valor
+  }
+
+  setPorcentajeAutor(valor: number) {
+    this.porcentajeAutor = valor
+  }
+
+  setMetodoDePago(medio: MetodoDePago, activo: boolean) {
+    this.metodosDePago = { ...this.metodosDePago, [medio]: activo }
+  }
 
   prepararDTO(): LocalDTO {
     const medios: MetodoDePago[] = []
@@ -68,33 +104,6 @@ export class Local {
     this.metodosDePago.Efectivo !== this.original.metodosDePago.Efectivo ||
     this.metodosDePago.Transferencia !== this.original.metodosDePago.Transferencia
     )
-  }
-  // Consultar por una mejor forma de hacer esto
-  copiaOriginal() {
-    this.original = new Local()
-    this.original.nombreLocal = this.nombreLocal
-    this.original.urlImagen = this.urlImagen
-    this.original.direccion = this.direccion
-    this.original.altura = this.altura
-    this.original.latitud = this.latitud
-    this.original.longitud = this.longitud
-    this.original.porcentajeApp = this.porcentajeApp
-    this.original.porcentajeAutor = this.porcentajeAutor
-    this.original.metodosDePago = { ...this.metodosDePago }
-  }
-
-  restaurarValores() {
-    if (!this.original) return
-
-    this.nombreLocal = this.original.nombreLocal
-    this.urlImagen = this.original.urlImagen
-    this.direccion = this.original.direccion
-    this.altura = this.original.altura
-    this.latitud = this.original.latitud
-    this.longitud = this.original.longitud
-    this.porcentajeApp = this.original.porcentajeApp
-    this.porcentajeAutor = this.original.porcentajeAutor
-    this.metodosDePago = { ...this.original.metodosDePago }
   }
 
   tieneError(campo: string): boolean {

@@ -9,12 +9,14 @@
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
   import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
+  import type { MetodoDePago } from '$lib/models/metodosDePago.svelte.js'
 
   // Traemos la data que viene del backend y la asignamos al local que vamos a renderizar
   let { data } = $props()
 
   let local = new Local()
 
+  local.idLocal = data.localDataBackend.idLocal
   local.nombreLocal = data.localDataBackend.nombre
   local.urlImagen = data.localDataBackend.urlImagenLocal
   local.direccion = data.localDataBackend.direccion
@@ -32,11 +34,37 @@
 
   // Hacemos una copia de los datos del local, para volver a mostrarlos
   // en caso de que el usuario realice cambios y luego los descarte
-  local.copiaOriginal()
+  function hacerCopiaDelLocal() {
+    return structuredClone({
+      nombreLocal: local.nombreLocal,
+      urlImagen: local.urlImagen,
+      direccion: local.direccion,
+      altura: local.altura,
+      latitud: local.latitud,
+      longitud: local.longitud,
+      porcentajeApp: local.porcentajeApp,
+      porcentajeAutor: local.porcentajeAutor,
+      metodosDePago: { ...local.metodosDePago }
+    })
+  }
+
+  let localCopiaOriginal = hacerCopiaDelLocal()
 
   function descartarCambios() {
     if (local.hayCambios()) {
-      local.restaurarValores()
+      //local.restaurarValores()
+      local.setNombre(localCopiaOriginal.nombreLocal)
+      local.setUrlImagen(localCopiaOriginal.urlImagen)
+      local.setDireccion(localCopiaOriginal.direccion)
+      local.setAltura(localCopiaOriginal.altura)
+      local.setLatitud(localCopiaOriginal.latitud)
+      local.setLongitud(localCopiaOriginal.longitud)
+      local.setPorcentajeApp(localCopiaOriginal.porcentajeApp)
+      local.setPorcentajeAutor(localCopiaOriginal.porcentajeAutor)
+      for (const medio in localCopiaOriginal.metodosDePago) {
+        const clave = medio as keyof typeof local.metodosDePago
+        local.setMetodoDePago(clave as MetodoDePago, localCopiaOriginal.metodosDePago[clave])
+      }
       showToast('Cambios descartados', 'warning', 3000)
     } else {
       showToast('No hay cambios para descartar', 'warning', 3000)
@@ -54,7 +82,7 @@
 
     try {
       await updateLocal(local.prepararDTO())
-      local.copiaOriginal() // actualizo snapshot
+      localCopiaOriginal = hacerCopiaDelLocal()
       showToast('Cambios guardados', 'success', 3000)
     } catch (err) {
       showError('Error al guardar', err)
