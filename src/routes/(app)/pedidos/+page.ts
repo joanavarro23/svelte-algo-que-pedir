@@ -29,7 +29,6 @@ export const load : PageLoad = async ( { url, depends } ) => {
 
   try{
     const pedidos = await pedidoService.pedidoByEstado(estadoBack)        //Llama al service usando el valor normalizado a minus (en el back le hace lowercase asi que lo toma asi)
-
     return { estado: estadoFront, pedidos }
     
   } catch (err : unknown) {
