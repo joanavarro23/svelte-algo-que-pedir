@@ -4,13 +4,14 @@
   import { showToast } from '$lib/utils/toasts/toasts'
   import { Local } from '$lib/models/local.svelte.js'
   import { showError } from '$lib/utils/errorHandler.js'
+  import { updateLocal } from '$lib/services/localService.js'
   import PropsButton from '$lib/components/generales/boton/boton.svelte'
   import Checkbox from '$lib/components/generales/checkbox/checkbox.svelte'
   import ProfileCard from '$lib/components/perfil-local/profile-card.svelte'
   import ValidadorMensaje from '$lib/utils/validadorMensaje/validadorMensaje.svelte'
 
+  // Traemos la data que viene del backend y la asignamos al local que vamos a renderizar
   let { data } = $props()
-  // console.log(data.localDataBackend.nombre)
 
   let local = new Local()
 
@@ -29,6 +30,8 @@
     if (medio === 'TRANSFERENCIA_BANCARIA') local.metodosDePago.Transferencia = true
   })
 
+  // Hacemos una copia de los datos del local, para volver a mostrarlos
+  // en caso de que el usuario realice cambios y luego los descarte
   local.copiaOriginal()
 
   function descartarCambios() {
@@ -40,12 +43,21 @@
     }
   }
 
-  const guardarCambios = async () => {
-    await local.guardar()
+  // Actualizamos los cambios realizados por el usuario en el backend
+  //
+  async function guardarCambios() {
+    local.validarLocal()
+    if (local.errors.length > 0) {
+      showToast(local.errors.map((e) => e.mensaje).join('. '), 'error', 5000)
+      return
+    }
+
     try {
-      await local.guardar()
+      await updateLocal(local.prepararDTO())
+      local.copiaOriginal() // actualizo snapshot
+      showToast('Cambios guardados', 'success', 3000)
     } catch (err) {
-      showError('Error al guardar los cambios del local', err)
+      showError('Error al guardar', err)
     }
   }
 </script>

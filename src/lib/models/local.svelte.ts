@@ -1,6 +1,4 @@
 import type { LocalDTO } from '$lib/dto/localDTO'
-import { showToast } from '$lib/utils/toasts/toasts'
-import { updateLocal } from '$lib/services/localService'
 import type { MetodoDePago } from './metodosDePago.svelte'
 import { getUsuarioDelLocal } from '$lib/utils/currentSession'
 import { esEntero, positivo, vacio } from '$lib/utils/validaciones'
@@ -17,11 +15,34 @@ export class Local {
   longitud = $state<number>(0)
   porcentajeApp = $state<number>(0)
   porcentajeAutor = $state<number>(0)
-  usuario = getUsuarioDelLocal
+  usuario = getUsuarioDelLocal()
   metodosDePago: Record<MetodoDePago, boolean> = {
     QR: false,
     Efectivo: false,
     Transferencia: false
+  }
+
+
+  prepararDTO(): LocalDTO {
+    const medios: MetodoDePago[] = []
+
+    if (this.metodosDePago.QR) medios.push('QR' as MetodoDePago)
+    if (this.metodosDePago.Efectivo) medios.push('EFECTIVO' as MetodoDePago)
+    if (this.metodosDePago.Transferencia) medios.push('TRANSFERENCIA_BANCARIA' as MetodoDePago)
+
+    return {
+      idLocal: this.idLocal ?? 1,
+      nombre: this.nombreLocal,
+      urlImagenLocal: this.urlImagen,
+      direccion: this.direccion,
+      altura: this.altura,
+      latitud: this.latitud,
+      longitud: this.longitud,
+      porcentajeSobreCadaPlato: this.porcentajeApp,
+      porcentajeRegaliasDeAutor: this.porcentajeAutor,
+      usuario: this.usuario!,
+      mediosDePago: medios
+    }
   }
 
   errors: ValidarMensaje[] = $state([])
@@ -91,6 +112,7 @@ export class Local {
       .join('. ')
   }
 
+
   // Validaciones
   validarLocal() {
     
@@ -135,39 +157,4 @@ export class Local {
       this.agregarError('porcentajeAutor', 'Debe ingresar un valor entre 0 y 100')
     }
   }
-
-  async guardar() {
-    this.validarLocal()
-    if (this.errors.length > 0) return
-
-    const mediosDePagoParaBackend: MetodoDePago[] = []
-    if (this.metodosDePago.QR) mediosDePagoParaBackend.push('QR' as MetodoDePago)
-    if (this.metodosDePago.Efectivo) mediosDePagoParaBackend.push('EFECTIVO' as MetodoDePago)
-    if (this.metodosDePago.Transferencia) mediosDePagoParaBackend.push('TRANSFERENCIA_BANCARIA' as MetodoDePago)
-
-    const localDTO: LocalDTO = {
-      idLocal: this.idLocal ?? 1,
-      nombre: this.nombreLocal,
-      urlImagenLocal: this.urlImagen,
-      direccion: this.direccion,
-      altura: this.altura,
-      latitud: this.latitud,
-      longitud: this.longitud,
-      porcentajeSobreCadaPlato: this.porcentajeApp,
-      porcentajeRegaliasDeAutor: this.porcentajeAutor,
-      usuario: this.usuario() ?? '',
-      mediosDePago: mediosDePagoParaBackend
-    }
-
-    try {
-      await updateLocal(localDTO)
-      showToast('La información del local fue guardada correctamente', 'success', 3000)
-      this.copiaOriginal()
-    } catch (error) {
-      showToast('Error al guardar la información del local: ' + error, 'error', 10000)
-      //console.error(error)
-    }
-  }
-
-  
 }

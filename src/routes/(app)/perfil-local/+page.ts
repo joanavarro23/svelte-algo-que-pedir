@@ -1,9 +1,9 @@
 import { redirect } from '@sveltejs/kit'
 import { getLocal } from '$lib/services/localService'
-import { getIdDelLocal, hayUsuarioLogueado } from '$lib/utils/currentSession'
+import { getIdDelLocal } from '$lib/utils/currentSession'
 
 export async function load() {
-  if(hayUsuarioLogueado()) {
+  if(1 == 1) { //hayUsuarioLogueado()
     const idLocal = getIdDelLocal()
     // eslint-disable-next-line
     const localDataBackend = await getLocal(idLocal!)
