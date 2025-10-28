@@ -9,3 +9,8 @@ export type ClienteInfoJSON = {
   nombre: string,
   username: string
 }
+
+export type PedidoUpdateDTO = {
+  id: number,
+  nuevoEstado: string
+}
