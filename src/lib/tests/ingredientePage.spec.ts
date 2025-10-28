@@ -96,7 +96,15 @@ describe('Pagina de ingredientes', () => {
 
     const botonEditar = await waitFor(() => getByTestId('editar-2'))
     await userEvent.click(botonEditar)
-    expect(vi.mocked(goto)).toHaveBeenCalledWith('/editar-ingrediente/2')
+    expect(vi.mocked(goto)).toHaveBeenCalledWith('/editar-ingrediente/2?readOnly=false')
+  })
+
+  it('Click en ver navega a editar-ingrediente/:id con readOnly=true', async () => {
+    const { getByTestId } = render(IngredientePage, defaultData)
+
+    const botonVer = await waitFor(() => getByTestId('ver-2'))
+    await userEvent.click(botonVer)
+    expect(vi.mocked(goto)).toHaveBeenCalledWith('/editar-ingrediente/2?readOnly=true')
   })
 
   it('Eliminar el ingrediente elimina, invalida, ingrediente deja de estar en la lista y muestra toast', async () => {

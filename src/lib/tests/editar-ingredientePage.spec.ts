@@ -22,6 +22,7 @@ describe('Crear un nuevo ingrediente', () => {
         data: {
           ingrediente: new Ingrediente(),
           nuevoIngrediente: true,
+          readOnly: false,
         },
       }
     })
@@ -49,6 +50,7 @@ describe('Crear un nuevo ingrediente', () => {
         data: {
           ingrediente,
           nuevoIngrediente: true,
+          readOnly: false,
         },
       }
     })
@@ -67,6 +69,7 @@ describe('Crear un nuevo ingrediente', () => {
         data: {
           ingrediente: new Ingrediente(),
           nuevoIngrediente: true,
+          readOnly: false,
         },
       }
     })
@@ -112,6 +115,7 @@ describe('Actualizar un nuevo ingrediente', () => {
         data: {
           ingrediente,
           nuevoIngrediente: false,
+          readOnly: false,
         },
       }
     })
@@ -137,6 +141,7 @@ describe('Actualizar un nuevo ingrediente', () => {
         data: {
           ingrediente,
           nuevoIngrediente: false,
+          readOnly: false,
         },
       }
     })
@@ -161,6 +166,7 @@ describe('Actualizar un nuevo ingrediente', () => {
         data: {
           ingrediente,
           nuevoIngrediente: false,
+          readOnly: false,
         },
       }
     })
@@ -173,6 +179,7 @@ describe('Actualizar un nuevo ingrediente', () => {
 
     const botonGuardar = getByTestId('btnGuardar')
     await userEvent.click(botonGuardar)
+
     expect(axios.put).toHaveBeenCalledWith(`${REST_SERVER_URL}/ingrediente/2`, {
       id: 2,
       nombre: 'Nombre Cambiado',
@@ -195,6 +202,7 @@ describe('Actualizar un nuevo ingrediente', () => {
         data: {
           ingrediente,
           nuevoIngrediente: false,
+          readOnly: false,
         },
       }
     })
@@ -211,5 +219,62 @@ describe('Actualizar un nuevo ingrediente', () => {
     await waitFor(() => {
       expect(showError).toHaveBeenCalledWith('Error al actualizar el ingrediente', expect.anything())
     })
+  })
+})
+
+describe('Visualización de ingrediente en modo lectura', () => {
+  let ingrediente: Ingrediente
+
+  beforeEach(() => {
+    ingrediente = new Ingrediente()
+    ingrediente.nombre = 'Tomate'
+    ingrediente.costoMercado = 0.5
+    ingrediente.grupoAlimenticio = 'Frutas y verduras'
+    ingrediente.origenAnimal = 'vegetal'
+  })
+
+  it('Al abrir la página en modo lectura debe mostrar el título Detalle Ingrediente', async () => {
+    const { getByTestId } = render(Page, {
+      props: {
+        data: {
+          ingrediente,
+          nuevoIngrediente: false,
+          readOnly: true,
+        },
+      }
+    })
+    expect(getByTestId('titulo').textContent).toBe('Detalle Ingrediente')
+  })
+
+  it('Los campos de entrada deben estar deshabilitados', async () => {
+    const { getByTestId } = render(Page, {
+      props: {
+        data: {
+          ingrediente,
+          nuevoIngrediente: false,
+          readOnly: true,
+        },
+      }
+    })
+
+    expect(getByTestId('nombre')).toBeDisabled()
+    expect(getByTestId('costo')).toBeDisabled()
+    expect(getByTestId('grupo')).toBeDisabled()
+    expect(getByTestId('origen')).toBeDisabled()
+  })
+
+  it('Los botones de acción no deben estar presentes', async () => {
+    const { queryByTestId } = render(Page, {
+      props: {
+        data: {
+          ingrediente,
+          nuevoIngrediente: false,
+          readOnly: true,
+        },
+      }
+    })
+
+    expect(queryByTestId('btnGuardar')).not.toBeInTheDocument()
+    expect(queryByTestId('btnDescartar')).not.toBeInTheDocument()
   })
 })
