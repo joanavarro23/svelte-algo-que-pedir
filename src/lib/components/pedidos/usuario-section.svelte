@@ -9,7 +9,7 @@
 
   const {
     nombre,
-    username = 'smiller2005',
+    username,
     avatar = iconoUsuario
   }: Props = $props()
 </script>

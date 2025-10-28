@@ -22,7 +22,7 @@
     <p>Pedido #{pedido.id}</p>
 
     <!--Componente info de usuario-->
-    <UsuarioSection nombre={pedido.cliente.nombre} />
+    <UsuarioSection nombre={pedido.cliente.nombre} username={pedido.cliente.username} />
 
     <p class="info-pedido">
       Hora: {pedido.hora} | Articulos: {pedido.items} | Total: ${pedido.precioTotal.toFixed(2)}
