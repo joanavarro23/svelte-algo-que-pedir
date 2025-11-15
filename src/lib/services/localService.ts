@@ -2,7 +2,7 @@ import axios from 'axios'
 import type { LocalDTO } from '$lib/dto/localDTO'
 
 const API_URL = 'http://localhost:9000'
-const PATH_LOCAL = '/local'
+const PATH_LOCAL = '/localAdmin'
 
 export async function getLocal(id: number): Promise<LocalDTO> {
   const response = await axios.get<LocalDTO>(`${API_URL}${PATH_LOCAL}/${id}`)
