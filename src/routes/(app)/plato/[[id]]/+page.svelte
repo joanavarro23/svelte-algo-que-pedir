@@ -17,6 +17,7 @@
   import IngredienteRow from '$lib/components/ingredientes/IngredienteRow.svelte'
   import IconoBoton from '$lib/components/generales/icono boton/iconoBoton.svelte'
   import Modal from '$lib/utils/modales/Modal.svelte'
+  import ModalConfirm from '$lib/components/modal-confirmar/ModalConfirm.svelte'
   import ModalIngredientes from '$lib/utils/modales/ListaIngredientes/ModalIngredientes.svelte'
   import { showToast } from '$lib/utils/toasts/toasts'
   import { showError } from '$lib/utils/errorHandler'
@@ -28,6 +29,7 @@
   // Estado local para deshabilitar botones
   let guardando = $state(false)
   let modalAbierto = $state(false)
+  let mostrarModal = $state(false)  
 
   // Effect y variable para manejar archivo
   let imagenSeleccionada = $state(plato.imagenUrl.split('/').pop())
@@ -52,6 +54,18 @@
     ingredientes.forEach((ing) => plato.agregarIngrediente(ing))
     showToast(`${ingredientes.length} ingrediente(s) agregado(s)`, 'success')
     modalAbierto = false
+  }
+
+  const eliminarPlato = async () => {
+    try {
+      await platosService.eliminarPlato(plato.id!)
+      showToast('Plato eliminado con éxito', 'success')
+      setTimeout(() => goto('/menu'), 300)
+    } catch (error) {
+      showError('Error al eliminar el plato', error)
+    } finally {
+      mostrarModal = false
+    }
   }
   // Funciones para los botones
   const volver = () => {
@@ -176,7 +190,7 @@
 
   <div style="display: flex; justify-content: space-between; align-items: center">
     <div style="display: flex; justify-content: flex-start; gap: 0.7rem">
-      <Boton data-testid="btnBorrar" type="submit">Borrar Plato</Boton>
+      <Boton data-testid="btnBorrar" type="submit" onclick={() => mostrarModal = true}>Borrar Plato</Boton>
       <Boton data-testid="btnVolver" tipo="secundario" onclick={volver}>Volver al menú</Boton>
     </div>
     <div class="botones-juntos">
@@ -197,3 +211,5 @@
 <Modal open={modalAbierto} onClose={() => modalAbierto = false}>
   <ModalIngredientes ingredientesActuales={plato.ingredientes} onAgregar={agregarIngredientes} />
 </Modal>
+
+<ModalConfirm bind:mostrarModal mensaje="¿Estas seguro de que deseas eliminar este plato?" onConfirm={eliminarPlato} />
