@@ -175,7 +175,10 @@
   </section>
 
   <div style="display: flex; justify-content: space-between; align-items: center">
-    <Boton data-testid="btnBorrar" type="submit">Borrar Plato</Boton>
+    <div style="display: flex; justify-content: flex-start; gap: 0.7rem">
+      <Boton data-testid="btnBorrar" type="submit">Borrar Plato</Boton>
+      <Boton data-testid="btnVolver" tipo="secundario" onclick={volver}>Volver al menú</Boton>
+    </div>
     <div class="botones-juntos">
       <Boton data-testid="btnGuardar" type="submit" onclick={guardar} disabled={guardando}>
         {guardando ? 'Guardando...' : txtBtnPrimario}</Boton
