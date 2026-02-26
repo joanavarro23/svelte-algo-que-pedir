@@ -3,26 +3,38 @@
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+    text-decoration: none;
     position: relative; 
+    overflow: hidden;
 }
 
 /* Pseudoclase para mostrar linea en hover del item del menú */
-.item-menu::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -6px;                     
-  height: 1px;                      
-  background: darkgray;                 
-  opacity: 0;                       
-  transition: opacity .15s ease;
+.item-menu::before {
+    content: '';
+    position: absolute;
+
+    /* ocupa SIEMPRE todo el item */
+    inset: 0;
+
+    background: radial-gradient(circle,
+        rgba(166,166,166,0.35) 0%,
+        rgba(166,166,166,0.25) 30%,
+        rgba(166,166,166,0.15) 55%,
+        transparent 70%
+    );
+
+    transform: scale(0);
+    transform-origin: center;
+
+    opacity: 0;
+    transition: transform 0.6s ease-out, opacity 0.4s ease-out;
+
+    pointer-events: none;
 }
 
-/* Muestra la línea al hoverear sobre el item */
-.item-menu:hover::after {
-  opacity: 1;                       
-  cursor: pointer;
+.item-menu:hover::before {
+    transform: scale(2.5); /* se expande según el tamaño del item */
+    opacity: 1;
 }
 
 /* Configuración para imágen y nombre+descripción del plato */
