@@ -174,16 +174,19 @@
     </Tabla>
   </section>
 
-  <div class="botones-juntos">
-    <Boton data-testid="btnGuardar" type="submit" onclick={guardar} disabled={guardando}>
-      {guardando ? 'Guardando...' : txtBtnPrimario}</Boton
-    >
-    <Boton
-      data-testid="btnDescartar"
-      tipo="secundario"
-      onclick={confirmarDescarte}
-      disabled={guardando}>Descartar cambios</Boton
-    >
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <Boton data-testid="btnBorrar" type="submit">Borrar Plato</Boton>
+    <div class="botones-juntos">
+      <Boton data-testid="btnGuardar" type="submit" onclick={guardar} disabled={guardando}>
+        {guardando ? 'Guardando...' : txtBtnPrimario}</Boton
+      >
+      <Boton
+        data-testid="btnDescartar"
+        tipo="secundario"
+        onclick={confirmarDescarte}
+        disabled={guardando}>Descartar cambios</Boton
+      >
+    </div>
   </div>
 </main>
 
