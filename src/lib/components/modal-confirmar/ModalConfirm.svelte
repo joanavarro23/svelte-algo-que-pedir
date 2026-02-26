@@ -10,7 +10,11 @@
   let dialog = $state<HTMLDialogElement | null>(null)
   let { mensaje, onConfirm, mostrarModal = $bindable() }: Props = $props()
   $effect(() => {
-    if (mostrarModal) dialog?.showModal()
+    if (mostrarModal) {
+      dialog?.showModal()
+    } else {
+      if (dialog?.open) dialog.close()
+    }
   })
 </script>
 

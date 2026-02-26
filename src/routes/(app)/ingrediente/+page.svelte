@@ -9,13 +9,16 @@
   import eye from '$lib/assets/eye.svg'
   import pencil from '$lib/assets/pencil-simple.svg'
   import trash from '$lib/assets/trash.svg'
-  import type { Ingrediente } from '$lib/models/ingrediente.svelte'
+  import { Ingrediente } from '$lib/models/ingrediente.svelte'
   import { ingredientesService } from '$lib/services/ingredienteService'
   import { showError } from '$lib/utils/errorHandler'
   import { showToast } from '$lib/utils/toasts/toasts'
+  import ModalConfirm from '$lib/components/modal-confirmar/ModalConfirm.svelte'
 
   let { data }: PageProps = $props()
   let ingredientes = $derived(data.ingredientes)
+  let mostrarModal = $state(false)
+  let ingredienteAEliminar = $state<Ingrediente | null>(null)
 
   const buscarIngredientes = async () => {
     await invalidate('ingredientes:list')
@@ -60,7 +63,7 @@
             <img src={pencil} alt="lapiz">
           </IconoBoton>
           <!-- AGREGAR ACCION PARA EL ICONO BOTON TRASH -->
-          <IconoBoton onclick={() => eliminar(ingrediente)} data-testid={'eliminar-'+ingrediente.id}>
+          <IconoBoton onclick={() => { ingredienteAEliminar = ingrediente; mostrarModal = true }} data-testid={'eliminar-'+ingrediente.id}>
             <img src={trash} alt="tacho">
           </IconoBoton>
         </div>
@@ -77,6 +80,14 @@
     </header>
     <Tabla {nombreColumnas} {datosFilas}/>
 </main> 
+
+<ModalConfirm bind:mostrarModal mensaje="¿Estas seguro de que deseas eliminar este ingrediente?" 
+onConfirm={async () => {
+  if(!ingredienteAEliminar) return
+  await eliminar(ingredienteAEliminar)
+  ingredienteAEliminar = null
+  mostrarModal = false
+}} />
 
 <style>
   @import './ingredientes.css';
