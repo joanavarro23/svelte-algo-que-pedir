@@ -9,7 +9,7 @@ La aplicación permite a los administradores y empleados del local gestionar el 
 El sistema se divide en una arquitectura cliente-servidor:
 
 - **Frontend:** Desarrollado con **Svelte 5** (utilizando Runes API para reactividad) y **TypeScript**. Se utiliza **Vite** como herramienta de construcción y **SvelteKit** para el ruteo.
-- **Backend:** Una API REST hosteada y desarrollada con **Spring Boot** y **Kotlin**, encargada de la persistencia y lógica de negocio.
+- [**Backend:**](https://github.com/joanavarro23/algo-que-pedir-backend.git) Una API REST hosteada y desarrollada con **Spring Boot** y **Kotlin**, encargada de la persistencia y lógica de negocio.
 - **Comunicación:** Se utiliza **Axios** para las peticiones asincrónicas entre el frontend y el backend.
 
 ## Pantallas y Funcionalidades
