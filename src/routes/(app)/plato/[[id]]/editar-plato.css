@@ -72,6 +72,11 @@
     gap: 0 1rem;
     margin-bottom: 1rem;
   }
+
+  .contenedor-botones{
+    display: flex;
+    justify-content: space-between;
+  }
   
   .txtColumna {
       text-align: center;
@@ -81,21 +86,22 @@
   
   /* Botones - cuestiones especificas */
       /* Si los botones estan juntos tienen otra ubicación */
-  .botones-juntos {           
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.7rem;
-  }
-  
   /* ############################## */
   
-  @media (max-width: 400px) {  
-    .botones-juntos {
-      justify-content: space-between;
-    }
-  
+  @media (max-width: 400px) {    
     .subtitulo-label {
       display: none;
+    }
+
+    .botones-juntos {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .contenedor-botones {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: .5rem;
     }
   }
 }

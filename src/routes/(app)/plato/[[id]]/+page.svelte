@@ -188,8 +188,8 @@
     </Tabla>
   </section>
 
-  <div style="display: flex; justify-content: space-between; align-items: center">
-    <div style="display: flex; justify-content: flex-start; gap: 0.7rem">
+  <div class="contenedor-botones">
+    <div class="botones-juntos">
       <Boton data-testid="btnBorrar" type="submit" onclick={() => mostrarModal = true}>Borrar Plato</Boton>
       <Boton data-testid="btnVolver" tipo="secundario" onclick={volver}>Volver al menú</Boton>
     </div>
