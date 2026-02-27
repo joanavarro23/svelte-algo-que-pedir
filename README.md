@@ -1,40 +1,42 @@
-[![Build](https://github.com/algo3-unsam/algo-que-pedir-2025-grupo2/actions/workflows/build.yml/badge.svg?branch=dev)](https://github.com/algo3-unsam/algo-que-pedir-2025-grupo2/actions/workflows/build.yml)
+# Algo que Pedir - Svelte
 
-# sv
+Este proyecto es una aplicación de **back-office** diseñada para la gestión de pedidos y administración de un restaurante. Fue desarrollada como parte de la materia **Algoritmos 3** en la **Universidad Nacional de San Martín (UNSAM)**.
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+La aplicación permite a los administradores y empleados del local gestionar el ciclo de vida de los pedidos, administrar el menú (platos e ingredientes) y configurar el perfil del establecimiento.
 
-## Creating a project
+## Arquitectura y Tecnologías
 
-If you're seeing this, you've probably already done this step. Congrats!
+El sistema se divide en una arquitectura cliente-servidor:
 
-```sh
-# create a new project in the current directory
-npx sv create
+- **Frontend:** Desarrollado con **Svelte 5** (utilizando Runes API para reactividad) y **TypeScript**. Se utiliza **Vite** como herramienta de construcción y **SvelteKit** para el ruteo.
+- **Backend:** Una API REST hosteada y desarrollada con **Spring Boot** y **Kotlin**, encargada de la persistencia y lógica de negocio.
+- **Comunicación:** Se utiliza **Axios** para las peticiones asincrónicas entre el frontend y el backend.
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Pantallas y Funcionalidades
 
-## Developing
+### Autenticación
+- **Login:** Pantalla de acceso para usuarios registrados.
+- **Registro:** Permite la creación de nuevas cuentas para administradores del local.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+El proceso verifica que el usuario exista en el back-end y tenga los permisos requeridos para acceder a la palicación.
 
-```sh
-npm run dev
+![Demo Login/Register](static/login.gif)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Gestión de Pedidos
+- **Pedidos Actuales:** Dashboard principal donde se visualizan los pedidos entrantes y en curso. Permite cambiar el estado de los mismos (ej. de "Pendiente" a "Enviado").
+- **Detalle de Pedido:** Vista exhaustiva de un pedido específico, mostrando los platos solicitados, datos del cliente, método de pago y desglose de costos.
 
-## Building
+![Demo Pedidos](static/pedidos.gif)
 
-To create a production version of your app:
+### Administración del Menú
+- **Menú:** Listado completo de los platos ofrecidos por el restaurante. Permite visualizar precios y disponibilidad.
+- **Edición de Platos:** Interfaz para modificar los detalles de un plato existente o crear nuevos platos.
+- **Ingredientes:** Listado y gestión de los insumos disponibles en el local.
+- **Edición de Ingredientes:** Permite ajustar los costos de mercado, nombres y categorías (grupo alimenticio, origen animal/vegetal) de los ingredientes.
 
-```sh
-npm run build
-```
+![Demo Platos e Ingredientes](static/platoseingredientes.gif)
 
-You can preview the production build with `npm run preview`.
+### Configuración
+- **Perfil del Local:** Espacio para administrar la información del restaurante, como nombre, dirección, imagen de portada y horarios de atención.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+![Demo Perfil](static/local.gif)
